@@ -26,9 +26,11 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'veldhuizen' ); ?></a>
 
 	<header id="masthead" class="header">
+
 		<div class="header__top">
 			<p>Rijbewijs B+E / C1+E</p>
 		</div>
+
 		<div class="header__container">
 			<div class="header__left">
 				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" alt="Logo Veldhuizen"/>
@@ -42,47 +44,51 @@
 					<li>
 						<a href="#">Producten</a>
 						<ul>
-						<?php
-
-							//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
-							$args = array(
-								'post_type' => 'Producten',
-								'post_per_page' => 5,
-								'post_parent' => 0,
-								'order' => 'ASC'
-							);
-
-							$query = new WP_Query($args);
-							if ($query->have_posts()) :
-								while ( $query->have_posts() ) : $query->the_post();
-
-								$title = get_the_title();
-								$link = get_the_permalink();
-								echo "<li><a href='$link'>$title</a>";
-
-								//Args voor de subproducten, parent is de pagina
-								$childArgs = array(
+							<?php
+								//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
+								$args = array(
 									'post_type' => 'Producten',
-									'post_per_page' => -1,
-									'post_parent' => $post->ID,
+									'post_per_page' => 5,
+									'post_parent' => 0,
 									'order' => 'ASC'
 								);
 
-								$childProducts = new WP_Query($childArgs);
+								$query = new WP_Query($args);
+								if ($query->have_posts()) :
+									while ( $query->have_posts() ) : $query->the_post();
+									$img = get_the_post_thumbnail_url();
+									$title = get_the_title();
+									$link = get_the_permalink();
+									echo "<li>
 
-								if ($childProducts->have_posts()) :
-									echo '<div class="header__right--subitems">';
-									while ($childProducts->have_posts()) : $childProducts->the_post();
-										$childLink = get_the_permalink();
-										$childTitle = get_the_title();
-										echo "<a href='$childLink'>$childTitle</a>";
+									<a href='$link'>
+									
+									<img src='$img' width='200px'/>
+									$title</a>";
+
+									//Args voor de subproducten, parent is de pagina
+									$childArgs = array(
+										'post_type' => 'Producten',
+										'post_per_page' => -1,
+										'post_parent' => $post->ID,
+										'order' => 'ASC'
+									);
+
+									$childProducts = new WP_Query($childArgs);
+
+									if ($childProducts->have_posts()) :
+										echo '<div class="header__right--subitems">';
+										while ($childProducts->have_posts()) : $childProducts->the_post();
+											$childLink = get_the_permalink();
+											$childTitle = get_the_title();
+											echo "<a href='$childLink'>$childTitle</a>";
+										endwhile;
+										echo '</div>';
+									endif;
+									echo '</li>';
 									endwhile;
-									echo '</div>';
 								endif;
-								echo '</li>';
-								endwhile;
-							endif;
-							$query->reset_postdata();
+								$query->reset_postdata();
 							?>
 						</ul>
 					</li>
