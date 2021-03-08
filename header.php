@@ -43,31 +43,39 @@
 						<a href="#">Producten</a>
 						<ul>
 						<?php
+
+							//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
 							$args = array(
 								'post_type' => 'Producten',
 								'post_per_page' => 5,
 								'post_parent' => 0,
 								'order' => 'ASC'
 							);
+
 							$query = new WP_Query($args);
 							if ($query->have_posts()) :
 								while ( $query->have_posts() ) : $query->the_post();
 
 								$title = get_the_title();
-								echo "<li>$title";
+								$link = get_the_permalink();
+								echo "<li><a href='$link'>$title</a>";
 
+								//Args voor de subproducten, parent is de pagina
 								$childArgs = array(
 									'post_type' => 'Producten',
 									'post_per_page' => -1,
 									'post_parent' => $post->ID,
 									'order' => 'ASC'
 								);
+
 								$childProducts = new WP_Query($childArgs);
 
 								if ($childProducts->have_posts()) :
 									echo '<div class="header__right--subitems">';
 									while ($childProducts->have_posts()) : $childProducts->the_post();
-										echo the_title();
+										$childLink = get_the_permalink();
+										$childTitle = get_the_title();
+										echo "<a href='$childLink'>$childTitle</a>";
 									endwhile;
 									echo '</div>';
 								endif;
