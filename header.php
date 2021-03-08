@@ -56,13 +56,13 @@
 								$query = new WP_Query($args);
 								if ($query->have_posts()) :
 									while ( $query->have_posts() ) : $query->the_post();
+
 									$img = get_the_post_thumbnail_url();
 									$title = get_the_title();
 									$link = get_the_permalink();
-									echo "<li>
 
+									echo "<li>
 									<a href='$link'>
-									
 									<img src='$img' width='200px'/>
 									$title</a>";
 
@@ -95,6 +95,17 @@
 
 					<li>
 						<a href="#">Verhuur</a>
+						<ul>
+							<?php
+								$verhuurArgs = array(
+									'post_type' => 'Verhuur',
+									'post_per_page' => 5,
+									'post_parent' => 0,
+								);
+
+								$verhuurQuery = new WP_Query($verhuurArgs);
+							?>
+						</ul>
 					</li>
 					<li>
 						<a href="#">Occasions</a>
