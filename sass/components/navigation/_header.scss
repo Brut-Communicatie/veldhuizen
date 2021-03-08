@@ -1,0 +1,163 @@
+$containerWidth: 100%;
+$veldhuizen__groen: #0b9a71;
+$veldhuizen__oranje: #ff5400;
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+
+    &__container {
+        display: flex;
+        width: $containerWidth;
+        background-color: #fff;
+        margin: 0 auto;
+        padding: 0rem 0;
+        z-index: 2;
+        position: relative;
+    }
+
+    &__top {
+        background-color: $veldhuizen__groen;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px 0;
+
+        p {
+            margin: 0;
+            color: #fff;
+            font-size: 13px;
+        }
+    }
+
+    &__breadcrumbs {
+        width: 100%;
+        display: flex;
+        background-color: #fafafa;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
+        padding: 15px 0;
+
+        p {
+            margin: 0;
+            font-size: 11px;
+            margin-left: 4rem;
+            font-style: italic;
+        }
+    }
+
+    &__left {
+        width: 375px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__right {
+        width: auto;
+        display: flex;
+        margin-left: auto;
+
+        ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+
+            li {
+                list-style: none;
+                height: 100%;
+                display: flex;
+
+                &:first-child {
+                    border-left: 1px solid #dddddd;
+                }
+
+                ul {
+                    $bannerHeight: 200px;
+                    z-index: 1;
+                    display: none;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    bottom: -$bannerHeight;
+                    background-color: #fff;
+                    border-top: 1px solid #dddddd;
+                    border-bottom: 1px solid #dddddd;
+                    height: $bannerHeight;
+                    justify-content: space-between;
+
+                    li {
+                        height: auto;
+                        border-left: 0;
+                        width: calc(100% / 6);
+                        border-right: 1px solid #dddddd;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: background-color .25s ease;
+                        position: relative;
+                        &:hover {
+                            background-color: $veldhuizen__oranje;
+                            color: #fff;
+                            cursor: pointer;
+
+                            .header__right--subitems{
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+
+                &:hover {
+                    ul {
+                        display: flex;
+                    }
+                }
+            }
+        }
+
+        a {
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #555555;
+            text-decoration: none;
+            border-right: 1px solid #dddddd;
+            border-bottom: 2px solid rgba(255,255,255,0);
+            transition: all .25s ease;
+            margin-bottom: -2px;
+            &:hover {
+                border-bottom: 2px solid $veldhuizen__oranje;
+                z-index: 3;
+            }
+
+
+        }
+        &--subitems{
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            background-color: black;
+            display: none;
+        }
+    }
+
+    &__orange {
+        background-color: $veldhuizen__oranje;
+        color: #fff !important;
+        border-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        &:hover {
+            border-bottom: 0 !important;
+            margin-bottom: 0 !important;
+        }
+    }
+}

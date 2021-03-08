@@ -184,3 +184,52 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+function veldhuizen_post_type() {
+    $labels = array(
+        'name'                  => _x( 'Producten', 'Post type general name', 'product' ),
+        'singular_name'         => _x( 'Product', 'Post type singular name', 'product' ),
+        'menu_name'             => _x( 'Producten', 'Admin Menu text', 'product' ),
+        'name_admin_bar'        => _x( 'Product', 'Add New on Toolbar', 'product' ),
+        'add_new'               => __( 'Nieuw product', 'product' ),
+        'add_new_item'          => __( 'Nieuw product', 'product' ),
+        'new_item'              => __( 'Nieuw product', 'product' ),
+        'edit_item'             => __( 'Edit product', 'product' ),
+        'view_item'             => __( 'Bekijk product', 'product' ),
+        'all_items'             => __( 'Bekijk alle producten', 'product' ),
+        'search_items'          => __( 'Zoek product', 'product' ),
+        'parent_item_colon'     => __( 'Parent recipes:', 'recipe' ),
+        'not_found'             => __( 'Geen producten gevonden.', 'recipe' ),
+        'not_found_in_trash'    => __( 'Geen producten gevonden in de prullenbak.', 'recipe' ),
+        'featured_image'        => _x( 'Product cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'recipe' ),
+        'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'recipe' ),
+        'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'recipe' ),
+        'use_featured_image'    => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'recipe' ),
+        'archives'              => _x( 'Producten archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'recipe' ),
+        'insert_into_item'      => _x( 'Insert into product', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'recipe' ),
+        'uploaded_to_this_item' => _x( 'Uploaded to this product', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'recipe' ),
+        'filter_items_list'     => _x( 'Filter producten list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'recipe' ),
+        'items_list_navigation' => _x( 'Producten list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'recipe' ),
+        'items_list'            => _x( 'Producten list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'recipe' ),
+    );     
+    $args = array(
+        'labels'             => $labels,
+        'description'        => 'Producten post type',
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'producten' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => true,
+        'menu_position'      => 20,
+        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
+        'taxonomies'         => array( 'category', 'post_tag' ),
+        'show_in_rest'       => true
+    );
+      
+    register_post_type( 'Producten', $args );
+}
+add_action( 'init', 'veldhuizen_post_type' );

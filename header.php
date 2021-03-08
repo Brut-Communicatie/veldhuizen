@@ -25,35 +25,82 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'veldhuizen' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$veldhuizen_description = get_bloginfo( 'description', 'display' );
-			if ( $veldhuizen_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $veldhuizen_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<header id="masthead" class="header">
+		<div class="header__top">
+			<p>Rijbewijs B+E / C1+E</p>
+		</div>
+		<div class="header__container">
+			<div class="header__left">
+				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" alt="Logo Veldhuizen"/>
+			</div>
+			<div class="header__right">
+				<ul>
+					<li>
+						<a href="#">Home</a>
+					</li>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'veldhuizen' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+					<li>
+						<a href="#">Producten</a>
+						<ul>
+						<?php
+							$args = array(
+								'post_type' => 'Producten',
+								'post_per_page' => 5,
+								'post_parent' => 0,
+								'order' => 'ASC'
+							);
+							$query = new WP_Query($args);
+							if ($query->have_posts()) :
+								while ( $query->have_posts() ) : $query->the_post();
+
+								$title = get_the_title();
+								echo "<li>$title";
+
+								$childArgs = array(
+									'post_type' => 'Producten',
+									'post_per_page' => -1,
+									'post_parent' => $post->ID,
+									'order' => 'ASC'
+								);
+								$childProducts = new WP_Query($childArgs);
+
+								if ($childProducts->have_posts()) :
+									echo '<div class="header__right--subitems">';
+									while ($childProducts->have_posts()) : $childProducts->the_post();
+										echo the_title();
+									endwhile;
+									echo '</div>';
+								endif;
+								echo '</li>';
+								endwhile;
+							endif;
+							$query->reset_postdata();
+							?>
+						</ul>
+					</li>
+
+					<li>
+						<a href="#">Verhuur</a>
+					</li>
+					<li>
+						<a href="#">Occasions</a>
+					</li>
+					<li>
+						<a href="#">Onderdelen</a>
+					</li>
+					<li>
+						<a href="#">Service</a>
+					</li>
+					<li>
+						<a class="header__orange" href="#">Contact</a>
+					</li>
+					<li>
+						<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="header__breadcrumbs">
+			<p>U bevindt zich hier: <?php echo get_site_url();?>/</p>
+		</div>
 	</header><!-- #masthead -->

@@ -21,7 +21,6 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
-
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
@@ -49,19 +48,14 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	- Alignments
 
 --------------------------------------------------------------*/
-
 /*--------------------------------------------------------------
 # Generic
 --------------------------------------------------------------*/
-
 /* Normalize
 --------------------------------------------- */
-
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
 /* Document
 	 ========================================================================== */
-
 /**
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
@@ -73,7 +67,6 @@ html {
 
 /* Sections
 	 ========================================================================== */
-
 /**
  * Remove the margin in all browsers.
  */
@@ -99,7 +92,6 @@ h1 {
 
 /* Grouping content
 	 ========================================================================== */
-
 /**
  * 1. Add the correct box sizing in Firefox.
  * 2. Show the overflow in Edge and IE.
@@ -121,7 +113,6 @@ pre {
 
 /* Text-level semantics
 	 ========================================================================== */
-
 /**
  * Remove the gray background on active links in IE 10.
  */
@@ -187,7 +178,6 @@ sup {
 
 /* Embedded content
 	 ========================================================================== */
-
 /**
  * Remove the border on images inside links in IE 10.
  */
@@ -197,7 +187,6 @@ img {
 
 /* Forms
 	 ========================================================================== */
-
 /**
  * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
@@ -343,7 +332,6 @@ textarea {
 
 /* Interactive
 	 ========================================================================== */
-
 /*
  * Add the correct display in Edge, IE 10+, and Firefox.
  */
@@ -360,7 +348,6 @@ summary {
 
 /* Misc
 	 ========================================================================== */
-
 /**
  * Add the correct display in IE 10+.
  */
@@ -377,7 +364,6 @@ template {
 
 /* Box sizing
 --------------------------------------------- */
-
 /* Inherit box-sizing to more easily change it's value on a component level.
 @link http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
 *,
@@ -393,7 +379,6 @@ html {
 /*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
-
 /* Typography
 --------------------------------------------- */
 body,
@@ -540,9 +525,7 @@ a:visited {
 	color: #800080;
 }
 
-a:hover,
-a:focus,
-a:active {
+a:hover, a:focus, a:active {
 	color: #191970;
 }
 
@@ -550,8 +533,7 @@ a:focus {
 	outline: thin dotted;
 }
 
-a:hover,
-a:active {
+a:hover, a:active {
 	outline: 0;
 }
 
@@ -577,8 +559,7 @@ input[type="submit"]:hover {
 	border-color: #ccc #bbb #aaa;
 }
 
-button:active,
-button:focus,
+button:active, button:focus,
 input[type="button"]:active,
 input[type="button"]:focus,
 input[type="reset"]:active,
@@ -640,11 +621,9 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
-
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
-
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
@@ -704,20 +683,16 @@ textarea {
 }
 
 @media screen and (min-width: 37.5em) {
-
 	.menu-toggle {
 		display: none;
 	}
-
 	.main-navigation ul {
 		display: flex;
 	}
 }
 
-.site-main .comment-navigation,
-.site-main
-.posts-navigation,
-.site-main
+.site-main .comment-navigation, .site-main
+.posts-navigation, .site-main
 .post-navigation {
 	margin: 0 0 1.5em;
 }
@@ -874,13 +849,172 @@ textarea {
 	display: block;
 }
 
+/* Header
+--------------------------------------------- */
+.header {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #fff;
+}
+
+.header__container {
+	display: flex;
+	width: 100%;
+	background-color: #fff;
+	margin: 0 auto;
+	padding: 0rem 0;
+	z-index: 2;
+	position: relative;
+}
+
+.header__top {
+	background-color: #0b9a71;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px 0;
+}
+
+.header__top p {
+	margin: 0;
+	color: #fff;
+	font-size: 13px;
+}
+
+.header__breadcrumbs {
+	width: 100%;
+	display: flex;
+	background-color: #fafafa;
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	padding: 15px 0;
+}
+
+.header__breadcrumbs p {
+	margin: 0;
+	font-size: 11px;
+	margin-left: 4rem;
+	font-style: italic;
+}
+
+.header__left {
+	width: 375px;
+}
+
+.header__left img {
+	width: 100%;
+}
+
+.header__right {
+	width: auto;
+	display: flex;
+	margin-left: auto;
+}
+
+.header__right ul {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.header__right ul li {
+	list-style: none;
+	height: 100%;
+	display: flex;
+}
+
+.header__right ul li:first-child {
+	border-left: 1px solid #dddddd;
+}
+
+.header__right ul li ul {
+	z-index: 1;
+	display: none;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: -200px;
+	background-color: #fff;
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	height: 200px;
+	justify-content: space-between;
+}
+
+.header__right ul li ul li {
+	height: auto;
+	border-left: 0;
+	width: calc(100% / 6);
+	border-right: 1px solid #dddddd;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-color .25s ease;
+	position: relative;
+}
+
+.header__right ul li ul li:hover {
+	background-color: #ff5400;
+	color: #fff;
+	cursor: pointer;
+}
+
+.header__right ul li ul li:hover .header__right--subitems {
+	display: flex;
+}
+
+.header__right ul li:hover ul {
+	display: flex;
+}
+
+.header__right a {
+	padding: 0 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	color: #555555;
+	text-decoration: none;
+	border-right: 1px solid #dddddd;
+	border-bottom: 2px solid rgba(255, 255, 255, 0);
+	transition: all .25s ease;
+	margin-bottom: -2px;
+}
+
+.header__right a:hover {
+	border-bottom: 2px solid #ff5400;
+	z-index: 3;
+}
+
+.header__right--subitems {
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	width: 100%;
+	background-color: black;
+	display: none;
+}
+
+.header__orange {
+	background-color: #ff5400;
+	color: #fff !important;
+	border-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.header__orange:hover {
+	border-bottom: 0 !important;
+	margin-bottom: 0 !important;
+}
+
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
-
 /* Jetpack infinite scroll
 --------------------------------------------- */
-
 /* Hide the Posts Navigation and the Footer when Infinite Scroll is in use. */
 .infinite-scroll .posts-navigation,
 .infinite-scroll.neverending .site-footer {
@@ -895,10 +1029,8 @@ textarea {
 /*--------------------------------------------------------------
 # Utilities
 --------------------------------------------------------------*/
-
 /* Accessibility
 --------------------------------------------- */
-
 /* Text meant only for screen readers. */
 .screen-reader-text {
 	border: 0;
@@ -941,20 +1073,16 @@ textarea {
 /* Alignments
 --------------------------------------------- */
 .alignleft {
-
 	/*rtl:ignore*/
 	float: left;
-
 	/*rtl:ignore*/
 	margin-right: 1.5em;
 	margin-bottom: 1.5em;
 }
 
 .alignright {
-
 	/*rtl:ignore*/
 	float: right;
-
 	/*rtl:ignore*/
 	margin-left: 1.5em;
 	margin-bottom: 1.5em;
@@ -967,3 +1095,5 @@ textarea {
 	margin-right: auto;
 	margin-bottom: 1.5em;
 }
+
+/*# sourceMappingURL=style.css.map */
