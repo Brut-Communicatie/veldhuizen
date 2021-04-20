@@ -11,21 +11,87 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'veldhuizen' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'veldhuizen' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'veldhuizen' ), 'veldhuizen', '<a href="http://www.brutcommunicatie.nl">Brutcommunicatie</a>' );
-				?>
-		</div><!-- .site-info -->
+	<footer id="colophon" class="footer">
+		<div class="footer__container">
+			<div class="footer__item">
+				<h4>Veldhuizen B.V. Groenekan</h4>
+				<p>Verkoop | Verhuur | Onderhoud</p>
+				<p>Kon. Straatnaam 215</p>
+				<p>1245 AS Plaats</p>
+				</br>
+				<p>T 2535325</p>
+				<p>E adasd@asdasdas.com</p>
+			</div>
+
+			<div class="footer__item">
+				<h4>Veldhuizen B.V. Zwolle</h4>
+				<p>Verkoop | Verhuur | Onderhoud</p>
+				<p>Kon. Straatnaam 215</p>
+				<p>1245 AS Plaats</p>
+				</br>
+				<p>T 2535325</p>
+				<p>E adasd@asdasdas.com</p>
+			</div>
+			<div class="footer__item">
+				<h4>Producten</h4>
+				<ul>
+					<?php
+						//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
+						$args = array(
+							'post_type' => 'Producten',
+							'post_per_page' => 5,
+							'post_parent' => 0,
+							'order' => 'ASC'
+						);
+
+						$query = new WP_Query($args);
+						if ($query->have_posts()) :
+							while ( $query->have_posts() ) : $query->the_post();
+
+							$title = get_the_title();
+							$link = get_the_permalink();
+
+							echo "<li>
+							<a href='$link'>
+							$title</a>";
+
+							echo '</li>';
+							endwhile;
+						endif;
+						$query->reset_postdata();
+					?>
+				</ul>
+			</div>
+
+			<div class="footer__item">
+				<h4>Veldhuizen B.V. Loosdrecht</h4>
+				<p>Verkoop | Verhuur | Onderhoud</p>
+				<p>Kon. Straatnaam 215</p>
+				<p>1245 AS Plaats</p>
+				</br>
+				<p>T 2535325</p>
+				<p>E adasd@asdasdas.com</p>
+			</div>
+			<div class="footer__item">
+				<h4>Onderdelen</h4>
+			</div>
+			<div class="footer__item">
+				<h4>Verhuur</h4>
+			</div>
+		</div>
 	</footer><!-- #colophon -->
+	<div class="footer__bar">
+		<div class="footer__bar--container">
+		<div class="footer__bar--copyright">
+			<p>© Copyright - Veldhuizen <?php echo date('Y');?></p>
+		</div>
+		<div class="footer__bar--menu">
+			<ul>
+				<p>Hier komen linkjes</p>
+			</ul>
+		</div>
+		</div>
+	</div>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

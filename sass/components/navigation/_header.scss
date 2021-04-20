@@ -1,7 +1,6 @@
-$containerWidth: 100%;
 $veldhuizen__groen: #0b9a71;
 $veldhuizen__oranje: #ff5400;
-
+$headerWidth: 100%;
 .header {
     width: 100%;
     display: flex;
@@ -11,7 +10,7 @@ $veldhuizen__oranje: #ff5400;
 
     &__container {
         display: flex;
-        width: $containerWidth;
+        width: $headerWidth;
         background-color: #fff;
         margin: 0 auto;
         padding: 0rem 0;

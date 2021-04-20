@@ -1,0 +1,138 @@
+$footerItemSize: 15px;
+
+.footer {
+    width: 100%;
+    min-height: 5rem;
+    background-color: $veld__grey;
+    margin-top: 2rem;
+    padding-bottom: 5rem;
+    padding-top: 4rem;
+
+    @include Responsive($tabletBreakpoint){
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    @include Responsive($mobileBreakpoint){
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    &__container {
+        width: $containerWidth;
+        margin: 0 auto;
+        @include Flex(flex-start, flex-start, wrap);
+        padding: 2rem 0;
+
+        @include Responsive($containerWidth) {
+            width: calc(100% - 2rem);
+            padding: 1rem 0;
+        }
+    }
+
+    &__item {
+        width: calc(100% / 3 - 10px);
+        margin-bottom: 2rem;
+
+        p {
+            margin: 0;
+            font-size: $footerItemSize;
+            font-weight: 400;
+        }
+
+        h4 {
+            margin: 0;
+            font-size: 22px;
+            color: #555555;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+
+            li {
+                list-style: none;
+
+                a,
+                a:active,
+                a:link,
+                a:visited {
+                    color: #555555;
+                    text-decoration: none;
+                    font-size: $footerItemSize;
+                }
+            }
+        }
+
+
+        @include Responsive($tabletBreakpoint) {
+            width: calc(100% / 2 - 10px);
+        }
+
+        @include Responsive($tabletSmallBreakpoint){
+            width: 100%;
+        }
+
+        &:not(:nth-child(3n)) {
+            margin-right: 15px;
+
+            @include Responsive($tabletBreakpoint) {
+                margin-right: 0;
+            }
+        }
+
+        &:not(:nth-child(2n)) {
+            @include Responsive($tabletBreakpoint) {
+                margin-right: 15px;
+            }
+
+            @include Responsive($tabletSmallBreakpoint){
+                margin-right: 0;
+            }
+        }
+
+
+
+    }
+
+    &__bar {
+        width: 100%;
+        background-color: $veld__darkgrey;
+        padding: 1rem 0;
+
+
+        &--container {
+            width: $containerWidth;
+            margin: 0 auto;
+            @include Flex(space-between, center, nowrap);
+            color: #fff;
+
+            @include Responsive($containerWidth){
+                width: calc(100% - 2rem);
+            }
+        }
+
+        &--copyright {
+            width: 30%;
+            @include Flex(flex-start, center, nowrap);
+
+            p {
+                margin: 0;
+            }
+        }
+
+        &--menu {
+            width: 65%;
+            @include Flex(flex-end, center, nowrap);
+
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
+}
