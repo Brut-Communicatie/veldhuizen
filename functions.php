@@ -212,6 +212,7 @@ function veldhuizen_post_type() {
         'items_list_navigation' => _x( 'Producten list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'product' ),
         'items_list'            => _x( 'Producten list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'product' ),
     );     
+
     $args = array(
         'labels'             => $labels,
         'description'        => 'Producten post type',
@@ -227,9 +228,23 @@ function veldhuizen_post_type() {
         'menu_position'      => 20,
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
         'taxonomies'         => array( 'category', 'post_tag' ),
-        'show_in_rest'       => true
+        'show_in_rest'       => true,
     );
-      
     register_post_type( 'Producten', $args );
 }
+
+function veldhuizen_products_register_template() {
+    $post_type_object = get_post_type_object( 'producten' );
+    $post_type_object->template = array(
+		array('cgb/veldhuizen-banner'),
+		array('cgb/veldhuizen-product-grid'),
+		array('cgb/veldhuizen-product-contact'),
+		array('cgb/block-veldhuizen-product-information'),
+		array('cgb/block-veldhuizen-product-footer')
+	);
+}
+
 add_action( 'init', 'veldhuizen_post_type' );
+
+add_action( 'init', 'veldhuizen_products_register_template' );
+
