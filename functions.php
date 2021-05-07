@@ -233,3 +233,5 @@ function veldhuizen_post_type() {
     register_post_type( 'Producten', $args );
 }
 add_action( 'init', 'veldhuizen_post_type' );
+
+require get_template_directory() . '/inc/footer/footer-functions.php';

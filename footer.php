@@ -77,6 +77,33 @@
 			</div>
 			<div class="footer__item">
 				<h4>Verhuur</h4>
+				<ul>
+					<?php
+						//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
+						$args = array(
+							'post_type' => 'Verhuur',
+							'post_per_page' => 5,
+							'post_parent' => 0,
+							'order' => 'ASC'
+						);
+
+						$query = new WP_Query($args);
+						if ($query->have_posts()) :
+							while ( $query->have_posts() ) : $query->the_post();
+
+							$title = get_the_title();
+							$link = get_the_permalink();
+
+							echo "<li>
+							<a href='$link'>
+							$title</a>";
+
+							echo '</li>';
+							endwhile;
+						endif;
+						$query->reset_postdata();
+					?>
+				</ul>
 			</div>
 		</div>
 	</footer><!-- #colophon -->
