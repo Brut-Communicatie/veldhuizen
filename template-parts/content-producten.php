@@ -1,13 +1,17 @@
 <?php 
 
 global $post;
+$args = array('post_parent'    => get_the_ID(),
+'order'          =>  'ASC',
+'post_type'      => 'producten',
+);
 
-$hasChildren = get_children();
-$hasChildren = [];
+$hasChildren = get_children($args);
 
-if ($hasChildren == []){
+if (!$hasChildren){
     the_content();
 } 
+
 
 else {
     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
