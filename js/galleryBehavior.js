@@ -81,33 +81,7 @@ const closeModal = () => {
     
 }
 
-// DEZE VIEZE FUNCTIE WOLLAH
-// window.onclick = (e) => {
-//     clickedImage = e.target.src
-//     return clickedImage
-// }
-
-// window.onload = () => {
-//     productImages = document.getElementsByClassName('gallery-pictures')
-//     // console.log(productImages)
-
-//     // const entries = Object.entries(productImages)
-//     // console.log(entries)
-
-//     const entries= Object.entries(productImages)
-//     console.log(productImages[1].currentSrc)
-//     console.log(entries)
-  
-//     // FOR OF LOOP
-//     // for (const [key, value] of Object.entries(productImages)) {
-//     //     console.log(`${key}:${productImages[key]}`);
-//     // }
-
-//     // FOR IN LOOP WITH HASOWNPROPERTY
-//     // for (const key in productImages) {
-//     //     if (productImages.hasOwnProperty(key)) {
-//     //         console.log("hasOwnProperty method" + `${key}:${productImages[key]}`)
-//     //     }
-//     // }
-//     return productImages
-// }
+const contactButton = document.getElementById("productContactButton")
+contactButton.addEventListener('click', () => {
+    document.location.href = "https://veldhuizen.nl/contact"
+})
