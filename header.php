@@ -71,7 +71,7 @@
 
 									echo "<li>
 									<a href='$link'>
-									<img src='$img' width='200px'/>
+									<div class='header__img' style='background-image:url($img);'></div>
 									$title</a>";
 
 									//Args voor de subproducten, parent is de pagina

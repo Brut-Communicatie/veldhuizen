@@ -1007,6 +1007,7 @@ textarea {
 	align-items: center;
 	transition: background-color .25s ease;
 	position: relative;
+	box-sizing: border-box;
 }
 
 .header__right ul li ul li:hover {
@@ -1094,6 +1095,13 @@ textarea {
 .header__orange:hover {
 	border-bottom: 0 !important;
 	margin-bottom: 0 !important;
+}
+
+.header__img {
+	width: 200px;
+	height: 150px;
+	background-size: cover;
+	background-position: center center;
 }
 
 /* Footer

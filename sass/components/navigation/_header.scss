@@ -146,8 +146,8 @@ $headerWidth: 100%;
                         align-items: center;
                         transition: background-color .25s ease;
                         position: relative;
-
-
+                        box-sizing: border-box;
+                
                         &:hover {
                             background-color: #fafafa;
                             cursor: pointer;
@@ -244,5 +244,11 @@ $headerWidth: 100%;
             border-bottom: 0 !important;
             margin-bottom: 0 !important;
         }
+    }
+    &__img{
+        width: 200px;
+        height: 150px;
+        background-size: cover;
+        background-position: center center;
     }
 }
