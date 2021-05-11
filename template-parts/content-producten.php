@@ -1,8 +1,9 @@
 <?php 
 
 global $post;
-$hasChildren = get_children($post->ID);
 
+$hasChildren = get_children($post->ID);
+var_dump($hasChildren);
 if ($hasChildren == []){
     the_content();
 } 
