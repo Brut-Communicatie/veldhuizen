@@ -16,21 +16,20 @@
 			<div class="footer__item">
 				<h4>Veldhuizen B.V. Groenekan</h4>
 				<p>Verkoop | Verhuur | Onderhoud</p>
-				<p>Kon. Straatnaam 215</p>
-				<p>1245 AS Plaats</p>
+				<p>Kon. Wilhelminaweg 259</p>
+				<p>3736 BA Groenekan</p>
 				</br>
-				<p>T 2535325</p>
-				<p>E adasd@asdasdas.com</p>
+				<p><strong>T</strong> <a href="tel:+31886259600"> +31(0)88 6259600</a></p>
+				<p><strong>E</strong> <a href="mailto:info@veldhuizen.nl">info@veldhuizen.nl</a></p>
 			</div>
 
 			<div class="footer__item">
 				<h4>Veldhuizen B.V. Zwolle</h4>
-				<p>Verkoop | Verhuur | Onderhoud</p>
-				<p>Kon. Straatnaam 215</p>
-				<p>1245 AS Plaats</p>
+				<p>Steunpunt Hoverstracks en BE-opleggers</p>
+				<p>Hermelenweg 158</p>
+				<p>8028 PL Zwolle</p>
 				</br>
-				<p>T 2535325</p>
-				<p>E adasd@asdasdas.com</p>
+				<p><strong>T</strong> <a href="tel:+310886259670"> +31(0)88 6259670</a></p>
 			</div>
 			<div class="footer__item">
 				<h4>Producten</h4>
@@ -65,12 +64,11 @@
 
 			<div class="footer__item">
 				<h4>Veldhuizen B.V. Loosdrecht</h4>
-				<p>Verkoop | Verhuur | Onderhoud</p>
-				<p>Kon. Straatnaam 215</p>
-				<p>1245 AS Plaats</p>
+				<p>Productie</p>
+				<p>Nieuw Loosdrechtsedijk 40</p>
+				<p>1231 KZ Loosdrecht</p>
 				</br>
-				<p>T 2535325</p>
-				<p>E adasd@asdasdas.com</p>
+				<p><strong>T</strong> <a href="tel:+310886259600"> +31(0)88 6259600</a></p>
 			</div>
 			<div class="footer__item">
 				<h4>Onderdelen</h4>
@@ -114,7 +112,12 @@
 		</div>
 		<div class="footer__bar--menu">
 			<ul>
-				<p>Hier komen linkjes</p>
+				<li><a href="#">Hovertrack</a></li>
+				<li><a href="#">Route</a></li>
+				<li><a href="#">Leveringsvoorwaarden</a></li>
+				<li><a href="#">Algemene voorwaarden</a></li>
+				<li><a href="#">Privacyverklaring</a></li>
+				<li><a href="#">Cookiebeleid</a></li>
 			</ul>
 		</div>
 		</div>

@@ -28,7 +28,15 @@
 	<header id="masthead" class="header">
 
 		<div class="header__top">
-			<p>Rijbewijs B+E / C1+E</p>
+			<ul>
+			<li><a href="#">Rijbewijs B+E / C1+E</a></li>
+			<li><a href="#">Foto's</a></li>
+			<li><a href="#">Film</a></li>
+			<li><a href="#">Nieuws</a></li>
+			<li><a href="#">Vacatures</a></li>
+			<li><a href="#">Mijn account</a></li>
+			</ul>
+			<a class="header__top--button" href="tel:0886259600">088 6259600</a>
 		</div>
 
 		<div class="header__container">

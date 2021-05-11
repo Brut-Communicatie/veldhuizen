@@ -1,5 +1,4 @@
-$veldhuizen__groen: #0b9a71;
-$veldhuizen__oranje: #ff5400;
+
 $headerWidth: 100%;
 .header {
     width: 100%;
@@ -23,12 +22,59 @@ $headerWidth: 100%;
         width: 100%;
         display: flex;
         justify-content: flex-end;
-        padding: 10px 0;
+        padding: 20px 0;
 
         p {
             margin: 0;
             color: #fff;
             font-size: 13px;
+        }
+
+        ul{
+            @include Flex(flex-start, center, nowrap);
+            margin: 0;
+            padding: 0;
+            li{
+                list-style: none;
+                margin-right: 20px;
+                position: relative;
+                &:not(:last-child){
+                    &:after{
+                        content: "";
+                        height: 50%;
+                        width: 1px;
+                        background-color: #fff;
+                        display: block;
+                        position: absolute;
+                        right: -10px;
+                        top: 30%;
+                    }
+                }
+                
+                a, a:active, a:visited, a:link{
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 14px;
+                    font-weight: 600;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        &--button{
+            padding: 10px 25px;
+            box-sizing: border-box;
+            background-color: #fff;
+            margin-right: 25px;
+            font-size: 14px;
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+            &:hover{
+                color: black;
+                background-color: $veld__grey;
+            }
         }
     }
 

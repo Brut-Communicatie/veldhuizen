@@ -38,6 +38,20 @@ $footerItemSize: 15px;
             margin: 0;
             font-size: $footerItemSize;
             font-weight: 400;
+
+            strong{
+                color: $veldhuizen__groen;
+                margin-right: 10px;
+            }
+
+            a, a:visited, a:link, a:active {
+                color: black;
+                text-decoration: none;
+                &:hover{
+                    color: $veldhuizen__groen;
+                    text-decoration: underline;
+                }
+            }
         }
 
         h4 {
@@ -99,7 +113,7 @@ $footerItemSize: 15px;
         width: 100%;
         background-color: $veld__darkgrey;
         padding: 1rem 0;
-
+        font-size: 14px;
 
         &--container {
             width: $containerWidth;
@@ -110,12 +124,23 @@ $footerItemSize: 15px;
             @include Responsive($containerWidth){
                 width: calc(100% - 2rem);
             }
+
+            @include Responsive($mobileBreakpoint){
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
         }
 
         &--copyright {
             width: 30%;
             @include Flex(flex-start, center, nowrap);
-
+            @include Responsive($mobileBreakpoint){
+                justify-content: flex-start;
+                align-items: flex-start;
+                margin-bottom: 25px;
+                width: 100%;
+            }
             p {
                 margin: 0;
             }
@@ -128,6 +153,27 @@ $footerItemSize: 15px;
             ul {
                 margin: 0;
                 padding: 0;
+                display: flex;
+                @include Responsive($tabletBreakpoint){
+                    flex-direction: column;
+                    width: 100%;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+                li{
+                    list-style: none;
+                    margin-right: 15px;
+                    &:last-child{
+                        margin-right: 0px;
+                    }
+                    a, a:active, a:visited, a:link{
+                        color: #fff;
+                        text-decoration: none;
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
             }
 
             p {
