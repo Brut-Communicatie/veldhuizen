@@ -1535,6 +1535,12 @@ textarea {
 	}
 }
 
+@media screen and (max-width: 1001px) {
+	.veldhuizen__container--intro {
+		width: calc(100% - 2rem);
+	}
+}
+
 .block h5 {
 	text-align: center;
 }
