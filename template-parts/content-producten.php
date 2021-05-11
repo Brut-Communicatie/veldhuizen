@@ -2,11 +2,13 @@
 
 global $post;
 
-$hasChildren = get_children($post->ID);
-var_dump($hasChildren);
+$hasChildren = get_children();
+$hasChildren = [];
+
 if ($hasChildren == []){
     the_content();
 } 
+
 else {
     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
 	echo '<div class="veldhuizen__container">';
