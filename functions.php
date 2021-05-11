@@ -185,6 +185,14 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
+function veldhuizen_products_register_template() {
+    $post_type_object = get_post_type_object( 'producten' );
+    $post_type_object->template = array(
+		array('cgb/veldhuizen-banner'),
+		array('cgb/block-veldhuizen-container-block')
+	);
+}
+
 function veldhuizen_post_type() {
     $labels = array(
         'name'                  => _x( 'Producten', 'Post type general name', 'product' ),
@@ -232,6 +240,9 @@ function veldhuizen_post_type() {
       
     register_post_type( 'Producten', $args );
 }
+
+add_action( 'init', 'veldhuizen_post_type' );
+add_action( 'init', 'veldhuizen_products_register_template' );
 add_action( 'init', 'veldhuizen_post_type' );
 
 require get_template_directory() . '/inc/footer/footer-functions.php';
