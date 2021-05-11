@@ -1528,6 +1528,7 @@ textarea {
 
 .block:hover p {
 	display: inline-block !important;
+	transform: unset !important;
 }
 
 /*# sourceMappingURL=style.css.map */

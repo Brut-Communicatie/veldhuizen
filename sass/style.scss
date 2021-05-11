@@ -118,6 +118,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	&:hover{
 		p{
 			display: inline-block !important;
+			transform: unset !important;
 		}
 	}
 }
