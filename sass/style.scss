@@ -115,4 +115,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	h5{
 		text-align: center;
 	}
+	&:hover{
+		p{
+			display: inline-block !important;
+		}
+	}
 }

@@ -1526,4 +1526,8 @@ textarea {
 	text-align: center;
 }
 
+.block:hover p {
+	display: inline-block !important;
+}
+
 /*# sourceMappingURL=style.css.map */
