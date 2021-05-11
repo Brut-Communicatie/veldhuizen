@@ -137,6 +137,17 @@
 			</div>
 		</div>
 		<div class="header__breadcrumbs">
-			<p>U bevindt zich hier: <?php echo get_site_url();?>/</p>
+
+			<?php
+
+			global $post;
+			global $wp_query;
+
+			$postTitle = get_the_title($wp_query->post->ID);
+			$postType = get_post_type($wp_query->post->ID);
+			if ($postType) {
+				echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
+			}
+			?>
 		</div>
 	</header><!-- #masthead -->
