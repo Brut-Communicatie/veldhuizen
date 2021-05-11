@@ -104,3 +104,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .site {
 	background-color: #FAFAFA;
 }
+
+.veldhuizen{
+	&__container{
+		margin-top: 25px;
+	}
+}
