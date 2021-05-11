@@ -1207,6 +1207,14 @@ textarea {
 	font-size: 15px;
 }
 
+.footer__item ul li a:hover,
+.footer__item ul li a:active:hover,
+.footer__item ul li a:link:hover,
+.footer__item ul li a:visited:hover {
+	text-decoration: underline;
+	color: #0b9a71;
+}
+
 @media screen and (max-width: calc(1024px + 5px)) {
 	.footer__item {
 		width: calc(100% / 2 - 10px);
