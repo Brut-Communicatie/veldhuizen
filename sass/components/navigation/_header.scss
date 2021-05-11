@@ -16,6 +16,7 @@ $headerWidth: 100%;
         z-index: 2;
         position: relative;
     }
+    $topBreakpoint: 780px;
 
     &__top {
         background-color: $veldhuizen__groen;
@@ -23,6 +24,12 @@ $headerWidth: 100%;
         display: flex;
         justify-content: flex-end;
         padding: 20px 0;
+
+        @include Responsive($topBreakpoint){
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
 
         p {
             margin: 0;
@@ -34,12 +41,19 @@ $headerWidth: 100%;
             @include Flex(flex-start, center, nowrap);
             margin: 0;
             padding: 0;
-
+            @include Responsive($topBreakpoint){
+                @include Flex(center, center, nowrap);
+                order: 1;
+            }
             li {
                 list-style: none;
                 margin-right: 20px;
                 position: relative;
-
+                @include Responsive($topBreakpoint){
+                    &:last-child{
+                    margin-right: 0px;
+                    }
+                }
                 &:not(:last-child) {
                     &:after {
                         content: "";
@@ -62,6 +76,10 @@ $headerWidth: 100%;
                     font-size: 14px;
                     font-weight: 600;
 
+                    @include Responsive(510px){
+                        font-size: 12px;
+                    }
+
                     &:hover {
                         text-decoration: underline;
                     }
@@ -78,6 +96,12 @@ $headerWidth: 100%;
             color: black;
             text-decoration: none;
             font-weight: 600;
+            
+            @include Responsive($topBreakpoint){
+                width: auto;
+                margin-bottom: 10px;
+                order: 0;
+            }
 
             img{
                 margin-right: 5px;
@@ -118,6 +142,10 @@ $headerWidth: 100%;
         width: auto;
         display: flex;
         margin-left: auto;
+
+        @include Responsive(1270px){
+            display: none;
+        }
 
         ul {
             display: flex;
