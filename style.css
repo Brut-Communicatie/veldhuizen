@@ -1522,6 +1522,19 @@ textarea {
 	margin-top: 25px;
 }
 
+@media screen and (max-width: 1000px) {
+	.veldhuizen__container {
+		width: calc(100% - 2rem);
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+}
+
 .block h5 {
 	text-align: center;
 }
