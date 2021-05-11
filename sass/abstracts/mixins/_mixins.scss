@@ -10,7 +10,6 @@
 	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
 }
 
-
 @mixin Flex($justify: false, $align: false, $wrap: false, $direction: false){
 	display: flex;
 	justify-content: $justify;
