@@ -869,6 +869,13 @@ textarea {
 	position: relative;
 }
 
+@media screen and (max-width: calc(1270px + 5px)) {
+	.header__container {
+		justify-content: flex-start;
+		align-items: center;
+	}
+}
+
 .header__top {
 	background-color: #0b9a71;
 	width: 100%;
@@ -1007,6 +1014,13 @@ textarea {
 	width: 375px;
 }
 
+@media screen and (max-width: calc(500px + 5px)) {
+	.header__left {
+		width: 250px;
+		padding: 10px;
+	}
+}
+
 .header__left img {
 	width: 100%;
 }
@@ -1140,6 +1154,27 @@ textarea {
 .header__right--subitems a:hover {
 	background-color: #ff5400;
 	color: #fff;
+}
+
+.header__right--menu {
+	display: none;
+	box-sizing: border-box;
+	padding: 10px;
+	height: auto;
+	border-radius: 5px;
+}
+
+@media screen and (max-width: calc(1270px + 5px)) {
+	.header__right--menu {
+		display: flex;
+		margin-left: auto;
+		margin-right: 25px;
+	}
+}
+
+.header__right--menu:hover {
+	cursor: pointer;
+	background-color: #e9e9e9;
 }
 
 .header__orange {

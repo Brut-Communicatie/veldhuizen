@@ -43,6 +43,9 @@
 			<div class="header__left">
 				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" alt="Logo Veldhuizen"/>
 			</div>
+			<div class="header__right--menu">
+				<img src="<?php echo get_template_directory_uri();?>/content/icons/bars.svg" width="25px" alt="Home icoon"/> 
+				</div>
 			<div class="header__right">
 				<ul>
 					<li>

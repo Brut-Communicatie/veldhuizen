@@ -1,4 +1,6 @@
 $headerWidth: 100%;
+$menuBreakpoint : 1270px;
+
 
 .header {
     width: 100%;
@@ -15,6 +17,11 @@ $headerWidth: 100%;
         padding: 0rem 0;
         z-index: 2;
         position: relative;
+
+        @include Responsive($menuBreakpoint){
+            justify-content: flex-start;
+            align-items: center;
+        }
     }
     $topBreakpoint: 780px;
 
@@ -132,18 +139,21 @@ $headerWidth: 100%;
 
     &__left {
         width: 375px;
-
+        @include Responsive($mobileBreakpoint){
+            width: 250px;
+            padding: 10px;
+        }
         img {
             width: 100%;
         }
     }
-
+    
     &__right {
         width: auto;
         display: flex;
         margin-left: auto;
 
-        @include Responsive(1270px){
+        @include Responsive($menuBreakpoint){
             display: none;
         }
 
@@ -270,6 +280,23 @@ $headerWidth: 100%;
                     background-color: $veldhuizen__oranje;
                     color: #fff;
                 }
+            }
+        }
+        &--menu{
+            display: none;
+            box-sizing: border-box;
+            padding: 10px;
+            height: auto;
+            border-radius: 5px;
+            @include Responsive($menuBreakpoint){
+                display: flex;
+                margin-left: auto;
+                margin-right: 25px;
+            }
+
+            &:hover{
+                cursor: pointer;
+                background-color: rgb(233, 233, 233);
             }
         }
     }
