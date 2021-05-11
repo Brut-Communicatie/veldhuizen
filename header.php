@@ -49,7 +49,7 @@
 			<div class="header__right">
 				<ul>
 					<li>
-						<a href="#"><img src="<?php echo get_template_directory_uri();?>/content/icons/home.svg" width="25px" alt="Home icoon"/></a>
+						<a href="<?php echo home_url();?>"><img src="<?php echo get_template_directory_uri();?>/content/icons/home.svg" width="25px" alt="Home icoon"/></a>
 					</li>
 
 					<li>
@@ -137,17 +137,13 @@
 			</div>
 		</div>
 		<div class="header__breadcrumbs">
-
 			<?php
-
-			global $post;
-			global $wp_query;
-
-			$postTitle = get_the_title($wp_query->post->ID);
-			$postType = get_post_type($wp_query->post->ID);
-			if ($postType) {
-				echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
-			}
+				global $wp_query;
+				$postTitle = get_the_title($wp_query->post->ID);
+				$postType = get_post_type($wp_query->post->ID);
+				if ($postType) {
+					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
+				}
 			?>
 		</div>
 	</header><!-- #masthead -->
