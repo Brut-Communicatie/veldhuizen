@@ -87,6 +87,4 @@ contactButton.addEventListener('click', () => {
 })
 
 const infoContainer = document.getElementsByClassName('veldhuizen__container--product-info')[0];
-const infoContainerHTML = infoContainer.innerHTML();
 console.log(infoContainer);
-console.log(infoContainerHTML);
