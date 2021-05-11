@@ -188,7 +188,8 @@ if ( class_exists( 'WooCommerce' ) ) {
 function veldhuizen_products_register_template() {
     $post_type_object = get_post_type_object( 'producten' );
     $post_type_object->template = array(
-		array('cgb/veldhuizen-banner')
+		array('cgb/veldhuizen-banner'),
+		array('cgb/block-veldhuizen-container-block')
 	);
 }
 
