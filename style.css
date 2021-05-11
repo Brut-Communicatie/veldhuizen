@@ -1526,9 +1526,14 @@ textarea {
 	text-align: center;
 }
 
+.block p {
+	position: absolute;
+	bottom: 0;
+}
+
 .block:hover p {
 	display: inline-block !important;
-	transform: unset !important;
+	transform: translateY(1rem);
 }
 
 /*# sourceMappingURL=style.css.map */
