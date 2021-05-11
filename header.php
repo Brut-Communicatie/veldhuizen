@@ -36,7 +36,7 @@
 			<li><a href="#">Vacatures</a></li>
 			<li><a href="#">Mijn account</a></li>
 			</ul>
-			<a class="header__top--button" href="tel:0886259600">088 6259600</a>
+			<a class="header__top--button" href="tel:0886259600"><img src="<?php echo get_template_directory_uri();?>/content/icons/phone.svg" width="12px" alt="Home icoon"/> 088 6259600</a>
 		</div>
 
 		<div class="header__container">
@@ -46,7 +46,7 @@
 			<div class="header__right">
 				<ul>
 					<li>
-						<a href="#">Home</a>
+						<a href="#"><img src="<?php echo get_template_directory_uri();?>/content/icons/home.svg" width="25px" alt="Home icoon"/></a>
 					</li>
 
 					<li>

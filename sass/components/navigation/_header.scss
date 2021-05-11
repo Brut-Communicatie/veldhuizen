@@ -1,5 +1,5 @@
-
 $headerWidth: 100%;
+
 .header {
     width: 100%;
     display: flex;
@@ -30,16 +30,18 @@ $headerWidth: 100%;
             font-size: 13px;
         }
 
-        ul{
+        ul {
             @include Flex(flex-start, center, nowrap);
             margin: 0;
             padding: 0;
-            li{
+
+            li {
                 list-style: none;
                 margin-right: 20px;
                 position: relative;
-                &:not(:last-child){
-                    &:after{
+
+                &:not(:last-child) {
+                    &:after {
                         content: "";
                         height: 50%;
                         width: 1px;
@@ -50,19 +52,24 @@ $headerWidth: 100%;
                         top: 30%;
                     }
                 }
-                
-                a, a:active, a:visited, a:link{
+
+                a,
+                a:active,
+                a:visited,
+                a:link {
                     color: #fff;
                     text-decoration: none;
                     font-size: 14px;
                     font-weight: 600;
-                    &:hover{
+
+                    &:hover {
                         text-decoration: underline;
                     }
                 }
             }
         }
-        &--button{
+
+        &--button {
             padding: 10px 25px;
             box-sizing: border-box;
             background-color: #fff;
@@ -71,7 +78,12 @@ $headerWidth: 100%;
             color: black;
             text-decoration: none;
             font-weight: 600;
-            &:hover{
+
+            img{
+                margin-right: 5px;
+            }
+
+            &:hover {
                 color: black;
                 background-color: $veld__grey;
             }
@@ -147,7 +159,7 @@ $headerWidth: 100%;
                         transition: background-color .25s ease;
                         position: relative;
                         box-sizing: border-box;
-                
+
                         &:hover {
                             background-color: #fafafa;
                             cursor: pointer;
@@ -211,7 +223,7 @@ $headerWidth: 100%;
             display: none;
             flex-direction: column;
 
-        
+
 
             a {
                 padding: 10px 10px;
@@ -245,10 +257,12 @@ $headerWidth: 100%;
             margin-bottom: 0 !important;
         }
     }
-    &__img{
+
+    &__img {
         width: 200px;
         height: 150px;
         background-size: cover;
         background-position: center center;
+        margin-bottom: 5px;
     }
 }

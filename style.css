@@ -909,14 +909,20 @@ textarea {
 	top: 30%;
 }
 
-.header__top ul li a, .header__top ul li a:active, .header__top ul li a:visited, .header__top ul li a:link {
+.header__top ul li a,
+.header__top ul li a:active,
+.header__top ul li a:visited,
+.header__top ul li a:link {
 	color: #fff;
 	text-decoration: none;
 	font-size: 14px;
 	font-weight: 600;
 }
 
-.header__top ul li a:hover, .header__top ul li a:active:hover, .header__top ul li a:visited:hover, .header__top ul li a:link:hover {
+.header__top ul li a:hover,
+.header__top ul li a:active:hover,
+.header__top ul li a:visited:hover,
+.header__top ul li a:link:hover {
 	text-decoration: underline;
 }
 
@@ -929,6 +935,10 @@ textarea {
 	color: black;
 	text-decoration: none;
 	font-weight: 600;
+}
+
+.header__top--button img {
+	margin-right: 5px;
 }
 
 .header__top--button:hover {
@@ -1102,6 +1112,7 @@ textarea {
 	height: 150px;
 	background-size: cover;
 	background-position: center center;
+	margin-bottom: 5px;
 }
 
 /* Footer
