@@ -11,21 +11,117 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'veldhuizen' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'veldhuizen' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'veldhuizen' ), 'veldhuizen', '<a href="http://www.brutcommunicatie.nl">Brutcommunicatie</a>' );
-				?>
-		</div><!-- .site-info -->
+	<footer id="colophon" class="footer">
+		<div class="footer__container">
+			<div class="footer__item">
+				<h4>Veldhuizen B.V. Groenekan</h4>
+				<p>Verkoop | Verhuur | Onderhoud</p>
+				<p>Kon. Wilhelminaweg 259</p>
+				<p>3736 BA Groenekan</p>
+				</br>
+				<p><strong>T</strong> <a href="tel:+31886259600"> +31(0)88 6259600</a></p>
+				<p><strong>E</strong> <a href="mailto:info@veldhuizen.nl">info@veldhuizen.nl</a></p>
+			</div>
+
+			<div class="footer__item">
+				<h4>Veldhuizen B.V. Zwolle</h4>
+				<p>Steunpunt Hoverstracks en BE-opleggers</p>
+				<p>Hermelenweg 158</p>
+				<p>8028 PL Zwolle</p>
+				</br>
+				<p><strong>T</strong> <a href="tel:+310886259670"> +31(0)88 6259670</a></p>
+			</div>
+			<div class="footer__item">
+				<h4>Producten</h4>
+				<ul>
+					<?php
+						//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
+						$args = array(
+							'post_type' => 'Producten',
+							'post_per_page' => 5,
+							'post_parent' => 0,
+							'order' => 'ASC'
+						);
+
+						$query = new WP_Query($args);
+						if ($query->have_posts()) :
+							while ( $query->have_posts() ) : $query->the_post();
+
+							$title = get_the_title();
+							$link = get_the_permalink();
+
+							echo "<li>
+							<a href='$link'>
+							$title</a>";
+
+							echo '</li>';
+							endwhile;
+						endif;
+						$query->reset_postdata();
+					?>
+				</ul>
+			</div>
+
+			<div class="footer__item">
+				<h4>Veldhuizen B.V. Loosdrecht</h4>
+				<p>Productie</p>
+				<p>Nieuw Loosdrechtsedijk 40</p>
+				<p>1231 KZ Loosdrecht</p>
+				</br>
+				<p><strong>T</strong> <a href="tel:+310886259600"> +31(0)88 6259600</a></p>
+			</div>
+			<div class="footer__item">
+				<h4>Onderdelen</h4>
+			</div>
+			<div class="footer__item">
+				<h4>Verhuur</h4>
+				<ul>
+					<?php
+						//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
+						$args = array(
+							'post_type' => '',
+							'post_per_page' => 5,
+							'post_parent' => 0,
+							'order' => 'ASC'
+						);
+
+						$query = new WP_Query($args);
+						if ($query->have_posts()) :
+							while ( $query->have_posts() ) : $query->the_post();
+
+							$title = get_the_title();
+							$link = get_the_permalink();
+
+							echo "<li>
+							<a href='$link'>
+							$title</a>";
+
+							echo '</li>';
+							endwhile;
+						endif;
+						$query->reset_postdata();
+					?>
+				</ul>
+			</div>
+		</div>
 	</footer><!-- #colophon -->
+	<div class="footer__bar">
+		<div class="footer__bar--container">
+		<div class="footer__bar--copyright">
+			<p>© Copyright - Veldhuizen <?php echo date('Y');?></p>
+		</div>
+		<div class="footer__bar--menu">
+			<ul>
+				<li><a href="#">Hovertrack</a></li>
+				<li><a href="#">Route</a></li>
+				<li><a href="#">Leveringsvoorwaarden</a></li>
+				<li><a href="#">Algemene voorwaarden</a></li>
+				<li><a href="#">Privacyverklaring</a></li>
+				<li><a href="#">Cookiebeleid</a></li>
+			</ul>
+		</div>
+		</div>
+	</div>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

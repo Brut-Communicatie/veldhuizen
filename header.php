@@ -28,17 +28,28 @@
 	<header id="masthead" class="header">
 
 		<div class="header__top">
-			<p>Rijbewijs B+E / C1+E</p>
+			<ul>
+			<li><a href="#">Rijbewijs B+E / C1+E</a></li>
+			<li><a href="#">Foto's</a></li>
+			<li><a href="#">Film</a></li>
+			<li><a href="#">Nieuws</a></li>
+			<li><a href="#">Vacatures</a></li>
+			<li><a href="#">Mijn account</a></li>
+			</ul>
+			<a class="header__top--button" href="tel:0886259600"><img src="<?php echo get_template_directory_uri();?>/content/icons/phone.svg" width="12px" alt="Home icoon"/> 088 6259600</a>
 		</div>
 
 		<div class="header__container">
 			<div class="header__left">
 				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" alt="Logo Veldhuizen"/>
 			</div>
+			<div class="header__right--menu">
+				<img src="<?php echo get_template_directory_uri();?>/content/icons/bars.svg" width="25px" alt="Home icoon"/> 
+				</div>
 			<div class="header__right">
 				<ul>
 					<li>
-						<a href="#">Home</a>
+						<a href="<?php echo home_url();?>"><img src="<?php echo get_template_directory_uri();?>/content/icons/home.svg" width="25px" alt="Home icoon"/></a>
 					</li>
 
 					<li>
@@ -63,7 +74,7 @@
 
 									echo "<li>
 									<a href='$link'>
-									<img src='$img' width='200px'/>
+									<div class='header__img' style='background-image:url($img);'></div>
 									$title</a>";
 
 									//Args voor de subproducten, parent is de pagina
@@ -126,6 +137,13 @@
 			</div>
 		</div>
 		<div class="header__breadcrumbs">
-			<p>U bevindt zich hier: <?php echo get_site_url();?>/</p>
+			<?php
+				global $wp_query;
+				$postTitle = get_the_title($wp_query->post->ID);
+				$postType = get_post_type($wp_query->post->ID);
+				if ($postType) {
+					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
+				}
+			?>
 		</div>
 	</header><!-- #masthead -->

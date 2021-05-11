@@ -32,6 +32,7 @@
 		"sass/components/media/_captions.scss",
 		"sass/components/media/_galleries.scss",
 		"sass/components/navigation/_header.scss",
+		"sass/components/navigation/_footer.scss",
 		"sass/plugins/jetpack/_infinite-scroll.scss",
 		"sass/utilities/_accessibility.scss",
 		"sass/utilities/_alignments.scss"
