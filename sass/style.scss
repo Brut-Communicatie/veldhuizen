@@ -125,4 +125,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 			transform: translateY(1rem);
 		}
 	}
+	&__info{
+		flex-grow: 1;
+	}
 }

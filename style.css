@@ -1536,4 +1536,8 @@ textarea {
 	transform: translateY(1rem);
 }
 
+.block__info {
+	flex-grow: 1;
+}
+
 /*# sourceMappingURL=style.css.map */
