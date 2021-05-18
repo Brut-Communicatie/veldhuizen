@@ -11,7 +11,7 @@
 
 ?>
 
-	<footer id="colophon" class="footer">
+	<footer id="colophon" class="footer no-print">
 		<div class="footer__container">
 			<div class="footer__item">
 				<h4>Veldhuizen B.V. Groenekan</h4>
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</footer><!-- #colophon -->
-	<div class="footer__bar">
+	<div class="footer__bar no-print">
 		<div class="footer__bar--container">
 		<div class="footer__bar--copyright">
 			<p>© Copyright - Veldhuizen <?php echo date('Y');?></p>

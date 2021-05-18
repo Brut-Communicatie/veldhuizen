@@ -621,6 +621,38 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+@media print {
+	.no-print {
+		display: none !important;
+		height: 0 !important;
+	}
+	header .header__container .header__left #logo-print {
+		width: 5cm;
+	}
+	.veldhuizen__container--product-wrapper {
+		width: 100%;
+		box-shadow: none;
+	}
+	.veldhuizen__container--product-grid h1 {
+		font-size: 1em;
+	}
+	.veldhuizen__container--product-grid .product-grid-wrapper #big-image {
+		position: absolute;
+		top: 0cm;
+		right: 0;
+		width: 5cm;
+	}
+	.veldhuizen__container--product-info h2 {
+		font-size: 1em;
+	}
+	.veldhuizen__container--product-info p {
+		font-size: 0.6em;
+	}
+	.veldhuizen__container--product-info:before {
+		width: 0;
+	}
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/

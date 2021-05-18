@@ -1,0 +1,56 @@
+// PRINT LAYOUT GOES HERE
+@media print {
+    .no-print {
+        display: none !important;
+        height: 0 !important;
+    }
+
+    header {
+        .header__container {
+            .header__left {
+                #logo-print {
+                    width: 5cm;
+                }
+            }
+        }
+    }
+
+    .veldhuizen {
+        &__container {
+            &--product-wrapper {
+                width: 100%;
+                box-shadow: none;
+            }
+
+            &--product-grid {
+                h1 {
+                    font-size: 1em;
+                }
+
+                .product-grid-wrapper {
+                    #big-image {
+                        position: absolute;
+                        top: 0cm;
+                        right: 0;
+                        width: 5cm;
+                    }
+                }
+            }
+
+            &--product-info {
+                h2 {
+                    font-size: 1em;
+                }
+
+                p {
+                    font-size: 0.6em;
+                }
+                &:before {
+                    width: 0;
+                }
+            }
+        }
+    }
+
+
+}
