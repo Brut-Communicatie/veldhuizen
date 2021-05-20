@@ -116,8 +116,8 @@
 				<li><a href="#">Route</a></li>
 				<li><a href="#">Leveringsvoorwaarden</a></li>
 				<li><a href="#">Algemene voorwaarden</a></li>
-				<li><a href="#">Privacyverklaring</a></li>
-				<li><a href="#">Cookiebeleid</a></li>
+				<li><a href="<?php echo get_page_link( get_page_by_path( 'privacyverklaring' ) ); ?>">Privacyverklaring</a></li>
+				<li><a href="<?php echo get_page_link( get_page_by_path( 'cookiebeleid' ) ); ?>">Cookiebeleid</a></li>
 			</ul>
 		</div>
 		</div>
