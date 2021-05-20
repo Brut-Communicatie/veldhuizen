@@ -28,7 +28,7 @@
 	<header id="masthead" class="header">
 
 		<div class="header__top">
-			<ul>
+			<ul class="no-print">
 			<li><a href="#">Rijbewijs B+E / C1+E</a></li>
 			<li><a href="#">Foto's</a></li>
 			<li><a href="#">Film</a></li>
@@ -36,17 +36,17 @@
 			<li><a href="#">Vacatures</a></li>
 			<li><a href="#">Mijn account</a></li>
 			</ul>
-			<a class="header__top--button" href="tel:0886259600"><img src="<?php echo get_template_directory_uri();?>/content/icons/phone.svg" width="12px" alt="Home icoon"/> 088 6259600</a>
+			<a class="header__top--button no-print" href="tel:0886259600"><img src="<?php echo get_template_directory_uri();?>/content/icons/phone.svg" width="12px" alt="Home icoon"/> 088 6259600</a>
 		</div>
 
 		<div class="header__container">
 			<div class="header__left">
-				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" alt="Logo Veldhuizen"/>
+				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" id="logo-print" alt="Logo Veldhuizen"/>
 			</div>
-			<div class="header__right--menu">
+			<div class="header__right--menu no-print">
 				<img src="<?php echo get_template_directory_uri();?>/content/icons/bars.svg" width="25px" alt="Home icoon"/> 
 				</div>
-			<div class="header__right">
+			<div class="header__right no-print">
 				<ul>
 					<li>
 						<a href="<?php echo home_url();?>"><img src="<?php echo get_template_directory_uri();?>/content/icons/home.svg" width="25px" alt="Home icoon"/></a>
@@ -136,7 +136,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="header__breadcrumbs">
+		<div class="header__breadcrumbs no-print">
 			<?php
 				global $wp_query;
 				$postTitle = get_the_title($wp_query->post->ID);

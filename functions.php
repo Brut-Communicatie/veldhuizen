@@ -193,6 +193,14 @@ function veldhuizen_products_register_template() {
 	);
 }
 
+function veldhuizen_verhuur_register_template() {
+	$verhuur_object = get_post_type_object('verhuur');
+	$verhuur_object->template = array(
+		array('cgb/veldhuizen-banner'),
+		array('cgb/block-veldhuizen-verhuur-container')
+	);
+}
+
 function veldhuizen_post_type() {
     $labels = array(
         'name'                  => _x( 'Producten', 'Post type general name', 'product' ),
@@ -233,6 +241,7 @@ function veldhuizen_post_type() {
         'has_archive'        => true,
         'hierarchical'       => true,
         'menu_position'      => 20,
+		'menu_icon'			 => 'dashicons-cart',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
         'taxonomies'         => array( 'category', 'post_tag' ),
         'show_in_rest'       => true
@@ -241,8 +250,60 @@ function veldhuizen_post_type() {
     register_post_type( 'Producten', $args );
 }
 
+function veldhuizen_verhuur_post_type() {
+    $labels = array(
+        'name'                  => _x( 'Verhuur', 'Post type general name', 'verhuur product' ),
+        'singular_name'         => _x( 'verhuur', 'Post type singular name', 'verhuur product' ),
+        'menu_name'             => _x( 'Verhuur', 'Admin Menu text', 'verhuur product' ),
+        'name_admin_bar'        => _x( 'Verhuur', 'Add New on Toolbar', 'verhuur product' ),
+        'add_new'               => __( 'Nieuw verhuur product', 'verhuur product' ),
+        'add_new_item'          => __( 'Nieuw verhuur product', 'verhuur product' ),
+        'new_item'              => __( 'Nieuw verhuur product', 'verhuur product' ),
+        'edit_item'             => __( 'Edit verhuur product', 'verhuur product' ),
+        'view_item'             => __( 'Bekijk verhuur product', 'verhuur product' ),
+        'all_items'             => __( 'Bekijk alle vehruur producten', 'verhuur product' ),
+        'search_items'          => __( 'Zoek verhuur product', 'verhuur product' ),
+        'parent_item_colon'     => __( 'Hoofd verhuur product:', 'verhuur product' ),
+        'not_found'             => __( ' Geen verhuur producten gevonden.', 'verhuur product' ),
+        'not_found_in_trash'    => __( 'Geen verhuur producten gevonden in de prullenbak.', 'vehruur product' ),
+        'featured_image'        => _x( 'Verhuur product cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'verhuur product' ),
+        'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'verhuur product' ),
+        'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'verhuur product' ),
+        'use_featured_image'    => _x( 'Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'verhuur product' ),
+        'archives'              => _x( 'Verhuur producten archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'verhuur product' ),
+        'insert_into_item'      => _x( 'Insert into verhuur product', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'verhuur product' ),
+        'uploaded_to_this_item' => _x( 'Uploaded to this verhuur product', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'verhuur product' ),
+        'filter_items_list'     => _x( 'Filter verhuur producten list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'verhuur product' ),
+        'items_list_navigation' => _x( 'Verhuur producten list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'verhuur product' ),
+        'items_list'            => _x( 'Verhuur producten list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'verhuur product' ),
+    );     
+    $args = array(
+        'labels'             => $labels,
+        'description'        => 'Verhuur producten post type',
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'verhuur' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => true,
+        'menu_position'      => 20,
+		'menu_icon'			 => 'dashicons-pressthis',
+        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'page-attributes' ),
+        'taxonomies'         => array( 'category', 'post_tag' ),
+        'show_in_rest'       => true
+    );
+      
+    register_post_type( 'Verhuur', $args );
+}
+
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
+
 add_action( 'init', 'veldhuizen_post_type' );
+add_action( 'init', 'veldhuizen_verhuur_post_type' );
+add_action ( 'init', 'veldhuizen_verhuur_register_template' );
 
 require get_template_directory() . '/inc/footer/footer-functions.php';

@@ -1,0 +1,24 @@
+.information-pages {
+    margin: 0 auto;
+    width: $containerWidth;
+
+    figure table {
+        border-collapse: collapse;
+        tbody tr:nth-child(odd) {
+            background-color: $veld__grey;
+        }
+    }
+
+    @include Responsive($containerWidth) {
+        width: calc(100% - 12rem);
+    }
+    @include Responsive($tabletBreakpoint) {
+        width: calc(100% - 10rem);
+    }
+    @include Responsive($tabletSmallBreakpoint) {
+        width: calc(100% - 6rem);
+    }
+    @include Responsive($mobileBreakpoint) {
+        width: calc(100% - 4em);
+    }
+}

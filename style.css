@@ -621,6 +621,85 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+@media print {
+	.no-print {
+		display: none !important;
+		height: 0 !important;
+	}
+	header .header__container .header__left #logo-print {
+		width: 5cm;
+	}
+	.veldhuizen__container--verhuur-wrapper {
+		box-shadow: none;
+	}
+	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table p {
+		font-size: 25px;
+	}
+	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table table tr td {
+		padding: 0;
+		font-size: 25px;
+	}
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-wrapper {
+		width: 100%;
+		box-shadow: none;
+	}
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-grid h1 {
+		font-size: 1em;
+	}
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-grid .product-grid-wrapper #big-image {
+		position: absolute;
+		top: 0cm;
+		right: 0;
+		width: 5cm;
+	}
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info h2 {
+		font-size: 1em;
+	}
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info p {
+		font-size: 0.6em;
+	}
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info:before {
+		width: 0;
+	}
+}
+
+.information-pages {
+	margin: 0 auto;
+	width: 1440px;
+}
+
+.information-pages figure table {
+	border-collapse: collapse;
+}
+
+.information-pages figure table tbody tr:nth-child(odd) {
+	background-color: #F3F3F3;
+}
+
+@media screen and (max-width: calc(1440px + 5px)) {
+	.information-pages {
+		width: calc(100% - 12rem);
+	}
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.information-pages {
+		width: calc(100% - 10rem);
+	}
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.information-pages {
+		width: calc(100% - 6rem);
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.information-pages {
+		width: calc(100% - 4em);
+	}
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
