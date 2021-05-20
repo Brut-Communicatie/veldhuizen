@@ -112,10 +112,10 @@
 		</div>
 		<div class="footer__bar--menu">
 			<ul>
-				<li><a href="#">Hovertrack</a></li>
+				<li><a href="https://hovertrack.nl/">Hovertrack</a></li>
 				<li><a href="#">Route</a></li>
-				<li><a href="#">Leveringsvoorwaarden</a></li>
-				<li><a href="#">Algemene voorwaarden</a></li>
+				<li><a href="http://veldhuizen.testjevorm.nl/wp-content/uploads/2021/05/algemene_verhuurvoorwaarden_.pdf?iframe=true">Leveringsvoorwaarden</a></li>
+				<li><a href="https://veldhuizen.testjevorm.nl/wp-content/uploads/metaalunievoorwaarden-2019-nederlands.pdf">Algemene voorwaarden</a></li>
 				<li><a href="<?php echo get_page_link( get_page_by_path( 'privacyverklaring' ) ); ?>">Privacyverklaring</a></li>
 				<li><a href="<?php echo get_page_link( get_page_by_path( 'cookiebeleid' ) ); ?>">Cookiebeleid</a></li>
 			</ul>
