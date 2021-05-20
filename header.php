@@ -125,7 +125,7 @@
 						<a href="#">Onderdelen</a>
 					</li>
 					<li>
-						<a href="#">Service</a>
+						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
 					</li>
 					<li>
 						<a class="header__orange" href="#">Contact</a>
