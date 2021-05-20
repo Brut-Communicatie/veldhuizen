@@ -663,6 +663,43 @@ textarea {
 	}
 }
 
+.information-pages {
+	margin: 0 auto;
+	width: 1440px;
+}
+
+.information-pages figure table {
+	border-collapse: collapse;
+}
+
+.information-pages figure table tbody tr:nth-child(odd) {
+	background-color: #F3F3F3;
+}
+
+@media screen and (max-width: calc(1440px + 5px)) {
+	.information-pages {
+		width: calc(100% - 12rem);
+	}
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.information-pages {
+		width: calc(100% - 10rem);
+	}
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.information-pages {
+		width: calc(100% - 6rem);
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.information-pages {
+		width: calc(100% - 4em);
+	}
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
