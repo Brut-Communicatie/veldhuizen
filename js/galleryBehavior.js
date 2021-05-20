@@ -85,3 +85,6 @@ const contactButton = document.getElementById("productContactButton")
 contactButton.addEventListener('click', () => {
     document.location.href = "https://veldhuizen.nl/contact"
 })
+
+const infoContainer = document.getElementsByClassName('veldhuizen__container--product-info')[0];
+console.log(infoContainer);
