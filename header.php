@@ -156,7 +156,7 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#">Occasions</a>
+						<a href="<?php echo get_page_link( get_page_by_path( 'occassions' ) ); ?>">Occasions</a>
 					</li>
 					<li>
 						<a href="#">Onderdelen</a>

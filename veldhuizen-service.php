@@ -4,7 +4,7 @@
 get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 global $post;
-var_dump($post);
+// var_dump($post);
 $postTitle = $post->post_name;
 
 if ($postTitle == 'aankoppelen-clixtar') {
