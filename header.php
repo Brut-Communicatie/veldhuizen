@@ -107,14 +107,51 @@
 					<li>
 						<a href="#">Verhuur</a>
 						<ul>
-							<?php
+						<?php
 								$verhuurArgs = array(
 									'post_type' => 'Verhuur',
 									'post_per_page' => 5,
 									'post_parent' => 0,
+									'order' => 'ASC'
 								);
 
 								$verhuurQuery = new WP_Query($verhuurArgs);
+								// var_dump($verhuurQuery);
+								
+								if ($verhuurQuery->have_posts()) :
+									while ( $verhuurQuery-> have_posts() ) : $verhuurQuery->the_post();
+									$verhuurImg = get_the_post_thumbnail_url();
+									$verhuurTitle = get_the_title();
+									$verhuurLink = get_the_permalink();
+
+									echo "<li>
+									<a href='$verhuurLink'>
+									<div class='header__img' style='background-image:url($verhuurImg);'></div>
+									$verhuurTitle</a>";
+
+									//Args voor de subproducten, parent is de pagina
+									$childArgs = array(
+										'post_type' => 'Verhuur',
+										'post_per_page' => -1,
+										'post_parent' => $post->ID,
+										'order' => 'ASC'
+									);
+
+									$childProducts = new WP_Query($childArgs);
+
+									if ($childProducts->have_posts()) :
+										echo '<div class="header__right--subitems">';
+										while ($childProducts->have_posts()) : $childProducts->the_post();
+											$childLink = get_the_permalink();
+											$childTitle = get_the_title();
+											echo "<a href='$childLink'>$childTitle</a>";
+										endwhile;
+										echo '</div>';
+									endif;
+									echo '</li>';
+									endwhile;
+								endif;
+								$verhuurQuery->reset_postdata();
 							?>
 						</ul>
 					</li>
@@ -125,7 +162,7 @@
 						<a href="#">Onderdelen</a>
 					</li>
 					<li>
-						<a href="#">Service</a>
+						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
 					</li>
 					<li>
 						<a class="header__orange" href="#">Contact</a>

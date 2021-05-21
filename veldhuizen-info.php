@@ -1,5 +1,5 @@
 <?php
-//Template name: Veldhuizen informatie
+//Template name: Veldhuizen Informatie
 //Template Post Type: page
 get_header();
 

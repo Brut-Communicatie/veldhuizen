@@ -107,42 +107,70 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	background-color: #FAFAFA;
 }
 
-.veldhuizen{
-	&__container{
+.veldhuizen {
+	&__container {
 		margin-top: 25px;
 
-		@media screen and (max-width: 1000px){
+		@media screen and (max-width: 1000px) {
 			width: calc(100% - 2rem);
 			grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 		}
 
-		@media screen and (max-width: 600px){
+		@media screen and (max-width: 600px) {
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 		}
 
-		&--intro{
-			@media screen and (max-width: 1001px){
+		&--intro {
+			@media screen and (max-width: 1001px) {
 				width: calc(100% - 2rem);
 			}
 		}
 	}
 }
 
-.block{
-	h5{
+.block {
+	h5 {
 		text-align: center;
 	}
-	p{
+
+	p {
 		position: absolute;
 		bottom: 0;
 	}
-	&:hover{
-		p{
+
+	&:hover {
+		p {
 			display: inline-block !important;
 			transform: translateY(1rem);
 		}
 	}
-	&__info{
+
+	&__info {
 		flex-grow: 1;
 	}
+}
+
+.service-pages {
+	h2 {
+		text-align: center;
+	}
+
+	.veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+
+		@media screen and (max-width: 600px) {
+			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+		}
+	}
+
+	.reparatie-formulier {
+		background-color: white;
+		form div {
+			display: block;
+			margin: 10px;
+			padding: 10px;
+		}
+	}
+
+	
 }
