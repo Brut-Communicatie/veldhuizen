@@ -127,6 +127,17 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 			@media screen and (max-width: 1001px) {
 				width: calc(100% - 2rem);
 			}
+
+			p{
+				a, a:active, a:link, a:visited{
+					color: $veldhuizen__oranje;
+					text-decoration: none;
+					font-weight: 600;
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+			}
 		}
 	}
 }
