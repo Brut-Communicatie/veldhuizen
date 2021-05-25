@@ -6,12 +6,21 @@ $args = array('post_parent'    => get_the_ID(),
 'post_type'      => 'producten',
 );
 
+$hasTags = array();
+
 $hasChildren = get_children($args);
+foreach($hasChildren as $child){
+    $tags = get_the_tags($child->ID);
+    if ($tags) {
+        foreach($tags as $tag){
+            $hasTags[] = $tag->name;
+        }
+    }
+}
 
 if (!$hasChildren){
     the_content();
 } 
-
 
 else {
     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
@@ -19,14 +28,37 @@ else {
 	echo '<h2>' . $post->post_title  . '</h2>';
 	echo '<p>' . 'Hier is de mogelijkheid om een klein stukje tekst toe te voegen' . '</p>';
 	echo '</div>';
+
+    if ($hasTags != []){
+        echo '<div class="veldhuizen__filter">';
+        echo '<h3>Filteren</h3>';
+        echo '<div class="veldhuizen__filter--container">';
+        echo '<div class="veldhuizen__filter--item veldhuizen__filter--item-selected">';
+        echo 'Alles';
+        echo '</div>';
+
+        foreach($hasTags as $tag) {
+            echo '<div class="veldhuizen__filter--item">';
+            echo $tag;
+            echo '</div>';
+        }
+        echo '</div>';
+        echo '</div>';
+    }
+
 	echo '<div class="veldhuizen__container">';
     foreach($hasChildren as $child){
-
         $childImage = get_the_post_thumbnail_url( $child->ID);
         $childTitle = get_the_title( $child->ID );
         $childLink = get_the_permalink( $child->ID );
-
-        echo '<a class="block" href="'. $childLink .'">';
+        $childTag = get_the_tags($child->ID);
+        if ($childTag) {
+            $childClass = $childTag['0']->slug;
+        } else {
+            $childClass = "";
+        }
+       
+        echo '<a class="block '. $childClass .'" href="'. $childLink .'">';
         echo '<img src="'. $childImage .'" alt="Afbeelding van '. $childTitle .'" />';
         echo '<div class="block__info">';
         echo '<div class="block__square"></div>';
