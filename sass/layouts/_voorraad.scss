@@ -1,0 +1,75 @@
+.voorraad {
+    .wp-block-cgb-block-veldhuizen-verhuur-table {
+        width: 100%;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        
+
+        #voorraad-first-table {
+            table tbody tr td {
+                color: $color__text-main;
+            }
+        }
+        
+        
+        figure {
+            width: 1400px;
+            margin: 0 auto;
+
+            table {
+                table-layout: fixed;
+                border-collapse: collapse;
+
+                tbody tr:first-child {
+                    color: $veldhuizen__groen;
+                }
+
+                tbody tr:nth-child(odd) {
+                    background-color: $veld__grey;
+                }
+
+                tbody tr:nth-child(even) {
+                    background-color: $color__background-body;
+                }
+
+                tbody tr td {
+                    padding: 1.2rem;
+                }
+            }
+        }
+    }
+
+    .print-button-wrapper {
+        display: none;
+    }
+}
+.voorraad > :nth-child(even) {
+    background-color: $color__background-screen;
+}
+
+
+// .veldhuizen__container {
+//     grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+//     background-color: white;
+
+
+//     .print-button-wrapper {
+//         display: none;
+//     }
+//     figure table {
+//         table-layout: fixed;
+//         border-collapse: collapse;
+
+//         tbody tr:first-child {
+//             color: $veldhuizen__groen;
+//         }
+
+//         tbody tr:nth-child(odd) {
+//             background-color: $veld__grey;
+//         }
+
+//         tbody tr td {
+//             padding: 1.2rem;
+//         }
+//     }
+// }

@@ -700,6 +700,50 @@ textarea {
 	}
 }
 
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table {
+	width: 100%;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table #voorraad-first-table table tbody tr td {
+	color: #404040;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure {
+	width: 1400px;
+	margin: 0 auto;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table {
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr:first-child {
+	color: #0b9a71;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr:nth-child(odd) {
+	background-color: #F3F3F3;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr td {
+	padding: 1.2rem;
+}
+
+.voorraad .print-button-wrapper {
+	display: none;
+}
+
+.voorraad > :nth-child(even) {
+	background-color: #f1f1f1;
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
