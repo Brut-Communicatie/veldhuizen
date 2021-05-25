@@ -79,7 +79,7 @@
 					<?php
 						//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
 						$args = array(
-							'post_type' => '',
+							'post_type' => 'verhuur',
 							'post_per_page' => 5,
 							'post_parent' => 0,
 							'order' => 'ASC'
