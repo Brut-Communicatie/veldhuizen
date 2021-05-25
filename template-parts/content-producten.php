@@ -13,7 +13,9 @@ foreach($hasChildren as $child){
     $tags = get_the_tags($child->ID);
     if ($tags) {
         foreach($tags as $tag){
-            $hasTags[] = $tag->name;
+            if ($tag !== $tag){
+                $hasTags[] = $tag->name;
+            }
         }
     }
 }
