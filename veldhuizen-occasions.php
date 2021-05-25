@@ -11,7 +11,7 @@ endif;
 <iframe id="voorraadFrame" src="https://voorraad.veldhuizen.nl/" width="100%" height="1000px"></iframe>
 <script>
     var frame = document.getElementById("voorraadFrame");
-var header = frame.contentWindow.document.getElementsByTagName("header")[0];
+var header = frame.contentWindow.document.getElementById("header");
 el.style.display = "none";
 </script>
 <?php
