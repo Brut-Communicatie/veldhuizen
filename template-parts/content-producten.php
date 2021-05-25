@@ -12,11 +12,7 @@ $hasChildren = get_children($args);
 foreach($hasChildren as $child){
     $tags = get_the_tags($child->ID);
     if ($tags) {
-        foreach($tags as $tag){
-            if (!in_array($tag, $hasTags)){
-                $hasTags[] = $tag->name;
-            }
-        }
+        $tagsFound = true;
     }
 }
 
@@ -31,19 +27,20 @@ else {
 	echo '<p>' . 'Hier is de mogelijkheid om een klein stukje tekst toe te voegen' . '</p>';
 	echo '</div>';
 
-    if ($hasTags != []){
+    if ($tagsFound){
         echo '<div class="veldhuizen__filter">';
         echo '<h3>Filteren</h3>';
         echo '<div class="veldhuizen__filter--container">';
+
         echo '<div class="veldhuizen__filter--item veldhuizen__filter--item-selected">';
         echo 'Alles';
         echo '</div>';
-
-        foreach($hasTags as $tag) {
-            echo '<div class="veldhuizen__filter--item">';
-            echo $tag;
-            echo '</div>';
-        }
+        echo '<div class="veldhuizen__filter--item">';
+        echo '1. Rijbewijs BE voor 2013';
+        echo '</div>';
+        echo '<div class="veldhuizen__filter--item">';
+        echo '2. Rijbewijs BE na 2013';
+        echo '</div>';
         echo '</div>';
         echo '</div>';
     }
