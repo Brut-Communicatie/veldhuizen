@@ -10,9 +10,12 @@ endif;
 
 <iframe id="voorraadFrame" src="https://voorraad.veldhuizen.nl/" width="100%" height="1000px"></iframe>
 <script>
-    var frame = document.getElementById("voorraadFrame");
+    setTimeout(() => {
+        var frame = document.getElementById("voorraadFrame");
 var header = frame.contentWindow.document.getElementById("header");
 el.style.display = "none";
+    }, 5000);
+
 </script>
 <?php
 get_footer();?>
