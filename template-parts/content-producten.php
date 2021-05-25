@@ -24,7 +24,7 @@ else {
     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
     echo '<div class="veldhuizen__container--intro">';
 	echo '<h2>' . $post->post_title  . '</h2>';
-	echo '<p>' . '<a href="'. get_page_link( get_page_by_path( 'voorraad-en-levertijd' ) ); .'">Bekijk hier onze voorraad en levertijden</a>' . '</p>';
+	// echo '<p>' . '<a href="'. get_page_link( get_page_by_path( 'voorraad-en-levertijd' ) ); .'">Bekijk hier onze voorraad en levertijden</a>' . '</p>';
 	echo '</div>';
 
     if ($tagsFound){
