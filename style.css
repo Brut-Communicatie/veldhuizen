@@ -1601,7 +1601,7 @@ textarea {
 	margin-top: 25px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
 	.veldhuizen__container {
 		width: calc(100% - 2rem);
 		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
@@ -1745,7 +1745,59 @@ textarea {
 @media screen and (max-width: calc(1024px + 5px)) {
 	.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="submit"] {
 		width: 100%;
-		margin-top: 1rem;
+	}
+}
+
+.banner-home-page h1 {
+	display: none;
+}
+
+.banner-home-page h3 {
+	color: #0b9a71;
+	font-size: 3em;
+}
+
+.banner-home-page p {
+	font-size: 1.5em;
+	margin: 5px;
+}
+
+.banner-home-page img {
+	width: 100%;
+	height: 75vh;
+	object-fit: cover;
+}
+
+.banner-home-page .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.banner-home-page img {
+		width: 100%;
+		height: auto;
+	}
+	.banner-home-page .veldhuizen__container h3 {
+		font-size: 2.5em;
+		text-align: center;
+	}
+	.banner-home-page .veldhuizen__container p {
+		margin: 5px;
+		font-size: 1.4em;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.banner-home-page .veldhuizen__container h3 {
+		color: #0b9a71;
+		font-size: 2em;
+		text-align: center;
+	}
+	.banner-home-page .veldhuizen__container p {
+		margin: 5px;
+		font-size: 1.2em;
+		text-align: center;
 	}
 }
 

@@ -107,11 +107,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	background-color: #FAFAFA;
 }
 
+
+
 .veldhuizen {
 	&__container {
 		margin-top: 25px;
 
-		@media screen and (max-width: 1000px) {
+		@media screen and (max-width: $tabletBreakpoint) {
 			width: calc(100% - 2rem);
 			grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 		}
@@ -171,7 +173,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 	.reparatie-formulier {
 		background-color: white;
-		
+
 		h2 {
 			padding-top: 2rem;
 		}
@@ -187,9 +189,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 			form {
 
-				@include Responsive($tabletBreakpoint){
+				@include Responsive($tabletBreakpoint) {
 					display: inherit;
 				}
+
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
@@ -245,13 +248,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 					}
 
 					input[type="submit"] {
-						@include Responsive($tabletBreakpoint){
+						@include Responsive($tabletBreakpoint) {
 							width: 100%;
-							margin-top: 1rem;
-							// padding: 1rem;
-							// background-color: $veldhuizen__oranje;
-							// color: white;
 						}
+
 						padding: 1rem;
 						background-color: $veldhuizen__oranje;
 						color: white;
@@ -265,6 +265,66 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 		}
 	}
+}
 
+.banner-home-page {
+	h1 {
+		display: none;
+	}
+	h3 {
+		color: $veldhuizen__groen;
+		font-size: 3em;
+	}
+	p {
+		font-size: 1.5em;
+		margin:5px;
+	}
 
+	img {
+		width: 100%;
+		height: 75vh;
+		object-fit: cover;
+	}
+	.veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+
+	@include Responsive($tabletBreakpoint) {
+		img {
+			width: 100%;
+			height: auto;
+		}
+		.veldhuizen__container {
+			
+
+			h3 {
+				
+				font-size: 2.5em;
+				text-align: center;
+			}
+
+			p {
+				margin: 5px;
+				font-size: 1.4em;
+				text-align: center;
+			}
+		}
+	}
+
+	@include Responsive($mobileBreakpoint) {
+	
+		.veldhuizen__container {
+			h3 {
+				color: $veldhuizen__groen;
+				font-size: 2em;
+				text-align: center;
+			}
+
+			p {
+				margin: 5px;
+				font-size: 1.2em;
+				text-align: center;
+			}
+		}
+	}
 }
