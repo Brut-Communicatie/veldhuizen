@@ -133,8 +133,22 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 					color: $veldhuizen__oranje;
 					text-decoration: none;
 					font-weight: 600;
+					font-size: 0.9rem;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					svg{
+						width: 10px;
+						margin-left: 5px;
+
+						transition: margin-left .25s ease;
+					}
 					&:hover{
 						text-decoration: underline;
+
+						svg{
+							margin-left: 10px;
+						}
 					}
 				}
 			}

@@ -1668,10 +1668,24 @@ textarea {
 	color: #ff5400;
 	text-decoration: none;
 	font-weight: 600;
+	font-size: 0.9rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.veldhuizen__container--intro p a svg, .veldhuizen__container--intro p a:active svg, .veldhuizen__container--intro p a:link svg, .veldhuizen__container--intro p a:visited svg {
+	width: 10px;
+	margin-left: 5px;
+	transition: margin-left .25s ease;
 }
 
 .veldhuizen__container--intro p a:hover, .veldhuizen__container--intro p a:active:hover, .veldhuizen__container--intro p a:link:hover, .veldhuizen__container--intro p a:visited:hover {
 	text-decoration: underline;
+}
+
+.veldhuizen__container--intro p a:hover svg, .veldhuizen__container--intro p a:active:hover svg, .veldhuizen__container--intro p a:link:hover svg, .veldhuizen__container--intro p a:visited:hover svg {
+	margin-left: 10px;
 }
 
 .occassion-iframe-wrapper header {
