@@ -103,7 +103,8 @@ echo '</div>';      // CLOSE KOPPELEN-CLIXTAR DIV
 echo '<div class="reparatie-formulier">';
 echo '<h2>Reparatieformulier</h2>';
 echo '<div class="veldhuizen__container">';
-echo do_shortcode('[contact-form-7 id="19040" title="Reparatieformulier"]');
+// echo do_shortcode('[contact-form-7 id="19040" title="Reparatieformulier"]');
+echo do_shortcode('[contact-form-7 id="1284" title="Reparatieformulier"]');
 echo '</div>';
 echo '</div>';       // CLOSE REPARATIE-FORMULIER DIV
 
