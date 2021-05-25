@@ -7,6 +7,6 @@ endwhile;
 endif;
 ?>
 
-<iframe id="voorraadFrame" src="https://voorraad.veldhuizen.nl/" width="100%"></iframe>
+<iframe id="voorraadFrame" src="https://voorraad.veldhuizen.nl/" width="100%" height="1000px"></iframe>
 <?php
 get_footer();?>
