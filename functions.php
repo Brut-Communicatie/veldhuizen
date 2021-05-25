@@ -265,7 +265,7 @@ function veldhuizen_verhuur_post_type() {
         'search_items'          => __( 'Zoek verhuur product', 'verhuur product' ),
         'parent_item_colon'     => __( 'Hoofd verhuur product:', 'verhuur product' ),
         'not_found'             => __( ' Geen verhuur producten gevonden.', 'verhuur product' ),
-        'not_found_in_trash'    => __( 'Geen verhuur producten gevonden in de prullenbak.', 'vehruur product' ),
+        'not_found_in_trash'    => __( 'Geen verhuur producten gevonden in de prullenbak.', 'verhuur product' ),
         'featured_image'        => _x( 'Verhuur product cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'verhuur product' ),
         'set_featured_image'    => _x( 'Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'verhuur product' ),
         'remove_featured_image' => _x( 'Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'verhuur product' ),

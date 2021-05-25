@@ -171,6 +171,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 	.reparatie-formulier {
 		background-color: white;
+		
+		h2 {
+			padding-top: 2rem;
+		}
 
 		form div {
 			display: block;
@@ -182,23 +186,36 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 
 			form {
+
+				@include Responsive($tabletBreakpoint){
+					display: inherit;
+				}
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
 				fieldset {
 					margin-top: 20px;
 					margin-bottom: 20px;
 					border: 3px solid $veldhuizen__groen;
+					min-width: 450px;
+					max-width: 100%;
+					flex-grow: 1;
+
 					legend {
-						background-color: $veldhuizen__oranje;
+						background-color: $veldhuizen__groen;
 						color: #fff;
 						padding: 1rem;
 					}
 
 					label {
-						padding-top: 30px;
-						// padding-bottom: 10px;
+						// padding-top: 30px;
+						// padding-bottom: 10px;s
 					}
 
 					input[type="text"],
-					input[type="email"] {
+					input[type="email"],
+					input[type="number"] {
 						width: 100%;
 						padding: 12px 20px;
 						margin: 8px 0;
@@ -213,10 +230,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 						}
 					}
 
-					input[type="number"] {
-						float: right;
-					}
-
 					input[type="date"] {
 						display: inline;
 						width: 130px;
@@ -229,8 +242,22 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 					input[type="file"] {
 						width: 50%;
-						// Ik haat dit ding met een passie
-						// Ik heb legit 1 uur gekut om te zorgen dat er geen overflow was hierdoor
+					}
+
+					input[type="submit"] {
+						@include Responsive($tabletBreakpoint){
+							width: 100%;
+							margin-top: 1rem;
+							// padding: 1rem;
+							// background-color: $veldhuizen__oranje;
+							// color: white;
+						}
+						padding: 1rem;
+						background-color: $veldhuizen__oranje;
+						color: white;
+						width: 15%;
+						float: right;
+						display: inline;
 					}
 				}
 

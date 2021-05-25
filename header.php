@@ -41,7 +41,9 @@
 
 		<div class="header__container">
 			<div class="header__left">
+				<a href="<?php echo get_home_url(); ?>">
 				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" id="logo-print" alt="Logo Veldhuizen"/>
+				</a>
 			</div>
 			<div class="header__right--menu no-print">
 				<img src="<?php echo get_template_directory_uri();?>/content/icons/bars.svg" width="25px" alt="Home icoon"/> 
