@@ -621,8 +621,24 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
-.header-information-pages {
+.header-information-pages .veldhuizen__container {
 	background-color: white;
+	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	padding: 1.2rem;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 17px 1px;
+}
+
+.header-information-pages .veldhuizen__container p {
+	font-size: 0.9em;
+	margin-bottom: 0;
+}
+
+.header-information-pages .veldhuizen__container figure img {
+	width: 400px;
+}
+
+.header-information-pages .veldhuizen__container figure figcaption {
+	font-size: 0.7em;
 }
 
 @media print {

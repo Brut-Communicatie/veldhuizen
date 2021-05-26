@@ -29,7 +29,7 @@
 
 		<div class="header__top">
 			<ul class="no-print">
-			<li><a href="#">Rijbewijs B+E / C1+E</a></li>
+			<li><a href="<?php echo get_page_link( get_page_by_path( 'rijbewijs-be' )); ?>">Rijbewijs B+E / C1+E</a></li>
 			<li><a href="#">Foto's</a></li>
 			<li><a href="#">Film</a></li>
 			<li><a href="#">Nieuws</a></li>
