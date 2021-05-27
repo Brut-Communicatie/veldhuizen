@@ -621,6 +621,109 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.top__banner {
+	background-position: center;
+}
+
+.header-information-pages .veldhuizen__container {
+	background-color: white;
+	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	padding: 2rem 4rem;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 17px 1px;
+}
+
+.header-information-pages .veldhuizen__container h2 {
+	color: #0b9a71;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.header-information-pages .veldhuizen__container {
+		padding: 2rem;
+	}
+}
+
+.header-information-pages .veldhuizen__container p {
+	font-size: 0.9em;
+	margin-bottom: 0;
+}
+
+.header-information-pages .veldhuizen__container p a {
+	word-break: break-word;
+}
+
+.header-information-pages .veldhuizen__container ul {
+	margin: 0;
+}
+
+.header-information-pages .veldhuizen__container ul li {
+	font-size: 0.9em;
+}
+
+.header-information-pages .veldhuizen__container figure img {
+	width: 600px;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.header-information-pages .veldhuizen__container figure img {
+		width: 100%;
+	}
+}
+
+.header-information-pages .veldhuizen__container figure table {
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+.header-information-pages .veldhuizen__container figure table tbody tr:nth-child(odd) {
+	background-color: #f1f1f1;
+}
+
+.header-information-pages .veldhuizen__container figure table tbody tr:first-child {
+	color: #0b9a71;
+}
+
+.header-information-pages .veldhuizen__container figure table tbody tr td {
+	padding: 1rem;
+}
+
+.header-information-pages .veldhuizen__container figure figcaption {
+	font-size: 0.8em;
+}
+
+.header-information-pages .veldhuizen__container--product-grid h1 {
+	display: none;
+}
+
+.header-information-pages .veldhuizen__container--product-grid .product-grid-wrapper #big-image {
+	display: none;
+}
+
+.header-information-pages .veldhuizen__container--product-grid .product-grid-wrapper .gallery-pictures {
+	width: 30%;
+	height: auto;
+	margin-right: 5%;
+}
+
+.header-information-pages .veldhuizen__container--product-grid .product-grid-wrapper .gallery-pictures:nth-child(3n + 4) {
+	margin-right: 0;
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.header-information-pages .veldhuizen__container--product-grid .product-grid-wrapper .gallery-pictures {
+		width: 48%;
+		margin-right: 2% !important;
+	}
+	.header-information-pages .veldhuizen__container--product-grid .product-grid-wrapper .gallery-pictures:nth-child(odd) {
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.header-information-pages .veldhuizen__container--product-grid .product-grid-wrapper .gallery-pictures {
+		width: 100%;
+	}
+}
+
 @media print {
 	.no-print {
 		display: none !important;
@@ -697,6 +800,122 @@ textarea {
 @media screen and (max-width: calc(500px + 5px)) {
 	.information-pages {
 		width: calc(100% - 4em);
+	}
+}
+
+.service-pages h2 {
+	text-align: center;
+}
+
+.service-pages .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+}
+
+@media screen and (max-width: 600px) {
+	.service-pages .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+}
+
+.service-pages .reparatie-formulier {
+	background-color: white;
+}
+
+.service-pages .reparatie-formulier h2 {
+	padding-top: 2rem;
+}
+
+.service-pages .reparatie-formulier form div {
+	display: block;
+	margin: 10px;
+	padding: 10px;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form {
+	background-color: #f1f1f1;
+	padding: 1.5rem;
+	box-shadow: 2px 2px 7px #ccc;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.service-pages .reparatie-formulier .veldhuizen__container form {
+		display: inherit;
+	}
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 3px solid #0b9a71;
+	min-width: 450px;
+	max-width: 100%;
+	flex-grow: 1;
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.service-pages .reparatie-formulier .veldhuizen__container form fieldset {
+		width: auto;
+		min-width: 0;
+	}
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset legend {
+	background-color: #0b9a71;
+	color: #fff;
+	padding: 1rem;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="text"],
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="email"],
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="number"] {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="text"]:focus,
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="email"]:focus,
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="number"]:focus {
+	background-color: #0b9a71;
+	color: white;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="date"] {
+	display: inline;
+	width: 130px;
+	float: right;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="checkbox"] {
+	display: inline;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="file"] {
+	width: 50%;
+}
+
+.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="submit"] {
+	padding: 1rem;
+	background-color: #ff5400;
+	color: white;
+	width: 15%;
+	float: right;
+	display: inline;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="submit"] {
+		width: 100%;
 	}
 }
 
@@ -1708,112 +1927,6 @@ textarea {
 
 .block__info {
 	flex-grow: 1;
-}
-
-.service-pages h2 {
-	text-align: center;
-}
-
-.service-pages .veldhuizen__container {
-	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
-}
-
-@media screen and (max-width: 600px) {
-	.service-pages .veldhuizen__container {
-		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-	}
-}
-
-.service-pages .reparatie-formulier {
-	background-color: white;
-}
-
-.service-pages .reparatie-formulier h2 {
-	padding-top: 2rem;
-}
-
-.service-pages .reparatie-formulier form div {
-	display: block;
-	margin: 10px;
-	padding: 10px;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container {
-	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-
-@media screen and (max-width: calc(1024px + 5px)) {
-	.service-pages .reparatie-formulier .veldhuizen__container form {
-		display: inherit;
-	}
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset {
-	margin-top: 20px;
-	margin-bottom: 20px;
-	border: 3px solid #0b9a71;
-	min-width: 450px;
-	max-width: 100%;
-	flex-grow: 1;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset legend {
-	background-color: #0b9a71;
-	color: #fff;
-	padding: 1rem;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="text"],
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="email"],
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="number"] {
-	width: 100%;
-	padding: 12px 20px;
-	margin: 8px 0;
-	display: block;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="text"]:focus,
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="email"]:focus,
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="number"]:focus {
-	background-color: #0b9a71;
-	color: white;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="date"] {
-	display: inline;
-	width: 130px;
-	float: right;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="checkbox"] {
-	display: inline;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="file"] {
-	width: 50%;
-}
-
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="submit"] {
-	padding: 1rem;
-	background-color: #ff5400;
-	color: white;
-	width: 15%;
-	float: right;
-	display: inline;
-}
-
-@media screen and (max-width: calc(1024px + 5px)) {
-	.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="submit"] {
-		width: 100%;
-	}
 }
 
 .banner-home-page h1 {
