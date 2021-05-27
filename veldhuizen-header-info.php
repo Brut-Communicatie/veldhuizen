@@ -26,6 +26,5 @@ get_header();
 
 
 <?php 
-// wp_enqueue_script( 'veldhuizen-voorraad', get_template_directory_uri() . '/js/voorraad.js', false, false );
 get_footer();
 ?>
