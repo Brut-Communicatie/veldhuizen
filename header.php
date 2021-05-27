@@ -30,10 +30,10 @@
 		<div class="header__top">
 			<ul class="no-print">
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'rijbewijs-be' )); ?>">Rijbewijs B+E / C1+E</a></li>
-			<li><a href="#">Foto's</a></li>
-			<li><a href="#">Film</a></li>
+			<li><a href="<?php echo get_page_link( get_page_by_path( 'fotos' )); ?>">Foto's</a></li>
+			<li><a href="<?php echo get_page_link( get_page_by_path( 'films' )); ?>">Film</a></li>
 			<li><a href="#">Nieuws</a></li>
-			<li><a href="#">Vacatures</a></li>
+			<li><a href="<?php echo get_page_link( get_page_by_path( 'vacatures' )); ?>">Vacatures</a></li>
 			<li><a href="#">Mijn account</a></li>
 			</ul>
 			<a class="header__top--button no-print" href="tel:0886259600"><img src="<?php echo get_template_directory_uri();?>/content/icons/phone.svg" width="12px" alt="Home icoon"/> 088 6259600</a>
