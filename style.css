@@ -621,11 +621,26 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.top__banner {
+	height: 200px;
+	background-position: center;
+}
+
 .header-information-pages .veldhuizen__container {
 	background-color: white;
 	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-	padding: 1.2rem;
+	padding: 2rem 4rem;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 17px 1px;
+}
+
+.header-information-pages .veldhuizen__container h2 {
+	color: #0b9a71;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.header-information-pages .veldhuizen__container {
+		padding: 2rem;
+	}
 }
 
 .header-information-pages .veldhuizen__container p {
@@ -633,12 +648,47 @@ textarea {
 	margin-bottom: 0;
 }
 
+.header-information-pages .veldhuizen__container p a {
+	word-break: break-word;
+}
+
+.header-information-pages .veldhuizen__container ul {
+	margin: 0;
+}
+
+.header-information-pages .veldhuizen__container ul li {
+	font-size: 0.9em;
+}
+
 .header-information-pages .veldhuizen__container figure img {
-	width: 400px;
+	width: 600px;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.header-information-pages .veldhuizen__container figure img {
+		width: 100%;
+	}
+}
+
+.header-information-pages .veldhuizen__container figure table {
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+.header-information-pages .veldhuizen__container figure table tbody tr:nth-child(odd) {
+	background-color: #f1f1f1;
+}
+
+.header-information-pages .veldhuizen__container figure table tbody tr:first-child {
+	color: #0b9a71;
+}
+
+.header-information-pages .veldhuizen__container figure table tbody tr td {
+	padding: 1rem;
 }
 
 .header-information-pages .veldhuizen__container figure figcaption {
-	font-size: 0.7em;
+	font-size: 0.8em;
 }
 
 @media print {
