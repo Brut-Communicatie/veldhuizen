@@ -1002,6 +1002,10 @@ textarea {
 	background-color: #f1f1f1;
 }
 
+.veldhuizen-contact .veldhuizen__container p strong {
+	color: #0b9a71;
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
