@@ -29,6 +29,17 @@ get_header();
                 echo '</div>';
                 echo '</div>';
             }
+
+            if(($parent->post_name) == 'films' ) { 
+                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+                echo '<div class="header-information-pages">';
+                echo '<div class="film-container-wrapper">';
+                echo '<div class=veldhuizen__container>';
+                the_content();
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
             else {
                 // If available, put the image in the backgroud of the top banner
                 if (has_post_thumbnail( $post->ID ) ) {
@@ -45,7 +56,6 @@ get_header();
             }
         endwhile;
     endif;
-            
         } 
 
         // IF CHILDREN, THEN OVERVIEW PAGE WITH CHILDREN
