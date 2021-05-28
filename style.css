@@ -995,8 +995,18 @@ textarea {
 	background-color: #f1f1f1;
 }
 
+.veldhuizen-contact .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(30% - 10px), 1fr));
+}
+
 .veldhuizen-contact .veldhuizen__container p strong {
 	color: #0b9a71;
+}
+
+@media screen and (max-width: calc(600px + 5px)) {
+	.veldhuizen-contact .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
 }
 
 /*--------------------------------------------------------------
