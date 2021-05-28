@@ -725,7 +725,7 @@ textarea {
 }
 
 .header-information-pages .film-container-wrapper .veldhuizen__container {
-	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr)) !important;
 }
 
 .header-information-pages .film-container-wrapper .veldhuizen__container figure div iframe {
