@@ -24,7 +24,7 @@ get_header();
             if(($parent->post_name) == 'vacatures' ) { 
                 echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
                 echo '<div class="header-information-pages">';
-                echo '<div class=veldhuizen__container>';
+                echo '<div class="veldhuizen__container">';
                 the_content();
                 echo '</div>';
                 echo '</div>';
@@ -33,8 +33,8 @@ get_header();
             if(($parent->post_name) == 'films' ) { 
                 echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
                 echo '<div class="header-information-pages">';
-                echo '<div clas="film-container-wrapper">';
-                echo '<div class=veldhuizen__container>';
+                echo '<div class="film-container-wrapper">';
+                echo '<div class="veldhuizen__container">';
                 the_content();
                 echo '</div>';
                 echo '</div>';
@@ -56,7 +56,7 @@ get_header();
                     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>'; 
                 }
                 echo '<div class="header-information-pages">';
-                echo '<div class=veldhuizen__container>';
+                echo '<div class="veldhuizen__container">';
                 the_content();
                 echo '</div>';
                 echo '</div>';
