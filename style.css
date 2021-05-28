@@ -826,6 +826,10 @@ textarea {
 	}
 }
 
+.aan-af-koppelen .veldhuizen__container .service-button {
+	width: 100%;
+}
+
 .aan-af-koppelen .veldhuizen__container .service-button:hover {
 	box-shadow: 2px 2px 5px #c2c2c2;
 }
