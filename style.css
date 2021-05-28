@@ -922,13 +922,6 @@ textarea {
 	border-radius: 4px;
 }
 
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="text"]:focus,
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="email"]:focus,
-.service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="number"]:focus {
-	background-color: #0b9a71;
-	color: white;
-}
-
 .service-pages .reparatie-formulier .veldhuizen__container form fieldset input[type="date"] {
 	display: inline;
 	width: 130px;
