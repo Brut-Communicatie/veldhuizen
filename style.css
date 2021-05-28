@@ -724,6 +724,19 @@ textarea {
 	}
 }
 
+.header-information-pages .film-container-wrapper .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.header-information-pages .film-container-wrapper .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+	.header-information-pages .film-container-wrapper .veldhuizen__container figure div iframe {
+		height: 200px;
+	}
+}
+
 @media print {
 	.no-print {
 		display: none !important;
@@ -801,6 +814,20 @@ textarea {
 	.information-pages {
 		width: calc(100% - 4em);
 	}
+}
+
+.aan-af-koppelen .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+}
+
+@media screen and (max-width: 600px) {
+	.aan-af-koppelen .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+}
+
+.aan-af-koppelen .veldhuizen__container .service-button:hover {
+	box-shadow: 2px 2px 5px #c2c2c2;
 }
 
 .service-pages h2 {

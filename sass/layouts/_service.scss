@@ -1,8 +1,21 @@
+.aan-af-koppelen {
+	.veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+
+		@media screen and (max-width: 600px) {
+			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+		}
+		.service-button:hover {
+			box-shadow: 2px 2px 5px rgb(194, 194, 194);
+		}
+
+	}
+}
+
 .service-pages {
 	h2 {
 		text-align: center;
 	}
-
 	.veldhuizen__container {
 		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 
@@ -10,7 +23,7 @@
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 		}
 	}
-// TEST
+
 	.reparatie-formulier {
 		background-color: white;
 
@@ -23,7 +36,6 @@
 			margin: 10px;
 			padding: 10px;
 		}
-
 
 		.veldhuizen__container {
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));

@@ -42,7 +42,6 @@
                     width: 100%;
                 }   
             }
-
             table {
                 table-layout: fixed;
                 border-collapse: collapse;
@@ -98,4 +97,19 @@
             }
         }
     }
+
+    .film-container-wrapper {
+        .veldhuizen__container {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+
+            @include Responsive($tabletSmallBreakpoint) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+                
+                figure div iframe {
+                    height: 200px;
+                }
+            }
+        }
+    }
 }
+// grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
