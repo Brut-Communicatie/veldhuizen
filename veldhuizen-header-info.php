@@ -21,27 +21,7 @@ get_header();
             // If parent is 'Vacatures' a top banner without images is used
             $parentID = $post->post_parent;
             $parent = get_post($parentID);
-            if(($parent->post_name) == 'vacatures' ) { 
-                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
-                echo '<div class="header-information-pages">';
-                echo '<div class=veldhuizen__container>';
-                the_content();
-                echo '</div>';
-                echo '</div>';
-            }
-
-            if(($parent->post_name) == 'films' ) { 
-                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
-                echo '<div class="header-information-pages">';
-                echo '<div class="film-container-wrapper">';
-                echo '<div class=veldhuizen__container>';
-                the_content();
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
-            }
-            else {
-                // If available, put the image in the backgroud of the top banner
+            if(($parent->post_name) == 'rijbewijs-be' ) { 
                 if (has_post_thumbnail( $post->ID ) ) {
                     $attachment_image = wp_get_attachment_url( get_post_thumbnail_id() );
                     echo '<div class="top__banner" style="background-image: url(' . esc_attr( $attachment_image ) . ') !important;"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
@@ -51,6 +31,18 @@ get_header();
                 echo '<div class="header-information-pages">';
                 echo '<div class=veldhuizen__container>';
                 the_content();
+                echo '</div>';
+                echo '</div>';
+            }
+
+            else {
+                // If available, put the image in the backgroud of the top banner
+                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+                echo '<div class="header-information-pages">';
+                echo '<div class="film-container-wrapper">';
+                echo '<div class=veldhuizen__container>';
+                the_content();
+                echo '</div>';
                 echo '</div>';
                 echo '</div>';
             }
