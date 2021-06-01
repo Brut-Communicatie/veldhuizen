@@ -19,3 +19,4 @@ closeMenu.addEventListener('click', () => {
     }
     showing = !showing;
 });
+

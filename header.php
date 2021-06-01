@@ -122,7 +122,6 @@
 								);
 
 								$verhuurQuery = new WP_Query($verhuurArgs);
-								// var_dump($verhuurQuery);
 								
 								if ($verhuurQuery->have_posts()) :
 									while ( $verhuurQuery-> have_posts() ) : $verhuurQuery->the_post();
@@ -184,9 +183,13 @@
 				global $wp_query;
 				$postTitle = get_the_title($wp_query->post->ID);
 				$postType = get_post_type($wp_query->post->ID);
-				if ($postType) {
+
+				if (is_home()){
+					echo '<p>U bevindt zich hier: ' . $postTitle .'</p>';
+				} else if ($postType) {
 					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
 				}
+				
 			?>
 		</div>
 	</header><!-- #masthead -->
