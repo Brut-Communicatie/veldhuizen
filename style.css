@@ -1047,6 +1047,43 @@ textarea {
 	padding: 1.2rem;
 }
 
+@media screen and (max-width: calc(1024px + 5px)) {
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure {
+		width: 100%;
+		font-size: 0.8em;
+	}
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table {
+		width: 100%;
+		table-layout: fixed;
+	}
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr td {
+		padding: 1.2rem;
+		text-align: left;
+		width: 40%;
+		height: auto;
+		overflow-wrap: break-word;
+	}
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr td + td {
+		width: auto;
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure {
+		font-size: 9px;
+	}
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr td {
+		padding: 0.6rem;
+		text-align: left;
+		width: 40%;
+		height: auto;
+		overflow-wrap: break-word;
+	}
+	.voorraad .wp-block-cgb-block-veldhuizen-verhuur-table figure table tbody tr td + td {
+		width: auto;
+	}
+}
+
 .voorraad .print-button-wrapper {
 	display: none;
 }

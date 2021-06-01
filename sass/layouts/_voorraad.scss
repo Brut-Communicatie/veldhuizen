@@ -37,6 +37,52 @@
                 }
             }
         }
+
+        @include Responsive($tabletBreakpoint) {
+            figure {
+                width: 100%;
+                font-size: 0.8em;
+                table {
+                    width: 100%;
+                    table-layout: fixed;
+                    tbody {
+                        tr {
+                            td {
+                                padding: 1.2rem;
+                                text-align: left;
+                                width: 40%;
+                                height: auto;
+                                overflow-wrap: break-word;
+                            }
+                            td + td {
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include Responsive($mobileBreakpoint) {
+            figure {
+                font-size: 9px;
+                table {
+                    tbody {
+                        tr {
+                            td {
+                                padding: 0.6rem;
+                                text-align: left;
+                                width: 40%;
+                                height: auto;
+                                overflow-wrap: break-word;
+                            }
+                            td + td {
+                                width: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .print-button-wrapper {
