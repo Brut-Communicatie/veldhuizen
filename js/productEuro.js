@@ -11,10 +11,6 @@ newStr = newStr.replace(priceStr, "")
 priceStr = priceStr.replace(/–/g, "")
 priceStr = priceStr.replace(/<br><strong><var>€/g , "<strong><var>€")
 console.log(priceStr)
-// console.log(index)
-// console.log(newStr.slice(index))
-
-
 
 document.getElementById("product-info").innerHTML = newStr + priceStr
 
