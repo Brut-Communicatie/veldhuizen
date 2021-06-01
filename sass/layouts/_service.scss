@@ -5,12 +5,15 @@
 		@media screen and (max-width: 600px) {
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 		}
+
 		.service-button {
 			width: 100%;
+
 			a {
 				width: 100%;
 			}
 		}
+
 		.service-button:hover {
 			box-shadow: 2px 2px 5px rgb(194, 194, 194);
 		}
@@ -22,6 +25,7 @@
 	h2 {
 		text-align: center;
 	}
+
 	.veldhuizen__container {
 		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 
@@ -37,19 +41,14 @@
 			padding-top: 2rem;
 		}
 
-		form div {
-			display: block;
-			margin: 10px;
-			padding: 10px;
-		}
 
 		.veldhuizen__container {
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 
 			form {
-                background-color:$color__background-screen;
-                padding: 1.5rem;
-                box-shadow: 2px 2px 7px $color__background-hr;
+				background-color: $color__background-screen;
+				padding: 1.5rem;
+				box-shadow: 2px 2px 7px $color__background-hr;
 
 				@include Responsive($tabletBreakpoint) {
 					display: inherit;
@@ -62,15 +61,15 @@
 				fieldset {
 					margin-top: 20px;
 					margin-bottom: 20px;
-					border: 3px solid $veldhuizen__groen;
+					border: 0;
 					min-width: 450px;
 					max-width: 100%;
 					flex-grow: 1;
 
-                    @include Responsive($tabletSmallBreakpoint) {
-                        width: auto;
-                        min-width: 0;
-                    }
+					@include Responsive($tabletSmallBreakpoint) {
+						width: auto;
+						min-width: 0;
+					}
 
 					legend {
 						background-color: $veldhuizen__groen;
@@ -87,8 +86,8 @@
 					input[type="email"],
 					input[type="number"] {
 						width: 100%;
-						padding: 12px 20px;
-						margin: 8px 0;
+						// padding: 12px 20px;
+						// margin: 8px 0;
 						display: block;
 						border: 1px solid #ccc;
 						border-radius: 4px;
@@ -125,6 +124,32 @@
 
 			}
 
+		}
+	}
+}
+
+.form {
+	&__row {
+
+		margin: 0 0 10px;
+		padding: 0; 
+		input[type="text"],
+		input[type="email"] {
+			margin: 10px 0 0;
+			width: 50%;
+			padding: 10px 15px;
+		}
+		a, a:active, a:visited, a:link{
+			color: $veldhuizen__groen;
+			font-weight: 600;
+			text-decoration: none;
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+		textarea {
+			margin: 10px 0 0;
+			padding: 10px 15px;
 		}
 	}
 }

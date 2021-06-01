@@ -14,7 +14,7 @@ echo '</div>';
 
 echo '<div class="service-pages">';
 echo '<div class="reparatie-formulier">';
-echo '<h2>Contactformulier</h2>';
+echo '<h2>Stel uw vraag via het formulier</h2>';
 echo '<div class="veldhuizen__container">';
 // echo do_shortcode('[contact-form-7 id="19040" title="Reparatieformulier"]');
 echo do_shortcode('[contact-form-7 id="1718" title="Contactformulier"]');
