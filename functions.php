@@ -308,3 +308,5 @@ add_action( 'init', 'veldhuizen_verhuur_post_type' );
 add_action ( 'init', 'veldhuizen_verhuur_register_template' );
 
 require get_template_directory() . '/inc/footer/footer-functions.php';
+
+add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
