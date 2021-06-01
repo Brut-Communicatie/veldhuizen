@@ -183,8 +183,7 @@
 				global $wp_query;
 				$postTitle = get_the_title($wp_query->post->ID);
 				$postType = get_post_type($wp_query->post->ID);
-
-				if (is_home()){
+				if (is_front_page()){
 					echo '<p>U bevindt zich hier: ' . $postTitle .'</p>';
 				} else if ($postType) {
 					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
