@@ -39,6 +39,7 @@ get_header();
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
+                wp_enqueue_script( 'veldhuizen-lazy-loading', get_template_directory_uri() . '/js/iframeLazy.js', false, false );
             }
             else {
                 // If available, put the image in the backgroud of the top banner
