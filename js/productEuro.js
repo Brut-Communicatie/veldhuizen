@@ -1,9 +1,20 @@
 const productInfo = document.getElementById("product-info").innerHTML
-console.log(productInfo)
 
 let newStr = productInfo
 newStr= newStr.replace(/€/g,  "<var>€")
 newStr = newStr.replace(/=/g, "=</var>")
-console.log(newStr)
 
-document.getElementById("product-info").innerHTML = newStr
+const index = newStr.search('<br><strong>Meerprijs voor:</strong>')
+let priceStr = newStr.slice(index)
+newStr = newStr.replace(priceStr, "")
+
+priceStr = priceStr.replace(/–/g, "")
+priceStr = priceStr.replace(/<br><strong><var>€/g , "<strong><var>€")
+console.log(priceStr)
+// console.log(index)
+// console.log(newStr.slice(index))
+
+
+
+document.getElementById("product-info").innerHTML = newStr + priceStr
+
