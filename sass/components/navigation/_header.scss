@@ -18,11 +18,12 @@ $menuBreakpoint : 1270px;
         z-index: 2;
         position: relative;
 
-        @include Responsive($menuBreakpoint){
+        @include Responsive($menuBreakpoint) {
             justify-content: flex-start;
             align-items: center;
         }
     }
+
     $topBreakpoint: 780px;
 
     &__top {
@@ -32,7 +33,7 @@ $menuBreakpoint : 1270px;
         justify-content: flex-end;
         padding: 20px 0;
 
-        @include Responsive($topBreakpoint){
+        @include Responsive($topBreakpoint) {
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
@@ -48,19 +49,23 @@ $menuBreakpoint : 1270px;
             @include Flex(flex-start, center, nowrap);
             margin: 0;
             padding: 0;
-            @include Responsive($topBreakpoint){
-                @include Flex(center, center, nowrap);
+
+            @include Responsive($topBreakpoint) {
+                @include Flex(center, center, wrap);
                 order: 1;
             }
+
             li {
                 list-style: none;
                 margin-right: 20px;
                 position: relative;
-                @include Responsive($topBreakpoint){
-                    &:last-child{
-                    margin-right: 0px;
+
+                @include Responsive($topBreakpoint) {
+                    &:last-child {
+                        margin-right: 0px;
                     }
                 }
+
                 &:not(:last-child) {
                     &:after {
                         content: "";
@@ -83,7 +88,7 @@ $menuBreakpoint : 1270px;
                     font-size: 14px;
                     font-weight: 600;
 
-                    @include Responsive(510px){
+                    @include Responsive(510px) {
                         font-size: 12px;
                     }
 
@@ -103,14 +108,14 @@ $menuBreakpoint : 1270px;
             color: black;
             text-decoration: none;
             font-weight: 600;
-            
-            @include Responsive($topBreakpoint){
+
+            @include Responsive($topBreakpoint) {
                 width: auto;
                 margin-bottom: 10px;
                 order: 0;
             }
 
-            img{
+            img {
                 margin-right: 5px;
             }
 
@@ -139,21 +144,29 @@ $menuBreakpoint : 1270px;
 
     &__left {
         width: 375px;
-        @include Responsive($mobileBreakpoint){
+
+        @include Responsive($mobileBreakpoint) {
             width: 250px;
             padding: 10px;
         }
+
         img {
             width: 100%;
         }
     }
-    
+
     &__right {
         width: auto;
         display: flex;
         margin-left: auto;
 
-        @include Responsive($menuBreakpoint){
+        @include Responsive($menuBreakpoint) {
+            @include Flex(flex-start, center, nowrap, column);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(238, 238, 238);
             display: none;
         }
 
@@ -163,10 +176,33 @@ $menuBreakpoint : 1270px;
             padding: 0;
             height: 100%;
 
+            @include Responsive($menuBreakpoint) {
+                @include Flex(flex-start, flex-start, nowrap, column);
+                width: 100%;
+            }
+
             li {
                 list-style: none;
                 height: 100%;
                 display: flex;
+
+                @include Responsive($menuBreakpoint) {
+                    width: 100%;
+                    @include Flex(flex-start, flex-start, nowrap, column);
+
+                }
+
+                a,
+                a:active,
+                a:visited,
+                a:link {
+
+                    @include Responsive($menuBreakpoint) {
+                        width: 100%;
+                        padding: 10px 0;
+                        border-bottom: 1px solid #dddddd;
+                    }
+                }
 
                 &:first-child {
                     border-left: 1px solid #dddddd;
@@ -186,6 +222,11 @@ $menuBreakpoint : 1270px;
                     height: $bannerHeight;
                     justify-content: space-between;
 
+                    @include Responsive($menuBreakpoint) {
+                        position: unset;
+                        height: 100%;
+                    }
+
                     li {
                         height: auto;
                         border-left: 0;
@@ -197,6 +238,10 @@ $menuBreakpoint : 1270px;
                         transition: background-color .25s ease;
                         position: relative;
                         box-sizing: border-box;
+
+                        @include Responsive($menuBreakpoint) {
+                            width: 100%;
+                        }
 
                         &:hover {
                             background-color: #fafafa;
@@ -261,6 +306,9 @@ $menuBreakpoint : 1270px;
             display: none;
             flex-direction: column;
 
+            @include Responsive($menuBreakpoint) {
+                position: unset;
+            }
 
 
             a {
@@ -270,10 +318,18 @@ $menuBreakpoint : 1270px;
                 justify-content: flex-start;
                 flex-direction: row !important;
 
+                @include Responsive($menuBreakpoint) {
+                    @include Flex(center, center, nowrap, row);
+                }
+
                 &:before {
                     content: "> ";
                     margin-right: 5px;
                     font-size: 10px;
+
+                    @include Responsive($menuBreakpoint) {
+                        content: "";
+                    }
                 }
 
                 &:hover {
@@ -282,19 +338,21 @@ $menuBreakpoint : 1270px;
                 }
             }
         }
-        &--menu{
+
+        &--menu {
             display: none;
             box-sizing: border-box;
             padding: 10px;
             height: auto;
             border-radius: 5px;
-            @include Responsive($menuBreakpoint){
+
+            @include Responsive($menuBreakpoint) {
                 display: flex;
                 margin-left: auto;
                 margin-right: 25px;
             }
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 background-color: rgb(233, 233, 233);
             }
@@ -319,5 +377,36 @@ $menuBreakpoint : 1270px;
         background-size: cover;
         background-position: center center;
         margin-bottom: 5px;
+
+        @include Responsive($menuBreakpoint) {
+            display: none;
+        }
+    }
+
+    &__show {
+        display: flex;
+
+        animation: slideMenu .4s ease forwards;
+    }
+    &__mobile{
+        display: none;
+        @include Responsive($menuBreakpoint){
+            display: flex;
+            border-bottom: 1px solid #dddddd;
+            padding: 10px 0;
+            font-size: 15px;
+            margin: 0;
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+@keyframes slideMenu {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(0);
     }
 }

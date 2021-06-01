@@ -45,17 +45,21 @@
 				<img src="<?php echo get_template_directory_uri();?>/content/logo-1.png" width="375px" id="logo-print" alt="Logo Veldhuizen"/>
 				</a>
 			</div>
-			<div class="header__right--menu no-print">
-				<img src="<?php echo get_template_directory_uri();?>/content/icons/bars.svg" width="25px" alt="Home icoon"/> 
-				</div>
-			<div class="header__right no-print">
+			<div id="hamburger" class="header__right--menu no-print">
+					<img src="<?php echo get_template_directory_uri();?>/content/icons/bars.svg" width="25px" alt="Home icoon"/> 
+			</div>
+			<div id="header-menu" class="header__right no-print">
+
+						<p id="close-menu" class="header__mobile">Sluit menu</p>
+		
 				<ul>
+				
 					<li>
 						<a href="<?php echo home_url();?>"><img src="<?php echo get_template_directory_uri();?>/content/icons/home.svg" width="25px" alt="Home icoon"/></a>
 					</li>
 
 					<li>
-						<a href="#">Producten</a>
+						<a id="productenLink" href="#">Producten</a>
 						<ul>
 							<?php
 								//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
@@ -107,7 +111,7 @@
 					</li>
 
 					<li>
-						<a href="#">Verhuur</a>
+						<a id="verhuurLink" href="#">Verhuur</a>
 						<ul>
 						<?php
 								$verhuurArgs = array(
