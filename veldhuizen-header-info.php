@@ -21,14 +21,14 @@ get_header();
             // If parent is 'Vacatures' a top banner without images is used
             $parentID = $post->post_parent;
             $parent = get_post($parentID);
-            if(($parent->post_name) == 'vacatures' ) { 
-                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
-                echo '<div class="header-information-pages">';
-                echo '<div class="veldhuizen__container">';
-                the_content();
-                echo '</div>';
-                echo '</div>';
-            }
+            // if(($parent->post_name) == 'vacatures' ) { 
+            //     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+            //     echo '<div class="header-information-pages">';
+            //     echo '<div class="veldhuizen__container">';
+            //     the_content();
+            //     echo '</div>';
+            //     echo '</div>';
+            // }
 
             if(($parent->post_name) == 'films' ) { 
                 echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
