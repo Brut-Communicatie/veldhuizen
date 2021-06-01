@@ -72,9 +72,11 @@
 					}
 
 					legend {
-						background-color: $veldhuizen__groen;
+						background-color: rgb(168, 168, 168);
 						color: #fff;
-						padding: 1rem;
+						padding: 10px 10px;
+						width: 100%;
+						margin-bottom: 15px;
 					}
 
 					// label {
@@ -95,9 +97,7 @@
 					}
 
 					input[type="date"] {
-						display: inline;
-						width: 130px;
-						float: right;
+						width: 100%;
 					}
 
 					input[type="checkbox"] {
@@ -116,7 +116,7 @@
 						padding: 1rem;
 						background-color: $veldhuizen__oranje;
 						color: white;
-						width: 15%;
+						width: 50%;
 						float: right;
 						display: inline;
 					}
@@ -130,14 +130,26 @@
 
 .form {
 	&__row {
-
+		display: flex;
+		flex-direction: column;
 		margin: 0 0 10px;
 		padding: 0; 
 		input[type="text"],
+		input[type="number"],
+		input[type="date"],
 		input[type="email"] {
 			margin: 10px 0 0;
 			width: 50%;
 			padding: 10px 15px;
+		}
+		input[type="submit"]{
+			margin-left: auto;
+			padding: 1rem 1.5rem !important;
+			width: 50%;
+
+			@media screen and (max-width: $mobileBreakpoint){
+				width: 100% !important;
+			}
 		}
 		a, a:active, a:visited, a:link{
 			color: $veldhuizen__groen;
@@ -150,6 +162,26 @@
 		textarea {
 			margin: 10px 0 0;
 			padding: 10px 15px;
+		}
+		&--row{
+			flex-direction: row;
+			align-items: center;
+			input{
+				margin-right: 10px;
+			}
+		}
+		&--double{
+			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+			margin-bottom: 10px;
+			.form__row{
+				margin-bottom: 0;
+				width: 27%;
+				&:first-child{
+				width: 70%;
+				}
+			}
 		}
 	}
 }
