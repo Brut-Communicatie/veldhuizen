@@ -33,6 +33,10 @@
 			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 		}
 	}
+	
+	.veldhuizen__container > .wpcf7 {
+		margin-bottom: 50px;
+	}
 
 	.reparatie-formulier {
 		background-color: white;

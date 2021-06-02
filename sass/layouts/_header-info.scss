@@ -97,22 +97,11 @@
             }
         }
     }
+}
 
-    .film-container-wrapper {
-        .veldhuizen__container {
-            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr)) !important;
-
-            figure div iframe {
-                height: 300px
-            }
-
-            @include Responsive($tabletSmallBreakpoint) {
-                grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-                
-                figure div iframe {
-                    height: 200px;
-                }
-            }
-        }
+.film-container-wrapper {
+    .veldhuizen__container {
+        grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+        width: 100%;
     }
 }
