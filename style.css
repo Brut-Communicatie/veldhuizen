@@ -786,17 +786,28 @@ textarea {
 	}
 }
 
-.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures {
+.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures-wrapper {
 	margin: 0;
 	padding: 0;
 	width: auto;
-	height: auto;
 	border: none;
 	transition: .2s ease-in-out;
 }
 
-.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures:hover {
-	transform: scale(1.1);
+.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures-wrapper .gallery-pictures {
+	object-fit: cover;
+	width: 100%;
+	max-height: 180px;
+}
+
+@media screen and (max-width: calc(1440px + 5px)) {
+	.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures-wrapper .gallery-pictures {
+		max-height: 160px;
+	}
+}
+
+.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures-wrapper .gallery-pictures:hover {
+	transform: scale(1.005);
 	box-shadow: 0px 0px 10px #6d6d6d;
 }
 
