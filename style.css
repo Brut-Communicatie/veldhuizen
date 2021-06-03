@@ -724,21 +724,9 @@ textarea {
 	}
 }
 
-.header-information-pages .film-container-wrapper .veldhuizen__container {
-	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr)) !important;
-}
-
-.header-information-pages .film-container-wrapper .veldhuizen__container figure div iframe {
-	height: 300px;
-}
-
-@media screen and (max-width: calc(740px + 5px)) {
-	.header-information-pages .film-container-wrapper .veldhuizen__container {
-		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-	}
-	.header-information-pages .film-container-wrapper .veldhuizen__container figure div iframe {
-		height: 200px;
-	}
+.film-container-wrapper .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+	width: 100%;
 }
 
 @media print {
@@ -854,6 +842,10 @@ textarea {
 	.service-pages .veldhuizen__container {
 		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 	}
+}
+
+.service-pages .veldhuizen__container > .wpcf7 {
+	margin-bottom: 50px;
 }
 
 .service-pages .reparatie-formulier {

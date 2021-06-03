@@ -32,14 +32,19 @@ get_header();
 
             if(($parent->post_name) == 'films' ) { 
                 echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
-                echo '<div class="header-information-pages">';
+                // echo '<div class="header-information-pages">';
                 echo '<div class="film-container-wrapper">';
                 echo '<div class="veldhuizen__container">';
                 the_content();
                 echo '</div>';
+
+                echo '<div id="youtubeModal">';
+                echo '<span class="close cursor" onclick="closeModal()">&times;</span>';
+                echo '<a class="prev" onclick="slide(-1)">&#10094;</a> <a class="next" onclick="slide(1)">&#10095;</a>';
+	            echo '<iframe id="youtubeIframe" ></iframe>';
                 echo '</div>';
                 echo '</div>';
-                wp_enqueue_script( 'veldhuizen-lazy-loading', get_template_directory_uri() . '/js/iframeLazy.js', false, false );
+                
             }
             else {
                 // If available, put the image in the backgroud of the top banner
