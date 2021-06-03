@@ -9,7 +9,7 @@ const expandImage = (imgs) => {
     // use the same src in the expanded image
     expandImg.src = imgs.src
     // Show the container element (hidden with CSS)
-    expandImg.parentElement.style.display = "block";
+    // expandImg.parentElement.style.display = "block";
 }
 
 const openModal = (event) => {    

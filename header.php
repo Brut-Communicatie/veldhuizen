@@ -31,7 +31,7 @@
 			<ul class="no-print">
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'rijbewijs-be' )); ?>">Rijbewijs B+E / C1+E</a></li>
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'fotos' )); ?>">Foto's</a></li>
-			<li><a href="<?php echo get_page_link( get_page_by_path( 'films' )); ?>">Film</a></li>
+			<li><a href="<?php echo get_page_link( get_page_by_path( 'film' )); ?>">Film</a></li>
 			<li><a href="#">Nieuws</a></li>
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'vacatures' )); ?>">Vacatures</a></li>
 			<li><a href="#">Mijn account</a></li>

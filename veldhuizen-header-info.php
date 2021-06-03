@@ -18,17 +18,8 @@ get_header();
         // RUN PAGES WITH NO CHILDREN, LOOKS LIKE A USUAL CONTENT PAGE
         if (!$hasChildren){
             if ( have_posts() ) : while ( have_posts() ) : the_post();
-            // If parent is 'Vacatures' a top banner without images is used
             $parentID = $post->post_parent;
             $parent = get_post($parentID);
-            // if(($parent->post_name) == 'vacatures' ) { 
-            //     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
-            //     echo '<div class="header-information-pages">';
-            //     echo '<div class="veldhuizen__container">';
-            //     the_content();
-            //     echo '</div>';
-            //     echo '</div>';
-            // }
 
             if(($parent->post_name) == 'film' ) { 
                 echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
@@ -44,7 +35,14 @@ get_header();
 	            echo '<iframe id="youtubeIframe" ></iframe>';
                 echo '</div>';
                 echo '</div>';
-                
+            }
+            else if (($parent->post_name) == 'fotos') {
+                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+                echo '<div class="fotos-container-wrapper">';
+                echo '<div class="veldhuizen__container">';
+                the_content();
+                echo '</div>';
+                echo '</div>';
             }
             else {
                 // If available, put the image in the backgroud of the top banner
