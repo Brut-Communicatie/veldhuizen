@@ -103,5 +103,16 @@
     .veldhuizen__container {
         grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
         width: 100%;
+
+        @include Responsive($tabletBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
+        }
+        @include Responsive($tabletSmallBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+        }
+        @include Responsive($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+            
+        }
     }
 }

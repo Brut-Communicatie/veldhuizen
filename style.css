@@ -729,6 +729,24 @@ textarea {
 	width: 100%;
 }
 
+@media screen and (max-width: calc(1024px + 5px)) {
+	.film-container-wrapper .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
+	}
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.film-container-wrapper .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.film-container-wrapper .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+}
+
 @media print {
 	.no-print {
 		display: none !important;

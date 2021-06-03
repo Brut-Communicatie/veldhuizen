@@ -30,7 +30,7 @@ get_header();
             //     echo '</div>';
             // }
 
-            if(($parent->post_name) == 'films' ) { 
+            if(($parent->post_name) == 'film' ) { 
                 echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
                 // echo '<div class="header-information-pages">';
                 echo '<div class="film-container-wrapper">';
