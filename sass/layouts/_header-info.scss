@@ -7,7 +7,7 @@
     .veldhuizen__container {
         background-color: white;
         grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-        padding: 2rem 4rem; 
+        padding: 2rem 4rem;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 17px 1px;
 
         h2 {
@@ -15,16 +15,18 @@
         }
 
         @include Responsive ($tabletBreakpoint) {
-            padding: 2rem;  
+            padding: 2rem;
         }
 
         p {
             font-size: 0.9em;
             margin-bottom: 0;
+
             a {
                 word-break: break-word;
             }
         }
+
         ul {
             margin: 0;
 
@@ -37,14 +39,17 @@
             img {
                 width: 600px;
             }
+
             @include Responsive ($tabletBreakpoint) {
                 img {
                     width: 100%;
-                }   
+                }
             }
+
             table {
                 table-layout: fixed;
                 border-collapse: collapse;
+
                 tbody tr:nth-child(odd) {
                     background-color: $color__background-screen;
                 }
@@ -57,18 +62,22 @@
                     padding: 1rem;
                 }
             }
+
             figcaption {
                 font-size: 0.8em;
             }
         }
+
         &--product-grid {
             h1 {
                 display: none;
             }
+
             .product-grid-wrapper {
                 #big-image {
                     display: none;
                 }
+
                 .gallery-pictures {
                     width: 30%;
                     height: auto;
@@ -83,6 +92,7 @@
                     .gallery-pictures {
                         width: 48%;
                         margin-right: 2% !important; // Needed so '&:nth-child' selector above doesnt overrule this line
+
                         &:nth-child(odd) {
                             margin-right: 0;
                         }
@@ -107,12 +117,14 @@
         @include Responsive($tabletBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
         }
+
         @include Responsive($tabletSmallBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
         }
+
         @include Responsive($mobileBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-            
+
         }
     }
 }
