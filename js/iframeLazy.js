@@ -1,17 +1,18 @@
-let modalOpen = false
 let openID
 let targetImg
+let n
+let firstSlide = true 
+let modalOpen = false
 let iframe = document.getElementById('youtubeIframe')
-let n = false
 let youtubeSources = document.getElementsByClassName('youtubeThumb')
 
 const openIframe = (event) => {
     if (modalOpen === false) {
-        document.getElementById('youtubeModal').style.display = 'block'         // get modal element and change display
-        let iframe = document.getElementById('youtubeIframe')                   // get iframe element
+        document.getElementById('youtubeModal').style.display = 'block'         
+        let iframe = document.getElementById('youtubeIframe')                   
         openID = event.target.id
-        iframe.id = openID                                                      // change the id of the iframe to the id of the img (is the youtube id)
-        iframe.src = 'https://youtube.com/embed/' + iframe.id                   // change the source to base url + (youtube) id
+        iframe.id = openID                                                      
+        iframe.src = 'https://youtube.com/embed/' + iframe.id                   
         
         targetImg = event.target
         targetImg.id = 'open'
@@ -22,25 +23,44 @@ const openIframe = (event) => {
 }
 
 const slide = (x) => {
-    if (!n) {
+    if ( firstSlide === true ) {
         youtubeSources = Object.values(youtubeSources)                             
         let index = youtubeSources.map(e => e['id']).indexOf(targetImg.id)
-        iframe.src = 'https://youtube.com/embed/' + youtubeSources[(index + x)].id
-        n = index + x
-        console.log(n)
-        return n
+
+        if ((index + x) >= youtubeSources.length) {
+            n = 0
+            iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        } else if ((index + x) < 0) {
+            n = (youtubeSources.length - 1)
+            iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        } else {
+            n = index + x
+            iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        }
+        iframe.id = 'youtubeIframe'
+        targetImg.id = openID
+        firstSlide = false
+        return n, firstSlide, targetImg
     } else {
         n += x
-        console.log(n)
-        iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        if ( n >= youtubeSources.length ) {
+            n = 0
+            iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        } else if (n < 0 ) {
+            n = (youtubeSources.length - 1)
+            iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        } else {
+            iframe.src = 'https://youtube.com/embed/' + youtubeSources[n].id
+        }
     }
 }
 
 const closeModal = () => {
-    document.getElementById("youtubeModal").style.display = "none"              // get the modal element and change style to none  
-    let resetID = document.getElementById(openID)                               // get the iframe element to change it's id back so we can reopen it later with a new id
-    resetID.id = 'youtubeIframe'
-    targetImg.id = openID
+    document.getElementById("youtubeModal").style.display = "none"
+    console.log(openID)
+    if (iframe.id === openID) {
+        iframe.id = 'youtubeIframe'
+    }
+    firstSlide = true
     modalOpen = false
-    n = false
 }
