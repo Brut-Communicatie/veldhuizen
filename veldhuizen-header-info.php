@@ -36,14 +36,14 @@ get_header();
                 echo '</div>';
                 echo '</div>';
             }
-            // else if (($parent->post_name) == 'fotos') {
-            //     echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
-            //     echo '<div class="fotos-container-wrapper">';
-            //     echo '<div class="veldhuizen__container">';
-            //     the_content();
-            //     echo '</div>';
-            //     echo '</div>';
-            // }
+            else if (($parent->post_name) == 'fotos') {
+                echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+                echo '<div class="fotos-container-wrapper">';
+                echo '<div class="veldhuizen__container">';
+                the_content();
+                echo '</div>';
+                echo '</div>';
+            }
             else {
                 // If available, put the image in the backgroud of the top banner
                 if (has_post_thumbnail( $post->ID ) ) {

@@ -128,3 +128,48 @@
         }
     }
 }
+
+.fotos-container-wrapper {
+    .veldhuizen__container {
+        width: 100%;
+        display: block;
+        &--product-grid {
+            h1, #big-image-wrapper {
+                display: none
+            }  
+        }
+
+        .product-grid-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+            grid-gap: 10px;
+
+            @include Responsive($containerWidth) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
+            }
+            @include Responsive($tabletBreakpoint) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
+            }
+            @include Responsive($tabletSmallBreakpoint) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+            }
+            @include Responsive($mobileBreakpoint) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+            }
+
+            .gallery-pictures {
+                margin: 0;
+                padding: 0;
+                width: auto;
+                height: auto;
+                border: none;
+                transition: .2s ease-in-out;
+                
+                &:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0px 0px 10px rgb(109, 109, 109);
+                }
+            }
+        }
+    }
+}

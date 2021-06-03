@@ -747,6 +747,59 @@ textarea {
 	}
 }
 
+.fotos-container-wrapper .veldhuizen__container {
+	width: 100%;
+	display: block;
+}
+
+.fotos-container-wrapper .veldhuizen__container--product-grid h1, .fotos-container-wrapper .veldhuizen__container--product-grid #big-image-wrapper {
+	display: none;
+}
+
+.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+	grid-gap: 10px;
+}
+
+@media screen and (max-width: calc(1440px + 5px)) {
+	.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
+	}
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
+	}
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+	}
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+}
+
+.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures {
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+	border: none;
+	transition: .2s ease-in-out;
+}
+
+.fotos-container-wrapper .veldhuizen__container .product-grid-wrapper .gallery-pictures:hover {
+	transform: scale(1.1);
+	box-shadow: 0px 0px 10px #6d6d6d;
+}
+
 @media print {
 	.no-print {
 		display: none !important;
