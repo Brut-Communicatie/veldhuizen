@@ -40,7 +40,7 @@ get_header();
 
                 echo '<div id="youtubeModal">';
                 echo '<span class="close cursor" onclick="closeModal()">&times;</span>';
-                echo '<a class="prev" onclick="slide()">&#10094;</a> <a class="next" onclick="slide()">&#10095;</a>';
+                echo '<a class="prev" onclick="slide(-1)">&#10094;</a> <a class="next" onclick="slide(1)">&#10095;</a>';
 	            echo '<iframe id="youtubeIframe" ></iframe>';
                 echo '</div>';
                 echo '</div>';
