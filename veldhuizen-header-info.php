@@ -8,7 +8,8 @@ get_header();
 
         // global $post;
         if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-            $args = array('post_parent'    => get_the_ID(),
+            $args = array(
+            'post_parent'    => get_the_ID(),
             'order'          =>  'ASC',
             'post_type'      => 'page',
             );
