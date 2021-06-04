@@ -1,0 +1,55 @@
+.news-article-page {
+    .veldhuizen__container {
+        width: 80%;
+        grid-template-columns: 40% 50%;
+        column-gap: 20px;
+
+        p strong {
+            color: $veldhuizen__groen;
+            font-size: 1.3em;
+
+        }
+
+        @include Responsive($tabletBreakpoint){
+            width: 90%;
+            grid-template-columns: 40% 60%;
+            column-gap: 10px;
+        }
+        @include Responsive($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+            p {
+                font-size: 0.9em;
+                strong {
+                    font-size: 1.15em;
+                }
+            }
+        }
+
+        
+
+        .veldhuizen__container--product-grid {
+            h1 {
+                display: none;
+            }
+
+            @include Responsive($mobileBreakpoint) {
+                padding: 0;
+            }
+            
+            
+            .product-grid-wrapper {
+                position: -webkit-sticky;
+                position: sticky;
+                // height: 50vh; 
+                top: 25vh;
+                transition: top 0.1s ease-in-out;
+                scroll-behavior: smooth;
+
+                @include Responsive($mobileBreakpoint) {
+                    position: initial;
+                }
+            }
+
+        }
+    }
+}

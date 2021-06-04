@@ -7,6 +7,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 $post_type = get_post_type();
 // var_dump($post_type);
 
+echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+
 if ($post_type == 'page') {
     $args = array(
         'post_type'     => 'post',
@@ -16,7 +18,7 @@ if ($post_type == 'page') {
         'order'         => 'DESC'
     );
     $news = get_posts($args);
-    // var_dump($news);
+    var_dump($news);
     
     echo '<div class="news">';
     foreach($news as $newsArticle) {
@@ -36,7 +38,12 @@ if ($post_type == 'page') {
     }
     echo '</div>';
 } else if ($post_type == 'post') {
+    // var_dump(the_content());
+    echo '<div class="news-article-page" >';
+    echo '<div class="veldhuizen__container">';
     the_content();
+    echo '</div>';
+    echo '</div>';
 }
 
 
