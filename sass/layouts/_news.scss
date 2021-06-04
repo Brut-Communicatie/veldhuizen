@@ -1,3 +1,32 @@
+.news {
+    width: 60%;
+    margin: 0 auto;
+    .article-links {
+        text-decoration: none;
+        color: inherit;
+        &:hover {
+            color: inherit;
+        }
+        article {
+            display: grid;
+            grid-template-columns: 20% 80%; 
+            // grid-template-rows: 100%;
+            img {
+                width: 100%;
+                align-self: center;
+                justify-self: center;
+                // padding-right: 1rem;
+            }
+            .article-text-wrapper {
+                margin: 1rem;
+                p {
+                  font-size: 0.8em;  
+                }
+            }
+        }
+    }
+}
+
 .news-article-page {
     .veldhuizen__container {
         width: 80%;
@@ -25,8 +54,6 @@
             }
         }
 
-        
-
         .veldhuizen__container--product-grid {
             h1 {
                 display: none;
@@ -53,3 +80,4 @@
         }
     }
 }
+

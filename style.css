@@ -1180,6 +1180,39 @@ textarea {
 	}
 }
 
+.news {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.news .article-links {
+	text-decoration: none;
+	color: inherit;
+}
+
+.news .article-links:hover {
+	color: inherit;
+}
+
+.news .article-links article {
+	display: grid;
+	grid-template-columns: 20% 80%;
+}
+
+.news .article-links article img {
+	width: 100%;
+	align-self: center;
+	justify-self: center;
+}
+
+.news .article-links article .article-text-wrapper {
+	margin: 1rem;
+}
+
+.news .article-links article .article-text-wrapper p {
+	font-size: 0.8em;
+}
+
 .news-article-page .veldhuizen__container {
 	width: 80%;
 	grid-template-columns: 40% 50%;

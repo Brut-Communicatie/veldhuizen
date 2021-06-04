@@ -18,7 +18,7 @@ if ($post_type == 'page') {
         'order'         => 'DESC'
     );
     $news = get_posts($args);
-    var_dump($news);
+    // var_dump($news);
     
     echo '<div class="news">';
     foreach($news as $newsArticle) {
@@ -26,13 +26,13 @@ if ($post_type == 'page') {
         $excerpt = get_the_excerpt($newsArticle);
         $link = get_the_permalink($newsArticle);
     
-        echo '<a href="' . $link . '" />';
+        echo '<a class="article-links" href="' . $link . '" />';
         echo '<article class="news-article">';
-        echo '<h2>';
-        echo ($newsArticle->post_name);
-        echo '</h2>';
         echo '<img src="' . $thumb . '" alt="Afbeelding van ' . ($newsArticle->post_name) . '" />';
+        echo '<div class="article-text-wrapper">';
+        echo '<h2>' . ($newsArticle->post_title) . '</h2>';
         echo '<p>' . $excerpt . '</p>';
+        echo '</div>';
         echo '</article>';
         echo '</a>';
     }
