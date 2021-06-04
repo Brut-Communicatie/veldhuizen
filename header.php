@@ -197,7 +197,6 @@
 				} else if ($postType) {
 					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
 				}
-				
 			?>
 		</div>
 	</header><!-- #masthead -->
