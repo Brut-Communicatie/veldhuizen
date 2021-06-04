@@ -32,7 +32,7 @@
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'rijbewijs-be' )); ?>">Rijbewijs B+E / C1+E</a></li>
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'fotos' )); ?>">Foto's</a></li>
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'film' )); ?>">Film</a></li>
-			<li><a href="#">Nieuws</a></li>
+			<li><a href="<?php echo get_page_link( get_page_by_path( 'nieuws' )); ?>">Nieuws</a></li>
 			<li><a href="<?php echo get_page_link( get_page_by_path( 'vacatures' )); ?>">Vacatures</a></li>
 			<li><a href="#">Mijn account</a></li>
 			</ul>
@@ -184,7 +184,7 @@
 				$postTitle = get_the_title($wp_query->post->ID);
 				$postType = get_post_type($wp_query->post->ID);
 				$parentPost = get_post_parent($wp_query->post->ID);
-				// var_dump($parentPost->post_name);
+				$categoryName = get_the_category($wp_query->post->ID);
 
 				if (is_front_page()){
 					echo '<p>U bevindt zich hier: ' . $postTitle .'</p>';
@@ -194,9 +194,11 @@
 					} else  {
 						echo '<p>U bevindt zich hier: ' . $postTitle .'</p>';
 					}
+				} else if ($postType === 'post' and ($categoryName[0]->category_nicename) == 'nieuws') {
+					echo '<p>U bevindt zich hier: Nieuws / ' . $postTitle .'</p>';
 				} else if ($postType) {
 					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
-				}
+				} 
 			?>
 		</div>
 	</header><!-- #masthead -->
