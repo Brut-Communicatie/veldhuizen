@@ -1219,7 +1219,7 @@ textarea {
 	column-gap: 20px;
 }
 
-.news-article-page .veldhuizen__container p strong {
+.news-article-page .veldhuizen__container .veldhuizen-rich-text-wrapper strong {
 	color: #0b9a71;
 	font-size: 1.3em;
 }
@@ -1230,16 +1230,19 @@ textarea {
 		grid-template-columns: 40% 60%;
 		column-gap: 10px;
 	}
+	.news-article-page .veldhuizen__container .veldhuizen-rich-text-wrapper {
+		font-size: 0.9em;
+	}
 }
 
 @media screen and (max-width: calc(500px + 5px)) {
 	.news-article-page .veldhuizen__container {
 		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 	}
-	.news-article-page .veldhuizen__container p {
+	.news-article-page .veldhuizen__container .veldhuizen-rich-text-wrapper {
 		font-size: 0.9em;
 	}
-	.news-article-page .veldhuizen__container p strong {
+	.news-article-page .veldhuizen__container .veldhuizen-rich-text-wrapper strong {
 		font-size: 1.15em;
 	}
 }

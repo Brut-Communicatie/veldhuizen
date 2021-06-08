@@ -33,7 +33,7 @@
         grid-template-columns: 40% 50%;
         column-gap: 20px;
 
-        p strong {
+        .veldhuizen-rich-text-wrapper strong {
             color: $veldhuizen__groen;
             font-size: 1.3em;
 
@@ -43,10 +43,13 @@
             width: 90%;
             grid-template-columns: 40% 60%;
             column-gap: 10px;
+            .veldhuizen-rich-text-wrapper {
+                font-size: 0.9em;
+            }
         }
         @include Responsive($mobileBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
-            p {
+            .veldhuizen-rich-text-wrapper {
                 font-size: 0.9em;
                 strong {
                     font-size: 1.15em;
