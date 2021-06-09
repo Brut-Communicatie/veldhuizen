@@ -1,0 +1,18 @@
+#home-container{
+    h2 {
+        font-size: 2em;
+        color: $veldhuizen__groen;
+        // font-weight: 600;
+    }
+    .home-text {
+        width: 65%;
+        margin: 0 auto;
+        font-size: 1.5em;
+        line-height: 1.7em;
+    
+        strong {
+            color: $veldhuizen__groen;
+        }
+    }
+}
+

@@ -300,6 +300,19 @@ function veldhuizen_verhuur_post_type() {
     register_post_type( 'Verhuur', $args );
 }
 
+function veldhuizen_home_c2a($c2a) {
+	$types = array( 'Producten', 'Verhuur', 'page', 'post' );
+
+	$page = get_page_by_path($c2a, $output, $types);
+	$image = get_the_post_thumbnail_url($page->ID);
+	// var_dump($page);
+	$title = ($page->post_title);
+	echo $title;
+	echo '<img src="'. $image . '"/>';
+
+	
+}
+
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
 

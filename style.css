@@ -1271,6 +1271,22 @@ textarea {
 	}
 }
 
+#home-container h2 {
+	font-size: 2em;
+	color: #0b9a71;
+}
+
+#home-container .home-text {
+	width: 65%;
+	margin: 0 auto;
+	font-size: 1.5em;
+	line-height: 1.7em;
+}
+
+#home-container .home-text strong {
+	color: #0b9a71;
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
