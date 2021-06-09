@@ -3,6 +3,8 @@
 
 get_header();
 
+// LETS SEEEEEEEEEEEEEEEEEEEEEEEEEEE
+
 // if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 // echo '<div class="home-page">';
