@@ -7,7 +7,7 @@ newStr = newStr.replace(/=/g, "=</var>")
 
 const index = newStr.search('<br><strong>Meerprijs voor:</strong>')
 let priceStr = newStr.slice(index)
-console.log(priceStr)
+// console.log(priceStr)
 newStr = newStr.replace(priceStr, "")
 
 priceStr = priceStr.replace(/–<br>/g, "<br>- ")
