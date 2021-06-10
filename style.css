@@ -834,7 +834,7 @@ textarea {
 		margin: 0;
 	}
 	.veldhuizen__container--product-wrapper .veldhuizen__container--product-grid h1 {
-		font-size: 1.3em;
+		font-size: 1.2em;
 		width: 60%;
 	}
 	.veldhuizen__container--product-wrapper .veldhuizen__container--product-grid .product-grid-wrapper #big-image-wrapper {
@@ -844,6 +844,12 @@ textarea {
 		top: 0;
 		right: 0;
 	}
+	.veldhuizen__container--product-wrapper .veldhuizen__container--product-info:before {
+		width: 0;
+	}
+	.veldhuizen__container--product-wrapper .veldhuizen__container--product-info p {
+		font-size: 12px;
+	}
 	.veldhuizen__container--verhuur-wrapper {
 		box-shadow: none;
 		margin: 0;
@@ -852,6 +858,7 @@ textarea {
 	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table {
 		line-height: .5em;
 		padding-top: 2cm;
+		font-size: 1.5em;
 	}
 	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table p {
 		line-height: 1em;
