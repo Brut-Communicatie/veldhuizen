@@ -7,11 +7,47 @@
 
     header {
         .header__container {
+            display: block;
+            position: absolute;
+            top:0;
+            left: 0;
             .header__left {
+                width: 50%;
                 #logo-print {
                     width: 5cm;
                 }
             }
+        }
+    }
+
+    .veldhuizen__container--product-wrapper {
+        width: 100%;
+        box-shadow: none;
+        margin: 0;
+        .veldhuizen__container--product-grid {
+            h1 {
+                font-size: 1.3em;
+                width: 60%
+            }
+            .product-grid-wrapper {
+               #big-image-wrapper {
+                position: fixed;
+                z-index: 5;
+                width: 6cm;
+                top: 0;
+                right: 0;
+               }
+
+            }
+        }
+    }
+
+    .veldhuizen__container--product-info {
+        &:before {
+            width: 0;
+        }
+        h2 {
+            font-size: 1.2em;
         }
     }
 
@@ -48,7 +84,7 @@
                             position: absolute;
                             top: 0cm;
                             right: 0;
-                            width: 5cm;
+                            width: 2cm;
                         }
                     }
                 }

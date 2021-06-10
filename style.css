@@ -816,8 +816,39 @@ textarea {
 		display: none !important;
 		height: 0 !important;
 	}
+	header .header__container {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	header .header__container .header__left {
+		width: 50%;
+	}
 	header .header__container .header__left #logo-print {
 		width: 5cm;
+	}
+	.veldhuizen__container--product-wrapper {
+		width: 100%;
+		box-shadow: none;
+		margin: 0;
+	}
+	.veldhuizen__container--product-wrapper .veldhuizen__container--product-grid h1 {
+		font-size: 1.3em;
+		width: 60%;
+	}
+	.veldhuizen__container--product-wrapper .veldhuizen__container--product-grid .product-grid-wrapper #big-image-wrapper {
+		position: fixed;
+		z-index: 5;
+		width: 6cm;
+		top: 0;
+		right: 0;
+	}
+	.veldhuizen__container--product-info:before {
+		width: 0;
+	}
+	.veldhuizen__container--product-info h2 {
+		font-size: 1.2em;
 	}
 	.veldhuizen__container--verhuur-wrapper {
 		box-shadow: none;
@@ -840,7 +871,7 @@ textarea {
 		position: absolute;
 		top: 0cm;
 		right: 0;
-		width: 5cm;
+		width: 2cm;
 	}
 	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info h2 {
 		font-size: 1em;
