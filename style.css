@@ -844,43 +844,24 @@ textarea {
 		top: 0;
 		right: 0;
 	}
-	.veldhuizen__container--product-info:before {
-		width: 0;
-	}
-	.veldhuizen__container--product-info h2 {
-		font-size: 1.2em;
-	}
 	.veldhuizen__container--verhuur-wrapper {
 		box-shadow: none;
+		margin: 0;
+		padding: 0;
+	}
+	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table {
+		line-height: .5em;
+		padding-top: 2cm;
 	}
 	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table p {
-		font-size: 25px;
+		line-height: 1em;
 	}
-	.veldhuizen__container--verhuur-wrapper .wp-block-cgb-block-veldhuizen-verhuur-table table tr td {
-		padding: 0;
-		font-size: 25px;
-	}
-	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-wrapper {
-		width: 100%;
-		box-shadow: none;
-	}
-	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-grid h1 {
-		font-size: 1em;
-	}
-	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-grid .product-grid-wrapper #big-image {
-		position: absolute;
-		top: 0cm;
+	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-grid .product-grid-wrapper #big-image-wrapper #big-image {
+		position: fixed;
+		z-index: 5;
+		top: 0;
 		right: 0;
-		width: 2cm;
-	}
-	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info h2 {
-		font-size: 1em;
-	}
-	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info p {
-		font-size: 0.6em;
-	}
-	.veldhuizen__container--verhuur-wrapper .veldhuizen__container--product-info:before {
-		width: 0;
+		width: 5cm;
 	}
 }
 
