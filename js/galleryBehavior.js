@@ -2,14 +2,12 @@ let productImages = []
 let modalOpen = false
 let openImage
 let n = -1 
+let expandedImage
+let returnImageSrc
 
 const expandImage = (imgs) => {
-    // get the expanded image
     const expandImg = document.getElementById("big-image")
-    // use the same src in the expanded image
     expandImg.src = imgs.src
-    // Show the container element (hidden with CSS)
-    // expandImg.parentElement.style.display = "block";
 }
 
 const openModal = (event) => {    
@@ -87,4 +85,18 @@ contactButton.addEventListener('click', () => {
 })
 
 const infoContainer = document.getElementsByClassName('veldhuizen__container--product-info')[0];
-console.log(infoContainer);
+// console.log(infoContainer);
+
+window.onbeforeprint = () => {
+    expandedImage = document.getElementById('big-image')
+    returnImageSrc = expandedImage.src
+    console.log(returnImageSrc)
+    productImages = document.getElementsByClassName('gallery-pictures')
+    document.getElementById('big-image').src = productImages[0].src
+    return returnImageSrc
+}
+
+window.onafterprint = () => {
+    console.log(returnImageSrc)
+    document.getElementById('big-image').src = returnImageSrc
+}
