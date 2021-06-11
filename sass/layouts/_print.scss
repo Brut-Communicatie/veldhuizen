@@ -7,7 +7,12 @@
 
     header {
         .header__container {
+            display: block;
+            position: absolute;
+            top:0;
+            left: 0;
             .header__left {
+                width: 50%;
                 #logo-print {
                     width: 5cm;
                 }
@@ -15,60 +20,60 @@
         }
     }
 
-    .veldhuizen__container--verhuur-wrapper {
+    .veldhuizen__container--product-wrapper {
+        width: 100%;
         box-shadow: none;
-        
-
-        .wp-block-cgb-block-veldhuizen-verhuur-table {
+        margin: 0;
+        .veldhuizen__container--product-grid {
+            h1 {
+                font-size: 1.2em;
+                width: 60%
+            }
+            .product-grid-wrapper {
+               #big-image-wrapper {
+                position: fixed;
+                z-index: 5;
+                width: 6cm;
+                top: 0;
+                right: 0;
+               }
+            }
+        }
+        .veldhuizen__container--product-info {
+            &:before {
+                width: 0;
+            }
             p {
-                font-size: 25px;
+                font-size: 12px;
             }
 
-            table tr td {
-                padding: 0;
-                font-size: 25px;
+        }
+    }
+
+    .veldhuizen__container--verhuur-wrapper {
+        box-shadow: none; 
+        margin: 0;
+        padding: 0;
+        .wp-block-cgb-block-veldhuizen-verhuur-table {
+            line-height: .5em;
+            padding-top: 2cm;
+            font-size: 1.5em;
+            p {
+                line-height: 1em;
             }
         }
-
-        .veldhuizen {
-            &__container {
-                &--product-wrapper {
-                    width: 100%;
-                    box-shadow: none;
-
-                }
-
-                &--product-grid {
-                    h1 {
-                        font-size: 1em;
-                    }
-
-                    .product-grid-wrapper {
-                        #big-image {
-                            position: absolute;
-                            top: 0cm;
-                            right: 0;
-                            width: 5cm;
-                        }
-                    }
-                }
-
-                &--product-info {
-                    h2 {
-                        font-size: 1em;
-                    }
-
-                    p {
-                        font-size: 0.6em;
-                    }
-
-                    &:before {
-                        width: 0;
+        .veldhuizen__container--product-grid {
+            .product-grid-wrapper {
+                #big-image-wrapper {
+                    #big-image {
+                        position: fixed;
+                        z-index: 5;
+                        top: 0;
+                        right: 0;
+                        width: 5cm;
                     }
                 }
             }
         }
-
-
     }
 }
