@@ -1295,6 +1295,23 @@ textarea {
 	color: #0b9a71;
 }
 
+#home-container .veldhuizen__container {
+	width: 100%;
+	grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+}
+
+#home-container .veldhuizen__container .block:hover {
+	background-color: #ff5400;
+}
+
+#home-container .veldhuizen__container .block:hover .block__info {
+	background-color: #ff5400;
+}
+
+#home-container .veldhuizen__container .block:hover .block__info h5 {
+	color: white;
+}
+
 #home-container .home-text {
 	width: 65%;
 	margin: 0 auto;

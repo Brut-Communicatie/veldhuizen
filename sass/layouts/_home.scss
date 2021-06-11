@@ -2,7 +2,21 @@
     h2 {
         font-size: 2em;
         color: $veldhuizen__groen;
-        // font-weight: 600;
+    }
+
+    .veldhuizen__container {
+        width: 100%;
+        grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+
+        .block:hover {
+            background-color: $veldhuizen__oranje;
+            .block__info {
+                background-color: $veldhuizen__oranje;
+                h5 {
+                    color: white;
+                }
+            }
+        }
     }
     .home-text {
         width: 65%;
@@ -13,6 +27,9 @@
         strong {
             color: $veldhuizen__groen;
         }
+
+
     }
 }
 
+// test
