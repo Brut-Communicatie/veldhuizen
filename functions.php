@@ -316,6 +316,54 @@ function veldhuizen_home_c2a($c2a) {
 	echo '</a>';
 }
 
+function veldhuizen_home_vacatures() {
+	echo  '<h3>Vacatures</h3>';
+	echo '<p>Veldhuizen b.v. is fabrikant van aanhangwagens en opleggers voor BE-rijbewijs. Onze productrange bestaat verder uit oprij vrachtwagens en diverse Hovertrack varianten. Om aan de groeiende vraag uit de markt te voldoen, zijn wij op zoek naar:</p>';
+	$vacature_page = get_page_by_path('vacatures');
+	
+	$vacatures = get_children($vacature_page->ID);
+	// var_dump($vacatures);
+	echo '<ul>';
+	foreach($vacatures as $child) {
+		$vacatureTitle = get_the_title ( $child->ID );
+		$vacatureLink = get_the_permalink( $child->ID );
+		// var_dump($vacatureTitle);
+		echo '<a href="' . $vacatureLink . '">';
+		echo '<li>' . $vacatureTitle . '</li>';
+		echo '</a>';
+	}
+	echo '</ul>';
+}
+
+function veldhuizen_home_news() {
+	echo  '<h3>Nieuws</h3>';
+	$args = array(
+        'post_type'     => 'post',
+        'post_status'   => 'published',
+        'category_name' => 'nieuws',
+        'orderby'       => 'date',
+        'order'         => 'DESC'
+    );
+	$news = get_posts($args);
+	echo '<div class="articles-wrapper">';
+	foreach($news as $newsArticle) {
+        $thumb = get_the_post_thumbnail_url($newsArticle);
+        $excerpt = get_the_excerpt($newsArticle);
+        $link = get_the_permalink($newsArticle);
+    
+        echo '<a class="article-links" href="' . $link . '" />';
+        echo '<article class="news-article">';
+        echo '<img src="' . $thumb . '" alt="Afbeelding van ' . ($newsArticle->post_name) . '" />';
+        echo '<div class="article-text-wrapper">';
+        echo '<h4>' . ($newsArticle->post_title) . '</h4>';
+        echo '<p>' . $excerpt . '</p>';
+        echo '</div>';
+        echo '</article>';
+        echo '</a>';
+    }
+	echo '</div>';
+}
+
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
 

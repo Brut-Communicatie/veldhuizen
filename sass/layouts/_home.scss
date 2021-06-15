@@ -1,15 +1,19 @@
 #home-container{
-    h2 {
-        font-size: 2em;
-        color: $veldhuizen__groen;
-    }
+    background-color: white;
+
 
     .veldhuizen__container {
         width: 100%;
         grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+        padding: 20px;
+        // margin: 20px;
 
         .block:hover {
             background-color: $veldhuizen__oranje;
+            transition: all 0;
+            img {
+                opacity: 1;
+            }
             .block__info {
                 background-color: $veldhuizen__oranje;
                 h5 {
@@ -18,18 +22,116 @@
             }
         }
     }
-    .home-text {
-        width: 65%;
-        margin: 0 auto;
-        font-size: 1.5em;
-        line-height: 1.7em;
-    
-        strong {
+
+    .veldhuizen__container--product-wrapper {
+        box-shadow: none;
+        padding: 2em;
+        width: 100%;
+        h2 {
+            font-weight: 700;
             color: $veldhuizen__groen;
+            text-align: center;
+            font-size: 2em;
+        }
+        .veldhuizen-rich-text-wrapper {
+            width: 65%;
+            margin: 0 auto;
+            font-size: 1.5em;
+            line-height: 1.7em;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: 400;
+            vertical-align: baseline;
+            
+            strong {
+                color: $veldhuizen__groen;
+            }
+        }
+    }
+    .home-vacatures {
+        width: 60%;
+        background-color: $veldhuizen__groen;
+        color: white;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 30px 50px;
+        margin-top: 2em;
+        margin-bottom: 5em;
+
+        h3 {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 500;
+            margin: 0;
+        }
+        p {
+            font-size: 0.85em;
+            font-weight: 400;
+        }
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            flex-wrap: wrap;
+            padding-inline-start: 0;
+            a {
+                color: white;
+                text-transform: uppercase;
+                border: 1px solid white;
+                margin: 10px;
+                padding: 10px;
+                text-decoration: none;
+                transition: all 0.4s ease-out;
+                font-weight: 400;
+
+                &:hover {
+                    background-color: white;
+                    color: $veldhuizen__groen;
+                    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.13);
+                }
+            }
+
+        }
+    }
+
+    .home-news {
+        background-color: $veldhuizen__groen;
+        padding: 30px 50px;
+        margin-top: 2em;
+        margin-bottom: 2em;
+
+        h3 {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 500;
+            margin: 0;
+            color: white;
+            margin: 20px;
         }
 
+        .articles-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            .article-links {
+                height: 600px;
+                width: 300px;
+                background-color: white;
+                margin: 10px;
+                text-decoration: none;
+               color: #404040;
 
+                h4, p {
+                    padding: 0 10px;
+                }
+
+                p {
+                    font-size: 0.85em;
+                    line-height: 1.8em;
+                }
+            }
+        }
+        
     }
 }
 
-// test

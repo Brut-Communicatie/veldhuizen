@@ -21,7 +21,17 @@ veldhuizen_home_c2a('onderdelen');
 veldhuizen_home_c2a('service');
 echo '</div>';
 
+echo '<div class="home-vacatures">';
+veldhuizen_home_vacatures();
 echo '</div>';
+
+echo '<div class="home-news">';
+veldhuizen_home_news();
+echo '</div>';
+
+echo '</div>';
+
+
 
 endwhile;
 endif;
