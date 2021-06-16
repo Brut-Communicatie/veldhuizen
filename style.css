@@ -1432,6 +1432,11 @@ textarea {
 	padding: 0 10px;
 }
 
+#home-container .home-news .articles-wrapper .article-links h4 {
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
 #home-container .home-news .articles-wrapper .article-links p {
 	font-size: 0.85em;
 	line-height: 1.8em;

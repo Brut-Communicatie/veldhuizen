@@ -327,7 +327,6 @@ function veldhuizen_home_vacatures() {
 	foreach($vacatures as $child) {
 		$vacatureTitle = get_the_title ( $child->ID );
 		$vacatureLink = get_the_permalink( $child->ID );
-		// var_dump($vacatureTitle);
 		echo '<a href="' . $vacatureLink . '">';
 		echo '<li>' . $vacatureTitle . '</li>';
 		echo '</a>';
@@ -348,7 +347,7 @@ function veldhuizen_home_news() {
 	echo '<div class="articles-wrapper">';
 	foreach($news as $newsArticle) {
         $thumb = get_the_post_thumbnail_url($newsArticle);
-        $excerpt = get_the_excerpt($newsArticle);
+        $excerpt = wp_trim_excerpt(get_the_excerpt($newsArticle));
         $link = get_the_permalink($newsArticle);
     
         echo '<a class="article-links" href="' . $link . '" />';
