@@ -82,7 +82,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "layouts/voorraad";
 @import "layouts/contact";
 @import "layouts/news";
-// EWA
+@import "layouts/home";
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
@@ -169,6 +169,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 .block {
 	h5 {
 		text-align: center;
+		font-size: 1em;
+		padding: 0 10px;
 	}
 
 	p {
@@ -179,12 +181,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	&:hover {
 		p {
 			display: inline-block !important;
-			transform: translateY(1rem);
+			transform: translateY(1em);
 		}
 	}
 
 	&__info {
 		flex-grow: 1;
+
 	}
 }
 

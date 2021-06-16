@@ -13,6 +13,7 @@ foreach($hasChildren as $child){
     $tags = get_the_tags($child->ID);
     if ($tags) {
         $tagsFound = true;
+        // var_dump($tags);
     }
 }
 
@@ -36,10 +37,10 @@ else {
         echo 'Alles';
         echo '</div>';
         echo '<div class="veldhuizen__filter--item">';
-        echo '1. Rijbewijs BE voor 2013';
+        echo 'Rijbewijs BE voor 2013';
         echo '</div>';
         echo '<div class="veldhuizen__filter--item">';
-        echo '2. Rijbewijs BE na 2013';
+        echo 'Rijbewijs BE na 2013';
         echo '</div>';
         echo '</div>';
         echo '</div>';

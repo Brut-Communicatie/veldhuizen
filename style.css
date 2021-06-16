@@ -1266,6 +1266,10 @@ textarea {
 	}
 }
 
+.news-article-page .veldhuizen__container .veldhuizen__container--product-grid .print-button {
+	display: none;
+}
+
 .news-article-page .veldhuizen__container .veldhuizen__container--product-grid h1 {
 	display: none;
 }
@@ -1288,6 +1292,154 @@ textarea {
 	.news-article-page .veldhuizen__container .veldhuizen__container--product-grid .product-grid-wrapper {
 		position: initial;
 	}
+}
+
+#home-container {
+	background-color: white;
+}
+
+#home-container .veldhuizen__container {
+	width: 100%;
+	grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+	padding: 20px;
+}
+
+#home-container .veldhuizen__container .block:hover {
+	background-color: #ff5400;
+	transition: all 0;
+}
+
+#home-container .veldhuizen__container .block:hover img {
+	opacity: 1;
+}
+
+#home-container .veldhuizen__container .block:hover .block__info {
+	background-color: #ff5400;
+}
+
+#home-container .veldhuizen__container .block:hover .block__info h5 {
+	color: white;
+}
+
+#home-container .veldhuizen__container--product-wrapper {
+	box-shadow: none;
+	padding: 2em;
+	width: 100%;
+}
+
+#home-container .veldhuizen__container--product-wrapper h2 {
+	font-weight: 700;
+	color: #0b9a71;
+	text-align: center;
+	font-size: 2em;
+}
+
+#home-container .veldhuizen__container--product-wrapper .veldhuizen-rich-text-wrapper {
+	width: 65%;
+	margin: 0 auto;
+	font-size: 1.5em;
+	line-height: 1.7em;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: 400;
+	vertical-align: baseline;
+}
+
+#home-container .veldhuizen__container--product-wrapper .veldhuizen-rich-text-wrapper strong {
+	color: #0b9a71;
+}
+
+#home-container .home-vacatures {
+	width: 60%;
+	background-color: #0b9a71;
+	color: white;
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding: 30px 50px;
+	margin-top: 2em;
+	margin-bottom: 5em;
+}
+
+#home-container .home-vacatures h3 {
+	text-align: center;
+	font-size: 3em;
+	font-weight: 500;
+	margin: 0;
+}
+
+#home-container .home-vacatures p {
+	font-size: 0.85em;
+	font-weight: 400;
+}
+
+#home-container .home-vacatures ul {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	flex-wrap: wrap;
+	padding-inline-start: 0;
+}
+
+#home-container .home-vacatures ul a {
+	color: white;
+	text-transform: uppercase;
+	border: 1px solid white;
+	margin: 10px;
+	padding: 10px;
+	text-decoration: none;
+	transition: all 0.4s ease-out;
+	font-weight: 400;
+}
+
+#home-container .home-vacatures ul a:hover {
+	background-color: white;
+	color: #0b9a71;
+	box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.13);
+}
+
+#home-container .home-news {
+	background-color: #0b9a71;
+	padding: 30px 50px;
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+#home-container .home-news h3 {
+	text-align: center;
+	font-size: 3em;
+	font-weight: 500;
+	margin: 0;
+	color: white;
+	margin: 20px;
+}
+
+#home-container .home-news .articles-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+#home-container .home-news .articles-wrapper .article-links {
+	height: 600px;
+	width: 300px;
+	background-color: white;
+	margin: 10px;
+	text-decoration: none;
+	color: #404040;
+}
+
+#home-container .home-news .articles-wrapper .article-links h4, #home-container .home-news .articles-wrapper .article-links p {
+	padding: 0 10px;
+}
+
+#home-container .home-news .articles-wrapper .article-links h4 {
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+#home-container .home-news .articles-wrapper .article-links p {
+	font-size: 0.85em;
+	line-height: 1.8em;
 }
 
 /*--------------------------------------------------------------
@@ -1790,7 +1942,7 @@ textarea {
 .header__right ul li ul li {
 	height: auto;
 	border-left: 0;
-	width: calc(100% / 6);
+	width: calc(100% / 5);
 	border-right: 1px solid #dddddd;
 	display: flex;
 	justify-content: center;
@@ -2354,6 +2506,8 @@ textarea {
 
 .block h5 {
 	text-align: center;
+	font-size: 1em;
+	padding: 0 10px;
 }
 
 .block p {
@@ -2363,7 +2517,7 @@ textarea {
 
 .block:hover p {
 	display: inline-block !important;
-	transform: translateY(1rem);
+	transform: translateY(1em);
 }
 
 .block__info {
