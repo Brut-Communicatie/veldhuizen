@@ -262,7 +262,7 @@ function veldhuizen_verhuur_post_type() {
         'new_item'              => __( 'Nieuw verhuur product', 'verhuur product' ),
         'edit_item'             => __( 'Edit verhuur product', 'verhuur product' ),
         'view_item'             => __( 'Bekijk verhuur product', 'verhuur product' ),
-        'all_items'             => __( 'Bekijk alle vehruur producten', 'verhuur product' ),
+        'all_items'             => __( 'Bekijk alle verhuur producten', 'verhuur product' ),
         'search_items'          => __( 'Zoek verhuur product', 'verhuur product' ),
         'parent_item_colon'     => __( 'Hoofd verhuur product:', 'verhuur product' ),
         'not_found'             => __( ' Geen verhuur producten gevonden.', 'verhuur product' ),

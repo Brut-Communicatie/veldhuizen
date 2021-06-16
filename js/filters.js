@@ -19,8 +19,8 @@ window.addEventListener('load', function () {
     if (filters) {
 
         const block = document.getElementsByClassName('block');
-        const voor = document.getElementsByClassName('1-rijbewijs-be-voor-2013');
-        const na = document.getElementsByClassName('2-rijbewijs-be-na-2013');
+        const voor = document.getElementsByClassName('rijbewijs-be-voor-2013');
+        const na = document.getElementsByClassName('rijbewijs-be-na-2013');
 
         for (let i = 0; i < filters.length; i++) {
 

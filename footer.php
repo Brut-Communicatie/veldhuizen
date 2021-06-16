@@ -17,7 +17,7 @@
 				<h4>Veldhuizen B.V. Groenekan</h4>
 				<p>Verkoop | Verhuur | Onderhoud</p>
 				<p>Kon. Wilhelminaweg 259</p>
-				<p>3736 BA Groenekan</p>
+				<p>3737 BA Groenekan</p>
 				</br>
 				<p><strong>T</strong> <a href="tel:+31886259600"> +31(0)88 6259600</a></p>
 				<p><strong>E</strong> <a href="mailto:info@veldhuizen.nl">info@veldhuizen.nl</a></p>

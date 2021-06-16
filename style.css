@@ -2501,6 +2501,8 @@ textarea {
 
 .block h5 {
 	text-align: center;
+	font-size: 1em;
+	padding: 0 10px;
 }
 
 .block p {
@@ -2510,7 +2512,7 @@ textarea {
 
 .block:hover p {
 	display: inline-block !important;
-	transform: translateY(1rem);
+	transform: translateY(1em);
 }
 
 .block__info {
