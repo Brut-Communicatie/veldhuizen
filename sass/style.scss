@@ -170,14 +170,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	h5 {
 		text-align: center;
 		font-size: 1em;
-		padding: 0 10px;
+		margin: 0 5px;
 	}
 
 	p {
 		position: absolute;
 		bottom: 0;
 	}
-
 	img {
 		object-fit: cover;
 		height: 200px;
@@ -192,7 +191,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 	&__info {
 		flex-grow: 1;
-
 	}
 }
 

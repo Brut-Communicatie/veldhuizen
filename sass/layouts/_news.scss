@@ -73,7 +73,7 @@
             .product-grid-wrapper {
                 position: -webkit-sticky;
                 position: sticky;
-                // height: 50vh; 
+                width: 100%;
                 top: 25vh;
                 transition: top 0.1s ease-in-out;
                 scroll-behavior: smooth;
