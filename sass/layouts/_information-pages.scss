@@ -22,3 +22,13 @@
         width: calc(100% - 4em);
     }
 }
+
+.fotos-container-wrapper {
+    .veldhuizen__container {
+        .veldhuizen__container--product-grid {
+            .product-grid-wrapper {
+                width: 100%;
+            }
+        }
+    }
+}

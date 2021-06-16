@@ -909,6 +909,10 @@ textarea {
 	}
 }
 
+.fotos-container-wrapper .veldhuizen__container .veldhuizen__container--product-grid .product-grid-wrapper {
+	width: 100%;
+}
+
 .aan-af-koppelen .veldhuizen__container {
 	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 }
