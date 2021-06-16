@@ -935,6 +935,10 @@ textarea {
 	text-align: center;
 }
 
+.service-pages .block img {
+	height: auto;
+}
+
 .service-pages .veldhuizen__container {
 	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 }
@@ -2507,7 +2511,7 @@ textarea {
 .block h5 {
 	text-align: center;
 	font-size: 1em;
-	padding: 0 10px;
+	margin: 0 5px;
 }
 
 .block p {
