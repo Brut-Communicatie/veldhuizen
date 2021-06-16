@@ -2515,6 +2515,11 @@ textarea {
 	bottom: 0;
 }
 
+.block img {
+	object-fit: cover;
+	height: 200px;
+}
+
 .block:hover p {
 	display: inline-block !important;
 	transform: translateY(1em);
