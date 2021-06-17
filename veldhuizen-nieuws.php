@@ -27,7 +27,7 @@ if ($post_type == 'page') {
         $parsedContent = parse_blocks($newsArticle->post_content);
 		$link = get_the_permalink($newsArticle);
 		$excerptRaw = $parsedContent[2]['attrs']['content'];
-		$excerptRaw = substr($excerptRaw, 0, 350);
+		$excerptRaw = substr($excerptRaw, 0, 250);
 		$excerptClean = strip_tags($excerptRaw, $removeTags);
     
         echo '<a class="article-links" href="' . $link . '" />';
@@ -35,7 +35,7 @@ if ($post_type == 'page') {
         echo '<img src="' . $thumb . '" alt="Afbeelding van ' . ($newsArticle->post_name) . '" />';
         echo '<div class="article-text-wrapper">';
         echo '<h2>' . ($newsArticle->post_title) . '</h2>';
-        echo '<p>' . $excerptClean . '...</p>';
+        echo '<p class="article-excerpt">' . $excerptClean . '...</p>';
         echo '</div>';
         echo '</article>';
         echo '</a>';
@@ -55,4 +55,5 @@ if ($post_type == 'page') {
 endwhile;
 endif;
 
+wp_enqueue_script( 'veldhuizen-excerpt-cutter', get_template_directory_uri() . '/js/excerptCutter.js', false, false );
 get_footer();?>
