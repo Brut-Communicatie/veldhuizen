@@ -1241,6 +1241,40 @@ textarea {
 	font-size: 0.8em;
 }
 
+@media screen and (max-width: calc(1440px + 5px)) {
+	.news {
+		width: 70%;
+	}
+	.news .article-links article .article-text-wrapper h2 {
+		font-size: 1.1em;
+	}
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.news {
+		width: 90%;
+	}
+	.news .article-links article .article-text-wrapper h2 {
+		font-size: 1.2em;
+	}
+	.news .article-links article .article-text-wrapper p {
+		font-size: 0.7em;
+	}
+}
+
+@media screen and (max-width: calc(740px + 5px)) {
+	.news .article-links article {
+		display: grid;
+		grid-template-columns: 30% 70%;
+	}
+	.news .article-links article .article-text-wrapper h2 {
+		font-size: 0.8em;
+	}
+	.news .article-links article .article-text-wrapper p {
+		font-size: 0.7em;
+	}
+}
+
 .news-article-page .veldhuizen__container {
 	width: 80%;
 	grid-template-columns: 40% 50%;

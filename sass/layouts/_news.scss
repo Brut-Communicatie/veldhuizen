@@ -25,6 +25,49 @@
             }
         }
     }
+    @include Responsive($containerWidth) {
+        width: 70%;
+        .article-links {
+            article {
+                .article-text-wrapper {
+                    h2 {
+                        font-size: 1.1em;
+                    }
+                }
+            }
+        }
+    }
+    @include Responsive($tabletBreakpoint) {
+        width: 90%;
+        .article-links {
+            article {
+                .article-text-wrapper {
+                    h2 {
+                        font-size: 1.2em;
+                    }
+                    p {
+                        font-size: 0.7em;
+                    }
+                }
+            }
+        }
+    }
+    @include Responsive($tabletSmallBreakpoint) {
+        .article-links {
+            article {
+                display: grid;
+                grid-template-columns: 30% 70%; 
+                .article-text-wrapper {
+                    h2 {
+                        font-size: 0.8em;
+                    }
+                    p {
+                        font-size: 0.7em;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .news-article-page {
