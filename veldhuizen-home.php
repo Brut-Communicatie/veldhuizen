@@ -26,6 +26,8 @@ veldhuizen_home_vacatures();
 echo '</div>';
 
 echo '<div class="home-news">';
+echo '<a class="footer-links" href="'. get_the_permalink(  ) .'">&lt;</a>';
+echo '<a class="footer-links" href="'. get_the_permalink(  ) .'">&gt;</a>';
 veldhuizen_home_news();
 echo '</div>';
 
@@ -35,4 +37,8 @@ echo '</div>';
 
 endwhile;
 endif;
+wp_enqueue_script( 'veldhuizen-news-cleanup', get_template_directory_uri() . '/js/newsExcerpt.js', false, false );
 get_footer();?>
+
+
+    

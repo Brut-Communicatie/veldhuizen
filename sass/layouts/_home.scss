@@ -9,12 +9,13 @@
         // margin: 20px;
 
         .block:hover {
-            background-color: $veldhuizen__oranje;
             transition: all 0;
+            background-color: $veldhuizen__oranje;
             img {
                 opacity: 1;
             }
             .block__info {
+                transition: background-color inherit;
                 background-color: $veldhuizen__oranje;
                 h5 {
                     color: white;
@@ -99,6 +100,23 @@
         padding: 30px 50px;
         margin-top: 2em;
         margin-bottom: 2em;
+        position: relative;
+
+        .footer-links {
+            position: absolute;
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        & > :first-child {
+            left: 5rem;
+        }
+
+        & > :nth-child(2) {
+            right: 5rem;
+        }
 
         h3 {
             text-align: center;
@@ -113,16 +131,43 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+
             .article-links {
                 height: 600px;
                 width: 300px;
                 background-color: white;
                 margin: 10px;
                 text-decoration: none;
-               color: #404040;
+                color: #404040;
+                position: relative;
+                transition: all ease-in 0.2s;
+
+                button {
+                    position: absolute;
+                    bottom: 30px;
+                    width: 35%;
+                    left: 50%;
+                    padding: 10px 15px;
+                    transform: translateX(-50%);
+                    background-color: white;
+                    font-size: 0.85em;
+                    transition: all ease-in 0.2s;
+                    opacity: 0.6;
+
+                }
+                &:hover {
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.13);
+                    button {
+                        opacity: 1;
+                        background-color: $veldhuizen__oranje;
+                        color: white;
+                        border-color: $veldhuizen__oranje;
+                        display: block;
+                    }
+                }
 
                 h4, p {
-                    padding: 0 10px;
+                    padding: 0 1.2rem;
                 }
 
                 h4 {
@@ -133,7 +178,12 @@
                 p {
                     font-size: 0.85em;
                     line-height: 1.8em;
+                    position: absolute;
+                    font-weight: 300;
+                    top: 50%;
                 }
+
+                
             }
         }
         
