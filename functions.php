@@ -303,20 +303,6 @@ function veldhuizen_verhuur_post_type() {
 }
 
 // CUSTOM FUNCTIONS 
-// function se378694_default_excerpt( string $post_excerpt, WP_Post $post ):string {
-//     if ( empty( $post_excerpt ) ) {
-//         $blocks = parse_blocks( $post->post_content );
-// 		$newsItem = $post;
-// 		var_dump($post);
-// 		var_dump($blocks[2]['attrs']['content']);
-		
-
-//         check if the first block matches the type of content you want for your excerpt
-//         if ( ... ) {
-//             $post_excerpt = render_block( $blocks[2]['attrs']['content'] );
-//         }
-//     }
-// }
 
 function veldhuizen_home_c2a($c2a) {
 	$types = array( 'Producten', 'Verhuur', 'page', 'post' );
@@ -341,7 +327,6 @@ function veldhuizen_home_vacatures() {
 	$vacature_page = get_page_by_path('vacatures');
 	
 	$vacatures = get_children($vacature_page->ID);
-	// var_dump($vacatures);
 	echo '<ul>';
 	foreach($vacatures as $child) {
 		$vacatureTitle = get_the_title ( $child->ID );
@@ -361,12 +346,11 @@ function veldhuizen_home_news() {
         'post_status'   => 'published',
         'category_name' => 'nieuws',
         'orderby'       => 'date',
-        'order'         => 'DESC'
+        'order'         => 'DESC',
+		'numberposts'	=> '3'
     );
 	$news = get_posts($args);
-	$max_words = 35;
 	
-	// var_dump($news);
 	echo '<div class="articles-wrapper">';
 	foreach($news as $newsArticle) {
 		$removeTags = array('<br>', '<br><br>', '<br />', '<br/>', '<br   >');
@@ -374,25 +358,26 @@ function veldhuizen_home_news() {
         $parsedContent = parse_blocks($newsArticle->post_content);
 		$link = get_the_permalink($newsArticle);
 		$excerptRaw = $parsedContent[2]['attrs']['content'];
-		$excerptRaw = substr($excerptRaw, 0, 400);
-		// $excerptTest = preg_replace('<br />', '', $excerptRaw);
-		$excerptTest = strip_tags($excerptRaw, $removeTags);
-		// var_dump($excerptTest);
+		$excerptRaw = substr($excerptRaw, 0, 300);
+		$excerptClean = strip_tags($excerptRaw, $removeTags);
 
-    
+
         echo '<a class="article-links" href="' . $link . '" />';
         echo '<article class="news-article">';
         echo '<img src="' . $thumb . '" alt="Afbeelding van ' . ($newsArticle->post_name) . '" />';
         echo '<div class="article-text-wrapper">';
         echo '<h4>' . ($newsArticle->post_title) . '</h4>';
-        echo '<p class="article-excerpt">' . $excerptTest . '</p>';
-		// echo '<p id="excerpt-content">' . ($newsArticle->post_content) . '</p>';
+        echo '<p class="article-excerpt">' . $excerptClean . '...</p>';
         echo '</div>';
         echo '</article>';
 		echo '<button>Lees meer</button>';
         echo '</a>';
     }
 	echo '</div>';
+}
+
+function get_new_articles() {
+	
 }
 
 add_action( 'init', 'veldhuizen_post_type' );
@@ -406,7 +391,4 @@ require get_template_directory() . '/inc/footer/footer-functions.php';
 
 add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
 
-// This is to parse content blocks so get_the_excerpt() understands to look further than just the first block of content in Gutenberg
-// How is this not the standard procedure..?
-// add_filter( 'get_the_excerpt', 'se378694_default_excerpt', 10, 2 );
 
