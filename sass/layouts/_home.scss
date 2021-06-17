@@ -1,21 +1,84 @@
-#home-container{
+#home-container + #colophon {
+    margin-top: 0 !important;
+}
+#home-container {
     background-color: white;
 
 
     .veldhuizen__container {
         width: 100%;
-        grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
         padding: 20px;
-        // margin: 20px;
+
+        .block {
+            &__info {
+                h5 {
+                    font-size: 1.6em;
+                    @include Responsive ($tabletSmallBreakpoint) {
+                        font-size: 1.3em;
+                    }
+                }
+            }
+
+            img {
+                height: 20vw;
+
+                @include Responsive($tabletBreakpoint) {
+                    // height: 15vh;
+                }
+
+                @include Responsive($tabletSmallBreakpoint) {
+                    // height: 200px;
+                }
+            }
+        }
+
+        @include Responsive($tabletSmallBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+            
+            :first-child {
+                grid-column-start: 1;
+                grid-column-end: 3;
+                
+                img {
+                    height: 40vw;
+                }
+            }
+        }
+
+        @include Responsive($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+
+
+            :first-child {
+                grid-column-start:initial;
+                grid-column-end: initial;
+            }
+            .block img {
+                height: 45vw;
+            }
+
+        }
+
+        .item-a {
+            grid-column-start: 2;
+            grid-column-end: five;
+            grid-row-start: row1-start;
+            grid-row-end: 3;
+        }
 
         .block:hover {
-            background-color: $veldhuizen__oranje;
             transition: all 0;
+            background-color: $veldhuizen__oranje;
+
             img {
                 opacity: 1;
             }
+
             .block__info {
+                transition: background-color inherit;
                 background-color: $veldhuizen__oranje;
+
                 h5 {
                     color: white;
                 }
@@ -27,12 +90,17 @@
         box-shadow: none;
         padding: 2em;
         width: 100%;
+
         h2 {
             font-weight: 700;
             color: $veldhuizen__groen;
             text-align: center;
             font-size: 2em;
+            @include Responsive($mobileBreakpoint) {
+                font-size: 1.5em;
+            }
         }
+
         .veldhuizen-rich-text-wrapper {
             width: 65%;
             margin: 0 auto;
@@ -42,21 +110,28 @@
             font-size: 1.2em;
             font-weight: 400;
             vertical-align: baseline;
-            
+
             strong {
                 color: $veldhuizen__groen;
             }
+            @include Responsive($tabletSmallBreakpoint) {
+                width: 100%;
+            }
+            @include Responsive($mobileBreakpoint) {
+                font-size: 0.9em;
+            }
         }
     }
+
     .home-vacatures {
-        width: 60%;
+        width: 50%;
         background-color: $veldhuizen__groen;
         color: white;
         margin: 0 auto;
         box-sizing: border-box;
         padding: 30px 50px;
-        margin-top: 2em;
-        margin-bottom: 5em;
+        margin-top: 10em;
+        margin-bottom: 10em;
 
         h3 {
             text-align: center;
@@ -64,16 +139,20 @@
             font-weight: 500;
             margin: 0;
         }
+
         p {
             font-size: 0.85em;
             font-weight: 400;
         }
+
         ul {
             display: flex;
             list-style: none;
             margin: 0;
             flex-wrap: wrap;
             padding-inline-start: 0;
+            justify-content: center;
+
             a {
                 color: white;
                 text-transform: uppercase;
@@ -92,6 +171,36 @@
             }
 
         }
+
+        @include Responsive($tabletBreakpoint) {
+            width: 80%;
+            margin-top: 8em;
+            margin-bottom: 8em;
+            ul {
+                
+            }
+        }
+        @include Responsive($tabletSmallBreakpoint) {
+            text-align: center;
+            margin-top: 5em;
+            margin-bottom: 5em;
+
+            h3 {
+                font-size: 2.5em; 
+            }
+
+            ul a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        @include Responsive($mobileBreakpoint) {
+            padding: 30px;
+            
+            ul a {
+                font-size: 0.9em;
+            }
+        }
     }
 
     .home-news {
@@ -99,6 +208,29 @@
         padding: 30px 50px;
         margin-top: 2em;
         margin-bottom: 2em;
+        position: relative;
+
+        @include Responsive(400px) {
+            padding: 30px 0;
+        }
+
+        .footer-links {
+            display: none;
+            position: absolute;
+            color: white;
+            text-decoration: none;
+            font-size: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &> :first-child {
+            left: 5rem;
+        }
+
+        &> :nth-child(2) {
+            right: 5rem;
+        }
 
         h3 {
             text-align: center;
@@ -107,22 +239,63 @@
             margin: 0;
             color: white;
             margin: 20px;
+            @include Responsive($tabletSmallBreakpoint) {
+                font-size: 2.5em;
+            }
         }
 
         .articles-wrapper {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+
             .article-links {
                 height: 600px;
                 width: 300px;
                 background-color: white;
                 margin: 10px;
                 text-decoration: none;
-               color: #404040;
+                color: #404040;
+                position: relative;
+                transition: all ease-in 0.2s;
 
-                h4, p {
-                    padding: 0 10px;
+                button {
+                    position: absolute;
+                    bottom: 30px;
+                    width: 35%;
+                    left: 50%;
+                    padding: 10px 15px;
+                    transform: translateX(-50%);
+                    background-color: white;
+                    font-size: 0.85em;
+                    transition: all ease-in 0.2s;
+                    opacity: 0.6;
+
+                    @include Responsive(1060px) {
+                        opacity: 1;
+                    }
+
+                    @include Responsive(400px) {
+                        width: 80%;
+                    }
+
+                }
+
+                &:hover {
+                    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.13);
+
+                    button {
+                        opacity: 1;
+                        background-color: $veldhuizen__oranje;
+                        color: white;
+                        border-color: $veldhuizen__oranje;
+                        display: block;
+                    }
+                }
+
+                h4,
+                p {
+                    padding: 0 1.2rem;
                 }
 
                 h4 {
@@ -133,10 +306,24 @@
                 p {
                     font-size: 0.85em;
                     line-height: 1.8em;
+                    position: absolute;
+                    font-weight: 300;
+                    top: 50%;
+                }
+
+                
+            }
+            @include Responsive(1060px) {
+                &>:last-child {
+                    display: none;
+                }
+            }
+            // Breakpoint wijkt af van $tabletSmallBreakpoint
+            @include Responsive(735px) {
+                &>:last-child {
+                    display: block;
                 }
             }
         }
-        
     }
 }
-

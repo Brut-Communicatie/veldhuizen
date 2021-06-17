@@ -186,6 +186,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
+//  REGISTERING TEMPLATES
 function veldhuizen_products_register_template() {
     $post_type_object = get_post_type_object( 'producten' );
     $post_type_object->template = array(
@@ -202,6 +203,7 @@ function veldhuizen_verhuur_register_template() {
 	);
 }
 
+// REGISTERING CUSTOM POST TYPES
 function veldhuizen_post_type() {
     $labels = array(
         'name'                  => _x( 'Producten', 'Post type general name', 'product' ),
@@ -300,6 +302,8 @@ function veldhuizen_verhuur_post_type() {
     register_post_type( 'Verhuur', $args );
 }
 
+// CUSTOM FUNCTIONS 
+
 function veldhuizen_home_c2a($c2a) {
 	$types = array( 'Producten', 'Verhuur', 'page', 'post' );
 	$page = get_page_by_path($c2a, $output, $types);
@@ -316,13 +320,13 @@ function veldhuizen_home_c2a($c2a) {
 	echo '</a>';
 }
 
+// Used for the Vacatures block in the home page
 function veldhuizen_home_vacatures() {
 	echo  '<h3>Vacatures</h3>';
 	echo '<p>Veldhuizen b.v. is fabrikant van aanhangwagens en opleggers voor BE-rijbewijs. Onze productrange bestaat verder uit oprij vrachtwagens en diverse Hovertrack varianten. Om aan de groeiende vraag uit de markt te voldoen, zijn wij op zoek naar:</p>';
 	$vacature_page = get_page_by_path('vacatures');
 	
 	$vacatures = get_children($vacature_page->ID);
-	// var_dump($vacatures);
 	echo '<ul>';
 	foreach($vacatures as $child) {
 		$vacatureTitle = get_the_title ( $child->ID );
@@ -334,6 +338,7 @@ function veldhuizen_home_vacatures() {
 	echo '</ul>';
 }
 
+// Used for the news block in the home page
 function veldhuizen_home_news() {
 	echo  '<h3>Nieuws</h3>';
 	$args = array(
@@ -341,27 +346,39 @@ function veldhuizen_home_news() {
         'post_status'   => 'published',
         'category_name' => 'nieuws',
         'orderby'       => 'date',
-        'order'         => 'DESC'
+        'order'         => 'DESC',
+		'numberposts'	=> '3'
     );
 	$news = get_posts($args);
+	
 	echo '<div class="articles-wrapper">';
 	foreach($news as $newsArticle) {
-        $thumb = get_the_post_thumbnail_url($newsArticle);
-        $excerpt = wp_trim_excerpt(get_the_excerpt($newsArticle));
-        $link = get_the_permalink($newsArticle);
-    
+		$removeTags = array('<br>', '<br><br>', '<br />', '<br/>', '<br   >');
+		$thumb = get_the_post_thumbnail_url($newsArticle);
+        $parsedContent = parse_blocks($newsArticle->post_content);
+		$link = get_the_permalink($newsArticle);
+		$excerptRaw = $parsedContent[2]['attrs']['content'];
+		$excerptRaw = substr($excerptRaw, 0, 300);
+		$excerptClean = strip_tags($excerptRaw, $removeTags);
+
+
         echo '<a class="article-links" href="' . $link . '" />';
         echo '<article class="news-article">';
         echo '<img src="' . $thumb . '" alt="Afbeelding van ' . ($newsArticle->post_name) . '" />';
         echo '<div class="article-text-wrapper">';
         echo '<h4>' . ($newsArticle->post_title) . '</h4>';
-        echo '<p>' . $excerpt . '</p>';
+        echo '<p class="article-excerpt">' . $excerptClean . '...</p>';
         echo '</div>';
         echo '</article>';
+		echo '<button>Lees meer</button>';
         echo '</a>';
     }
 	echo '</div>';
 }
+
+// function get_new_articles() {
+
+// }
 
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
@@ -373,3 +390,5 @@ add_action ( 'init', 'veldhuizen_verhuur_register_template' );
 require get_template_directory() . '/inc/footer/footer-functions.php';
 
 add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
+
+
