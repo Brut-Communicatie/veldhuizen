@@ -376,9 +376,9 @@ function veldhuizen_home_news() {
 	echo '</div>';
 }
 
-function get_new_articles() {
-	
-}
+// function get_new_articles() {
+
+// }
 
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
