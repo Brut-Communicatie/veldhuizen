@@ -12,5 +12,10 @@ newStr = newStr.replace(priceStr, "")
 priceStr = priceStr.replace(/–<br>/g, "<br>- ")
 priceStr = priceStr.replace(/<br><strong><var>€/g , "<strong><var>€")
 priceStr = priceStr.replace(regexMeerprijs, "=</var></strong>")
-document.getElementById("product-info").innerHTML = newStr + priceStr
+// document.getElementById("product-info").innerHTML = newStr + priceStr
+
+let fullStr = newStr + priceStr
+fullStr = fullStr.replace(/€/g, "")
+
+document.getElementById("product-info").innerHTML = fullStr
 
