@@ -910,6 +910,10 @@ textarea {
 	}
 }
 
+.fotos-container-wrapper .veldhuizen__container .veldhuizen__container--product-grid .print-button {
+	display: none;
+}
+
 .fotos-container-wrapper .veldhuizen__container .veldhuizen__container--product-grid .product-grid-wrapper {
 	width: 100%;
 }
@@ -1346,10 +1350,22 @@ textarea {
 	background-color: white;
 }
 
+#home-container #gutenslider-grzsfxbcy {
+	z-index: 1;
+}
+
 #home-container .veldhuizen__container {
 	width: 100%;
 	grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
 	padding: 20px;
+}
+
+#home-container .veldhuizen__container .block {
+	transition: all .3s ease;
+}
+
+#home-container .veldhuizen__container .block__info {
+	z-index: 1;
 }
 
 #home-container .veldhuizen__container .block__info h5 {
@@ -1400,7 +1416,6 @@ textarea {
 }
 
 #home-container .veldhuizen__container .block:hover {
-	transition: all 0;
 	background-color: #ff5400;
 }
 
@@ -1409,7 +1424,6 @@ textarea {
 }
 
 #home-container .veldhuizen__container .block:hover .block__info {
-	transition: background-color inherit;
 	background-color: #ff5400;
 }
 
@@ -2755,6 +2769,7 @@ textarea {
 
 .block__info {
 	flex-grow: 1;
+	padding: 10px 15px;
 }
 
 .banner-home-page h1 {
@@ -2875,6 +2890,10 @@ textarea {
 		opacity: 0;
 		transform: translateY(1rem);
 	}
+}
+
+.verhuur-lorem {
+	display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

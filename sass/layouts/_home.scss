@@ -4,6 +4,10 @@
 #home-container {
     background-color: white;
 
+    #gutenslider-grzsfxbcy {
+        z-index: 1;
+    }
+
 
     .veldhuizen__container {
         width: 100%;
@@ -11,7 +15,9 @@
         padding: 20px;
 
         .block {
+            transition: all .3s ease;
             &__info {
+                z-index: 1;
                 h5 {
                     font-size: 1.6em;
                     @include Responsive ($tabletSmallBreakpoint) {
@@ -68,7 +74,6 @@
         }
 
         .block:hover {
-            transition: all 0;
             background-color: $veldhuizen__oranje;
 
             img {
@@ -76,7 +81,6 @@
             }
 
             .block__info {
-                transition: background-color inherit;
                 background-color: $veldhuizen__oranje;
 
                 h5 {
