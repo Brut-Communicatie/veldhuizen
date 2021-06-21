@@ -17,7 +17,7 @@ if (!$hasChildren) {
 
 
 else {
-    echo '<div class="top__banner"><div class="top__content"><h1>'. $post->post_title  .'</h1></div></div>';
+    echo '<div class="top__banner"><div class="top__content"><h1>Verhuur '. $post->post_title  .'</h1></div></div>';
     echo '<div class="veldhuizen__container--intro verhuur-lorem">';
 	echo '<h2 class="verhuur-lorem">' . $post->post_title  . '</h2>';
 	echo '<p class="verhuur-lorem">' . 'Hier is de mogelijkheid om een klein stukje tekst toe te voegen' . '</p>';
