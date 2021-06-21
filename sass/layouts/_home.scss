@@ -16,6 +16,9 @@
 
         .block {
             transition: all .3s ease;
+            img {
+                height: 220px;
+            }
             &__info {
                 z-index: 1;
                 h5 {

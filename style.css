@@ -1364,6 +1364,10 @@ textarea {
 	transition: all .3s ease;
 }
 
+#home-container .veldhuizen__container .block img {
+	height: 220px;
+}
+
 #home-container .veldhuizen__container .block__info {
 	z-index: 1;
 }
