@@ -910,6 +910,10 @@ textarea {
 	}
 }
 
+.fotos-container-wrapper .veldhuizen__container .veldhuizen__container--product-grid .print-button {
+	display: none;
+}
+
 .fotos-container-wrapper .veldhuizen__container .veldhuizen__container--product-grid .product-grid-wrapper {
 	width: 100%;
 }
