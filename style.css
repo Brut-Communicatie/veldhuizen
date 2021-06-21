@@ -1360,6 +1360,10 @@ textarea {
 	padding: 20px;
 }
 
+#home-container .veldhuizen__container .block {
+	transition: all .3s ease;
+}
+
 #home-container .veldhuizen__container .block__info {
 	z-index: 1;
 }
@@ -1412,7 +1416,6 @@ textarea {
 }
 
 #home-container .veldhuizen__container .block:hover {
-	transition: all 0;
 	background-color: #ff5400;
 }
 
@@ -1421,7 +1424,6 @@ textarea {
 }
 
 #home-container .veldhuizen__container .block:hover .block__info {
-	transition: background-color inherit;
 	background-color: #ff5400;
 }
 
@@ -2767,6 +2769,7 @@ textarea {
 
 .block__info {
 	flex-grow: 1;
+	padding: 10px 15px;
 }
 
 .banner-home-page h1 {

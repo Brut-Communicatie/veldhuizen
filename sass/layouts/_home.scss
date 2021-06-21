@@ -15,6 +15,7 @@
         padding: 20px;
 
         .block {
+            transition: all .3s ease;
             &__info {
                 z-index: 1;
                 h5 {
@@ -73,7 +74,6 @@
         }
 
         .block:hover {
-            transition: all 0;
             background-color: $veldhuizen__oranje;
 
             img {
@@ -81,7 +81,6 @@
             }
 
             .block__info {
-                transition: background-color inherit;
                 background-color: $veldhuizen__oranje;
 
                 h5 {
