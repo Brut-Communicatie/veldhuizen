@@ -1346,10 +1346,18 @@ textarea {
 	background-color: white;
 }
 
+#home-container #gutenslider-grzsfxbcy {
+	z-index: 1;
+}
+
 #home-container .veldhuizen__container {
 	width: 100%;
 	grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
 	padding: 20px;
+}
+
+#home-container .veldhuizen__container .block__info {
+	z-index: 1;
 }
 
 #home-container .veldhuizen__container .block__info h5 {

@@ -4,6 +4,10 @@
 #home-container {
     background-color: white;
 
+    #gutenslider-grzsfxbcy {
+        z-index: 1;
+    }
+
 
     .veldhuizen__container {
         width: 100%;
@@ -12,6 +16,7 @@
 
         .block {
             &__info {
+                z-index: 1;
                 h5 {
                     font-size: 1.6em;
                     @include Responsive ($tabletSmallBreakpoint) {
