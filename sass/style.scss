@@ -156,6 +156,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 					}
 				}
 			}
+			
 		}
 	}
 }
@@ -314,4 +315,11 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 		opacity: 0;
 		transform: translateY(1rem);
 	}
+}
+
+// Remove the unnecessary dubbel titel in the Verhuur overview pages
+// Let's add lorem ipsum to a prototype, so we show we want to add text to a page
+// But also have no idea what kind of text it is and what the purpose of it is 
+.verhuur-lorem {
+	display: none;
 }
