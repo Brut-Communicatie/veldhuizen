@@ -542,4 +542,35 @@ p.no-comments {
 	height: 100%;
 }
 
+.cart__container {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 1001px) {
+	.cart__container {
+		width: calc(100% - 2rem);
+	}
+}
+
+.cart__empty .woocommerce-info {
+	background-color: #d7d7d7;
+	padding: 15px;
+}
+
+.return-to-shop a {
+	background-color: #0b9a71;
+	color: #ffffff;
+	border-color: #097850;
+	text-decoration: none;
+	padding: 10px 30px;
+	box-sizing: border-box;
+}
+
+@media screen and (max-width: 1001px) {
+	.return-to-shop a {
+		width: 100%;
+	}
+}
+
 /*# sourceMappingURL=woocommerce.css.map */
