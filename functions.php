@@ -12,6 +12,8 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.2' );
 }
 
+add_theme_support('woocommerce');
+
 if ( ! function_exists( 'veldhuizen_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
