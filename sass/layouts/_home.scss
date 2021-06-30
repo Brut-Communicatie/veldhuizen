@@ -19,6 +19,9 @@
             img {
                 height: 220px;
             }
+            &__square {
+                transition: all .3s ease;
+            }
             &__info {
                 z-index: 1;
                 h5 {
@@ -31,14 +34,6 @@
 
             img {
                 height: 20vw;
-
-                @include Responsive($tabletBreakpoint) {
-                    // height: 15vh;
-                }
-
-                @include Responsive($tabletSmallBreakpoint) {
-                    // height: 200px;
-                }
             }
         }
 
@@ -85,6 +80,9 @@
 
             .block__info {
                 background-color: $veldhuizen__oranje;
+                .block__square {
+                    background-color: $veldhuizen__oranje;
+                }
 
                 h5 {
                     color: white;

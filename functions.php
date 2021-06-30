@@ -303,7 +303,6 @@ function veldhuizen_verhuur_post_type() {
 }
 
 // CUSTOM FUNCTIONS 
-
 function veldhuizen_home_c2a($c2a) {
 	$types = array( 'Producten', 'Verhuur', 'page', 'post' );
 	$page = get_page_by_path($c2a, $output, $types);

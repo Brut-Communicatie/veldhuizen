@@ -849,7 +849,7 @@ textarea {
 		width: 0;
 	}
 	.veldhuizen__container--product-wrapper .veldhuizen__container--product-info p {
-		font-size: 12px;
+		font-size: 11px;
 	}
 	.veldhuizen__container--verhuur-wrapper {
 		box-shadow: none;
@@ -1368,6 +1368,10 @@ textarea {
 	height: 220px;
 }
 
+#home-container .veldhuizen__container .block__square {
+	transition: all .3s ease;
+}
+
 #home-container .veldhuizen__container .block__info {
 	z-index: 1;
 }
@@ -1428,6 +1432,10 @@ textarea {
 }
 
 #home-container .veldhuizen__container .block:hover .block__info {
+	background-color: #ff5400;
+}
+
+#home-container .veldhuizen__container .block:hover .block__info .block__square {
 	background-color: #ff5400;
 }
 
