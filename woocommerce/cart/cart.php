@@ -90,7 +90,7 @@ do_action( 'woocommerce_before_cart' );
 			echo '</div>';
 
 			echo '<div class="cart__row--item">';
-			$woocommerce->cart->set_quantity($item, '5456');
+			$woocommerce->cart->set_quantity($item, '5');
 			if ( $_product->is_sold_individually() ) {
 				$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $item );
 			} else {
@@ -116,10 +116,15 @@ do_action( 'woocommerce_before_cart' );
 				echo '€' . $_price . ',-';
 				echo '</div>';
 			}
-
+			
 			echo '</div>';
 		}
 	;?>
+	<div class="cart__navigation">
+		<div class="cart__navigation--button">Ga verder met bestellen</div>
+		<div class="cart__navigation--button">Cart updaten</div>
+	</div>
+
 </div>
 
 

@@ -6,6 +6,7 @@
         background-color: #fff;
         box-sizing: border-box;
         padding: 10px;
+
         @media screen and (max-width: 1001px) {
             width: calc(100% - 2rem);
         }
@@ -18,30 +19,54 @@
         }
     }
 
-    thead{
+    thead {
         background-color: #fff;
 
-        th{
-            padding-top:20px;
-            padding-bottom:20px;
-            padding-right:20px;   
+        th {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 20px;
             padding-left: 20px;
         }
     }
-    &__remove{
+
+    &__remove {
         margin-right: 30px;
         margin-left: 15px;
         font-weight: 600;
         color: green;
 
-        a{
+        a {
             color: green;
             text-decoration: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+    }
+    &__navigation{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        
+        margin-top: 1rem;
+        &--button{
+            background-color: green;
+            color: #fff;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+
             &:hover{
                 cursor: pointer;
             }
         }
-   
     }
     &__heading {
         display: flex;
@@ -58,31 +83,41 @@
             box-sizing: border-box;
             padding: 10px;
 
-            p{
+            p {
                 margin: 0;
                 font-weight: 600;
             }
 
         }
     }
+
     &__row {
         @extend .cart__heading;
-        &:nth-child(odd){
-            background-color: rgb(221, 221, 221);
+
+        &:nth-child(odd) {
+            background-color: rgb(231, 231, 231);
         }
-        &--item{
+
+        &--item {
             @extend .cart__heading--item;
 
-            img{
+            img {
                 max-width: 50px;
+
+                @media screen and (max-width: 1000px) {
+                    display: none;
+                }
             }
-            p{
+
+            p {
                 font-weight: 200;
             }
-      
+
+            input {
+                width: 100%;
+            }
         }
     }
-
 }
 
 .return-to-shop {
@@ -100,12 +135,13 @@
     }
 }
 
-.cart_item{
+.cart_item {
     background-color: #fff;
+
     td {
-        padding-top:20px;
-        padding-bottom:20px;
-        padding-right:20px;   
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 20px;
         padding-left: 20px;
-      }
+    }
 }
