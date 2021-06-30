@@ -89,7 +89,7 @@ p.stars {
 
 		&:hover {
 
-			~ a::before {
+			~a::before {
 				content: "\53";
 				color: $color__text-main;
 				opacity: 0.25;
@@ -119,7 +119,7 @@ p.stars {
 				opacity: 1;
 			}
 
-			~ a::before {
+			~a::before {
 				content: "\53";
 				color: $color__text-main;
 				opacity: 0.25;
@@ -218,19 +218,37 @@ p.stars {
 /**
  * Notices
  */
+
+.woocommerce-message {
+	width: 1000px;
+	margin: 0 auto;
+
+	a {
+		color: #fff;
+		margin-left: 5px;
+	}
+
+	@media screen and (max-width: 1001px) {
+		width: calc(100% - 1rem);
+	}
+}
+
 .woocommerce-message,
 .woocommerce-info,
 .woocommerce-error,
 .woocommerce-noreviews,
 p.no-comments {
-	background-color: $woocommerce__color-success;
+	background-color: $veldhuizen__groen;
+	color: #fff;
+	box-sizing: border-box;
+	padding: 10px;
 	clear: both;
 }
 
 .woocommerce-info,
 .woocommerce-noreviews,
 p.no-comments {
-	background-color: $woocommerce__color-info;
+	background-color: $veldhuizen__groen;
 }
 
 .woocommerce-error {
