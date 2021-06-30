@@ -19,10 +19,21 @@ defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_cart' ); 
 
-
 ?>
 
 <div class="cart__container">
+	<div id="my-app">
+		<my-component></my-component>
+	</div>
+
+	<script type="text/javascript">
+      new Vue({
+        el: '#my-app',
+        components: {
+          'my-component': httpVueLoader('<?php echo get_template_directory_uri();?>/woocommerce/components/cart.vue')
+        }
+      });
+    </script>
 	<?php
 		$hasPrice = false; // Defaults to false
 
@@ -236,7 +247,7 @@ do_action( 'woocommerce_before_cart' );
 							<?php do_action( 'woocommerce_cart_coupon' ); ?>
 						</div>
 					<?php } ?>
-
+CSklm.
 					<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 					<?php do_action( 'woocommerce_cart_actions' ); ?>
