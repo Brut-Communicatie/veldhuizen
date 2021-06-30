@@ -22,19 +22,9 @@ do_action( 'woocommerce_before_cart' );
 ?>
 
 <div class="cart__container">
-	<div id="my-app">
-		<my-component></my-component>
-	</div>
 
-	<script type="text/javascript">
-      new Vue({
-        el: '#my-app',
-        components: {
-          'my-component': httpVueLoader('<?php echo get_template_directory_uri();?>/woocommerce/components/cart.vue')
-        }
-      });
-    </script>
 	<?php
+		do_shortcode( '[vueapp]' );
 		$hasPrice = false; // Defaults to false
 
 		// Headings for the table

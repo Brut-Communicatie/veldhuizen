@@ -395,9 +395,3 @@ add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in 
 
 // Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
 require get_template_directory() . '/woocommerce/custom-fields.php';
-
-function addVue(){
-	echo '<script src="https://unpkg.com/vue@2"></script>';
-	echo '<script src="https://unpkg.com/http-vue-loader"></script>';
-}
-add_action( 'wp_head', 'addVue' );
