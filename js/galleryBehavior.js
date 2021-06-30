@@ -4,6 +4,11 @@ let openImage
 let n = -1 
 let expandedImage
 let returnImageSrc
+const modal = document.getElementById("myModal")
+
+// modal.onclick = () => {
+//     modal.style.display = 'none'
+// }
 
 const expandImage = (imgs) => {
     const expandImg = document.getElementById("big-image")
@@ -72,31 +77,38 @@ const previousSlide = (x) => {
 
 const closeModal = () => {
     document.getElementById("myModal").style.display = "none"
-    console.log("Dit is n (voor sluiten): " + n)
     n = -1
-    console.log("Dit is n: " + n)
     modalOpen = false
-    
 }
 
 const contactButton = document.getElementById("productContactButton")
-contactButton.addEventListener('click', () => {
-    document.location.href = "https://veldhuizen.nl/contact"
-})
+
+// contactButton.addEventListener('click', () => {
+//     document.location.href = "https://veldhuizen.nl/contact"
+// })
 
 const infoContainer = document.getElementsByClassName('veldhuizen__container--product-info')[0];
-// console.log(infoContainer);
 
 window.onbeforeprint = () => {
     expandedImage = document.getElementById('big-image')
     returnImageSrc = expandedImage.src
-    console.log(returnImageSrc)
     productImages = document.getElementsByClassName('gallery-pictures')
     document.getElementById('big-image').src = productImages[0].src
     return returnImageSrc
 }
 
 window.onafterprint = () => {
-    console.log(returnImageSrc)
     document.getElementById('big-image').src = returnImageSrc
 }
+
+window.onload = () => {
+    modalOpen = false
+    document.body.addEventListener('keydown', (event) => {
+        if(modalOpen === true) {
+            if (event.key === "Escape") {
+                closeModal()
+            }
+        }
+    })
+}
+

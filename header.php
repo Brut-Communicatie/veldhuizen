@@ -185,6 +185,9 @@
 				$postType = get_post_type($wp_query->post->ID);
 				$parentPost = get_post_parent($wp_query->post->ID);
 				$categoryName = get_the_category($wp_query->post->ID);
+				$category1 = ($categoryName[0]->category_nicename);
+				$category2 = ($categoryName[1]->category_nicename);
+				
 
 				if (is_front_page()){
 					echo '<p>U bevindt zich hier: ' . $postTitle .'</p>';
@@ -196,8 +199,15 @@
 					}
 				} else if ($postType === 'post' and ($categoryName[0]->category_nicename) == 'nieuws') {
 					echo '<p>U bevindt zich hier: Nieuws / ' . $postTitle .'</p>';
-				} else if ($postType) {
-					echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
+				} else if ($postType === 'producten' or $postType === 'verhuur') {
+					if (empty($category2) === false && empty($category1) === false ) {
+						$megaParent = get_post_parent($parentPost->ID);
+						echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . ucfirst($megaParent->post_title) . ' / ' . ucfirst($parentPost->post_title)  . ' / ' . $postTitle .'</p>';
+					} else if (empty($category2) === true and empty($category1) === false){
+						echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . ucfirst($categoryName[0]->category_nicename) . ' / ' . $postTitle .'</p>';
+					} else {
+						echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
+					}
 				} 
 			?>
 		</div>
