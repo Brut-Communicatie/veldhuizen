@@ -72,6 +72,23 @@
 			</div>
 			<div class="footer__item">
 				<h4>Onderdelen</h4>
+				<ul>
+				<?php  
+					$args = array(
+						'post_type'      => 'product',
+						'posts_per_page' => 5,
+					);
+
+					$loop = new WP_Query( $args );
+
+					while ( $loop->have_posts() ) : $loop->the_post();
+						global $product;
+						echo '<li><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
+					endwhile;
+
+					wp_reset_query();
+				?>
+				</ul>
 			</div>
 			<div class="footer__item">
 				<h4>Verhuur</h4>

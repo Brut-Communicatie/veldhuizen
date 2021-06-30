@@ -393,4 +393,5 @@ require get_template_directory() . '/inc/footer/footer-functions.php';
 
 add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
 
-
+// Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
+require get_template_directory() . '/woocommerce/custom-fields.php';
