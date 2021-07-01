@@ -12,6 +12,8 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.2' );
 }
 
+add_theme_support('woocommerce');
+
 if ( ! function_exists( 'veldhuizen_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -390,4 +392,5 @@ require get_template_directory() . '/inc/footer/footer-functions.php';
 
 add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
 
-
+// Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
+require get_template_directory() . '/woocommerce/custom-fields.php';
