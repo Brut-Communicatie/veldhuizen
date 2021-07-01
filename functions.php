@@ -321,6 +321,16 @@ function veldhuizen_home_c2a($c2a) {
 	echo '</a>';
 }
 
+// WooCommerce banner function
+function veldhuizen_wc_top_banner() {
+	$title = ($product->post_title);
+	echo '<div class="top__banner">';
+	echo '<div class="top__content">';
+	echo '<h1>' . $title . '</h1>';
+	echo '</div>';
+	echo '</div>';
+}
+
 // Used for the Vacatures block in the home page
 function veldhuizen_home_vacatures() {
 	echo  '<h3>Vacatures</h3>';
@@ -377,20 +387,39 @@ function veldhuizen_home_news() {
 	echo '</div>';
 }
 
-// function get_new_articles() {
+function veldhuizen_add_woocommerce_support() {
+	add_theme_support( 'woocommerce', array(
+		'thumbnail_image_width' => 150,
+		'single_image_width'    => 300,
 
-// }
+        'product_grid'          => array(
+            'default_rows'    => 4,
+            'min_rows'        => 2,
+            'max_rows'        => 8,
+            'default_columns' => 4,
+            'min_columns'     => 4,
+            'max_columns'     => 5,
+        ),
+	) );
+}
 
+
+
+// Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
+require get_template_directory() . '/woocommerce/custom-fields.php';
+
+// Call all hooks
+
+// add_action('pre_get_posts','shop_filter_cat');
+add_action( 'after_setup_theme', 'veldhuizen_add_woocommerce_support' );
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
-
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_verhuur_post_type' );
 add_action ( 'init', 'veldhuizen_verhuur_register_template' );
 
 require get_template_directory() . '/inc/footer/footer-functions.php';
 
-add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
+// Remove all BR's and P in Contact Form 7 
+add_filter('wpcf7_autop_or_not', '__return_false');
 
-// Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
-require get_template_directory() . '/woocommerce/custom-fields.php';

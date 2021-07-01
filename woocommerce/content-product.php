@@ -31,6 +31,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
+	$title = get_the_title();
+	echo $title;
 	do_action( 'woocommerce_before_shop_loop_item' );
 
 	/**

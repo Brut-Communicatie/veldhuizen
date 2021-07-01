@@ -133,8 +133,6 @@ woocommerce_wp_text_input(
 }
 function woo_add_custom_general_fields_save( $post_id ){
 
-	
-		
 		// Text Field
 	$woocommerce_text_field = $_POST['_iveco'];
 	if( !empty( $woocommerce_text_field ) )

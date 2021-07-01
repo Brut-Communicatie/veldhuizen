@@ -43,3 +43,16 @@ $woocommerce__color-info: #3d9cd2;
 @import "plugins/woocommerce/widgets";
 
 @import "plugins/woocommerce/cart";
+
+.veldhuizen__container {
+    grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
+
+    &.two-col {
+        grid-template-columns: 70% 30%;
+    }
+}
+.archive {
+    .page-title {
+        display: none;
+    }
+}
