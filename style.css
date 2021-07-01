@@ -2085,6 +2085,15 @@ textarea {
 	font-style: italic;
 }
 
+@media screen and (max-width: calc(740px + 5px)) {
+	.header__breadcrumbs {
+		justify-content: center;
+	}
+	.header__breadcrumbs p {
+		margin: 0 1rem;
+	}
+}
+
 .header__left {
 	width: 375px;
 }
@@ -2244,7 +2253,7 @@ textarea {
 	text-decoration: none;
 	border-right: 1px solid #dddddd;
 	border-bottom: 2px solid rgba(255, 255, 255, 0);
-	transition: all .25s ease;
+	transition: all .75s ease;
 	margin-bottom: -2px;
 }
 
@@ -2358,7 +2367,8 @@ textarea {
 
 .header__show {
 	display: flex;
-	animation: slideMenu .4s ease forwards;
+	animation: slideMenu .75s ease forwards;
+	transition-delay: 0.5s;
 }
 
 .header__mobile {

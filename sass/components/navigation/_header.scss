@@ -140,6 +140,13 @@ $menuBreakpoint : 1270px;
             margin-left: 4rem;
             font-style: italic;
         }
+
+        @include Responsive($tabletSmallBreakpoint) {
+             justify-content: center;
+             p {
+                margin: 0 1rem;
+             }
+        }
     }
 
     &__left {
@@ -281,7 +288,7 @@ $menuBreakpoint : 1270px;
             text-decoration: none;
             border-right: 1px solid #dddddd;
             border-bottom: 2px solid rgba(255, 255, 255, 0);
-            transition: all .25s ease;
+            transition: all .75s ease;
             margin-bottom: -2px;
 
             &:hover {
@@ -385,8 +392,8 @@ $menuBreakpoint : 1270px;
 
     &__show {
         display: flex;
-
-        animation: slideMenu .4s ease forwards;
+        animation: slideMenu .75s ease forwards;
+        transition-delay: 0.5s;
     }
     &__mobile{
         display: none;
