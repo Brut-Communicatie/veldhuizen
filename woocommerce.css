@@ -703,10 +703,36 @@ p.no-comments {
 }
 
 .veldhuizen__container.two-col {
-	grid-template-columns: 70% 30%;
+	grid-template-columns: calc(70% - 10px) 30%;
+}
+
+.veldhuizen__container.two-col .onderdelen-intro .bold {
+	font-weight: 700;
+}
+
+.veldhuizen__container.two-col .contact-card {
+	background-color: white;
+	padding: 40px 20px;
+	box-shadow: 2px 2px 3px rgba(238, 238, 238, 0.747);
+}
+
+.veldhuizen__container.two-col .contact-card h4 {
+	color: #0b9a71;
+	margin: 0;
+}
+
+.veldhuizen__container.two-col .contact-card p {
+	margin: 0;
+	color: #555555;
+	margin-bottom: 1em;
+	line-height: 1.8;
 }
 
 .archive .page-title {
+	display: none;
+}
+
+.archive #secondary {
 	display: none;
 }
 

@@ -54,10 +54,9 @@ if (is_shop()) {
 
     global $post;
     $page_title = get_the_title();
-    var_dump($page_title);
+    // var_dump($page_title);
 
     veldhuizen_wc_top_banner();
-
     
     echo '<div class="veldhuizen__container">';
     foreach ($onderdelen as $onderdeel){
@@ -75,18 +74,29 @@ if (is_shop()) {
     echo '</div>';
 
     echo '<div class="veldhuizen__container two-col">';
-    echo '<div class="--onderdelen-intro">';
-    echo '<h1>Onderdelen</h1>';
-    echo '<p>Bestellingen die voor 15:00 uur geplaatst zijn worden de volgende werkdag voor 17:00 uur afgeleverd, mits de onderdelen bij ons in voorraad zijn.
-    Bij de bestellingen moet duidelijk en volledig het afleveradres (geen postbus adres) vermeld worden. Het is belangrijk dat u een adres opgeeft waar altijd iemand aanwezig is om de bestelling in ontvangst te nemen. Dit omdat er getekend moet worden voor ontvangst.
-    Naast uw vestigingsadres (waar de factuur naartoe gestuurd wordt) kunt u ook een apart verzendadres invoeren.
-    Het is tevens mogelijk bestellingen af te halen. Gebruik bij bestellingen altijd onze artikelnummers.
-    U kunt natuurlijk ook even bellen om uw bestelling door te geven.
-    Ontvangt u liever eerst een prijsopgave? Klik dan de optie ‘Ik ontvang graag een prijsopgave’ in het bestelformulier aan.</p>';
-    echo '</div>';
+    echo '<div class="onderdelen-intro">';
+    echo '<p>Bestellingen die voor 15:00 uur geplaatst zijn worden de volgende werkdag voor 17:00 uur afgeleverd, mits de onderdelen bij ons in voorraad zijn. <br><br>
+    Bij de bestellingen moet duidelijk en volledig het afleveradres (geen postbus adres) vermeld worden. Het is belangrijk dat u een adres opgeeft waar altijd iemand aanwezig is om de bestelling in ontvangst te nemen. Dit omdat er getekend moet worden voor ontvangst. <br>
+    Naast uw vestigingsadres (waar de factuur naartoe gestuurd wordt) kunt u ook een apart verzendadres invoeren.<br><br>
+    Het is tevens mogelijk bestellingen af te halen. Gebruik bij bestellingen altijd onze artikelnummers.<br>
+    U kunt natuurlijk ook even bellen om uw bestelling door te geven.<br></p>
+    <p class="--bold">Ontvangt u liever eerst een prijsopgave? Klik dan de optie ‘Ik ontvang graag een prijsopgave’ in het bestelformulier aan.</p>';
     echo '</div>';
 
-    var_dump($onderdelen);
+	echo '<div class="contact-card">';
+	echo '<h4>Contact gegevens magazijn:</h4>';
+	echo '<p>T 088-6259602 <br> E magazijn@veldhuizen.nl</p>';
+
+	echo '<h4>Adres voor afhalen van onderdelen:</h4>';
+	echo '<p>Veldhuizen BV. Groenekan <br> Koningin Wilhelminaweg 259 <br> 3737 BA Groenekan</p>';
+
+	echo '<h4>Veldhuizen BV. Zwolle:</h4>';
+	echo '<p>Hermelenweg 158<br> 8028 PL Zwolle</p>';
+	echo '</div>';
+
+    echo '</div>';
+
+    // var_dump($onderdelen);
 
 } else if ( woocommerce_product_loop() ) {
 
