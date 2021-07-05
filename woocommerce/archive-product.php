@@ -32,7 +32,9 @@ do_action( 'woocommerce_before_main_content' );
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<div class="top__banner"><div class="top__content"><h1> <?php woocommerce_page_title(); ?> </h1></div></div>
+
+		<!-- <h1 class="woocommerce-products-header__title page-title"><?php // woocommerce_page_title(); ?></h1> -->
 	<?php endif; ?>
 
 	<?php
@@ -51,13 +53,9 @@ if (is_shop()) {
     $onderdelen = wc_get_products(array(
         'category' => array('onderdelen'),
     ));
-
+	
     global $post;
-    $page_title = get_the_title();
-    // var_dump($page_title);
 
-    veldhuizen_wc_top_banner();
-    
     echo '<div class="veldhuizen__container">';
     foreach ($onderdelen as $onderdeel){
         $prod_title = $onderdeel->name;
@@ -80,7 +78,7 @@ if (is_shop()) {
     Naast uw vestigingsadres (waar de factuur naartoe gestuurd wordt) kunt u ook een apart verzendadres invoeren.<br><br>
     Het is tevens mogelijk bestellingen af te halen. Gebruik bij bestellingen altijd onze artikelnummers.<br>
     U kunt natuurlijk ook even bellen om uw bestelling door te geven.<br></p>
-    <p class="--bold">Ontvangt u liever eerst een prijsopgave? Klik dan de optie ‘Ik ontvang graag een prijsopgave’ in het bestelformulier aan.</p>';
+    <p class="bold">Ontvangt u liever eerst een prijsopgave? Klik dan de optie ‘Ik ontvang graag een prijsopgave’ in het bestelformulier aan.</p>';
     echo '</div>';
 
 	echo '<div class="contact-card">';

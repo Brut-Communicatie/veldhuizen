@@ -698,30 +698,34 @@ p.no-comments {
 	padding-left: 20px;
 }
 
-.veldhuizen__container {
+.woocommerce .woocommerce-breadcrumb {
+	display: none;
+}
+
+.woocommerce .veldhuizen__container {
 	grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
 }
 
-.veldhuizen__container.two-col {
+.woocommerce .veldhuizen__container.two-col {
 	grid-template-columns: calc(70% - 10px) 30%;
 }
 
-.veldhuizen__container.two-col .onderdelen-intro .bold {
+.woocommerce .veldhuizen__container.two-col .onderdelen-intro .bold {
 	font-weight: 700;
 }
 
-.veldhuizen__container.two-col .contact-card {
+.woocommerce .veldhuizen__container.two-col .contact-card {
 	background-color: white;
 	padding: 40px 20px;
 	box-shadow: 2px 2px 3px rgba(238, 238, 238, 0.747);
 }
 
-.veldhuizen__container.two-col .contact-card h4 {
+.woocommerce .veldhuizen__container.two-col .contact-card h4 {
 	color: #0b9a71;
 	margin: 0;
 }
 
-.veldhuizen__container.two-col .contact-card p {
+.woocommerce .veldhuizen__container.two-col .contact-card p {
 	margin: 0;
 	color: #555555;
 	margin-bottom: 1em;

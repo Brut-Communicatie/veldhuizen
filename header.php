@@ -208,7 +208,13 @@
 					} else {
 						echo '<p>U bevindt zich hier: ' . ucfirst($postType) . ' / ' . $postTitle .'</p>';
 					}
-				} 
+				} else if ($postType === 'product') {
+					if (is_shop()) {
+						echo '<p>U bevindt zich hier: Onderdelen</p>';
+					} else {
+						echo '<p>U bevindt zich hier: Onderdelen / ' . $postTitle .'</p>';
+					}
+				}
 			?>
 		</div>
 	</header><!-- #masthead -->

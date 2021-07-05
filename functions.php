@@ -322,8 +322,7 @@ function veldhuizen_home_c2a($c2a) {
 }
 
 // WooCommerce banner function
-function veldhuizen_wc_top_banner() {
-	$title = ($product->post_title);
+function veldhuizen_wc_top_banner($title) {
 	echo '<div class="top__banner">';
 	echo '<div class="top__content">';
 	echo '<h1>' . $title . '</h1>';
