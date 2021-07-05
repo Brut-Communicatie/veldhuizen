@@ -82,14 +82,20 @@ if (is_shop()) {
     echo '</div>';
 
 	echo '<div class="contact-card">';
+	echo '<div class="wc-flex-wrapper">';
 	echo '<h4>Contact gegevens magazijn:</h4>';
 	echo '<p>T 088-6259602 <br> E magazijn@veldhuizen.nl</p>';
+	echo '</div>';
 
+	echo '<div class="wc-flex-wrapper">';
 	echo '<h4>Adres voor afhalen van onderdelen:</h4>';
 	echo '<p>Veldhuizen BV. Groenekan <br> Koningin Wilhelminaweg 259 <br> 3737 BA Groenekan</p>';
-
+	echo '</div>';
+	
+	echo '<div class="wc-flex-wrapper">';
 	echo '<h4>Veldhuizen BV. Zwolle:</h4>';
 	echo '<p>Hermelenweg 158<br> 8028 PL Zwolle</p>';
+	echo '</div>';
 	echo '</div>';
 
     echo '</div>';

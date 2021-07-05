@@ -50,9 +50,23 @@ $woocommerce__color-info: #3d9cd2;
     }
     .veldhuizen__container {
         grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
+
+        @include Responsive($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+            .block img {
+                height: 100px;
+            }
+        }
     
         &.two-col {
             grid-template-columns: calc(70% - 10px) 30%;
+
+            @include Responsive($tabletBreakpoint) {
+                grid-template-columns: calc(60% - 10px) 40%;
+            }
+            @include Responsive(700px) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+            }
             .onderdelen-intro {
                 .bold {
                     font-weight: 700;
@@ -63,16 +77,37 @@ $woocommerce__color-info: #3d9cd2;
                 background-color: white;
                 padding: 40px 20px;
                 box-shadow: 2px 2px 3px rgba(238, 238, 238, 0.747);
+                display: flex;
+                flex-wrap: wrap;
     
-                h4 {
-                    color: $veldhuizen__groen;
-                    margin: 0;
+                .wc-flex-wrapper  {
+                    h4 {
+                        color: $veldhuizen__groen;
+                        margin: 0;
+                    }
+                     p {
+                        margin: 0;
+                        color: #555555;
+                        line-height: 1.8;
+                    }
                 }
-                p {
-                    margin: 0;
-                    color: #555555;
-                    margin-bottom: 1em;
-                    line-height: 1.8;
+
+                @include Responsive($tabletBreakpoint) {
+                    align-content: space-around;
+                }
+
+                @include Responsive (700px) {
+                    justify-content: space-between;
+                    .wc-flex-wrapper {
+                        padding: 10px;
+                    }
+                }
+                @include Responsive (600px) {
+                    justify-content: center;
+                    .wc-flex-wrapper {
+                        width: 100%;
+                        text-align: center;
+                    }
                 }
             }
         }
