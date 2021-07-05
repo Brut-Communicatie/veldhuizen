@@ -625,10 +625,21 @@ p.no-comments {
 	align-items: center;
 	justify-content: center;
 	padding: 10px;
+	border-radius: 0;
+	line-height: unset;
+	text-decoration: none;
 }
 
 .cart__navigation--button:hover {
 	cursor: pointer;
+	color: #fff;
+	text-decoration: none;
+}
+
+.cart__navigation--button:visited {
+	cursor: pointer;
+	color: #fff;
+	text-decoration: none;
 }
 
 .cart__heading, .cart__row {

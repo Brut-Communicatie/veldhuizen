@@ -48,15 +48,17 @@
         }
 
     }
-    &__navigation{
+
+    &__navigation {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         box-sizing: border-box;
-        
+
         margin-top: 1rem;
-        &--button{
+
+        &--button {
             background-color: $veldhuizen__groen;
             color: #fff;
             box-sizing: border-box;
@@ -64,12 +66,23 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
+            border-radius: 0;
+            line-height: unset;
 
-            &:hover{
+            text-decoration: none;
+            &:hover {
                 cursor: pointer;
+                color: #fff;
+                text-decoration: none;
+            }
+            &:visited{
+                cursor: pointer;
+                color: #fff;
+                text-decoration: none;
             }
         }
     }
+
     &__heading {
         display: flex;
         justify-content: space-between;
