@@ -82,6 +82,7 @@ if (is_shop()) {
     echo '</div>';
 
 	echo '<div class="contact-card">';
+	
 	echo '<div class="wc-flex-wrapper">';
 	echo '<h4>Contact gegevens magazijn:</h4>';
 	echo '<p>T 088-6259602 <br> E magazijn@veldhuizen.nl</p>';
@@ -91,7 +92,7 @@ if (is_shop()) {
 	echo '<h4>Adres voor afhalen van onderdelen:</h4>';
 	echo '<p>Veldhuizen BV. Groenekan <br> Koningin Wilhelminaweg 259 <br> 3737 BA Groenekan</p>';
 	echo '</div>';
-	
+
 	echo '<div class="wc-flex-wrapper">';
 	echo '<h4>Veldhuizen BV. Zwolle:</h4>';
 	echo '<p>Hermelenweg 158<br> 8028 PL Zwolle</p>';
@@ -100,9 +101,9 @@ if (is_shop()) {
 
     echo '</div>';
 
-    // var_dump($onderdelen);
-
+    
 } else if ( woocommerce_product_loop() ) {
+	
 
 	/**
 	 * Hook: woocommerce_before_shop_loop.
@@ -120,7 +121,8 @@ if (is_shop()) {
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
 			the_post();
-            // Check functions.php for shop_filter_cat()
+			// $image = wp_get_attachment_url( $product->get_image_id() );
+			// echo '<p>' . $image . '</p>';
 
             wp_reset_query();
 			/**
