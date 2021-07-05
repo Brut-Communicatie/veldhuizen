@@ -242,6 +242,11 @@ ul.products li.product .button {
 	}
 }
 
+.checkout {
+	width: 1000px;
+	margin: 0 auto;
+}
+
 /**
  * General WooCommerce components
  */

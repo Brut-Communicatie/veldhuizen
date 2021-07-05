@@ -10,7 +10,11 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-<?php if (!is_cart()) : ?>
+<?php if (is_cart()) : ?>
+
+<?php elseif(is_checkout()) : ?>
+
+<?php else : ?>
 	<header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
@@ -19,8 +23,11 @@
 
 	<div class="entry-content">
 		<?php
-		the_content();
-
+		if (is_checkout()){
+			get_template_part('template-parts/woocommerce/layout' , 'checkout');
+		} else {
+			the_content();
+		}
 		wp_link_pages(
 			array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'veldhuizen' ),
