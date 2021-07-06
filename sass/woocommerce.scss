@@ -8,6 +8,7 @@ WooCommerce styles override
 $woocommerce__color-error: #e2401c;
 $woocommerce__color-success: #0f834d;
 $woocommerce__color-info: #3d9cd2;
+$woocommerce__color-tr-odd: #ECECEC;
 
 // Import variables and mixins
 @import "abstracts/abstracts";
@@ -140,6 +141,24 @@ $woocommerce__color-info: #3d9cd2;
 
         &.one-col {
             grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+        }
+   }
+   .grouped_form {
+        table {
+            tbody {
+                & > :nth-child(even) {
+                    background-color: $woocommerce__color-tr-odd;
+                }
+                tr {
+                    td.cell-names {
+                        color: $veldhuizen__groen;
+                        font-weight: 700;
+                    }
+                    td {
+                        padding: 15px;
+                    }
+                } 
+            }
         }
    }
 

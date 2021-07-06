@@ -73,7 +73,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 } else  {
 	echo '<h1>Hell no</h1>';
 	?>
-
+	<div class="veldhuizen__container one-col">
 	<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 		<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
 			<tbody>
@@ -181,6 +181,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 
 		<?php endif; ?>
 	</form>
+	</div>
 
 <?php
 // CLOSING TAG FROM IF ELSE CHECK FOR LOCATION PAGE USER

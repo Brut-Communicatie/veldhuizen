@@ -806,6 +806,19 @@ p.no-comments {
 	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 }
 
+.product-template-default .grouped_form table tbody > :nth-child(even) {
+	background-color: #ECECEC;
+}
+
+.product-template-default .grouped_form table tbody tr td.cell-names {
+	color: #0b9a71;
+	font-weight: 700;
+}
+
+.product-template-default .grouped_form table tbody tr td {
+	padding: 15px;
+}
+
 .product-template-default .woocommerce-tabs, .product-template-default .woocommerce-product-gallery, .product-template-default p.price, .product-template-default .product_title, .product-template-default .product_meta, .product-template-default #secondary {
 	display: none;
 }
