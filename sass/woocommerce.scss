@@ -164,12 +164,20 @@ $woocommerce__color-tr-odd: #ECECEC;
                         font-weight: 700;
                     }
                     td {
+                        > p {
+                            text-transform: capitalize;
+                        }
                         .quantity input[type=number] {
-                            background-color: red;
+                           width: 60px; 
                         }
                     }
                 } 
             }
+        }
+
+        .single_add_to_cart_button {
+            background-color: $veldhuizen__oranje;
+            color: white;
         }
    }
 

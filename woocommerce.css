@@ -824,8 +824,17 @@ p.no-comments {
 	font-weight: 700;
 }
 
+.product-template-default .grouped_form table tbody tr td > p {
+	text-transform: capitalize;
+}
+
 .product-template-default .grouped_form table tbody tr td .quantity input[type=number] {
-	background-color: red;
+	width: 60px;
+}
+
+.product-template-default .grouped_form .single_add_to_cart_button {
+	background-color: #ff5400;
+	color: white;
 }
 
 .product-template-default .woocommerce-tabs, .product-template-default .woocommerce-product-gallery, .product-template-default p.price, .product-template-default .product_title, .product-template-default .product_meta, .product-template-default #secondary {

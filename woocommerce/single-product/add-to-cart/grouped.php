@@ -87,6 +87,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 					<td></td>
 					<td class="cell-names">Hoeveelheid</td>
 					<td class="cell-names">Naam product</td>
+					<td class="cell-names">Artikelnummer</td>
 					<td class="cell-names">Prijs</td>
 				</tr>
 					
@@ -99,6 +100,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 						'image',
 						'quantity',
 						'label',
+						'veldhuizen_id',
 						'price',
 						
 					),
@@ -156,8 +158,13 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 								break;
 							case 'label':
 								$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
-								$value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
+								// $value = $grouped_product_child->is_visible() ? '<p>' . $grouped_product_child->name . '</p>' : $grouped_product_child->get_name();
+								$value = '<p>' . $grouped_product_child->name . '</p>';
+								// $value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
 								$value .= '</label>';
+								break;
+							case 'veldhuizen_id':
+								$value = get_post_meta($grouped_product_child->get_id(), '_artikelnummer', true );
 								break;
 							case 'price':
 								$value = $grouped_product_child->get_price_html() . wc_get_stock_html( $grouped_product_child );
