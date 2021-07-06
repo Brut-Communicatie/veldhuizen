@@ -833,8 +833,23 @@ p.no-comments {
 }
 
 .product-template-default .grouped_form .single_add_to_cart_button {
+	cursor: pointer;
 	background-color: #ff5400;
 	color: white;
+	margin: 1.2rem 0;
+	padding: 15px 30px;
+	-webkit-transition: background-color 0.3s ease-in-out;
+	-moz-transition: background-color 0.3s ease-in-out;
+	-o-transition: background-color 0.3s ease-in-out;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.product-template-default .grouped_form .single_add_to_cart_button:hover {
+	background-color: #555555;
+}
+
+.product-template-default .grouped_form .single_add_to_cart_button .fas {
+	margin-right: 10px;
 }
 
 .product-template-default .woocommerce-tabs, .product-template-default .woocommerce-product-gallery, .product-template-default p.price, .product-template-default .product_title, .product-template-default .product_meta, .product-template-default #secondary {

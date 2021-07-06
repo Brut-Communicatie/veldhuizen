@@ -176,8 +176,21 @@ $woocommerce__color-tr-odd: #ECECEC;
         }
 
         .single_add_to_cart_button {
+            cursor: pointer;
             background-color: $veldhuizen__oranje;
             color: white;
+            margin: 1.2rem 0;
+			padding: 15px 30px;
+			-webkit-transition: background-color 0.3s ease-in-out;
+			-moz-transition: background-color 0.3s ease-in-out;
+			-o-transition: background-color 0.3s ease-in-out;
+			transition: background-color 0.3s ease-in-out;
+            &:hover {
+				background-color: #555555;
+			}
+            .fas {
+                margin-right: 10px;
+            }
         }
    }
 

@@ -196,7 +196,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 
 			<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-			<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+			<button type="submit" class="single_add_to_cart_button button alt"><i class="fas fa-print"> </i> <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 			<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 
