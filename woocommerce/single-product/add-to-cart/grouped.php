@@ -19,6 +19,7 @@ defined( 'ABSPATH' ) || exit;
 
 global $product, $post;
 
+
 do_action( 'woocommerce_before_add_to_cart_form' ); 
 
 // TEXT VARIABLES FOR DIFFERENT PAGES
@@ -71,13 +72,19 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 	echo '</div>';		// close veldhuizen__container
 
 } else  {
-	echo '<h1>Hell no</h1>';
 	?>
+	<div class="veldhuizen__container one-col small">
+	<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (groene knop). Uw bestelling kunt u plaatsen via het winkelmandje rechtsbovenaan de pagina.</p>
+	<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen. Bekijk een grotere afbeelding door op de afbeelding te klikken.</p>
+	</div>
+	
+
 	<div class="veldhuizen__container one-col">
 	<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 		<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
 			<tbody>
 				<tr>
+					<td></td>
 					<td class="cell-names">Hoeveelheid</td>
 					<td class="cell-names">Naam product</td>
 					<td class="cell-names">Prijs</td>
@@ -89,13 +96,15 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 				$grouped_product_columns = apply_filters(
 					'woocommerce_grouped_product_columns',
 					array(
+						'image',
 						'quantity',
 						'label',
 						'price',
+						
 					),
 					$product
 				);
-				$show_add_to_cart_button = false;
+				$show_add_to_cart_button = true;
 
 				do_action( 'woocommerce_grouped_product_list_before', $grouped_product_columns, $quantites_required, $product );
 				
@@ -116,6 +125,10 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 						do_action( 'woocommerce_grouped_product_list_before_' . $column_id, $grouped_product_child );
 
 						switch ( $column_id ) {
+							case 'image':
+								$size = 'shop_thumbnail';
+								$value = $grouped_product_child->get_image($size);
+								break;
 							case 'quantity':
 								ob_start();
 
@@ -149,12 +162,13 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 							case 'price':
 								$value = $grouped_product_child->get_price_html() . wc_get_stock_html( $grouped_product_child );
 								break;
+							
 							default:
 								$value = '';
 								break;
 						}
 
-						echo '<td class="woocommerce-grouped-product-list-item__' . esc_attr( $column_id ) . '">' . apply_filters( 'woocommerce_grouped_product_list_column_' . $column_id, $value, $grouped_product_child ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '<td class="woocommerce-grouped-product-list-item__' . esc_attr( $column_id ) . '">' . apply_filters( 'woocommerce_grouped_product_list_column_' . $column_id, $value, $grouped_product_child ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 						do_action( 'woocommerce_grouped_product_list_after_' . $column_id, $grouped_product_child );
 					}

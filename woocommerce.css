@@ -698,6 +698,15 @@ p.no-comments {
 	padding-left: 20px;
 }
 
+.woocommerce .bold {
+	font-weight: 700;
+}
+
+.woocommerce .center {
+	text-align: center;
+	margin-bottom: 0;
+}
+
 .woocommerce hr.divider-shop {
 	border-top: 1px solid #cccccc0a;
 	width: 100%;
@@ -735,10 +744,6 @@ p.no-comments {
 	.woocommerce .veldhuizen__container.two-col {
 		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 	}
-}
-
-.woocommerce .veldhuizen__container.two-col .onderdelen-intro .bold {
-	font-weight: 700;
 }
 
 .woocommerce .veldhuizen__container.two-col .contact-card {
@@ -806,6 +811,10 @@ p.no-comments {
 	grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 }
 
+.product-template-default .veldhuizen__container.one-col.small {
+	width: 800px;
+}
+
 .product-template-default .grouped_form table tbody > :nth-child(even) {
 	background-color: #ECECEC;
 }
@@ -815,8 +824,8 @@ p.no-comments {
 	font-weight: 700;
 }
 
-.product-template-default .grouped_form table tbody tr td {
-	padding: 15px;
+.product-template-default .grouped_form table tbody tr td .quantity input[type=number] {
+	background-color: red;
 }
 
 .product-template-default .woocommerce-tabs, .product-template-default .woocommerce-product-gallery, .product-template-default p.price, .product-template-default .product_title, .product-template-default .product_meta, .product-template-default #secondary {

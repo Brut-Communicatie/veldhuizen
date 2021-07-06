@@ -46,6 +46,13 @@ $woocommerce__color-tr-odd: #ECECEC;
 @import "plugins/woocommerce/cart";
 
 .woocommerce {
+    .bold {
+        font-weight: 700;
+    }
+    .center {
+        text-align: center;
+        margin-bottom: 0;
+    }
     hr.divider-shop {
         border-top: 1px solid #cccccc0a;
         width: 100%;
@@ -75,11 +82,9 @@ $woocommerce__color-tr-odd: #ECECEC;
             @include Responsive(700px) {
                 grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
             }
-            .onderdelen-intro {
-                .bold {
-                    font-weight: 700;
-                }
-            }
+            // .onderdelen-intro {
+                
+            // }
     
             .contact-card {
                 background-color: white;
@@ -141,6 +146,10 @@ $woocommerce__color-tr-odd: #ECECEC;
 
         &.one-col {
             grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+
+            &.small {
+                width: 800px;
+            }
         }
    }
    .grouped_form {
@@ -155,7 +164,9 @@ $woocommerce__color-tr-odd: #ECECEC;
                         font-weight: 700;
                     }
                     td {
-                        padding: 15px;
+                        .quantity input[type=number] {
+                            background-color: red;
+                        }
                     }
                 } 
             }
