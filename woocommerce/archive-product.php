@@ -69,6 +69,7 @@ if (is_shop()) {
         echo '</div>';
 	    echo '</a>';
     }
+	echo '<hr class="divider-shop">';
     echo '</div>';
 
     echo '<div class="veldhuizen__container two-col">';
