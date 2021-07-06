@@ -19,19 +19,34 @@ defined( 'ABSPATH' ) || exit;
 
 global $product, $post;
 
-do_action( 'woocommerce_before_add_to_cart_form' ); ?>
+do_action( 'woocommerce_before_add_to_cart_form' ); 
 
+// TEXT VARIABLES FOR DIFFERENT PAGES
+$verlichting_intro 		= '<p>Hier kunt u alle verlichting onderdelen en toebehoren zoals stekkers en kabelverbindingsdoos vinden.<br><br>Selecteer een categorie waarin u wilt zoeken en u krijgt een overzicht waarin de onderdelen afgebeeld zijn. Als het onderdeel wat u zoekt niet op deze site staat, kunt u altijd contact opnemen met onze magazijnmedewerker door het volgende telefoonnummer te bellen 088-6259600.</p>'; 
+$assen_intro 			= '<p>Voor het vinden van de juiste onderdelen van een as heeft u het chassisnummer nodig van de oplegger of aanhangwagen waarvoor u onderdelen zoekt. Het 6e karakter in het chassisnummer geeft aan welk type as er gemonteerd is. Hieronder staan de verschillende typen assen weergegeven. Als u op een type klikt, krijgt u een tekening of afbeelding te zien met het daarbij behorende overzicht met artikelnummers.<br><br> <strong>Voorbeeld:</strong> <br> Een oplegger heeft het volgende chassisnummer -XL9LS<strong>H</strong>12345070001, de assen onder deze oplegger zijn van het type <strong>H</strong>.</p>';
+$trekkerombouw_intro 	= '<p>Hier kunt u alle onderdelen en toebehoren van verschillende merken vinden.<br><br>Selecteer een categorie waarin u wilt zoeken en u krijgt een overzicht waarin de onderdelen afgebeeld zijn. Als het onderdeel wat u zoekt niet op deze site staat, kunt u altijd contact opnemen met onze magazijnmedewerker door het volgende telefoonnummer te bellen 088-6259600.</p>';
+$carrosserie_intro 		= '<p>Voer het aantal onderdelen in en plaats deze in het winkelmandje (groene knop). Uw bestelling kunt u plaatsen via het winkelmandje rechtsbovenaan de pagina.<br><br>Onderdelen zoals sluitingen en scharnieren die op uw aanhangwagen of oplegger gemonteerd zijn, vindt u in deze categorie. U kunt heel eenvoudig bestellen door het aantal wat u wenst bij het betreffende onderdeel te plaatsen en de bestelling te verzenden. Als het onderdeel wat u zoekt niet op deze site staat, kunt u altijd contact opnemen met onze magazijnmedewerker door het volgende telefoonnummer te bellen 088-6259600.</p>';
+?>
 
 <?php
-// Make selection to create product cat overview pages
-// var_dump($post->post_name);
+// Banner title
 $post_title = ($post->post_name);
-if ($post_title === 'trekkerombouw' or $post_title === 'carrosserie' or $post_title === 'verlichting' or $post_title === 'assen') {
-	echo '<div class="top__banner"><div class="top__content"><h1>' . $post_title . '</h1></div></div>';
+echo '<div class="top__banner"><div class="top__content"><h1>' . $post_title . '</h1></div></div>';
 
+// Make selection to create product cat overview pages
+if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_title === 'assen') {
+
+	// Intro text selection based on page
 	echo '<div class="veldhuizen__container one-col">';
-	echo '<p>Hier kunt u alle verlichting onderdelen en toebehoren zoals stekkers en kabelverbindingsdoos vinden.</p>';
-	echo '<p>Selecteer een categorie waarin u wilt zoeken en u krijgt een overzicht waarin de onderdelen afgebeeld zijn. Als het onderdeel wat u zoekt niet op deze site staat, kunt u altijd contact opnemen met onze magazijnmedewerker door het volgende telefoonnummer te bellen 088-6259600.</p>';
+	if ($post_title === 'trekkerombouw') {
+		echo $trekkerombouw_intro;
+	} else if ($post_title === 'verlichting') {
+		echo $verlichting_intro;
+	} else if ($post_title === 'assen') {
+		echo $assen_intro;
+	} else if ($post_title === 'carrosserie') {
+		echo $carrosserie_intro;
+	}
 	echo '<hr class="divider-shop">';
 	echo '</div>';
 
@@ -55,13 +70,19 @@ if ($post_title === 'trekkerombouw' or $post_title === 'carrosserie' or $post_ti
 	}
 	echo '</div>';		// close veldhuizen__container
 
-} else {
+} else  {
 	echo '<h1>Hell no</h1>';
 	?>
 
 	<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 		<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
 			<tbody>
+				<tr>
+					<td class="cell-names">Hoeveelheid</td>
+					<td class="cell-names">Naam product</td>
+					<td class="cell-names">Prijs</td>
+				</tr>
+					
 				<?php
 				$quantites_required      = false;
 				$previous_post           = $post;
@@ -77,7 +98,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'carrosserie' or $post_ti
 				$show_add_to_cart_button = false;
 
 				do_action( 'woocommerce_grouped_product_list_before', $grouped_product_columns, $quantites_required, $product );
-
+				
 				foreach ( $grouped_products as $grouped_product_child ) {
 					$post_object        = get_post( $grouped_product_child->get_id() );
 					$quantites_required = $quantites_required || ( $grouped_product_child->is_purchasable() && ! $grouped_product_child->has_options() );
