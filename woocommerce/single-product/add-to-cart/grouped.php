@@ -21,6 +21,24 @@ global $product, $post;
 
 do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
+
+<?php
+// Make selection to create product cat overview pages
+var_dump($post->post_name);
+$post_title = ($post->post_name);
+if ($post_title === 'trekkerombouw' or $post_title === 'carrosserie' or $post_title === 'verlichting' or $post_title === 'assen') {
+	echo '<h1>Hell yeah</h1>';
+	foreach( $grouped_products as $grouped_product_child) {
+		// var_dump($grouped_product_child->name);
+		var_dump($grouped_product_child);
+	}
+	// var_dump($grouped_products);
+} else {
+	echo '<h1>Hell no</h1>';
+}
+
+?>
+
 <form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 	<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
 		<tbody>
