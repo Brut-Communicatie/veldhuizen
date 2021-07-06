@@ -242,9 +242,25 @@ ul.products li.product .button {
 	}
 }
 
-.checkout {
+.checkout__layout {
 	width: 1000px;
 	margin: 0 auto;
+}
+
+@media screen and (max-width: 1001px) {
+	.checkout__layout {
+		width: calc(100% - 2rem);
+	}
+}
+
+.checkout__layout p strong {
+	color: #0b9a71;
+}
+
+.checkout__layout--inner {
+	box-sizing: border-box;
+	padding: 2rem;
+	background-color: #c5c5c5;
 }
 
 /**
