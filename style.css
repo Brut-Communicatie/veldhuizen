@@ -849,7 +849,7 @@ textarea {
 		width: 0;
 	}
 	.veldhuizen__container--product-wrapper .veldhuizen__container--product-info p {
-		font-size: 12px;
+		font-size: 11px;
 	}
 	.veldhuizen__container--verhuur-wrapper {
 		box-shadow: none;
@@ -1364,6 +1364,14 @@ textarea {
 	transition: all .3s ease;
 }
 
+#home-container .veldhuizen__container .block img {
+	height: 220px;
+}
+
+#home-container .veldhuizen__container .block__square {
+	transition: all .3s ease;
+}
+
 #home-container .veldhuizen__container .block__info {
 	z-index: 1;
 }
@@ -1424,6 +1432,10 @@ textarea {
 }
 
 #home-container .veldhuizen__container .block:hover .block__info {
+	background-color: #ff5400;
+}
+
+#home-container .veldhuizen__container .block:hover .block__info .block__square {
 	background-color: #ff5400;
 }
 
@@ -2073,6 +2085,15 @@ textarea {
 	font-style: italic;
 }
 
+@media screen and (max-width: calc(740px + 5px)) {
+	.header__breadcrumbs {
+		justify-content: center;
+	}
+	.header__breadcrumbs p {
+		margin: 0 1rem;
+	}
+}
+
 .header__left {
 	width: 375px;
 }
@@ -2232,7 +2253,7 @@ textarea {
 	text-decoration: none;
 	border-right: 1px solid #dddddd;
 	border-bottom: 2px solid rgba(255, 255, 255, 0);
-	transition: all .25s ease;
+	transition: all .75s ease;
 	margin-bottom: -2px;
 }
 
@@ -2346,7 +2367,8 @@ textarea {
 
 .header__show {
 	display: flex;
-	animation: slideMenu .4s ease forwards;
+	animation: slideMenu .75s ease forwards;
+	transition-delay: 0.5s;
 }
 
 .header__mobile {

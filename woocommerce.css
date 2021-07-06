@@ -731,4 +731,93 @@ p.no-comments {
 	padding-left: 20px;
 }
 
+.woocommerce .woocommerce-breadcrumb {
+	display: none;
+}
+
+.woocommerce .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.woocommerce .veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+	}
+	.woocommerce .veldhuizen__container .block img {
+		height: 100px;
+	}
+}
+
+.woocommerce .veldhuizen__container.two-col {
+	grid-template-columns: calc(70% - 10px) 30%;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.woocommerce .veldhuizen__container.two-col {
+		grid-template-columns: calc(60% - 10px) 40%;
+	}
+}
+
+@media screen and (max-width: calc(700px + 5px)) {
+	.woocommerce .veldhuizen__container.two-col {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+}
+
+.woocommerce .veldhuizen__container.two-col .onderdelen-intro .bold {
+	font-weight: 700;
+}
+
+.woocommerce .veldhuizen__container.two-col .contact-card {
+	background-color: white;
+	padding: 40px 20px;
+	box-shadow: 2px 2px 3px rgba(238, 238, 238, 0.747);
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.woocommerce .veldhuizen__container.two-col .contact-card .wc-flex-wrapper h4 {
+	color: #0b9a71;
+	margin: 0;
+}
+
+.woocommerce .veldhuizen__container.two-col .contact-card .wc-flex-wrapper p {
+	margin: 0;
+	color: #555555;
+	line-height: 1.8;
+}
+
+@media screen and (max-width: calc(1024px + 5px)) {
+	.woocommerce .veldhuizen__container.two-col .contact-card {
+		align-content: space-around;
+	}
+}
+
+@media screen and (max-width: calc(700px + 5px)) {
+	.woocommerce .veldhuizen__container.two-col .contact-card {
+		justify-content: space-between;
+	}
+	.woocommerce .veldhuizen__container.two-col .contact-card .wc-flex-wrapper {
+		padding: 10px;
+	}
+}
+
+@media screen and (max-width: calc(600px + 5px)) {
+	.woocommerce .veldhuizen__container.two-col .contact-card {
+		justify-content: center;
+	}
+	.woocommerce .veldhuizen__container.two-col .contact-card .wc-flex-wrapper {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+.archive .page-title {
+	display: none;
+}
+
+.archive #secondary {
+	display: none;
+}
+
 /*# sourceMappingURL=woocommerce.css.map */
