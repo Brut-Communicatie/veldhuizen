@@ -833,6 +833,7 @@ p.no-comments {
 }
 
 .product-template-default .grouped_form .single_add_to_cart_button {
+	float: right;
 	cursor: pointer;
 	background-color: #ff5400;
 	color: white;

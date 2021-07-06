@@ -176,6 +176,7 @@ $woocommerce__color-tr-odd: #ECECEC;
         }
 
         .single_add_to_cart_button {
+            float: right;
             cursor: pointer;
             background-color: $veldhuizen__oranje;
             color: white;

@@ -74,7 +74,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 } else  {
 	?>
 	<div class="veldhuizen__container one-col small">
-	<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (groene knop). Uw bestelling kunt u plaatsen via het winkelmandje rechtsbovenaan de pagina.</p>
+	<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
 	<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen. Bekijk een grotere afbeelding door op de afbeelding te klikken.</p>
 	</div>
 	
@@ -196,7 +196,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 
 			<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
-			<button type="submit" class="single_add_to_cart_button button alt"><i class="fas fa-print"> </i> <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
+			<button type="submit" class="single_add_to_cart_button button alt"><i class="fas fa-shopping-cart"> </i> <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 			<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 
