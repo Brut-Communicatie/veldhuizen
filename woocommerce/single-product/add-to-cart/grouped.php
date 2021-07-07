@@ -72,13 +72,19 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 	echo '</div>';		// close veldhuizen__container
 
 } else  {
+
+$assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'remklauw-type', 'h-as', 'j60-as', 'l-as', 'r-en-v-as-1800-kg', 'r-as-1500-kg', 's-as', 't-as', 'u-as', 'w-as', 'x-as-h-naaf', 'x-as-s205-naaf');
+
+	if (in_array($post_title, $assen_titles) === true) {
+		echo '<h1>YEY</h1>';
+	}
 	?>
 	<div class="veldhuizen__container one-col small">
 	<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
 	<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen. Bekijk een grotere afbeelding door op de afbeelding te klikken.</p>
 	</div>
 	
-
+	
 	<div class="veldhuizen__container one-col">
 	<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 		<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
@@ -170,7 +176,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 								$value = $grouped_product_child->get_price_html() . wc_get_stock_html( $grouped_product_child );
 								break;
 							
-							default:
+						default:
 								$value = '';
 								break;
 						}
