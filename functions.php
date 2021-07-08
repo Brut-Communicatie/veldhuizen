@@ -403,7 +403,6 @@ function veldhuizen_add_woocommerce_support() {
 }
 
 
-
 // Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
 require get_template_directory() . '/woocommerce/custom-fields.php';
 
