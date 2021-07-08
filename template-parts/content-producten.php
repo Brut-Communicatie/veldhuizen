@@ -13,7 +13,6 @@ foreach($hasChildren as $child){
     $tags = get_the_tags($child->ID);
     if ($tags) {
         $tagsFound = true;
-        // var_dump($tags);
     }
 }
 

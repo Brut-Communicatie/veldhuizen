@@ -19,3 +19,24 @@
 		}
 	}
 }
+
+.checkout__layout {
+	width: 1000px;
+	margin: 0 auto;
+
+	@media screen and (max-width: 1001px) {
+		width: calc(100% - 2rem);
+	}
+
+	p {
+		strong {
+			color: $veldhuizen__groen;
+		}
+	}
+
+	&--inner {
+		box-sizing: border-box;
+		padding: 2rem;
+		background-color: rgb(197, 197, 197);	
+	}
+}
