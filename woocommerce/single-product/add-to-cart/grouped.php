@@ -73,9 +73,12 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 
 } else  {
 
-$assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'remklauw-type', 'h-as', 'j60-as', 'l-as', 'r-en-v-as-1800-kg', 'r-as-1500-kg', 's-as', 't-as', 'u-as', 'w-as', 'x-as-h-naaf', 'x-as-s205-naaf');
+// REMKLAUW has its own format
+$assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 'r-en-v-as-1800-kg', 'r-as-1500-kg', 's-as', 't-as', 'u-as', 'w-as', 'x-as-h-naaf', 'x-as-s205-naaf');
 
-	
+	if (in_array($post_title, $assen_titles) === true) {
+		echo '<h1>YEY</h1>';
+	}
 	?>
 	<div class="veldhuizen__container one-col small">
 	<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
@@ -92,6 +95,7 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'remklauw-type', 'h-as', '
 					<td class="cell-names">Hoeveelheid</td>
 					<td class="cell-names">Naam product</td>
 					<td class="cell-names">Artikelnummer</td>
+					<td class="cell-names">Fabrieksnummer</td>
 					<td class="cell-names">Prijs</td>
 				</tr>
 					
@@ -105,16 +109,19 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'remklauw-type', 'h-as', '
 						'quantity',
 						'label',
 						'veldhuizen_id',
+						'fabrieks_id',
 						'price',
 						
 					),
 					$product
 				);
+			
 				$show_add_to_cart_button = true;
 
 				do_action( 'woocommerce_grouped_product_list_before', $grouped_product_columns, $quantites_required, $product );
 				
 				foreach ( $grouped_products as $grouped_product_child ) {
+					var_dump($grouped_product_child);
 					$post_object        = get_post( $grouped_product_child->get_id() );
 					$quantites_required = $quantites_required || ( $grouped_product_child->is_purchasable() && ! $grouped_product_child->has_options() );
 					$post               = $post_object; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
@@ -162,13 +169,14 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'remklauw-type', 'h-as', '
 								break;
 							case 'label':
 								$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
-								// $value = $grouped_product_child->is_visible() ? '<p>' . $grouped_product_child->name . '</p>' : $grouped_product_child->get_name();
 								$value = '<p>' . $grouped_product_child->name . '</p>';
-								// $value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
 								$value .= '</label>';
 								break;
 							case 'veldhuizen_id':
 								$value = get_post_meta($grouped_product_child->get_id(), '_artikelnummer', true );
+								break;
+							case 'fabrieks_id':
+								$value = get_post_meta($grouped_product_child->get_id(), '_fabrieksnummer', true );
 								break;
 							case 'price':
 								$value = $grouped_product_child->get_price_html() . wc_get_stock_html( $grouped_product_child );

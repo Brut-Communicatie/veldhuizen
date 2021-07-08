@@ -242,3 +242,10 @@ This is practically a regex. Used exclusively in `product/detail`. This script c
 
 #### `verhuurTable.js`
 Forces the table used in `verhuur/detail` to have the same width. The tables used for the descriptions, most of the time, don't have the same amount of rows. This script forces column positioning, so the tables always line up. 
+
+### WooCommerce
+This theme has it's own templates & styling for a WooCommerce shop.
+* Structure & properties
+* Changed templates
+* Vue.js
+* Styles
