@@ -64,8 +64,6 @@ $woocommerce__color-tr-odd: #ECECEC;
     .veldhuizen__container {
         grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
 
-        
-
         @include Responsive($mobileBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
             .block img {
@@ -82,9 +80,6 @@ $woocommerce__color-tr-odd: #ECECEC;
             @include Responsive(700px) {
                 grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
             }
-            // .onderdelen-intro {
-                
-            // }
     
             .contact-card {
                 background-color: white;
@@ -151,6 +146,9 @@ $woocommerce__color-tr-odd: #ECECEC;
                 width: 800px;
             }
         }
+   }
+   .new-rows {
+       line-height: 1.5;
    }
    .grouped_form {
         table {
