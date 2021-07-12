@@ -59,7 +59,7 @@
 					</li>
 
 					<li>
-						<a id="productenLink" href="#">Producten</a>
+						<a id="productenLink" href="<?php echo get_page_link(get_page_by_path('producten-overzicht')); ?>">Producten</a>
 						<ul>
 							<?php
 								//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
@@ -111,7 +111,7 @@
 					</li>
 
 					<li>
-						<a id="verhuurLink" href="#">Verhuur</a>
+						<a id="verhuurLink" href="<?php echo get_page_link(get_page_by_path('verhuur-overzicht')); ?>">Verhuur</a>
 						<ul>
 						<?php
 								$verhuurArgs = array(
