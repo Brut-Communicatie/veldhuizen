@@ -59,7 +59,8 @@
 					</li>
 
 					<li>
-						<a id="productenLink" href="#">Producten</a>
+						<!-- <a id="productenLink" href="#">Producten</a> -->
+					<a id="productenLink" href="<?php echo get_page_link(get_page_by_path('producten-overzicht')); ?>">Producten</a>
 						<ul>
 							<?php
 								//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
@@ -111,7 +112,7 @@
 					</li>
 
 					<li>
-						<a id="verhuurLink" href="#">Verhuur</a>
+						<a id="verhuurLink" href="<?php echo get_page_link(get_page_by_path('verhuur-overzicht')); ?>">Verhuur</a>
 						<ul>
 						<?php
 								$verhuurArgs = array(
@@ -168,6 +169,14 @@
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
+						<ul id="service-anchors">
+						<?php
+						$homeUrl = get_home_url();
+							echo '<li><a href="'. $homeUrl .'/service#onderhoudsgegevens">Onderhoudsgegevens</a></li>';
+							echo '<li><a href="'. $homeUrl .'/service#aan-af-koppelen">Aan/afkoppelen clixtar</a></li>';
+							echo '<li><a href="'. $homeUrl .'/service#reparatieformulier-service">Reparatieformulier</a></li>';
+						?>
+						</ul>
 					</li>
 					<li>
 						<a class="header__orange" href="<?php echo get_page_link( get_page_by_path( 'contact' ) ); ?>">Contact</a>
