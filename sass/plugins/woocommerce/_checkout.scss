@@ -37,6 +37,64 @@
 	&--inner {
 		box-sizing: border-box;
 		padding: 2rem;
-		background-color: rgb(197, 197, 197);	
+		background-color: #d7d7d7;
+	}
+}
+
+.checkout {
+	&__product {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px;
+		box-sizing: border-box;
+		background-color: #fffae6;
+
+		&:nth-child(odd) {
+			background-color: darken(#fffae6, 10%);
+		}
+
+		&--item {
+			width: calc(100% / 3 - 10px);
+			display: flex;
+			justify-content: flex-start;
+			text-align: left;
+		}
+
+		&--heading {
+			@extend .checkout__product--item;
+
+		}
+
+		&--price {
+			@extend .checkout__product--item;
+			width: 22%;
+		}
+
+		&--top {
+			@extend .checkout__product;
+			font-weight: 600;
+
+			&:nth-child(odd) {
+				background-color: #ffe479;
+			}
+		}
+		&--bottom{
+			display: flex;
+			flex-direction: column;
+			padding: 0 10px;
+			box-sizing: border-box;
+			background-color: #fffae6;
+			border: 1px solid #ffe479;
+			margin-top: 10px;
+		}
+		&--subtotal{
+			width: 22%;
+			align-self: flex-end;
+			padding: 5px 0;
+			box-sizing: border-box;
+		}
+		&--total{
+			@extend .checkout__product--subtotal;
+		}
 	}
 }
