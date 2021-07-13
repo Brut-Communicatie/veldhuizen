@@ -170,9 +170,12 @@
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
 						<ul id="service-anchors">
-							<li><a href="">Onderhoudsgegevens</a></li>
-							<li><a href="">Aan/afkoppelen clixtar</a></li>
-							<li><a href="">Reparatieformulier</a></li>
+						<?php
+						$homeUrl = get_home_url();
+							echo '<li><a href="'. $homeUrl .'/service#onderhoudsgegevens">Onderhoudsgegevens</a></li>';
+							echo '<li><a href="'. $homeUrl .'/service#aan-af-koppelen">Aan/afkoppelen clixtar</a></li>';
+							echo '<li><a href="'. $homeUrl .'/service#reparatieformulier-service">Reparatieformulier</a></li>';
+						?>
 						</ul>
 					</li>
 					<li>
