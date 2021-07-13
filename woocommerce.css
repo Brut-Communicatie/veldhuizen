@@ -311,6 +311,22 @@ ul.products li.product .button {
 	box-sizing: border-box;
 }
 
+.checkout__shipping {
+	padding: 10px;
+	background-color: #fff;
+	margin-bottom: 10px;
+}
+
+.checkout__shipping--item {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.checkout__shipping--item input {
+	margin-right: 10px;
+}
+
 /**
  * General WooCommerce components
  */

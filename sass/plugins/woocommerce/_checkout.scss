@@ -78,7 +78,8 @@
 				background-color: #ffe479;
 			}
 		}
-		&--bottom{
+
+		&--bottom {
 			display: flex;
 			flex-direction: column;
 			padding: 0 10px;
@@ -87,14 +88,32 @@
 			border: 1px solid #ffe479;
 			margin-top: 10px;
 		}
-		&--subtotal{
+
+		&--subtotal {
 			width: 22%;
 			align-self: flex-end;
 			padding: 5px 0;
 			box-sizing: border-box;
 		}
-		&--total{
+
+		&--total {
 			@extend .checkout__product--subtotal;
+		}
+	}
+
+	&__shipping {
+		padding: 10px;
+		background-color: #fff;
+		margin-bottom: 10px;
+
+		&--item {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+
+			input {
+				margin-right: 10px;
+			}
 		}
 	}
 }
