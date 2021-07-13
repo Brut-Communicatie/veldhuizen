@@ -287,6 +287,33 @@ $menuBreakpoint : 1270px;
             }
         }
 
+        #service-anchors {
+            flex-direction: column;
+            width: auto;
+            left: unset;
+            height: unset;
+            bottom: unset;
+            top: 110px;
+            transition: all .75s ease;
+            li {
+                width: auto;
+                border-right: 0;
+                border-left: 0;
+                a {
+                    padding: 20px;
+                    justify-content: initial;
+                    align-items: initial;
+                }
+
+                &:hover {
+                    background-color: $veldhuizen__oranje;
+                    a {
+                        color: white;
+                    }
+                }
+            }
+        }
+
         a {
             padding: 0 1.5rem;
             display: flex;

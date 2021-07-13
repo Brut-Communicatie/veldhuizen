@@ -2262,6 +2262,36 @@ textarea {
 	transition-delay: 0s;
 }
 
+.header__right #service-anchors {
+	flex-direction: column;
+	width: auto;
+	left: unset;
+	height: unset;
+	bottom: unset;
+	top: 110px;
+	transition: all .75s ease;
+}
+
+.header__right #service-anchors li {
+	width: auto;
+	border-right: 0;
+	border-left: 0;
+}
+
+.header__right #service-anchors li a {
+	padding: 20px;
+	justify-content: initial;
+	align-items: initial;
+}
+
+.header__right #service-anchors li:hover {
+	background-color: #ff5400;
+}
+
+.header__right #service-anchors li:hover a {
+	color: white;
+}
+
 .header__right a {
 	padding: 0 1.5rem;
 	display: flex;

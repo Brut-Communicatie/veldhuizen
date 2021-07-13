@@ -169,11 +169,11 @@
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
-						<div class="header__right--subitems">
-							<a href="">Onderhoudsgegevens</a>
-							<a href="">Aan/afkoppelen clixtar</a>
-							<a href="">Reparatieformulier</a>
-						</div>
+						<ul id="service-anchors">
+							<li><a href="">Onderhoudsgegevens</a></li>
+							<li><a href="">Aan/afkoppelen clixtar</a></li>
+							<li><a href="">Reparatieformulier</a></li>
+						</ul>
 					</li>
 					<li>
 						<a class="header__orange" href="<?php echo get_page_link( get_page_by_path( 'contact' ) ); ?>">Contact</a>
