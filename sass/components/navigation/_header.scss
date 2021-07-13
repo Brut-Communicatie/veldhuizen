@@ -143,9 +143,9 @@ $menuBreakpoint : 1270px;
 
         @include Responsive($tabletSmallBreakpoint) {
              justify-content: center;
-             p {
+            p {
                 margin: 0 1rem;
-             }
+            }
         }
     }
 
@@ -218,7 +218,7 @@ $menuBreakpoint : 1270px;
                 ul {
                     $bannerHeight: 200px;
                     z-index: 1;
-                    display: none;
+                    // display: none;
                     width: 100%;
                     position: absolute;
                     left: 0;
@@ -228,7 +228,13 @@ $menuBreakpoint : 1270px;
                     border-bottom: 1px solid #dddddd;
                     height: $bannerHeight;
                     justify-content: space-between;
-
+                    // background-color: blue;
+                    visibility: hidden;
+                    opacity: 0;
+                    // transition: visibility 0.2s 1s, opacity 0.2s 1s linear;
+                    transition: 0.2s 0.7s;
+                    // transition-delay: 0.4s;
+                    
                     @include Responsive($menuBreakpoint) {
                         position: unset;
                         height: 100%;
@@ -253,7 +259,7 @@ $menuBreakpoint : 1270px;
                         &:hover {
                             background-color: #fafafa;
                             cursor: pointer;
-
+                            
                             .header__right--subitems {
                                 display: flex;
                             }
@@ -273,6 +279,9 @@ $menuBreakpoint : 1270px;
                 &:hover {
                     ul {
                         display: flex;
+                        visibility: visible;
+                        opacity: 1;
+                        transition-delay: 0s;
                     }
                 }
             }

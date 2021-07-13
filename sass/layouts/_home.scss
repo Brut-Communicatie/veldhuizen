@@ -10,14 +10,14 @@
 
 
     .veldhuizen__container {
-        width: 100%;
+        // width: 80%;
         grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
         padding: 20px;
 
         .block {
             transition: all .3s ease;
             img {
-                height: 220px;
+                height: 22vh;
             }
             &__square {
                 transition: all .3s ease;
@@ -25,16 +25,16 @@
             &__info {
                 z-index: 1;
                 h5 {
-                    font-size: 1.6em;
+                    font-size: 1.3em;
                     @include Responsive ($tabletSmallBreakpoint) {
                         font-size: 1.3em;
                     }
                 }
             }
-
-            img {
-                height: 20vw;
-            }
+        }
+        :first-child.block {
+            grid-column-start: 1;
+            grid-column-end: 3;
         }
 
         @include Responsive($tabletSmallBreakpoint) {
