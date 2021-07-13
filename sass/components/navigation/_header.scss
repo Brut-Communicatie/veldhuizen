@@ -166,6 +166,7 @@ $menuBreakpoint : 1270px;
         width: auto;
         display: flex;
         margin-left: auto;
+        z-index: 5000;
 
         @include Responsive($menuBreakpoint) {
             @include Flex(flex-start, center, nowrap, column);
@@ -228,14 +229,13 @@ $menuBreakpoint : 1270px;
                     border-bottom: 1px solid #dddddd;
                     height: $bannerHeight;
                     justify-content: space-between;
-                    // background-color: blue;
                     visibility: hidden;
                     opacity: 0;
-                    // transition: visibility 0.2s 1s, opacity 0.2s 1s linear;
-                    transition: 0.2s 0.7s;
-                    // transition-delay: 0.4s;
+                    transition: 0.2s 0.3s;
                     
                     @include Responsive($menuBreakpoint) {
+                        visibility: unset;
+                        opacity: unset;
                         position: unset;
                         height: 100%;
                     }

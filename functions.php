@@ -145,6 +145,7 @@ function veldhuizen_scripts() {
 	wp_enqueue_style( 'veldhuizen-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'veldhuizen-style', 'rtl', 'replace' );
 
+	wp_enqueue_script( 'veldhuizen-mobile-navigation', get_template_directory_uri() . '/js/mobileNavigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'veldhuizen-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'veldhuizen-filters', get_template_directory_uri() . '/js/filters.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'veldhuizen-header', get_template_directory_uri() . '/js/header.js', array(), _S_VERSION, true );

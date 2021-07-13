@@ -33,10 +33,10 @@ echo '</div>';
 
 echo '</div>';
 
-
-
 endwhile;
 endif;
+
+
 get_footer();?>
 
 

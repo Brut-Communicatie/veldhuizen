@@ -59,7 +59,8 @@
 					</li>
 
 					<li>
-						<a id="productenLink" href="<?php echo get_page_link(get_page_by_path('producten-overzicht')); ?>">Producten</a>
+						<!-- <a id="productenLink" href="#">Producten</a> -->
+					<a id="productenLink" href="<?php echo get_page_link(get_page_by_path('producten-overzicht')); ?>">Producten</a>
 						<ul>
 							<?php
 								//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
@@ -168,6 +169,11 @@
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
+						<div class="header__right--subitems">
+							<a href="">Onderhoudsgegevens</a>
+							<a href="">Aan/afkoppelen clixtar</a>
+							<a href="">Reparatieformulier</a>
+						</div>
 					</li>
 					<li>
 						<a class="header__orange" href="<?php echo get_page_link( get_page_by_path( 'contact' ) ); ?>">Contact</a>

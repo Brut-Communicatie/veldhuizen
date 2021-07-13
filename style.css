@@ -1390,29 +1390,34 @@ textarea {
 	grid-column-end: 3;
 }
 
+@media screen and (max-width: calc(1024px + 5px)) {
+	#home-container .veldhuizen__container .block img {
+		height: 18vh;
+	}
+}
+
 @media screen and (max-width: calc(740px + 5px)) {
 	#home-container .veldhuizen__container {
 		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
-	}
-	#home-container .veldhuizen__container :first-child {
-		grid-column-start: 1;
-		grid-column-end: 3;
-	}
-	#home-container .veldhuizen__container :first-child img {
-		height: 40vw;
 	}
 }
 
 @media screen and (max-width: calc(500px + 5px)) {
 	#home-container .veldhuizen__container {
-		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 	}
-	#home-container .veldhuizen__container :first-child {
-		grid-column-start: initial;
-		grid-column-end: initial;
+	#home-container .veldhuizen__container :first-child.block {
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
+	#home-container .veldhuizen__container :first-child.block img {
+		height: 15vh;
 	}
 	#home-container .veldhuizen__container .block img {
-		height: 45vw;
+		height: 10vh;
+	}
+	#home-container .veldhuizen__container .block h5 {
+		font-size: 0.8em;
 	}
 }
 
@@ -2119,6 +2124,7 @@ textarea {
 	width: auto;
 	display: flex;
 	margin-left: auto;
+	z-index: 5000;
 }
 
 @media screen and (max-width: calc(1270px + 5px)) {
@@ -2200,11 +2206,13 @@ textarea {
 	justify-content: space-between;
 	visibility: hidden;
 	opacity: 0;
-	transition: 0.2s 0.7s;
+	transition: 0.2s 0.3s;
 }
 
 @media screen and (max-width: calc(1270px + 5px)) {
 	.header__right ul li ul {
+		visibility: unset;
+		opacity: unset;
 		position: unset;
 		height: 100%;
 	}
