@@ -12,6 +12,8 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.2' );
 }
 
+add_theme_support('woocommerce');
+
 if ( ! function_exists( 'veldhuizen_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -143,6 +145,7 @@ function veldhuizen_scripts() {
 	wp_enqueue_style( 'veldhuizen-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'veldhuizen-style', 'rtl', 'replace' );
 
+	wp_enqueue_script( 'veldhuizen-mobile-navigation', get_template_directory_uri() . '/js/mobileNavigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'veldhuizen-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'veldhuizen-filters', get_template_directory_uri() . '/js/filters.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'veldhuizen-header', get_template_directory_uri() . '/js/header.js', array(), _S_VERSION, true );
@@ -303,20 +306,42 @@ function veldhuizen_verhuur_post_type() {
 }
 
 // CUSTOM FUNCTIONS 
-function veldhuizen_home_c2a($c2a) {
-	$types = array( 'Producten', 'Verhuur', 'page', 'post' );
-	$page = get_page_by_path($c2a, $output, $types);
-	$image = get_the_post_thumbnail_url($page->ID);
-	$title = ($page->post_title);
-	$link = get_the_permalink($page->ID);
-	echo '<a class="block " href="' . $link . '" >';
-	echo '<img src="'. $image . '"/>';
-	echo '<div class="block__info">';
-    echo '<div class="block__square"></div>';
-	echo '<h5>' . $title . '</h5>';
-    // echo '<p>lees meer <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" class="svg-inline--fa fa-arrow-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg></p>';
-    echo '</div>';
-	echo '</a>';
+function veldhuizen_home_c2a($c2a, $types) {
+	// $types = array( 'Producten', 'Verhuur', 'page', 'post' );
+	if ($c2a === 'onderdelen') {
+		$link = get_page_link(get_page_by_path('onderdelen'));
+		$image = 'https://veldhuizen.nl/wp-content/uploads/onderdelen.jpg';
+		echo '<a class="block " href="' . $link . '" >';
+		echo '<img src="'. $image . '"/>';
+		echo '<div class="block__info">';
+		echo '<div class="block__square"></div>';
+		echo '<h5>Onderdelen</h5>';
+		// echo '<p>lees meer <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" class="svg-inline--fa fa-arrow-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg></p>';
+		echo '</div>';
+		echo '</a>';
+	} else {
+		$page = get_page_by_path($c2a, $output, $types);
+		$image = get_the_post_thumbnail_url($page->ID);
+		$title = ($page->post_title);
+		$link = get_the_permalink($page->ID);
+		echo '<a class="block " href="' . $link . '" >';
+		echo '<img src="'. $image . '"/>';
+		echo '<div class="block__info">';
+		echo '<div class="block__square"></div>';
+		echo '<h5>' . $title . '</h5>';
+		// echo '<p>lees meer <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-right" class="svg-inline--fa fa-arrow-right fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z"></path></svg></p>';
+		echo '</div>';
+		echo '</a>';
+	}
+}
+
+// WooCommerce banner function
+function veldhuizen_wc_top_banner($title) {
+	echo '<div class="top__banner">';
+	echo '<div class="top__content">';
+	echo '<h1>' . $title . '</h1>';
+	echo '</div>';
+	echo '</div>';
 }
 
 // Used for the Vacatures block in the home page
@@ -375,19 +400,39 @@ function veldhuizen_home_news() {
 	echo '</div>';
 }
 
-// function get_new_articles() {
+function veldhuizen_add_woocommerce_support() {
+	add_theme_support( 'woocommerce', array(
+		'thumbnail_image_width' => 150,
+		'single_image_width'    => 300,
 
-// }
+        'product_grid'          => array(
+            'default_rows'    => 4,
+            'min_rows'        => 2,
+            'max_rows'        => 8,
+            'default_columns' => 4,
+            'min_columns'     => 4,
+            'max_columns'     => 5,
+        ),
+	) );
+}
 
+
+
+// Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
+require get_template_directory() . '/woocommerce/custom-fields.php';
+
+// Call all hooks
+
+// add_action('pre_get_posts','shop_filter_cat');
+add_action( 'after_setup_theme', 'veldhuizen_add_woocommerce_support' );
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_products_register_template' );
-
 add_action( 'init', 'veldhuizen_post_type' );
 add_action( 'init', 'veldhuizen_verhuur_post_type' );
 add_action ( 'init', 'veldhuizen_verhuur_register_template' );
 
 require get_template_directory() . '/inc/footer/footer-functions.php';
 
-add_filter('wpcf7_autop_or_not', '__return_false'); // Remove all BR's and P in Contact Form 7 
-
+// Remove all BR's and P in Contact Form 7 
+add_filter('wpcf7_autop_or_not', '__return_false');
 
