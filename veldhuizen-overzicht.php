@@ -1,6 +1,6 @@
 <?php 
-//Template name: Overzicht pagina
-//Template Post Type: post, page, product
+//Template name: Overzicht C2A
+//Template Post Type:  page
 get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
