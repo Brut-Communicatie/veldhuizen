@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*!
 Theme Name: Veldhuizen
 Theme URI: http://underscores.me/
@@ -322,4 +323,331 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 // But also have no idea what kind of text it is and what the purpose of it is 
 .verhuur-lorem {
 	display: none;
+=======
+/*!
+Theme Name: Veldhuizen
+Theme URI: http://underscores.me/
+Author: Brutcommunicatie
+Author URI: http://www.brutcommunicatie.nl
+Description: Veldhuizen website / webshop
+Version: 1.0.0
+Tested up to: 5.4
+Requires PHP: 5.6
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: veldhuizen
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+Veldhuizen is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Generic
+	- Normalize
+	- Box sizing
+# Base
+	- Typography
+	- Elements
+	- Links
+	- Forms
+## Layouts
+# Components
+	- Navigation
+	- Posts and pages
+	- Comments
+	- Widgets
+	- Media
+	- Captions
+	- Galleries
+# plugins
+	- Jetpack infinite scroll
+# Utilities
+	- Accessibility
+	- Alignments
+
+--------------------------------------------------------------*/
+
+// Import variables and mixins.
+@import "abstracts/abstracts";
+
+/*--------------------------------------------------------------
+# Generic
+--------------------------------------------------------------*/
+
+/* Normalize
+--------------------------------------------- */
+@import "generic/normalize";
+
+/* Box sizing
+--------------------------------------------- */
+@import "generic/box-sizing";
+
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
+@import "base/base";
+
+/*--------------------------------------------------------------
+# Layouts
+--------------------------------------------------------------*/
+// @import "layouts/content-sidebar"; // Uncomment this line for a sidebar on right side of your content.
+// @import "layouts/sidebar-content"; // Uncomment this line for a sidebar on left side of your content.
+@import "layouts/header-info";
+@import "layouts/print";
+@import "layouts/information-pages";
+@import "layouts/service";
+@import "layouts/voorraad";
+@import "layouts/contact";
+@import "layouts/news";
+@import "layouts/home";
+@import "layouts/overview";
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
+@import "components/components";
+
+/*--------------------------------------------------------------
+# Plugins
+--------------------------------------------------------------*/
+
+/* Jetpack infinite scroll
+--------------------------------------------- */
+@import "plugins/jetpack/infinite-scroll";
+
+/*--------------------------------------------------------------
+# Utilities
+--------------------------------------------------------------*/
+
+/* Accessibility
+--------------------------------------------- */
+@import "utilities/accessibility";
+
+/* Alignments
+--------------------------------------------- */
+@import "utilities/alignments";
+
+.site {
+	background-color: #FAFAFA;
+}
+
+
+
+.veldhuizen {
+	&__container {
+		margin-top: 25px;
+
+		@media screen and (max-width: $tabletBreakpoint) {
+			width: calc(100% - 2rem);
+			grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+		}
+
+		@media screen and (max-width: 600px) {
+			grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+		}
+
+		&--intro {
+			@media screen and (max-width: 1001px) {
+				width: calc(100% - 2rem);
+			}
+
+			p{
+				a, a:active, a:link, a:visited{
+					color: $veldhuizen__oranje;
+					text-decoration: none;
+					font-weight: 600;
+					font-size: 0.9rem;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					svg{
+						width: 10px;
+						margin-left: 5px;
+
+						transition: margin-left .25s ease;
+					}
+					&:hover{
+						text-decoration: underline;
+
+						svg{
+							margin-left: 10px;
+						}
+					}
+				}
+			}
+			
+		}
+	}
+}
+
+.occassion-iframe-wrapper {
+	header {
+		display: none;
+	}
+}
+
+.block {
+	h5 {
+		text-align: center;
+		font-size: 1em;
+		margin: 0 5px;
+	}
+
+	p {
+		position: absolute;
+		bottom: 0;
+	}
+	img {
+		object-fit: cover;
+		height: 200px;
+	}
+
+	&:hover {
+		p {
+			display: inline-block !important;
+			transform: translateY(1em);
+		}
+	}
+
+	&__info {
+		flex-grow: 1;
+		padding: 10px 15px;
+	}
+}
+
+
+.banner-home-page {
+	h1 {
+		display: none;
+	}
+	h3 {
+		color: $veldhuizen__groen;
+		font-size: 3em;
+	}
+	p {
+		font-size: 1.5em;
+		margin:5px;
+	}
+
+	img {
+		width: 100%;
+		height: 75vh;
+		object-fit: cover;
+	}
+	.veldhuizen__container {
+		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+	}
+
+	@include Responsive($tabletBreakpoint) {
+		img {
+			width: 100%;
+			height: auto;
+		}
+		.veldhuizen__container {
+			
+
+			h3 {
+				
+				font-size: 2.5em;
+				text-align: center;
+			}
+
+			p {
+				margin: 5px;
+				font-size: 1.4em;
+				text-align: center;
+			}
+		}
+	}
+
+	@include Responsive($mobileBreakpoint) {
+	
+		.veldhuizen__container {
+			h3 {
+				color: $veldhuizen__groen;
+				font-size: 2em;
+				text-align: center;
+			}
+
+			p {
+				margin: 5px;
+				font-size: 1.2em;
+				text-align: center;
+			}
+		}
+	}
+}
+
+
+// Snel wat styling voor vandaag - Leroy
+.veldhuizen{
+	&__filter{
+		width: 1000px;
+		margin: 0 auto;
+		@include Flex(flex-start, flex-start, nowrap, column);
+
+		@include Responsive(1000px){
+			width: calc(100% - 2rem);
+		}
+
+		h3{
+			margin: 10px 0 0;
+			color: $veldhuizen__groen;
+			text-transform: uppercase;
+			font-size: 1.2rem;
+		}
+		&--container{
+			@include Flex(flex-start, flex-start, row);
+		}
+		&--item{
+			color: $veldhuizen__oranje;
+			font-weight: 600;
+			&:not(:last-child){
+				margin-right: 15px;
+			}
+
+			&:hover{
+				cursor: pointer;
+				text-decoration: underline;
+			}
+			&-selected{
+				text-decoration: underline;
+			}
+		}
+		&--hidden{
+			animation: hideItem .3s ease forwards;
+			animation-fill-mode: forwards;
+		}
+	}
+}
+
+@keyframes hideItem {
+	0%{
+		opacity: 1;
+	}
+
+	99%{
+		transform: translateY(1rem);
+		opacity: 0;
+	}
+	100%{
+		opacity: 0;
+		transform: translateY(1rem);
+	}
+}
+
+// Remove the unnecessary double title in the Verhuur overview pages
+// Let's add lorem ipsum to a prototype, so we show we want to add text to a page
+// But also have no idea what kind of text it is and what the purpose of it is 
+.verhuur-lorem {
+	display: none;
+>>>>>>> 7f133bfa636a84524b9ebbe2da9e7d6c12f2aa51
 }

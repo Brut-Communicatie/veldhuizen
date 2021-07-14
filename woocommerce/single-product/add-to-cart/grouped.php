@@ -76,29 +76,26 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 'r-en-v-as-1800-kg', 'r-as-1500-kg', 's-as', 't-as', 'u-as', 'w-as', 'x-as-h-naaf', 'x-as-s205-naaf');
 
 	if (in_array($post_title, $assen_titles) === true) {
-		// ASSEN TABLE
-		
+		// var_dump($post_title);
+		// var_dump(get_home_url());
+		$img_url = get_home_url() . '/wp-content/uploads/2021/07/' . $post_title . '.jpeg';
+		var_dump($img_url);
 		?>
 		<div class="veldhuizen__container one-col small">
 			<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
-			<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen. Bekijk een grotere afbeelding door op de afbeelding te klikken.</p>
+			<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen.</p>
 		</div>
-			
-		<?php 
-		// sort $grouped_products table ascending by metakey "_positie"
-		// usort($grouped_products, function ($a, $b) {
-		// 	return strcmp($a->get_post_meta($a, '_positie', true), $b->get_post_meta($b, '_positie', true));
-		// });
-		
-		?>
 
-		
-		<div class="veldhuizen__container one-col">
+
+
+		<div class="veldhuizen__container two-col">
+			<img src="<?php echo $img_url ?>">
+
 			<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
-				<table cellspacing="0" class="woocommerce-grouped-product-list group_table" id="assen-table">
+				<table cellspacing="0" class="woocommerce-grouped-product-list group_table">
 					<tbody>
 						<tr>
-							<td class="cell-names">Tekening nr.</td>
+							<td class="cell-names">Positie</td>
 							<td class="cell-names">Omschrijving</td>
 							<td class="cell-names">Aantal</td>
 							<td class="cell-names">Veldhuizen nr.</td>
@@ -113,13 +110,14 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 
 						$grouped_product_columns = apply_filters(
 							'woocommerce_grouped_product_columns',
 							array(
-								'_positie',
+								'positie',
 								'omschrijving',
-								'quantity',
+								'aantal',
 								'veldhuizen_nr',
-								'_fabrieksnr',
-								'_iveco',
-								'_peras',
+								'fabrieks_nr',
+								'iveco_nr',
+								'per_as',
+								
 							),
 							$product
 						);
@@ -142,11 +140,18 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 
 							// Output columns for each product.
 							foreach ( $grouped_product_columns as $column_id ) {
 								do_action( 'woocommerce_grouped_product_list_before_' . $column_id, $grouped_product_child );
-								$column_id = strtolower($column_id);
-								switch ( $column_id ) {
-									case 'quantity':
-										ob_start();
 
+								switch ( $column_id ) {
+									case 'positie':
+										$value = get_post_meta($grouped_product_child->get_id(), '_positie', true );
+										break;
+									case 'omschrijving':
+										$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
+										$value = '<p>' . $grouped_product_child->name . '</p>';
+										$value .= '</label>';
+										break;
+									case 'aantal':
+										ob_start();
 										if ( ! $grouped_product_child->is_purchasable() || $grouped_product_child->has_options() || ! $grouped_product_child->is_in_stock() ) {
 											woocommerce_template_loop_add_to_cart();
 										} elseif ( $grouped_product_child->is_sold_individually() ) {
@@ -166,68 +171,47 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 
 
 											do_action( 'woocommerce_after_add_to_cart_quantity' );
 										}
-
 										$value = ob_get_clean();
 										break;
-									case 'omschrijving':
-										$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
-										$value = '<p>' . $grouped_product_child->name . '</p>';
-										$value .= '</label>';
-										break;
-									case 'veldhuizen_id':
+									case 'veldhuizen_nr':
 										$value = get_post_meta($grouped_product_child->get_id(), '_artikelnummer', true );
 										break;
-									case '_positie':
-										$value = get_post_meta($grouped_product_child->get_id(), '_positie', true );
-										break;
-									case '_fabrieksnr':
-										$value = get_post_meta($grouped_product_child->get_id(), '_fabrieksnr', true );
-										break;
-									case '_iveco':
+									case 'iveco_nr':
 										$value = get_post_meta($grouped_product_child->get_id(), '_iveco', true );
 										break;
-									case '_peras':
+									case 'per_as':
 										$value = get_post_meta($grouped_product_child->get_id(), '_peras', true );
-										break;	
-									default:
+										break;
+								
+								default:
 										$value = '';
 										break;
 								}
-
 							echo '<td class="woocommerce-grouped-product-list-item__' . esc_attr( $column_id ) . '">' . apply_filters( 'woocommerce_grouped_product_list_column_' . $column_id, $value, $grouped_product_child ) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 								do_action( 'woocommerce_grouped_product_list_after_' . $column_id, $grouped_product_child );
 							}
-
 							echo '</tr>';
 						}
 						$post = $previous_post; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 						setup_postdata( $post );
-
 						do_action( 'woocommerce_grouped_product_list_after', $grouped_product_columns, $quantites_required, $product );
 						?>
 					</tbody>
 				</table>
 
-				<?php wp_enqueue_script( 'veldhuizen-wc-tablesort', get_template_directory_uri() . '/js/tableSortWc.js', false, false );?>
-
 				<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" />
 
 				<?php if ( $quantites_required && $show_add_to_cart_button ) : ?>
-
 					<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
-
 					<button type="submit" class="single_add_to_cart_button button alt"><i class="fas fa-shopping-cart"> </i> <?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
-
 					<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-
 				<?php endif; ?>
 			</form>
-			</div>
+		</div>
 
 
-<?php
-	// IF OUTSIDE OF ASSEN TITLES THEN USE NORMAL TABLE
+
+	<?php
 	} else {
 	?>
 	<div class="veldhuizen__container one-col small">
@@ -315,9 +299,7 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 
 								break;
 							case 'label':
 								$value  = '<label for="product-' . esc_attr( $grouped_product_child->get_id() ) . '">';
-								// $value = $grouped_product_child->is_visible() ? '<p>' . $grouped_product_child->name . '</p>' : $grouped_product_child->get_name();
 								$value = '<p>' . $grouped_product_child->name . '</p>';
-								// $value .= $grouped_product_child->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', $grouped_product_child->get_permalink(), $grouped_product_child->get_id() ) ) . '">' . $grouped_product_child->get_name() . '</a>' : $grouped_product_child->get_name();
 								$value .= '</label>';
 								break;
 							case 'veldhuizen_id':
@@ -362,8 +344,8 @@ $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 
 	</div>
 
 <?php
+	}
 // CLOSING TAG FROM IF ELSE CHECK FOR LOCATION PAGE USER
-}
 }
 ?>
 

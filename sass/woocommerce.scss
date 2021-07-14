@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
 Theme Name: Veldhuizen
 
@@ -198,3 +199,206 @@ $woocommerce__color-tr-odd: #ECECEC;
        display: none;
    }
 }
+=======
+/*
+Theme Name: Veldhuizen
+
+WooCommerce styles override
+*/
+
+// WooCommerce color variables
+$woocommerce__color-error: #e2401c;
+$woocommerce__color-success: #0f834d;
+$woocommerce__color-info: #3d9cd2;
+$woocommerce__color-tr-odd: #ECECEC;
+
+// Import variables and mixins
+@import "abstracts/abstracts";
+
+/**
+ * Shop tables
+ */
+@import "plugins/woocommerce/tables";
+
+/**
+ * Products
+ */
+@import "plugins/woocommerce/products";
+
+/**
+ * Single product
+ */
+@import "plugins/woocommerce/single-product";
+
+/**
+ * Checkout
+ */
+@import "plugins/woocommerce/checkout";
+
+/**
+ * General WooCommerce components
+ */
+@import "plugins/woocommerce/components";
+
+/**
+ * WooCommerce widgets
+ */
+@import "plugins/woocommerce/widgets";
+
+@import "plugins/woocommerce/cart";
+
+.woocommerce {
+    .bold {
+        font-weight: 700;
+    }
+    .center {
+        text-align: center;
+        margin-bottom: 0;
+    }
+    hr.divider-shop {
+        border-top: 1px solid #cccccc0a;
+        width: 100%;
+        margin-bottom:0;
+    }
+    .woocommerce-breadcrumb {
+        display: none;
+    }
+    .veldhuizen__container {
+        grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
+
+        @include Responsive($mobileBreakpoint) {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+            .block img {
+                height: 100px;
+            }
+        }
+    
+        &.two-col {
+            grid-template-columns: calc(70% - 10px) 30%;
+
+            @include Responsive($tabletBreakpoint) {
+                grid-template-columns: calc(60% - 10px) 40%;
+            }
+            @include Responsive(700px) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+            }
+    
+            .contact-card {
+                background-color: white;
+                padding: 40px 20px;
+                box-shadow: 2px 2px 3px rgba(238, 238, 238, 0.747);
+                display: flex;
+                flex-wrap: wrap;
+    
+                .wc-flex-wrapper  {
+                    h4 {
+                        color: $veldhuizen__groen;
+                        margin: 0;
+                    }
+                     p {
+                        margin: 0;
+                        color: #555555;
+                        line-height: 1.8;
+                    }
+                }
+
+                @include Responsive($tabletBreakpoint) {
+                    align-content: space-around;
+                }
+
+                @include Responsive (700px) {
+                    justify-content: space-between;
+                    .wc-flex-wrapper {
+                        padding: 10px;
+                    }
+                }
+                @include Responsive (600px) {
+                    justify-content: center;
+                    .wc-flex-wrapper {
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+.archive {
+    .page-title {
+        display: none;
+    }
+    hr.divider-shop {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+    #secondary {
+        display: none;
+    }
+}
+
+// PRODUCT SUB CAT OVERVIEW - LEVEL 2
+.woocommerce {
+    .product-template-default {
+        .veldhuizen__container {
+            grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
+     
+             &.one-col {
+                 grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+     
+                 &.small {
+                     width: 800px;
+                 }
+             }
+        }
+        .new-rows {
+            line-height: 1.5;
+        }
+        .grouped_form {
+             table {
+                 tbody {
+                     & > :nth-child(even) {
+                         background-color: $woocommerce__color-tr-odd;
+                     }
+                     tr {
+                         td.cell-names {
+                             color: $veldhuizen__groen;
+                             font-weight: 700;
+                         }
+                         td {
+                             > p {
+                                 text-transform: capitalize;
+                             }
+                             .quantity input[type=number] {
+                                width: 60px; 
+                             }
+                         }
+                     } 
+                 }
+             }
+     
+             .single_add_to_cart_button {
+                 float: right;
+                 cursor: pointer;
+                 background-color: $veldhuizen__oranje;
+                 color: white;
+                 margin: 1.2rem 0;
+                 padding: 15px 30px;
+                 -webkit-transition: background-color 0.3s ease-in-out;
+                 -moz-transition: background-color 0.3s ease-in-out;
+                 -o-transition: background-color 0.3s ease-in-out;
+                 transition: background-color 0.3s ease-in-out;
+                 &:hover {
+                     background-color: #555555;
+                 }
+                 .fas {
+                     margin-right: 10px;
+                 }
+             }
+        }
+     
+        .woocommerce-tabs, .woocommerce-product-gallery, p.price, .product_title, .product_meta, #secondary {
+            display: none;
+        }
+     }
+}
+>>>>>>> 7f133bfa636a84524b9ebbe2da9e7d6c12f2aa51
