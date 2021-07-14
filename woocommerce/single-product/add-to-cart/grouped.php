@@ -71,15 +71,15 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 	}
 	echo '</div>';		// close veldhuizen__container
 
+	// http://veldhuizen.local/wp-content/uploads/2021/07/w-as.jpg
+	// http://veldhuizen.local/wp-content/uploads/2021/07/d-as.jpeg
+
 } else  {
 
 $assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 'r-en-v-as-1800-kg', 'r-as-1500-kg', 's-as', 't-as', 'u-as', 'w-as', 'x-as-h-naaf', 'x-as-s205-naaf');
 
 	if (in_array($post_title, $assen_titles) === true) {
-		// var_dump($post_title);
-		// var_dump(get_home_url());
-		$img_url = get_home_url() . '/wp-content/uploads/2021/07/' . $post_title . '.jpeg';
-		var_dump($img_url);
+		$img_url = get_home_url() . '/wp-content/uploads/2021/07/' . $post_title . '.jpg';
 		?>
 		<div class="veldhuizen__container one-col small">
 			<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
