@@ -28,6 +28,9 @@ get_header();
 				// Get WooCommerce cart layout
 				get_template_part('template-parts/woocommerce/content', 'cart');
 			} 
+			if (is_checkout()){
+				get_template_part('template-parts/woocommerce/content', 'checkout');
+			}
 
 			get_template_part( 'template-parts/content', 'page' );
 			

@@ -50,6 +50,7 @@ do_action( 'woocommerce_before_main_content' );
 <?php
 
 if (is_shop()) {
+
     $onderdelen = wc_get_products(array(
         'category' => array('onderdelen'),
     ));
