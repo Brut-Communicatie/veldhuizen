@@ -166,6 +166,27 @@
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'onderdelen' ) ); ?>">Onderdelen</a>
+						<ul>
+							<?php 
+							$onderdelen = wc_get_products(array(
+								'category' => array('onderdelen'),
+							));
+
+							if (isset($onderdelen)) {
+								foreach ($onderdelen as $onderdeel) {
+									$prod_title = $onderdeel->name;
+									$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
+									$prod_link = $onderdeel->get_permalink();
+									echo '<li>';
+									echo '<a href="' . $prod_link . '">';
+									echo '<div class="header__img" style="background-image:url(' . $prod_image . ')";></div>';
+									echo $prod_title . '</a>';
+									echo '</li>';
+								}
+							}
+
+							?>
+						</ul>
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
