@@ -256,4 +256,38 @@ $woocommerce__color-tr-odd: #ECECEC;
             display: none;
         }
     }
+
+    // STYLING 'REMKLAUW TYPE', SINGLE PRODUCT, ACTUALLY SINGLE 'SINGLE' PRODUCT
+    // THIS STYLING ONLY APPLIES FOR REMKLAUW /product/remklauw-type
+
+    .single-product {
+        .cart {
+            align-self: end;
+            bottom: 0;
+            // .quantity, button {
+            //     margin: 10px;
+            // }
+
+            button {
+                cursor: pointer;
+                background-color: $veldhuizen__oranje;
+                color: white;
+                margin-top: 1.2rem;
+                padding: 15px 30px;
+                -webkit-transition: background-color 0.3s ease-in-out;
+                -moz-transition: background-color 0.3s ease-in-out;
+                -o-transition: background-color 0.3s ease-in-out;
+                transition: background-color 0.3s ease-in-out;
+
+                &:hover {
+                    background-color: #555555;
+                }
+
+                .fas {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
 // }
