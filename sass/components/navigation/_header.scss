@@ -251,6 +251,20 @@ $menuBreakpoint : 1270px;
                         transition: background-color .25s ease;
                         position: relative;
                         box-sizing: border-box;
+                        
+                        &.nav-shop {
+                            width: calc(100% / 4);
+                            @include Responsive($menuBreakpoint) {
+                                display: none;
+                            }
+                        }
+
+                        &.nav-verhuur {
+                            width: calc(100% / 6);
+                            @include Responsive($menuBreakpoint) {
+                                width: 100%;
+                            }
+                        }
 
                         @include Responsive($menuBreakpoint) {
                             width: 100%;
@@ -273,14 +287,6 @@ $menuBreakpoint : 1270px;
                             display: flex;
                             flex-direction: column;
                         }
-                    }
-
-                    .nav-verhuur {
-                        width: calc(100% / 6);
-                    }
-
-                    .nav-shop {
-                        width: calc(100% / 4);
                     }
                 }
 
@@ -307,6 +313,9 @@ $menuBreakpoint : 1270px;
                 width: auto;
                 border-right: 0;
                 border-left: 0;
+                @include Responsive($menuBreakpoint) {
+                    width: 100%;
+                }
                 a {
                     padding: 20px;
                     justify-content: initial;
@@ -319,6 +328,9 @@ $menuBreakpoint : 1270px;
                         color: white;
                     }
                 }
+            }
+            @include Responsive($menuBreakpoint) {
+                display: none;
             }
         }
 

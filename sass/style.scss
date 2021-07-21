@@ -113,7 +113,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	background-color: #FAFAFA;
 }
 
-
+$menuBreakpoint : 1270px;
 
 .veldhuizen {
 	&__container {
@@ -194,6 +194,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	&__info {
 		flex-grow: 1;
 		padding: 10px 15px;
+		@include Responsive($menuBreakpoint) {
+			z-index: 0;
+		}
+		
 	}
 }
 
