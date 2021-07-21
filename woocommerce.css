@@ -958,6 +958,12 @@ p.no-comments {
 	margin: 0;
 }
 
+@media screen and (max-width: calc(500px + 5px)) {
+	.single-product .veldhuizen__container {
+		column-gap: 5px;
+	}
+}
+
 .single-product .veldhuizen__container .related-products-flex {
 	justify-self: start;
 	display: flex;
@@ -1001,6 +1007,13 @@ p.no-comments {
 	margin-top: 10px;
 	width: 75%;
 	transform: translateX(25%);
+}
+
+@media screen and (max-width: calc(500px + 5px)) {
+	.single-product .cart .quantity {
+		width: auto;
+		transform: unset;
+	}
 }
 
 .single-product .cart button {

@@ -270,6 +270,9 @@ $woocommerce__color-tr-odd: #ECECEC;
                     margin: 0;
                 }
             }
+            @include Responsive($mobileBreakpoint) {
+                column-gap: 5px;
+            }
             .related-products-flex {
                 justify-self: start;
                 display: flex;
@@ -309,6 +312,10 @@ $woocommerce__color-tr-odd: #ECECEC;
                margin-top: 10px;
                width: 75%;
                transform: translateX(25%);
+               @include Responsive($mobileBreakpoint) {
+                   width: auto;
+                   transform: unset;
+               }
            }
           
             button {
