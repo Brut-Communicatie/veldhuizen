@@ -39,7 +39,7 @@ if ( $product->is_in_stock() ) : ?>
     $img = $product->get_image($size);
     $cat_ids_related_prods = $product->category_ids;
     
-    echo '<div class="veldhuizen__container">';
+    echo '<div class="veldhuizen__container remklauw">';
     echo '<section>';
     echo $img;
     ?>
