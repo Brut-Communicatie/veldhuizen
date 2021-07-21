@@ -40,8 +40,8 @@ if ( $product->is_in_stock() ) : ?>
     $cat_ids_related_prods = $product->category_ids;
     
     echo '<div class="veldhuizen__container">';
+    echo '<section>';
     echo $img;
-    
     ?>
 
 
@@ -67,19 +67,23 @@ if ( $product->is_in_stock() ) : ?>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 	</form>
+    </section>
 
-    <article class="related-products-flex">
+    <section class="related-products-flex">
+        <h3>Gerelateerde producten</h3>
         <?php
              foreach ($cat_ids_related_prods as $cat_id) {
                 $name = get_the_category_by_ID($cat_id);
                 $link = get_category_link($cat_id);
-
-                echo '<h5>' . $name . '</h5>';
-                echo '<a href="' . $link . '">Producten bekijken</a>';    
-                
+                echo '<a href="' . $link . '">';  
+                echo '<article>';
+                echo '<h5>' . $name . '</h5>'; 
+                echo '<p>Producten bekijken</p>';
+                echo '</article>';
+                echo '</a>';
             }
         ?>
-    </article>
+    </section>
     </div>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>

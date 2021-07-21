@@ -261,14 +261,58 @@ $woocommerce__color-tr-odd: #ECECEC;
     // THIS STYLING ONLY APPLIES FOR REMKLAUW /product/remklauw-type
 
     .single-product {
+        .veldhuizen__container {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+            column-gap: 20px;
+            section {
+                justify-self: end;
+                h3 {
+                    margin: 0;
+                }
+            }
+            .related-products-flex {
+                justify-self: start;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                justify-content: space-between;
+                
+                a {
+                    color: #a8a8a8;
+                    text-decoration: none;
+                    font-size: 0.8em;
+                    &:hover {
+                        color:$veldhuizen__groen;
+                    }
+                    article {
+                        margin: 0 auto;
+                        border: 1px solid #dddddd;
+                        border-radius: 3px;
+                        padding: 10px;
+                        h5 {
+                            font-size: 1.2em;
+                            font-weight: 400;
+                            margin: 5px;
+                        }
+                        p {
+                            margin: 5px;
+                        }
+                    }
+                }
+            }
+        }
+       
         .cart {
-            align-self: end;
-            bottom: 0;
-            // .quantity, button {
-            //     margin: 10px;
-            // }
+           width: 100%;
 
+           .quantity {
+               margin-top: 10px;
+               width: 75%;
+               transform: translateX(25%);
+           }
+          
             button {
+                width: 100%;
                 cursor: pointer;
                 background-color: $veldhuizen__oranje;
                 color: white;

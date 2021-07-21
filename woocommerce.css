@@ -945,12 +945,66 @@ p.no-comments {
 	display: none;
 }
 
+.single-product .veldhuizen__container {
+	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+	column-gap: 20px;
+}
+
+.single-product .veldhuizen__container section {
+	justify-self: end;
+}
+
+.single-product .veldhuizen__container section h3 {
+	margin: 0;
+}
+
+.single-product .veldhuizen__container .related-products-flex {
+	justify-self: start;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.single-product .veldhuizen__container .related-products-flex a {
+	color: #a8a8a8;
+	text-decoration: none;
+	font-size: 0.8em;
+}
+
+.single-product .veldhuizen__container .related-products-flex a:hover {
+	color: #0b9a71;
+}
+
+.single-product .veldhuizen__container .related-products-flex a article {
+	margin: 0 auto;
+	border: 1px solid #dddddd;
+	border-radius: 3px;
+	padding: 10px;
+}
+
+.single-product .veldhuizen__container .related-products-flex a article h5 {
+	font-size: 1.2em;
+	font-weight: 400;
+	margin: 5px;
+}
+
+.single-product .veldhuizen__container .related-products-flex a article p {
+	margin: 5px;
+}
+
 .single-product .cart {
-	align-self: end;
-	bottom: 0;
+	width: 100%;
+}
+
+.single-product .cart .quantity {
+	margin-top: 10px;
+	width: 75%;
+	transform: translateX(25%);
 }
 
 .single-product .cart button {
+	width: 100%;
 	cursor: pointer;
 	background-color: #ff5400;
 	color: white;
