@@ -2255,6 +2255,14 @@ textarea {
 	flex-direction: column;
 }
 
+.header__right ul li ul .nav-verhuur {
+	width: calc(100% / 6);
+}
+
+.header__right ul li ul .nav-shop {
+	width: calc(100% / 4);
+}
+
 .header__right ul li:hover ul {
 	display: flex;
 	visibility: visible;

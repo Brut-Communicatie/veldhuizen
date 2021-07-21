@@ -130,7 +130,7 @@
 									$verhuurTitle = get_the_title();
 									$verhuurLink = get_the_permalink();
 
-									echo "<li>
+									echo "<li class='nav-verhuur'>
 									<a href='$verhuurLink'>
 									<div class='header__img' style='background-image:url($verhuurImg);'></div>
 									$verhuurTitle</a>";
@@ -177,7 +177,7 @@
 									$prod_title = $onderdeel->name;
 									$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
 									$prod_link = $onderdeel->get_permalink();
-									echo '<li>';
+									echo '<li class="nav-shop">';
 									echo '<a href="' . $prod_link . '">';
 									echo '<div class="header__img" style="background-image:url(' . $prod_image . ')";></div>';
 									echo $prod_title . '</a>';
