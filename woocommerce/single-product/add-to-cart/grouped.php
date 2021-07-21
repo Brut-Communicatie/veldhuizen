@@ -75,8 +75,9 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 } else  {
 	$assen_product = get_product(19784);
 	$assen_children = $assen_product->children;
-
+	
 	if (in_array($post_id, $assen_children) === true) {
+		var_dump($post_title);
 		?>
 		<div class="veldhuizen__container one-col small">
 			<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
