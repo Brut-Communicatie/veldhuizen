@@ -139,6 +139,7 @@ do_action( 'woocommerce_before_cart_contents' );
 	<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 	<div class="cart__navigation">
 		<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"class="cart__navigation--button">Ga verder met bestellen</a>
+		<a class="cart__navigation--button" href="<?php echo $woocommerce->cart->get_cart_url(); ?>?empty-cart"><?php _e( 'Empty Cart', 'woocommerce' ); ?></a>
 		<button name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>" class="cart__navigation--button">Cart updaten</button>
 		<?php do_action( 'woocommerce_cart_actions' ); ?>
 	</div>
