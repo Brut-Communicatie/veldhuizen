@@ -1045,41 +1045,33 @@ p.no-comments {
 	margin-right: 10px;
 }
 
+.single-product .woocommerce-notices-wrapper .woocommerce-message .wc-forward {
+	display: none;
+}
+
 .woocommerce-notices-wrapper {
 	position: absolute;
 	top: 191px;
 	z-index: 5;
 	border: 1px solid rgba(201, 201, 201, 0.651);
 	right: 0;
+	box-shadow: -2px 2px 4px rgba(54, 54, 54, 0.329);
 }
 
 .woocommerce-notices-wrapper .woocommerce-message {
 	background-color: white;
 	color: black;
-	width: 500px;
+	width: 300px;
+	padding: 15px;
 }
 
 .woocommerce-notices-wrapper .woocommerce-message .wc-forward {
 	display: block;
 	background-color: #ff5400;
-}
-
-.added-to-cart-message {
-	position: absolute;
-	right: 0;
-	top: 191px;
-	z-index: 5;
-	padding: 10px;
-	background-color: white;
-	border: 1px solid #cfcfcf;
-}
-
-.added-to-cart-message h5 {
-	margin: 5px;
-}
-
-.added-to-cart-message p {
-	margin: 3px;
+	padding: 15px;
+	text-align: center;
+	text-decoration: none;
+	margin-bottom: 10px;
 }
 
 /*# sourceMappingURL=woocommerce.css.map */

@@ -417,12 +417,11 @@ function veldhuizen_add_woocommerce_support() {
 }
 
 
-// WOOCOMMERCe
+// ** WOOCOMMERCE ** \\
 // Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
 require get_template_directory() . '/woocommerce/custom-fields.php';
 
 // Empty cart button
-// check for empty-cart get param to clear the cart
 add_action( 'init', 'woocommerce_clear_cart_url' );
 function woocommerce_clear_cart_url() {
   global $woocommerce;
@@ -431,7 +430,9 @@ function woocommerce_clear_cart_url() {
 		$woocommerce->cart->empty_cart(); 
 	}
 }
-// Call all hooks
+// Enqueue javascript for opacity on wc-notification
+wp_enqueue_script( 'wc-notification-opacity', get_bloginfo( 'stylesheet_directory' ). '/js/notificationOpacity.js' , '' , false, true );
+
 
 // add_action('pre_get_posts','shop_filter_cat');
 add_action( 'after_setup_theme', 'veldhuizen_add_woocommerce_support' );
