@@ -421,6 +421,43 @@ function veldhuizen_add_woocommerce_support() {
 // Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
 require get_template_directory() . '/woocommerce/custom-fields.php';
 
+// Change added to cart pop up
+add_filter( 'wc_add_to_cart_message_html', 'njengah_custom_added_to_cart_message' );
+ 
+function njengah_custom_added_to_cart_message() {
+	// global $woocommerce;
+	// $message = 'You cool product is in the cart!';
+	// $products_in_cart = $woocommerce->cart->get_cart();
+	// // var_dump($products_in_cart);
+	// foreach ($products_in_cart as $single_product_cart) {
+	// 	$id = $single_product_cart->product_id;
+	// 	// echo '<p class="test-mand">' . $single_product_cart . '</p>';
+	// 	// var_dump($single_product_cart);
+	// 	var_dump($id);
+	// }
+
+	global $woocommerce;
+    $items = $woocommerce->cart->get_cart();
+
+        foreach($items as $item => $values) { 
+            $_product =  wc_get_product( $values['data']->get_id()); 
+            echo "<b>".$_product->get_title().'</b>  <br> Quantity: '.$values['quantity'].'<br>'; 
+            $price = get_post_meta($values['product_id'] , '_price', true);
+            echo "  Price: ".$price."<br>";
+        } 
+	// return $message;
+	
+}
+
+// Empty cart button 
+function njengah_clear_cart_button_callback(){
+ 
+    return'<a class="clear-cart-button"  href="<?php echo $woocommerce->cart->get_cart_url(); ?>?empty-cart">
+ 
+        <?php _e( "Clear Cart", "text-domain" ); ?>'; 
+ 
+    </a>
+}
 // Call all hooks
 
 // add_action('pre_get_posts','shop_filter_cat');
