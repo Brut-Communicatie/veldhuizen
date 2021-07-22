@@ -1074,4 +1074,10 @@ p.no-comments {
 	margin-bottom: 10px;
 }
 
+.woocommerce-notices-wrapper .woocommerce-error {
+	margin: 0;
+	list-style-type: none;
+	background-color: #b60000;
+}
+
 /*# sourceMappingURL=woocommerce.css.map */
