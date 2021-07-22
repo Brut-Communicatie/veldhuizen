@@ -747,7 +747,12 @@ p.no-comments {
 }
 
 .woocommerce .woocommerce-breadcrumb {
-	display: none;
+	display: none !important;
+	margin: 0 !important;
+}
+
+.woocommerce .entry-summary {
+	margin: 0 !important;
 }
 
 .woocommerce .veldhuizen__container {
@@ -1042,11 +1047,11 @@ p.no-comments {
 
 .woocommerce-notices-wrapper {
 	position: absolute;
-	top: 50vh;
+	top: 205px;
 	z-index: 5;
 	left: 50%;
 	transform: translateX(-50%);
-	box-shadow: 3px 3px 5px rgba(221, 221, 221, 0.384);
+	box-shadow: 2px 2px 4px rgba(75, 75, 75, 0.384);
 }
 
 .woocommerce-notices-wrapper .woocommerce-message {
@@ -1062,9 +1067,26 @@ p.no-comments {
 	-moz-transition: background-color 0.3s ease-in-out;
 	-o-transition: background-color 0.3s ease-in-out;
 	transition: background-color 0.3s ease-in-out;
+	box-shadow: 2px 2px 4px rgba(46, 46, 46, 0.527);
 }
 
 .woocommerce-notices-wrapper .woocommerce-message .wc-forward:hover {
+	background-color: #555555;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message .restore-item {
+	margin-right: 10px;
+	background-color: #ff5400;
+	padding: 15px;
+	text-decoration: none;
+	-webkit-transition: background-color 0.3s ease-in-out;
+	-moz-transition: background-color 0.3s ease-in-out;
+	-o-transition: background-color 0.3s ease-in-out;
+	transition: background-color 0.3s ease-in-out;
+	box-shadow: 2px 2px 4px rgba(46, 46, 46, 0.527);
+}
+
+.woocommerce-notices-wrapper .woocommerce-message .restore-item:hover {
 	background-color: #555555;
 }
 
