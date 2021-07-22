@@ -917,6 +917,9 @@ p.no-comments {
 }
 
 .product-template-default .grouped_form .single_add_to_cart_button {
+	position: absolute;
+	top: 300px;
+	right: 0;
 	cursor: pointer;
 	background-color: #ff5400;
 	color: white;
@@ -1035,6 +1038,34 @@ p.no-comments {
 
 .single-product .veldhuizen__container.remklauw .cart button .fas {
 	margin-right: 10px;
+}
+
+.woocommerce-notices-wrapper {
+	position: absolute;
+	top: 50vh;
+	z-index: 5;
+	left: 50%;
+	transform: translateX(-50%);
+	box-shadow: 3px 3px 5px rgba(221, 221, 221, 0.384);
+}
+
+.woocommerce-notices-wrapper .woocommerce-message {
+	width: auto;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message .wc-forward {
+	margin-right: 10px;
+	background-color: #ff5400;
+	padding: 15px;
+	text-decoration: none;
+	-webkit-transition: background-color 0.3s ease-in-out;
+	-moz-transition: background-color 0.3s ease-in-out;
+	-o-transition: background-color 0.3s ease-in-out;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message .wc-forward:hover {
+	background-color: #555555;
 }
 
 /*# sourceMappingURL=woocommerce.css.map */

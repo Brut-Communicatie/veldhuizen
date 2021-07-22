@@ -231,6 +231,9 @@ $woocommerce__color-tr-odd: #ECECEC;
         }
 
         .single_add_to_cart_button {
+            position: absolute;                         // <--- REMOVE
+            top: 300px;                                 // <--- REMOVE
+            right: 0;                                   // <--- REMOVE
             // float: right;
             cursor: pointer;
             background-color: $veldhuizen__oranje;
@@ -264,7 +267,6 @@ $woocommerce__color-tr-odd: #ECECEC;
 
 // STYLING 'REMKLAUW TYPE', SINGLE PRODUCT, ACTUALLY SINGLE 'SINGLE' PRODUCT
 // THIS STYLING ONLY APPLIES FOR REMKLAUW /product/remklauw-type
-
 .single-product {
     .veldhuizen__container {
         &.remklauw {
@@ -352,6 +354,34 @@ $woocommerce__color-tr-odd: #ECECEC;
                         margin-right: 10px;
                     }
                 }
+            }
+        }
+    }
+}
+
+.woocommerce-notices-wrapper {
+    position: absolute; 
+    top: 50vh;
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 3px 3px 5px rgba(221, 221, 221, 0.384);
+
+    .woocommerce-message {
+        width: auto;
+
+        .wc-forward {
+            margin-right: 10px;
+            background-color: $veldhuizen__oranje;
+            padding: 15px;
+            text-decoration: none;
+            -webkit-transition: background-color 0.3s ease-in-out;
+            -moz-transition: background-color 0.3s ease-in-out;
+            -o-transition: background-color 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover {
+                background-color: #555555;
             }
         }
     }
