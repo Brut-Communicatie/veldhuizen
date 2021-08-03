@@ -24,6 +24,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
+
+<!-- <div class="top__banner"><div class="top__content"><h1> <?php woocommerce_page_title(); ?> </h1></div></div> -->
 <li <?php wc_product_class( '', $product ); ?>>
 	<?php
 	/**
@@ -31,8 +33,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_link_open - 10
 	 */
-	$title = get_the_title();
-	echo $title;
+	// $title = get_the_title();
+	// echo $title;
 	do_action( 'woocommerce_before_shop_loop_item' );
 
 	/**
@@ -56,6 +58,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_rating - 5
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
+	// echo '<p>after shop loop item title</p>';
 	do_action( 'woocommerce_after_shop_loop_item_title' );
 
 	/**
