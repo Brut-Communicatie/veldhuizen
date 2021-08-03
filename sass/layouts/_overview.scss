@@ -1,0 +1,5 @@
+.five-col {
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(calc(20% - 10px), 1fr));
+    padding: 20px;
+}

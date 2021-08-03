@@ -23,7 +23,7 @@ else {
 echo '<main id="primary" class="site-main">';
 echo '<div class="service-pages">';
 
-echo '<div class="onderhoud-wrapper">';
+echo '<div id="onderhoudsgegevens" class="onderhoud-wrapper">';
 echo '<h2>' . 'Onderhoudsgegevens' . '</h2>';
 echo '<div class="veldhuizen__container">';
     // VERLICHTING SCHEMA
@@ -76,7 +76,7 @@ echo '<div class="veldhuizen__container">';
 echo '</div>';
 echo '</div>';
 
-echo '<div class="koppelen-clixtar">';
+echo '<div id="aan-af-koppelen" class="koppelen-clixtar">';
 echo '<h2>Aan/afkoppelen van Clixtar oplegger</h2>';
 echo '<div class="veldhuizen__container">';
 
@@ -107,7 +107,7 @@ echo '<div class="veldhuizen__container">';
 echo '</div>';      // CLOSE VELDHUIZEN__CONTAINER DIV
 echo '</div>';      // CLOSE KOPPELEN-CLIXTAR DIV
 
-echo '<div class="reparatie-formulier">';
+echo '<div id="reparatieformulier-service" class="reparatie-formulier">';
 echo '<h2>Reparatieformulier</h2>';
 echo '<div class="veldhuizen__container">';
 // echo do_shortcode('[contact-form-7 id="19040" title="Reparatieformulier"]');

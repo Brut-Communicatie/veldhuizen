@@ -8,6 +8,7 @@ WooCommerce styles override
 $woocommerce__color-error: #e2401c;
 $woocommerce__color-success: #0f834d;
 $woocommerce__color-info: #3d9cd2;
+$woocommerce__color-tr-odd: #ECECEC;
 
 // Import variables and mixins
 @import "abstracts/abstracts";
@@ -45,47 +46,61 @@ $woocommerce__color-info: #3d9cd2;
 @import "plugins/woocommerce/cart";
 
 .woocommerce {
+    .bold {
+        font-weight: 700;
+    }
+
+    .center {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    hr.divider-shop {
+        border-top: 1px solid #cccccc0a;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
     .woocommerce-breadcrumb {
         display: none;
     }
+
     .veldhuizen__container {
         grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
 
         @include Responsive($mobileBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+
             .block img {
                 height: 100px;
             }
         }
-    
+
         &.two-col {
             grid-template-columns: calc(70% - 10px) 30%;
 
             @include Responsive($tabletBreakpoint) {
                 grid-template-columns: calc(60% - 10px) 40%;
             }
+
             @include Responsive(700px) {
                 grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
             }
-            .onderdelen-intro {
-                .bold {
-                    font-weight: 700;
-                }
-            }
-    
+
             .contact-card {
                 background-color: white;
                 padding: 40px 20px;
                 box-shadow: 2px 2px 3px rgba(238, 238, 238, 0.747);
                 display: flex;
                 flex-wrap: wrap;
-    
-                .wc-flex-wrapper  {
+
+                .wc-flex-wrapper {
                     h4 {
                         color: $veldhuizen__groen;
                         margin: 0;
                     }
-                     p {
+
+                    p {
                         margin: 0;
                         color: #555555;
                         line-height: 1.8;
@@ -98,12 +113,15 @@ $woocommerce__color-info: #3d9cd2;
 
                 @include Responsive (700px) {
                     justify-content: space-between;
+
                     .wc-flex-wrapper {
                         padding: 10px;
                     }
                 }
+
                 @include Responsive (600px) {
                     justify-content: center;
+
                     .wc-flex-wrapper {
                         width: 100%;
                         text-align: center;
@@ -113,11 +131,230 @@ $woocommerce__color-info: #3d9cd2;
         }
     }
 }
+
 .archive {
     .page-title {
         display: none;
     }
+
+    hr.divider-shop {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
     #secondary {
         display: none;
     }
 }
+
+// PRODUCT SUB CAT OVERVIEW - LEVEL 2
+// .woocommerce {
+.product-template-default {
+    .veldhuizen__container {
+        grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
+
+        &.one-col {
+            grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+
+            &.small {
+                max-width: 800px;
+
+                @include Responsive($tabletBreakpoint) {
+                    width: 80%;
+                }
+            }
+        }
+
+        &.two-col {
+            width: 80%;
+            grid-column-gap: 30px;
+            grid-template-columns: 50% 50%;
+
+            img {
+                position: -webkit-sticky;
+                /* Safari */
+                position: sticky;
+                top: 20%;
+            }
+
+            @include Responsive($tabletBreakpoint) {
+                grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
+
+                img {
+                    position: static;
+                    width: 80%;
+                    margin: 0 auto;
+                    padding-bottom: 50px;
+                }
+            }
+
+            @include Responsive(600px) {
+                width: 100%;
+            }
+
+            @include Responsive($mobileBreakpoint) {
+                font-size: 9px;
+            }
+        }
+    }
+
+    .new-rows {
+        line-height: 1.5;
+    }
+
+    .grouped_form {
+        table {
+            tbody {
+                &> :nth-child(even) {
+                    background-color: $woocommerce__color-tr-odd;
+                }
+
+                tr {
+                    td.cell-names {
+                        color: $veldhuizen__groen;
+                        font-weight: 700;
+                    }
+
+                    td {
+                        font-size: 0.85em;
+
+                        >p {
+                            text-transform: capitalize;
+                        }
+
+                        .quantity input[type=number] {
+                            width: 60px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .single_add_to_cart_button {
+            // float: right;
+            cursor: pointer;
+            background-color: $veldhuizen__oranje;
+            color: white;
+            margin: 1.2rem 0;
+            padding: 15px 30px;
+            -webkit-transition: background-color 0.3s ease-in-out;
+            -moz-transition: background-color 0.3s ease-in-out;
+            -o-transition: background-color 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover {
+                background-color: #555555;
+            }
+
+            .fas {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .woocommerce-tabs,
+    .woocommerce-product-gallery,
+    p.price,
+    .product_title,
+    .product_meta,
+    #secondary {
+        display: none;
+    }
+}
+
+// STYLING 'REMKLAUW TYPE', SINGLE PRODUCT, ACTUALLY SINGLE 'SINGLE' PRODUCT
+// THIS STYLING ONLY APPLIES FOR REMKLAUW /product/remklauw-type
+
+.single-product {
+    .veldhuizen__container {
+        &.remklauw {
+            grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
+            column-gap: 20px;
+
+            section {
+                justify-self: end;
+
+                h3 {
+                    margin: 0;
+                }
+            }
+
+            @include Responsive($mobileBreakpoint) {
+                column-gap: 5px;
+            }
+
+            .related-products-flex {
+                justify-self: start;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                justify-content: space-between;
+
+                a {
+                    color: #a8a8a8;
+                    text-decoration: none;
+                    font-size: 0.8em;
+
+                    &:hover {
+                        color: $veldhuizen__groen;
+                    }
+
+                    article {
+                        margin: 0 auto;
+                        border: 1px solid #dddddd;
+                        border-radius: 3px;
+                        padding: 10px;
+
+                        h5 {
+                            font-size: 1.2em;
+                            font-weight: 400;
+                            margin: 5px;
+                        }
+
+                        p {
+                            margin: 5px;
+                        }
+                    }
+                }
+            }
+
+            .cart {
+                width: 100%;
+
+                .quantity {
+                    margin-top: 10px;
+                    width: 75%;
+                    transform: translateX(25%);
+
+                    @include Responsive($mobileBreakpoint) {
+                        width: auto;
+                        transform: unset;
+                    }
+                }
+
+                button {
+                    width: 100%;
+                    cursor: pointer;
+                    background-color: $veldhuizen__oranje;
+                    color: white;
+                    margin-top: 1.2rem;
+                    padding: 15px 30px;
+                    -webkit-transition: background-color 0.3s ease-in-out;
+                    -moz-transition: background-color 0.3s ease-in-out;
+                    -o-transition: background-color 0.3s ease-in-out;
+                    transition: background-color 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: #555555;
+                    }
+
+                    .fas {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// }

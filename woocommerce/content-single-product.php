@@ -59,6 +59,7 @@ if ( post_password_required() ) {
 		 * @hooked woocommerce_template_single_sharing - 50
 		 * @hooked WC_Structured_Data::generate_product_data() - 60
 		 */
+		// echo wp_get_attachment_url( $product->get_image_id() );
 		do_action( 'woocommerce_single_product_summary' );
 		?>
 	</div>
@@ -72,7 +73,6 @@ if ( post_password_required() ) {
 	 * @hooked woocommerce_upsell_display - 15
 	 * @hooked woocommerce_output_related_products - 20
 	 */
-    echo '<h1>before single product summary</h1>';
 	do_action( 'woocommerce_after_single_product_summary' );
 	?>
 </div>

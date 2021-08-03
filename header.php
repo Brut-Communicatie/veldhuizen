@@ -59,7 +59,8 @@
 					</li>
 
 					<li>
-						<a id="productenLink" href="#">Producten</a>
+						<!-- <a id="productenLink" href="#">Producten</a> -->
+					<a id="productenLink" href="<?php echo get_page_link(get_page_by_path('producten-overzicht')); ?>">Producten</a>
 						<ul>
 							<?php
 								//Args voor de producten custom post type, alleen parent pages pakken door 'post_parent' op 0 te zetten
@@ -111,7 +112,7 @@
 					</li>
 
 					<li>
-						<a id="verhuurLink" href="#">Verhuur</a>
+						<a id="verhuurLink" href="<?php echo get_page_link(get_page_by_path('verhuur-overzicht')); ?>">Verhuur</a>
 						<ul>
 						<?php
 								$verhuurArgs = array(
@@ -129,7 +130,7 @@
 									$verhuurTitle = get_the_title();
 									$verhuurLink = get_the_permalink();
 
-									echo "<li>
+									echo "<li class='nav-verhuur'>
 									<a href='$verhuurLink'>
 									<div class='header__img' style='background-image:url($verhuurImg);'></div>
 									$verhuurTitle</a>";
@@ -165,9 +166,38 @@
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'onderdelen' ) ); ?>">Onderdelen</a>
+						<ul>
+							<?php 
+							$onderdelen = wc_get_products(array(
+								'category' => array('onderdelen'),
+							));
+
+							if (isset($onderdelen)) {
+								foreach ($onderdelen as $onderdeel) {
+									$prod_title = $onderdeel->name;
+									$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
+									$prod_link = $onderdeel->get_permalink();
+									echo '<li class="nav-shop">';
+									echo '<a href="' . $prod_link . '">';
+									echo '<div class="header__img" style="background-image:url(' . $prod_image . ')";></div>';
+									echo $prod_title . '</a>';
+									echo '</li>';
+								}
+							}
+
+							?>
+						</ul>
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
+						<ul id="service-anchors">
+						<?php
+						$homeUrl = get_home_url();
+							echo '<li><a href="'. $homeUrl .'/service#onderhoudsgegevens">Onderhoudsgegevens</a></li>';
+							echo '<li><a href="'. $homeUrl .'/service#aan-af-koppelen">Aan/afkoppelen clixtar</a></li>';
+							echo '<li><a href="'. $homeUrl .'/service#reparatieformulier-service">Reparatieformulier</a></li>';
+						?>
+						</ul>
 					</li>
 					<li>
 						<a class="header__orange" href="<?php echo get_page_link( get_page_by_path( 'contact' ) ); ?>">Contact</a>

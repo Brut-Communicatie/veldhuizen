@@ -1,3 +1,4 @@
+
 @media screen and (min-width: 768px) {
 
 	.col2-set {
@@ -115,5 +116,47 @@
 				margin-right: 10px;
 			}
 		}
+	}
+=======
+@media screen and (min-width: 768px) {
+
+	.col2-set {
+
+		.form-row-first {
+			float: left;
+			margin-right: $columns__margin;
+		}
+
+		.form-row-last {
+			float: right;
+			margin-right: 0;
+		}
+
+		.form-row-first,
+		.form-row-last {
+
+			@include column-width(2);
+		}
+	}
+}
+
+.checkout__layout {
+	width: 1000px;
+	margin: 0 auto;
+
+	@media screen and (max-width: 1001px) {
+		width: calc(100% - 2rem);
+	}
+
+	p {
+		strong {
+			color: $veldhuizen__groen;
+		}
+	}
+
+	&--inner {
+		box-sizing: border-box;
+		padding: 2rem;
+		background-color: rgb(197, 197, 197);	
 	}
 }
