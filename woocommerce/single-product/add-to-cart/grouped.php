@@ -83,8 +83,6 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 			<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen.</p>
 		</div>
 
-
-
 		<div class="veldhuizen__container two-col">
 			<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>">
 
