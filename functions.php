@@ -446,7 +446,7 @@ class CustomerDiscount {
 		if (is_admin() && !defined('DOING_AJAX')) {
 			return;
 		}
-		// var_dump();
+		// id from user account made for testing
 		if (get_current_user_id() === 4) {
 			// add discount if not added already
 			if (!in_array($this->coupon_code, WC()->cart->get_applied_coupons())) {
