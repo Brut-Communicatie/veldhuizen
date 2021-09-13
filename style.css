@@ -1421,13 +1421,6 @@ textarea {
 	}
 }
 
-#home-container .veldhuizen__container .item-a {
-	grid-column-start: 2;
-	grid-column-end: five;
-	grid-row-start: row1-start;
-	grid-row-end: 3;
-}
-
 #home-container .veldhuizen__container .block:hover {
 	background-color: #ff5400;
 }
