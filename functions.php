@@ -455,6 +455,4 @@ require get_template_directory() . '/inc/footer/footer-functions.php';
 // Remove all BR's and P in Contact Form 7 
 add_filter('wpcf7_autop_or_not', '__return_false');
 
-$notification = new CouponNotification;
-$notification = $notification->setCustomAccountNotification();
-echo $notification;
+
