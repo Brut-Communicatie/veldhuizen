@@ -62,8 +62,14 @@ $woocommerce__color-tr-odd: #ECECEC;
     }
 
     .woocommerce-breadcrumb {
-        display: none;
+        display: none !important;
+        margin: 0 !important;
     }
+
+    .entry-summary {
+        margin: 0 !important;
+    }
+
 
     .veldhuizen__container {
         grid-template-columns: repeat(auto-fill, minmax(calc(25% - 10px), 1fr));
@@ -231,6 +237,9 @@ $woocommerce__color-tr-odd: #ECECEC;
         }
 
         .single_add_to_cart_button {
+            position: absolute;                         // <--- REMOVE
+            top: 300px;                                 // <--- REMOVE
+            right: 0;                                   // <--- REMOVE
             // float: right;
             cursor: pointer;
             background-color: $veldhuizen__oranje;
@@ -264,7 +273,6 @@ $woocommerce__color-tr-odd: #ECECEC;
 
 // STYLING 'REMKLAUW TYPE', SINGLE PRODUCT, ACTUALLY SINGLE 'SINGLE' PRODUCT
 // THIS STYLING ONLY APPLIES FOR REMKLAUW /product/remklauw-type
-
 .single-product {
     .veldhuizen__container {
         &.remklauw {
@@ -355,6 +363,43 @@ $woocommerce__color-tr-odd: #ECECEC;
             }
         }
     }
+    .woocommerce-notices-wrapper {
+        .woocommerce-message {
+            .wc-forward {
+                display: none;
+            }
+        }
+    }
 }
 
-// }
+.woocommerce-notices-wrapper {
+    position: absolute;
+    top: 191px;
+    z-index: 5;
+    border: 1px solid rgba(201, 201, 201, 0.651);
+    right: 0;
+    box-shadow: -2px 2px 4px rgba(54, 54, 54, 0.329);
+
+    .woocommerce-message {
+        background-color: white;
+        color: black;
+        width: 300px;
+        padding: 15px;
+
+        .wc-forward {
+            display: block;
+            background-color: $veldhuizen__oranje;
+            padding: 15px;
+            // margin: 10px;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+    }
+
+    .woocommerce-error {
+        margin: 0;
+        list-style-type: none;
+        background-color: rgb(182, 0, 0);
+    }
+}

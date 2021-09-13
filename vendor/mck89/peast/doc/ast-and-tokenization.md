@@ -66,6 +66,7 @@ Available methods are:
 * ```Peast::ES2019(source, options)``` or ```Peast::ES10(source, options)```: parse using EcmaScript 2019 (ES10) syntax
 * ```Peast::ES2020(source, options)``` or ```Peast::ES11(source, options)```: parse using EcmaScript 2020 (ES11) syntax
 * ```Peast::ES2021(source, options)``` or ```Peast::ES12(source, options)```: parse using EcmaScript 2021 (ES12) syntax
+* ```Peast::ES2022(source, options)``` or ```Peast::ES13(source, options)```: parse using EcmaScript 2022 (ES13) syntax
 * ```Peast::latest(source, options)```: parse using the latest EcmaScript syntax version implemented
 
 Options
@@ -88,3 +89,5 @@ There is only one big difference from ESTree: parenthesized expressions. This ty
 From version 1.3, literals have their own classes: `StringLiteral`, `NumericLiteral`, `BooleanLiteral` and `NullLiteral`.
 
 From version 1.8, when parsing JSX, 2 new token types are emitted: `JSXIdentifier`, that represents a valid JSX identifier, and `JSXText`, that represents text inside JSX elements and fragments.
+
+From version 1.13.7, the new `rawName` property has been added to `Identifiers` nodes. This property reports the raw name of the identifier with unconverted unicode escape sequences.

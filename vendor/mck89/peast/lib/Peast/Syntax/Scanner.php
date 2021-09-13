@@ -173,13 +173,13 @@ class Scanner
         "implements", "interface", "package", "private", "protected", "public",
         "static", "let", "yield"
     );
-    
+
     /**
-     * Punctutators array
+     * Punctuators array
      * 
      * @var array 
      */
-    protected $punctutators = array(
+    protected $punctuators = array(
         ".", ";", ",", "<", ">", "<=", ">=", "==", "!=", "===", "!==", "+",
         "-", "*", "%", "++", "--", "<<", ">>", ">>>", "&", "|", "^", "!", "~",
         "&&", "||", "?", ":", "=", "+=", "-=", "*=", "%=", "<<=", ">>=", ">>>=",
@@ -188,11 +188,11 @@ class Scanner
     );
     
     /**
-     * Punctutators LSM
+     * Punctuators LSM
      * 
      * @var LSM 
      */
-    protected $punctutatorsLSM;
+    protected $punctuatorsLSM;
     
     /**
      * Strings stops LSM
@@ -355,27 +355,27 @@ class Scanner
             }
         }
 
-        //Remove exponentation operator if the feature
+        //Remove exponentiation operator if the feature
         //is not enabled
         if (!$this->features->exponentiationOperator) {
-            Utils::removeArrayValue($this->punctutators, "**");
-            Utils::removeArrayValue($this->punctutators, "**=");
+            Utils::removeArrayValue($this->punctuators, "**");
+            Utils::removeArrayValue($this->punctuators, "**=");
         }
 
         if (!$this->features->optionalChaining) {
-            Utils::removeArrayValue($this->punctutators, "?.");
+            Utils::removeArrayValue($this->punctuators, "?.");
         }
 
         //Remove logical assignment operators if the feature
         //is not enabled
         if (!$this->features->logicalAssignmentOperators) {
-            Utils::removeArrayValue($this->punctutators, "&&=");
-            Utils::removeArrayValue($this->punctutators, "||=");
-            Utils::removeArrayValue($this->punctutators, "??=");
+            Utils::removeArrayValue($this->punctuators, "&&=");
+            Utils::removeArrayValue($this->punctuators, "||=");
+            Utils::removeArrayValue($this->punctuators, "??=");
         }
         
-        //Create a LSM for punctutators array
-        $this->punctutatorsLSM = new LSM($this->punctutators);
+        //Create a LSM for punctuators array
+        $this->punctuatorsLSM = new LSM($this->punctuators);
         
         //Create a LSM for strings stops
         $this->stringsStopsLSM = new LSM($this->lineTerminators, true);
@@ -393,7 +393,7 @@ class Scanner
         
         $this->linesSplitter = "/" .
                                implode("|", $this->lineTerminators) .
-                               "/u";
+                               "/uS";
         $this->position = new Position(0, 0, 0);
     }
     
@@ -523,10 +523,10 @@ class Scanner
      */
     public function isStrictModeKeyword($token)
     {
-        return $token->getType() === Token::TYPE_KEYWORD &&
-               (in_array($token->getValue(), $this->keywords) || (
+        return $token->type === Token::TYPE_KEYWORD &&
+               (in_array($token->value, $this->keywords) || (
                 $this->strictMode &&
-                in_array($token->getValue(), $this->strictModeKeywords)));
+                in_array($token->value, $this->strictModeKeywords)));
     }
     
     /**
@@ -537,8 +537,14 @@ class Scanner
     public function getState()
     {
         //Consume current and next tokens so that they wont' be parsed again
-        //if the state is restored
-        $this->getNextToken();
+        //if the state is restored. If the current token is a slash the next
+        //token isn't parsed, this prevents some edge cases where a regexp
+        //that contains something that can be interpreted as a comment causes
+        //the content to be parsed as a real comment too
+        $token = $this->currentToken ?: $this->getToken();
+        if ($token && $token->value !== "/") {
+            $this->getNextToken();
+        }
         $state = array();
         foreach ($this->stateProps as $prop) {
             $state[$prop] = $this->$prop;
@@ -564,7 +570,13 @@ class Scanner
     public function setState($state)
     {
         if ($this->registerTokens) {
-            $this->tokens = array_slice($this->tokens, 0, $state["tokensNum"]);
+            //Check if tokens have been added
+            if (isset($this->tokens[$state["tokensNum"]])) {
+                //Remove all added tokens
+                for ($i = count($this->tokens) - 1; $i >= $state["tokensNum"]; $i--) {
+                    array_pop($this->tokens);
+                }
+            }
             unset($state["tokensNum"]);
         }
         //Emit the ResetState event and pass the given state
@@ -623,22 +635,7 @@ class Scanner
         if ($index === null) {
             $index = $this->index;
         }
-        return $this->isEOF($index) ? null : $this->source[$index];
-    }
-    
-    /**
-     * Checks if the given index is at the end of the source code
-     * 
-     * @param int $index Index, if not given it will use the current index
-     * 
-     * @return bool
-     */
-    public function isEOF($index = null)
-    {
-        if ($index === null) {
-            $index = $this->index;
-        }
-        return $index >= $this->length;
+        return $index < $this->length ? $this->source[$index] : null;
     }
     
     /**
@@ -666,7 +663,7 @@ class Scanner
     public function consumeToken()
     {
         //Move the scanner position to the end of the current position
-        $this->position = $this->currentToken->getLocation()->getEnd();
+        $this->position = $this->currentToken->location->end;
         
         //Before consume the token, consume comments associated with it
         if ($this->comments) {
@@ -683,7 +680,7 @@ class Scanner
             "TokenConsumed", array($this->currentToken)
         );
         
-        $this->currentToken = $this->nextToken ? $this->nextToken : null;
+        $this->currentToken = $this->nextToken;
         $this->nextToken = null;
         return $this;
     }
@@ -697,8 +694,10 @@ class Scanner
      */
     public function consume($expected)
     {
-        $token = $this->getToken();
-        if ($token && $token->getValue() === $expected) {
+        //Do not call getToken if there's already a pending token for
+        //performance reasons
+        $token = $this->currentToken ?: $this->getToken();
+        if ($token && $token->value === $expected) {
             $this->consumeToken();
             return $token;
         }
@@ -715,8 +714,10 @@ class Scanner
      */
     public function consumeOneOf($expected)
     {
-        $token = $this->getToken();
-        if ($token && in_array($token->getValue(), $expected)) {
+        //Do not call getToken if there's already a pending token for
+        //performance reasons
+        $token = $this->currentToken ?: $this->getToken();
+        if ($token && in_array($token->value, $expected)) {
             $this->consumeToken();
             return $token;
         }
@@ -739,13 +740,13 @@ class Scanner
         if ($nextToken) {
             $nextToken = $this->getNextToken();
             $refLine = !$nextToken ? null :
-                        $nextToken->getLocation()->getEnd()->getLine();
+                        $nextToken->location->end->getLine();
         } else {
             $refLine = $this->getPosition()->getLine();
         }
-        $token = $this->getToken();
+        $token = $this->currentToken ?: $this->getToken();
         return $token &&
-               $token->getLocation()->getEnd()->getLine() === $refLine;
+               $token->location->end->getLine() === $refLine;
     }
     
     /**
@@ -760,10 +761,10 @@ class Scanner
      */
     public function isBefore($expected, $nextToken = false)
     {
-        $token = $this->getToken();
+        $token = $this->currentToken ?: $this->getToken();
         if (!$token) {
             return false;
-        } elseif (in_array($token->getValue(), $expected)) {
+        } elseif (in_array($token->value, $expected)) {
             return true;
         } elseif (!$nextToken) {
             return false;
@@ -772,14 +773,14 @@ class Scanner
             return false;
         }
         foreach ($expected as $val) {
-            if (!is_array($val) || $val[0] !== $token->getValue()) {
+            if (!is_array($val) || $val[0] !== $token->value) {
                 continue;
             }
             //If the second value in the array is true check that the current
             //token is not followed by line terminators, otherwise compare its
             //value to the next token
             if (($val[1] === true && $this->noLineTerminators(true)) ||
-                ($val[1] !== true && $val[1] === $this->nextToken->getValue())) {
+                ($val[1] !== true && $val[1] === $this->nextToken->value)) {
                 return true;
             }
         }
@@ -794,20 +795,23 @@ class Scanner
     public function getNextToken()
     {
         if (!$this->nextToken) {
-            $token = $this->getToken();
+            $token = $this->currentToken ?: $this->getToken();
             $this->currentToken = null;
-            $this->nextToken = $this->getToken();
+            $this->nextToken = $this->getToken(true);
             $this->currentToken = $token;
         }
         return $this->nextToken;
     }
     
     /**
-     * Returns the current token 
+     * Returns the current token
+     *
+     * @param bool $skipEOFChecks  True to skip end of file checks
+     *                             even if the end is reached
      * 
      * @return Token|null
      */
-    public function getToken()
+    public function getToken($skipEOFChecks = false)
     {
         //The current token is returned until consumed
         if ($this->currentToken) {
@@ -824,19 +828,21 @@ class Scanner
                 );
             }
         }
-        
-        if ($this->isEOF()) {
-            //When the end of the source is reached
+
+        //When the end of the source is reached
+        if ($this->index >= $this->length) {
             //Check if there are open brackets
-            foreach ($this->openBrackets as $bracket => $num) {
-                if ($num) {
-                    return $this->error("Unclosed $bracket");
+            if (!$skipEOFChecks) {
+                foreach ($this->openBrackets as $bracket => $num) {
+                    if ($num) {
+                        $this->error("Unclosed $bracket");
+                    }
                 }
-            }
-            
-            //Check if there are open templates
-            if (count($this->openTemplates)) {
-                return $this->error("Unterminated template");
+
+                //Check if there are open templates
+                if (count($this->openTemplates)) {
+                    $this->error("Unterminated template");
+                }
             }
             
             //Register comments and consume them
@@ -858,18 +864,18 @@ class Scanner
             
             //Try to match a token
             if (
-                ($this->jsx && ($token = $this->scanJSXString())) ||
                 ($this->jsx && ($token = $this->scanJSXIdentifier())) ||
-                ($token = $this->scanString()) ||
                 ($token = $this->scanTemplate()) ||
                 ($token = $this->scanNumber()) ||
-                ($this->jsx && ($token = $this->scanJSXPunctutator())) ||
-                ($token = $this->scanPunctutator()) ||
-                ($token = $this->scanKeywordOrIdentifier())
+                ($this->jsx && ($token = $this->scanJSXPunctuator())) ||
+                ($token = $this->scanPunctuator()) ||
+                ($token = $this->scanKeywordOrIdentifier()) ||
+                ($this->jsx && ($token = $this->scanJSXString())) ||
+                ($token = $this->scanString())
             ) {
-                //Set the token stard and end positions
-                $token->setStartPosition($startPosition)
-                      ->setEndPosition($this->getPosition(true));
+                //Set the token start and end positions
+                $token->location->start = $startPosition;
+                $token->location->end = $this->getPosition(true);
                 $this->currentToken = $token;
                                             
                 //Register comments if required
@@ -902,7 +908,7 @@ class Scanner
         if ($origException) {
             throw $origException;
         }
-        return $this->error();
+        $this->error();
     }
     
     /**
@@ -998,8 +1004,8 @@ class Scanner
      */
     public function reconsumeCurrentTokenAsRegexp()
     {
-        $token = $this->getToken();
-        $value = $token ? $token->getValue() : null;
+        $token = $this->currentToken ?: $this->getToken();
+        $value = $token ? $token->value : null;
         
         //Check if the token starts with "/"
         if (!$value || $value[0] !== "/") {
@@ -1007,7 +1013,7 @@ class Scanner
         }
         
         //Reset the scanner position to the token's start position
-        $startPosition = $token->getLocation()->getStart();
+        $startPosition = $token->location->start;
         $this->setScanPosition($startPosition);
         
         $buffer = "/";
@@ -1015,17 +1021,17 @@ class Scanner
         $this->column++;
         $inClass = false;
         while (true) {
-            //In a characters class the delmiter "/" is allowed without escape,
+            //In a characters class the delimiter "/" is allowed without escape,
             //so the characters class must be closed before closing the regexp
             $stops = $inClass ? array("]") : array("/", "[");
             $tempBuffer = $this->consumeUntil($stops);
             if ($tempBuffer === null) {
                 if ($inClass) {
-                    return $this->error(
+                    $this->error(
                         "Unterminated character class in regexp"
                     );
                 } else {
-                    return $this->error("Unterminated regexp");
+                    $this->error("Unterminated regexp");
                 }
             }
             $buffer .= $tempBuffer[0];
@@ -1051,7 +1057,7 @@ class Scanner
         //If next token has already been parsed and it's a bracket exclude it
         //from the count of open brackets
         if ($this->nextToken) {
-            $nextVal = $this->nextToken->getValue();
+            $nextVal = $this->nextToken->value;
             if (isset($this->brackets[$nextVal]) &&
                 isset($this->openBrackets[$nextVal])
             ) {
@@ -1070,8 +1076,9 @@ class Scanner
             
         //Replace the current token with a regexp token
         $token = new Token(Token::TYPE_REGULAR_EXPRESSION, $buffer);
-        $this->currentToken = $token->setStartPosition($startPosition)
-                                    ->setEndPosition($this->getPosition(true));
+        $token->location->start = $startPosition;
+        $token->location->end = $this->getPosition(true);
+        $this->currentToken = $token;
                                     
         if ($comments) {
             //Attach the comments to the new current token
@@ -1127,7 +1134,7 @@ class Scanner
                                 //If the end of the source has been reached and
                                 //a multiline comment is still open, it's an
                                 //error
-                                return $this->error("Unterminated comment");
+                                $this->error("Unterminated comment");
                             }
                             $isEnd = true;
                         } else {
@@ -1154,8 +1161,8 @@ class Scanner
                                 }
                                 $this->adjustColumnAndLine($content);
                                 $token = new Token(Token::TYPE_COMMENT, $content);
-                                $token->setStartPosition($start)
-                                      ->setEndPosition($this->getPosition(true));
+                                $token->location->start = $start;
+                                $token->location->end = $this->getPosition(true);
                                 $comments[] = $token;
                                 //For inline comments the new content contains
                                 //the closing line terminator since the char has
@@ -1212,8 +1219,8 @@ class Scanner
                             }
                             $this->adjustColumnAndLine($content);
                             $token = new Token(Token::TYPE_COMMENT, $content);
-                            $token->setStartPosition($start)
-                                  ->setEndPosition($this->getPosition(true));
+                            $token->location->start = $start;
+                            $token->location->end = $this->getPosition(true);
                             $comments[] = $token;
                             $content = "";
                             if ($char !== null) {
@@ -1278,8 +1285,8 @@ class Scanner
                                 }
                                 $this->adjustColumnAndLine($content);
                                 $token = new Token(Token::TYPE_COMMENT, $content);
-                                $token->setStartPosition($start)
-                                      ->setEndPosition($this->getPosition(true));
+                                $token->location->start = $start;
+                                $token->location->end = $this->getPosition(true);
                                 $comments[] = $token;
                                 $content = "";
                                 if ($char !== null) {
@@ -1324,7 +1331,7 @@ class Scanner
             $buffer = $this->consumeUntil($this->stringsStopsLSM, $handleEscape);
             $this->stringsStopsLSM->remove($char);
             if ($buffer === null || $buffer[1] !== $char) {
-                return $this->error("Unterminated string");
+                $this->error("Unterminated string");
             }
             return new Token(Token::TYPE_STRING_LITERAL, $char . $buffer[0]);
         }
@@ -1365,7 +1372,7 @@ class Scanner
             while (true) {
                 $tempBuffer = $this->consumeUntil(array("`", "$"));
                 if (!$tempBuffer) {
-                    return $this->error("Unterminated template");
+                    $this->error("Unterminated template");
                 }
                 $buffer .= $tempBuffer[0];
                 if ($tempBuffer[1] !== "$" || $this->charAt() === "{") {
@@ -1401,7 +1408,7 @@ class Scanner
         }
 
         $buffer = "";
-        $allowedExp = true;
+        $allowedDecimals = true;
         
         //Parse the integer part
         if ($char !== ".") {
@@ -1427,13 +1434,13 @@ class Scanner
                 $this->column++;
                 $tempBuffer = $this->consumeNumbers($lower);
                 if ($tempBuffer === null) {
-                    return $this->error("Missing numbers after 0$char");
+                    $this->error("Missing numbers after 0$char");
                 }
                 $buffer .= $char . $tempBuffer;
                 
                 //Check that there are not numbers left
                 if ($this->consumeNumbers() !== null) {
-                    return $this->error();
+                    $this->error();
                 }
 
                 if ($this->features->bigInt && $this->charAt() === "n") {
@@ -1448,12 +1455,12 @@ class Scanner
             //Consume exponent part if present
             if ($tempBuffer = $this->consumeExponentPart()) {
                 $buffer .= $tempBuffer;
-                $allowedExp = false;
+                $allowedDecimals = false;
             }
         }
         
         //Parse the decimal part
-        if ($this->charAt() === ".") {
+        if ($allowedDecimals && $this->charAt() === ".") {
             
             //Consume the dot
             $this->index++;
@@ -1465,7 +1472,7 @@ class Scanner
             $buffer .= $tempBuffer;
             
             //If the buffer contains only the dot it should be parsed as
-            //punctutator
+            //punctuator
             if ($buffer === ".") {
                 $this->index--;
                 $this->column--;
@@ -1474,9 +1481,6 @@ class Scanner
             
             //Consume exponent part if present
             if (($tempBuffer = $this->consumeExponentPart()) !== null) {
-                if (!$allowedExp) {
-                    return $this->error("Invalid exponential notation");
-                }
                 $buffer .= $tempBuffer;
             }
         }
@@ -1512,7 +1516,7 @@ class Scanner
             $char = $this->charAt();
         }
         if ($count && substr($buffer, -1) === "_") {
-            return $this->error(
+            $this->error(
                 "Numeric separators are not allowed at the end of a number"
             );
         }
@@ -1540,7 +1544,7 @@ class Scanner
             }
             $tempBuffer = $this->consumeNumbers();
             if ($tempBuffer === null) {
-                return $this->error("Missing exponent");
+                $this->error("Missing exponent");
             }
             $buffer .= $tempBuffer;
         }
@@ -1548,11 +1552,11 @@ class Scanner
     }
     
     /**
-     * Punctutator scanning method
+     * Punctuator scanning method
      * 
      * @return Token|null
      */
-    protected function scanPunctutator()
+    protected function scanPunctuator()
     {
         $token = null;
         $char = $this->charAt();
@@ -1567,7 +1571,7 @@ class Scanner
                     !$this->openBrackets[$openBracket]
                 ) {
                     if (!$this->isAfterSlash($this->getPosition(true))) {
-                        return $this->error();
+                        $this->error();
                     }
                 } else {
                     $this->openBrackets[$openBracket]--;
@@ -1580,12 +1584,12 @@ class Scanner
             }
             $this->index++;
             $this->column++;
-            $token = new Token(Token::TYPE_PUNCTUTATOR, $char);
+            $token = new Token(Token::TYPE_PUNCTUATOR, $char);
         } elseif (
-            //Try to match the longest puncutator
-            $match = $this->punctutatorsLSM->match($this, $this->index, $char)
+            //Try to match the longest punctuator
+            $match = $this->punctuatorsLSM->match($this, $this->index, $char)
         ) {
-            //Optional chaining punctutator cannot appear before a number, in this
+            //Optional chaining punctuator cannot appear before a number, in this
             //case only the question mark must be consumed
             if ($match[1] === "?." &&
                 ($nextChar = $this->charAt($this->index + $match[0])) &&
@@ -1595,7 +1599,7 @@ class Scanner
             }
             $this->index += $match[0];
             $this->column += $match[0];
-            $token = new Token(Token::TYPE_PUNCTUTATOR, $match[1]);
+            $token = new Token(Token::TYPE_PUNCTUATOR, $match[1]);
         }
         return $token;
     }
@@ -1607,31 +1611,51 @@ class Scanner
      */
     protected function scanKeywordOrIdentifier()
     {
+        //Check private identifier start character
+        if ($private = $this->features->privateMethodsAndFields && $this->charAt() === "#") {
+            $this->index++;
+            $this->column++;
+        }
+
         //Consume the maximum number of characters that are unicode escape
         //sequences or valid identifier starts (only the first character) or
         //parts
         $buffer = "";
-        $fn = "isIdentifierStart";
+        $start = true;
         while (($char = $this->charAt()) !== null) {
-            if ($this->$fn($char)) {
+            if (
+                ($char >= "a" && $char <= "z") ||
+                ($char >= "A" && $char <= "Z") ||
+                $char === "_" || $char === "$" ||
+                (!$start && $char >= "0" && $char <= "9") ||
+                $this->isIdentifierChar($char, $start)
+            ) {
                 $buffer .= $char;
                 $this->index++;
                 $this->column++;
-            } elseif ($seq = $this->consumeUnicodeEscapeSequence()) {
-                //Verify that is a valid character
-                if (!$this->$fn($seq)) {
+            } elseif ($char === "\\" && ($seq = $this->consumeUnicodeEscapeSequence())) {
+                //Verify that it's a valid character
+                if (!$this->isIdentifierChar($seq[1], $start)) {
                     break;
                 }
-                $buffer .= $seq;
+                $buffer .= $seq[0];
             } else {
                 break;
             }
-            $fn = "isIdentifierPart";
+            $start = false;
         }
         
         //Identify token type
         if ($buffer === "") {
+            //Unconsume the hash if nothing was found after that
+            if ($private) {
+                $this->index--;
+                $this->column--;
+            }
             return null;
+        } elseif ($private) {
+            $type = Token::TYPE_PRIVATE_IDENTIFIER;
+            $buffer = "#" . $buffer;
         } elseif ($buffer === "null") {
             $type = Token::TYPE_NULL_LITERAL;
         } elseif ($buffer === "true" || $buffer === "false") {
@@ -1650,7 +1674,7 @@ class Scanner
     /**
      * Consumes an unicode escape sequence
      * 
-     * @return string|null
+     * @return array|null
      */
     protected function consumeUnicodeEscapeSequence()
     {
@@ -1664,8 +1688,10 @@ class Scanner
         $startColumn = $this->column;
         $this->index += 2;
         $this->column += 2;
+        $brackets = false;
         if ($this->charAt() === "{") {
             //\u{FFF}
+            $brackets = true;
             $this->index++;
             $this->column++;
             $code = $this->consumeNumbers("x");
@@ -1690,39 +1716,30 @@ class Scanner
             return null;
         }
         
-        //Return the decoded character
-        return Utils::unicodeToUtf8(hexdec($code));
+        //Return an array where the first element is the matched sequence
+        //and the second one is the decoded character
+        return array(
+            $brackets ? "\\u{" . $code . "}" : "\\u" . $code,
+            Utils::unicodeToUtf8(hexdec($code))
+        );
     }
     
     /**
-     * Checks if the given character is a valid identifier start
+     * Checks if the given character is valid for an identifier
      * 
-     * @param string $char Character to check
+     * @param string $char  Character to check
+     * @param bool   $start If true it will check that the character is
+     *                      valid to start an identifier
      * 
      * @return bool
      */
-    protected function isIdentifierStart($char)
+    protected function isIdentifierChar($char, $start = true)
     {
         return ($char >= "a" && $char <= "z") ||
                ($char >= "A" && $char <= "Z") ||
                $char === "_" || $char === "$" ||
-               preg_match($this->idStartRegex, $char);
-    }
-    
-    /**
-     * Checks if the given character is a valid identifier part
-     * 
-     * @param string $char Character to check
-     * 
-     * @return bool
-     */
-    protected function isIdentifierPart($char)
-    {
-        return ($char >= "a" && $char <= "z") ||
-               ($char >= "A" && $char <= "Z") ||
-               ($char >= "0" && $char <= "9") ||
-               $char === "_" || $char === "$" ||
-               preg_match($this->idPartRegex, $char);
+               (!$start && $char >= "0" && $char <= "9") ||
+               preg_match($start ? $this->idStartRegex : $this->idPartRegex, $char);
     }
     
     /**
@@ -1752,7 +1769,7 @@ class Scanner
      * @param bool      $handleEscape   True to handle escaping
      * @param bool      $collectStop    True to include the stop character
      * 
-     * @return string|null
+     * @return array|null
      */
     protected function consumeUntil(
         $stops, $handleEscape = true, $collectStop = true

@@ -327,6 +327,42 @@ ul.products li.product .button {
 	margin-right: 10px;
 }
 
+@media screen and (min-width: 768px) {
+	.col2-set .form-row-first {
+		float: left;
+		margin-right: 3.8%;
+	}
+	.col2-set .form-row-last {
+		float: right;
+		margin-right: 0;
+	}
+	.col2-set .form-row-first,
+	.col2-set .form-row-last {
+		width: 48.1%;
+	}
+}
+
+.checkout__layout {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 1001px) {
+	.checkout__layout {
+		width: calc(100% - 2rem);
+	}
+}
+
+.checkout__layout p strong {
+	color: #0b9a71;
+}
+
+.checkout__layout--inner {
+	box-sizing: border-box;
+	padding: 2rem;
+	background-color: #c5c5c5;
+}
+
 /**
  * General WooCommerce components
  */
@@ -811,7 +847,12 @@ p.no-comments {
 }
 
 .woocommerce .woocommerce-breadcrumb {
-	display: none;
+	display: none !important;
+	margin: 0 !important;
+}
+
+.woocommerce .entry-summary {
+	margin: 0 !important;
 }
 
 .woocommerce .veldhuizen__container {
@@ -981,6 +1022,9 @@ p.no-comments {
 }
 
 .product-template-default .grouped_form .single_add_to_cart_button {
+	position: absolute;
+	top: 300px;
+	right: 0;
 	cursor: pointer;
 	background-color: #ff5400;
 	color: white;
@@ -1099,6 +1143,41 @@ p.no-comments {
 
 .single-product .veldhuizen__container.remklauw .cart button .fas {
 	margin-right: 10px;
+}
+
+.single-product .woocommerce-notices-wrapper .woocommerce-message .wc-forward {
+	display: none;
+}
+
+.woocommerce-notices-wrapper {
+	position: absolute;
+	top: 191px;
+	z-index: 5;
+	border: 1px solid rgba(201, 201, 201, 0.651);
+	right: 0;
+	box-shadow: -2px 2px 4px rgba(54, 54, 54, 0.329);
+}
+
+.woocommerce-notices-wrapper .woocommerce-message {
+	background-color: white;
+	color: black;
+	width: 300px;
+	padding: 15px;
+}
+
+.woocommerce-notices-wrapper .woocommerce-message .wc-forward {
+	display: block;
+	background-color: #ff5400;
+	padding: 15px;
+	text-align: center;
+	text-decoration: none;
+	margin-bottom: 10px;
+}
+
+.woocommerce-notices-wrapper .woocommerce-error {
+	margin: 0;
+	list-style-type: none;
+	background-color: #b60000;
 }
 
 /*# sourceMappingURL=woocommerce.css.map */
