@@ -39,6 +39,11 @@
 		box-sizing: border-box;
 		padding: 2rem;
 		background-color: #d7d7d7;
+
+		input[type="text"], input[type="tel"], input[type="email"], select{
+			width: 100%;
+			padding: 10px;
+		}
 	}
 }
 
@@ -58,6 +63,7 @@
 			width: calc(100% / 3 - 10px);
 			display: flex;
 			justify-content: flex-start;
+			align-items: center;
 			text-align: left;
 		}
 
@@ -69,6 +75,8 @@
 		&--price {
 			@extend .checkout__product--item;
 			width: 22%;
+			justify-content: flex-end;
+			align-items: center
 		}
 
 		&--top {
@@ -91,10 +99,26 @@
 		}
 
 		&--subtotal {
-			width: 22%;
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
 			align-self: flex-end;
 			padding: 5px 0;
 			box-sizing: border-box;
+			i{
+				margin-right: 5px;
+				font-style: normal;
+			}
+			p {
+				margin: 0;
+				strong{
+					color: black !important;
+				}
+			}
+			a{
+				display: none;
+			}
+
 		}
 
 		&--total {
