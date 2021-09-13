@@ -263,9 +263,16 @@ ul.products li.product .button {
 	background-color: #d7d7d7;
 }
 
-.checkout__layout--inner input[type="text"], .checkout__layout--inner input[type="tel"], .checkout__layout--inner input[type="email"], .checkout__layout--inner select {
+.checkout__layout--inner input[type="text"],
+.checkout__layout--inner input[type="tel"],
+.checkout__layout--inner input[type="email"],
+.checkout__layout--inner select {
 	width: 100%;
 	padding: 10px;
+}
+
+.checkout__payment {
+	margin: 0;
 }
 
 .checkout__product, .checkout__product--top {
@@ -388,6 +395,37 @@ ul.products li.product .button {
 	box-sizing: border-box;
 	padding: 2rem;
 	background-color: #c5c5c5;
+}
+
+.woocommerce-checkout-payment {
+	padding: 10px;
+	background-color: #fffae6;
+}
+
+.woocommerce-checkout-payment ul {
+	margin: 0;
+	padding: 0;
+}
+
+.woocommerce-checkout-payment ul li {
+	list-style: none;
+	background-color: #fff;
+	border: 1px solid #ffe479;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.woocommerce-checkout-payment ul li label {
+	display: flex;
+	flex-direction: column;
+}
+
+.woocommerce-checkout-payment ul li label img {
+	max-width: 200px;
+}
+
+.woocommerce-checkout-payment ul li:not(:last-child) {
+	margin-bottom: 5px;
 }
 
 /**
