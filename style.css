@@ -3005,4 +3005,16 @@ textarea {
 	display: none;
 }
 
+.WC__discountnotification {
+	position: fixed;
+	border-radius: 5px;
+	bottom: 25px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #fff;
+	border: 1px solid #0b9a71;
+	padding: 10px;
+	z-index: 999;
+}
+
 /*# sourceMappingURL=style.css.map */

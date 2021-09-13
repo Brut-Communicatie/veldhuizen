@@ -328,3 +328,15 @@ $menuBreakpoint : 1270px;
 .verhuur-lorem {
 	display: none;
 }
+
+.WC__discountnotification {
+	position: fixed;
+	border-radius: 5px;
+	bottom: 25px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #fff;
+	border: 1px solid $veldhuizen__groen;
+	padding: 10px;
+	z-index: 999;
+}
