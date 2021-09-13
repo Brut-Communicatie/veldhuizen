@@ -3008,13 +3008,20 @@ textarea {
 .WC__discountnotification {
 	position: fixed;
 	border-radius: 5px;
-	bottom: 25px;
+	bottom: 10px;
 	left: 50%;
+	color: #fff;
 	transform: translateX(-50%);
-	background-color: #fff;
-	border: 1px solid #0b9a71;
+	background-color: #0b9a71;
+	border: 1px solid black;
 	padding: 10px;
 	z-index: 999;
+}
+
+.WC__discount--item {
+	text-decoration: line-through;
+	opacity: 0.5;
+	margin-right: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

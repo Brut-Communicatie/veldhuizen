@@ -122,12 +122,32 @@ do_action( 'woocommerce_before_cart_contents' );
 				} else {
 					$itemQuantity = $values['quantity'];
 				}
-
+		
 				if ($itemQuantity > 1) {
 					$_price = intval($_price) * $itemQuantity;
 				}
 
+				// Check for discount code.
+		
+				$user = wp_get_current_user(); 
+				$user = $user->display_name; // Returns string of current user
+			
+				
 				echo '<div class="cart__row--item">';
+
+				if ($user === __KLANTACCOUNT__) {
+					if ($_price != 0){
+						global $woocommerce;
+						$coupon = new WC_Coupon(__COUPONACCOUNT__);
+						$_originalPrice = $_price;
+						$percentage = $coupon->amount; // GET DISCOUNT %
+						$discount = $percentage / 100 * $_price; // GET DISCOUNT AMOUNT
+						$_price = $_price - $discount; // ADD TO PRICE
+						// Show original price
+						echo '<span class="WC__discount--item">€' . $_originalPrice . ',-</span>';
+					}
+				}
+
 				echo '€' . $_price . ',-';
 				echo '</div>';
 			}

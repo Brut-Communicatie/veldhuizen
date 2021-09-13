@@ -329,14 +329,22 @@ $menuBreakpoint : 1270px;
 	display: none;
 }
 
-.WC__discountnotification {
+.WC{
+	&__discountnotification {
 	position: fixed;
 	border-radius: 5px;
-	bottom: 25px;
+	bottom: 10px;
 	left: 50%;
+	color: #fff;
 	transform: translateX(-50%);
-	background-color: #fff;
-	border: 1px solid $veldhuizen__groen;
+	background-color: $veldhuizen__groen;
+	border: 1px solid black;
 	padding: 10px;
 	z-index: 999;
+	}
+	&__discount--item {
+		text-decoration:line-through;
+		opacity: 0.5;
+		margin-right: 10px;
+	}
 }
