@@ -130,7 +130,7 @@
 									$verhuurTitle = get_the_title();
 									$verhuurLink = get_the_permalink();
 
-									echo "<li>
+									echo "<li class='nav-verhuur'>
 									<a href='$verhuurLink'>
 									<div class='header__img' style='background-image:url($verhuurImg);'></div>
 									$verhuurTitle</a>";
@@ -166,6 +166,27 @@
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'onderdelen' ) ); ?>">Onderdelen</a>
+						<ul>
+							<?php 
+							$onderdelen = wc_get_products(array(
+								'category' => array('onderdelen'),
+							));
+
+							if (isset($onderdelen)) {
+								foreach ($onderdelen as $onderdeel) {
+									$prod_title = $onderdeel->name;
+									$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
+									$prod_link = $onderdeel->get_permalink();
+									echo '<li class="nav-shop">';
+									echo '<a href="' . $prod_link . '">';
+									echo '<div class="header__img" style="background-image:url(' . $prod_image . ')";></div>';
+									echo $prod_title . '</a>';
+									echo '</li>';
+								}
+							}
+
+							?>
+						</ul>
 					</li>
 					<li>
 						<a href="<?php echo get_page_link( get_page_by_path( 'service' ) ); ?>">Service</a>
@@ -182,7 +203,7 @@
 						<a class="header__orange" href="<?php echo get_page_link( get_page_by_path( 'contact' ) ); ?>">Contact</a>
 					</li>
 					<li>
-						<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?></a>
+						<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?> </a>
 					</li>
 				</ul>
 			</div>

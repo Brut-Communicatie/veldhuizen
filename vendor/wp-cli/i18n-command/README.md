@@ -3,7 +3,7 @@ wp-cli/i18n-command
 
 Provides internationalization tools for WordPress projects.
 
-[![Build Status](https://travis-ci.org/wp-cli/i18n-command.svg?branch=master)](https://travis-ci.org/wp-cli/i18n-command)
+[![Testing](https://github.com/wp-cli/i18n-command/actions/workflows/testing.yml/badge.svg)](https://github.com/wp-cli/i18n-command/actions/workflows/testing.yml)
 
 Quick links: [Using](#using) | [Installing](#installing) | [Contributing](#contributing) | [Support](#support)
 
@@ -31,7 +31,7 @@ wp i18n
 Create a POT file for a WordPress project.
 
 ~~~
-wp i18n make-pot <source> [<destination>] [--slug=<slug>] [--domain=<domain>] [--ignore-domain] [--merge[=<paths>]] [--subtract=<paths>] [--include=<paths>] [--exclude=<paths>] [--headers=<headers>] [--skip-js] [--skip-audit] [--file-comment=<file-comment>] [--package-name=<name>]
+wp i18n make-pot <source> [<destination>] [--slug=<slug>] [--domain=<domain>] [--ignore-domain] [--merge[=<paths>]] [--subtract=<paths>] [--subtract-and-merge] [--include=<paths>] [--exclude=<paths>] [--headers=<headers>] [--location] [--skip-js] [--skip-php] [--skip-block-json] [--skip-theme-json] [--skip-audit] [--file-comment=<file-comment>] [--package-name=<name>]
 ~~~
 
 Scans PHP and JavaScript files for translatable strings, as well as theme stylesheets and plugin files
@@ -61,10 +61,14 @@ if the source directory is detected as either a plugin or theme.
 		If left empty, defaults to the destination POT file. POT file headers will be ignored.
 
 	[--subtract=<paths>]
-		Comma-separated list of POT files whose contents should act as some sort of blacklist for string extraction.
-		Any string which is found on that blacklist will not be extracted.
+		Comma-separated list of POT files whose contents should act as some sort of denylist for string extraction.
+		Any string which is found on that denylist will not be extracted.
 		This can be useful when you want to create multiple POT files from the same source directory with slightly
 		different content and no duplicate strings between them.
+
+	[--subtract-and-merge]
+		Whether source code references and comments from the generated POT file should be instead added to the POT file
+		used for subtraction. Warning: this modifies the files passed to `--subtract`!
 
 	[--include=<paths>]
 		Comma-separated list of files and paths that should be used for string extraction.
@@ -83,8 +87,22 @@ if the source directory is detected as either a plugin or theme.
 	[--headers=<headers>]
 		Array in JSON format of custom headers which will be added to the POT file. Defaults to empty array.
 
+	[--location]
+		Whether to write `#: filename:line` lines.
+		Defaults to true, use `--no-location` to skip the removal.
+		Note that disabling this option makes it harder for technically skilled translators to understand each message’s context.
+
 	[--skip-js]
 		Skips JavaScript string extraction. Useful when this is done in another build step, e.g. through Babel.
+
+	[--skip-php]
+		Skips PHP string extraction.
+
+	[--skip-block-json]
+		Skips string extraction from block.json files.
+
+	[--skip-theme-json]
+		Skips string extraction from theme.json files.
 
 	[--skip-audit]
 		Skips string audit where it tries to find possible mistakes in translatable strings. Useful when running in an
@@ -127,7 +145,7 @@ if the source directory is detected as either a plugin or theme.
 Extract JavaScript strings from PO files and add them to individual JSON files.
 
 ~~~
-wp i18n make-json <source> [<destination>] [--purge] [--pretty-print]
+wp i18n make-json <source> [<destination>] [--purge] [--update-mo-files] [--pretty-print]
 ~~~
 
 For JavaScript internationalization purposes, WordPress requires translations to be split up into
@@ -146,6 +164,10 @@ about WordPress JavaScript internationalization.
 
 	[--purge]
 		Whether to purge the strings that were extracted from the original source file. Defaults to true, use `--no-purge` to skip the removal.
+
+	[--update-mo-files]
+		Whether MO files should be updated as well after updating PO files.
+		Only has an effect when used in combination with `--purge`.
 
 	[--pretty-print]
 		Pretty-print resulting JSON files.
@@ -190,7 +212,7 @@ Once you've decided to commit the time to seeing your pull request through, [ple
 
 ## Support
 
-Github issues aren't for general support questions, but there are other venues you can try: https://wp-cli.org/#support
+GitHub issues aren't for general support questions, but there are other venues you can try: https://wp-cli.org/#support
 
 
 *This README.md is generated dynamically from the project's codebase using `wp scaffold package-readme` ([doc](https://github.com/wp-cli/scaffold-package-command#wp-scaffold-package-readme)). To suggest changes, please submit a pull request against the corresponding part of the codebase.*

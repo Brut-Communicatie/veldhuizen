@@ -32,6 +32,7 @@ $carrosserie_intro 		= '<p>Voer het aantal onderdelen in en plaats deze in het w
 <?php
 // Banner title
 $post_title = ($post->post_name);
+$post_id = ($post->ID);
 echo '<div class="top__banner"><div class="top__content"><h1>' . $post_title . '</h1></div></div>';
 
 // Make selection to create product cat overview pages
@@ -72,24 +73,18 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 	echo '</div>';		// close veldhuizen__container
 
 } else  {
-
-$assen_titles = array('d-as', 'e-as', 'f-as', 'g-as', 'h-as', 'j60-as', 'l-as', 'r-en-v-as-1800-kg', 'r-as-1500-kg', 's-as', 't-as', 'u-as', 'w-as', 'x-as-h-naaf', 'x-as-s205-naaf');
-
-	if (in_array($post_title, $assen_titles) === true) {
-		// var_dump($post_title);
-		// var_dump(get_home_url());
-		$img_url = get_home_url() . '/wp-content/uploads/2021/07/' . $post_title . '.jpeg';
-		var_dump($img_url);
+	$assen_product = get_product(19784);
+	$assen_children = $assen_product->children;
+	
+	if (in_array($post_id, $assen_children) === true) {
 		?>
 		<div class="veldhuizen__container one-col small">
 			<p class="bold center">Voer het aantal onderdelen in en plaats deze in het winkelmandje (oranje knop). Uw bestelling kunt u bekijken via het winkelmandje rechtsbovenaan de pagina.</p>
 			<p class="center">Hieronder vindt u een overzicht van de verschillende “<?php echo $post_title; ?>” onderdelen.</p>
 		</div>
 
-
-
 		<div class="veldhuizen__container two-col">
-			<img src="<?php echo $img_url ?>">
+			<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>">
 
 			<form class="cart grouped_form" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 				<table cellspacing="0" class="woocommerce-grouped-product-list group_table">

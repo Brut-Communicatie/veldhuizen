@@ -1244,6 +1244,10 @@ Feature: Generate a POT file of a WordPress project
       """
       __( 'I am totally included', 'foo-plugin' );
       """
+    And a foo-plugin/foobar/ignored.js file:
+      """
+      __( 'I should not be included either', 'foo-plugin' );
+      """
 
     When I run `wp i18n make-pot foo-plugin foo-plugin.pot --include=foo,bar,baz/inc*.js`
     Then the foo-plugin.pot file should not contain:
@@ -1261,6 +1265,55 @@ Feature: Generate a POT file of a WordPress project
     And the foo-plugin.pot file should contain:
       """
       I am totally included
+      """
+    And the foo-plugin.pot file should not contain:
+      """
+      I should not be included either
+      """
+
+  Scenario: Inclusion takes precedence over exclusion
+    Given an empty foo-plugin directory
+    And a foo-plugin/foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       * Plugin URI:  https://example.com
+       * Description:
+       * Version:     0.1.0
+       * Author:
+       * Author URI:
+       * License:     GPL-2.0+
+       * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+       * Text Domain: foo-plugin
+       * Domain Path: /languages
+       */
+       __( 'Hello World', 'foo-plugin' );
+      """
+    And a foo-plugin/wp-admin/includes/continents-cities.php file:
+      """
+      <?php
+       __( 'I am included', 'foo-plugin' );
+      """
+    And a foo-plugin/wp-content/file.php file:
+      """
+      <?php
+       __( 'I am not included', 'foo-plugin' );
+      """
+    And a foo-plugin/wp-includes/file.php file:
+      """
+      <?php
+       __( 'I am not included', 'foo-plugin' );
+      """
+
+    When I run `wp i18n make-pot foo-plugin foo-plugin.pot --include=wp-admin/includes/continents-cities.php`
+    Then the foo-plugin.pot file should contain:
+      """
+      I am included
+      """
+    And the foo-plugin.pot file should not contain:
+      """
+      I am not included
       """
 
   Scenario: Includes minified JavaScript files if asked to
@@ -1293,10 +1346,74 @@ Feature: Generate a POT file of a WordPress project
       I am not being ignored
       """
 
-    When I run `wp i18n make-pot foo-plugin foo-plugin.pot --include=*.min.js`
+    When I run `wp i18n make-pot foo-plugin foo-plugin.pot --include=bar/*.min.js`
     Then the foo-plugin.pot file should contain:
       """
       I am not being ignored
+      """
+
+  Scenario: Omit source code references
+    Given an empty foo-plugin directory
+    And a foo-plugin/foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       * Plugin URI:  https://example.com
+       * Description:
+       * Version:     0.1.0
+       * Author:
+       * Author URI:
+       * License:     GPL-2.0+
+       * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+       * Text Domain: foo-plugin
+       * Domain Path: /languages
+       */
+
+       __( 'Hello World', 'foo-plugin' );
+      """
+    And a foo-plugin/file.php file:
+      """
+      <?php
+       __( 'Foo', 'foo-plugin' );
+      """
+    And a foo-plugin/file.js file:
+      """
+      __( 'Bar', 'foo-plugin' );
+      """
+    And a foo-plugin/block.json file:
+      """
+      {
+        "name": "my-plugin/notice",
+        "title": "Notice",
+        "category": "common",
+        "parent": [ "core/group" ],
+        "icon": "star",
+        "description": "Shows warning, error or success notices  ...",
+        "keywords": [ "alert", "message" ],
+        "textdomain": "foo-plugin",
+        "attributes": {
+          "message": {
+            "type": "string",
+            "source": "html",
+            "selector": ".message"
+          }
+        },
+        "styles": [
+          { "name": "default", "label": "Default", "isDefault": true },
+          { "name": "other", "label": "Other" }
+        ],
+        "editorScript": "build/editor.js",
+        "script": "build/main.js",
+        "editorStyle": "build/editor.css",
+        "style": "build/style.css"
+      }
+      """
+
+    When I run `wp i18n make-pot foo-plugin foo-plugin.pot --no-location`
+    Then the foo-plugin.pot file should not contain:
+      """
+      #:
       """
 
   Scenario: Merges translations with the ones from an existing POT file
@@ -1615,6 +1732,13 @@ Feature: Generate a POT file of a WordPress project
 
       Object(u.__)( 'minified.__', 'foo-plugin' );
       Object(j._x)( 'minified._x', 'minified._x_context', 'foo-plugin' );
+
+      /* translators: babel */
+      (0, __)( 'babel.__', 'foo-plugin' );
+      (0, _i18n.__)( 'babel-i18n.__', 'foo-plugin' );
+      (0, _i18n._x)( 'babel-i18n._x', 'babel-i18n._x_context', 'foo-plugin' );
+
+      eval( "__( 'Hello Eval World', 'foo-plugin' );" );
       """
 
     When I run `wp i18n make-pot foo-plugin`
@@ -1695,6 +1819,30 @@ Feature: Generate a POT file of a WordPress project
     And the foo-plugin/foo-plugin.pot file should contain:
       """
       msgctxt "minified._x_context"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      #. translators: babel
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "babel.__"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "babel-i18n.__"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "babel-i18n._x"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgctxt "babel-i18n._x_context"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Hello Eval World"
       """
     And the foo-plugin/foo-plugin.pot file should not contain:
       """
@@ -1892,6 +2040,100 @@ Feature: Generate a POT file of a WordPress project
       #. translators: this is Webpack
       """
 
+  Scenario: Extract plural strings with expressions from JavaScript file
+    Given an empty foo-plugin directory
+    And a foo-plugin/foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       */
+      """
+    And a foo-plugin/foo-plugin.js file:
+      """
+      _n( '%d var (_n)', '%d vars (_n)', x, 'foo-plugin' );
+      _n( '%d prop (_n)', '%d props (_n)', x.y, 'foo-plugin' );
+      _n( '%d function (_n)', '%d functions (_n)', Math.abs(x), 'foo-plugin' );
+      _n( '%d operation (_n)', '%d operations (_n)', x + x, 'foo-plugin' );
+
+      _nx( '%d var (_nx)', '%d vars (_nx)', x, 'context', 'foo-plugin' );
+      _nx( '%d prop (_nx)', '%d props (_nx)', x.y, 'context', 'foo-plugin' );
+      _nx( '%d function (_nx)', '%d functions (_nx)', Math.abs(x), 'context', 'foo-plugin' );
+      _nx( '%d operation (_nx)', '%d operations (_nx)', x + x, 'context', 'foo-plugin' );
+      """
+
+    When I try `wp i18n make-pot foo-plugin`
+    Then STDOUT should be:
+      """
+      Plugin file detected.
+      Success: POT file successfully generated!
+      """
+    And the foo-plugin/foo-plugin.pot file should exist
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d var (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d vars (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d var (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d vars (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d prop (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d props (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d prop (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d props (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d function (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d functions (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d function (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d functions (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d operation (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d operations (_n)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "%d operation (_nx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid_plural "%d operations (_nx)"
+      """
+
   Scenario: Ignores any other text domain in JavaScript file
     Given an empty foo-plugin directory
     And a foo-plugin/foo-plugin.php file:
@@ -1936,6 +2178,47 @@ Feature: Generate a POT file of a WordPress project
      And the foo-plugin.pot file should not contain:
       """
       msgid "Hello JSX"
+      """
+
+  Scenario: Extract strings in template literals in JavaScript file
+    Given an empty foo-plugin directory
+    And a foo-plugin/foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       */
+      """
+    And a foo-plugin/foo-plugin.js file:
+      """
+      /* translators: %s viewport width as css, ie: 100% */
+      __( `Import me (%spx)`, 'foo-plugin' );
+
+      /* translators: %s viewport width as css, ie: 100% */
+      __( `Do not ${x} import me (%spx)`, 'foo-plugin' );
+      """
+    When I try `wp i18n make-pot foo-plugin`
+    Then STDOUT should be:
+      """
+      Plugin file detected.
+      Success: POT file successfully generated!
+      """
+    And the foo-plugin/foo-plugin.pot file should exist
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Foo Plugin"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Import me (%spx)"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      #. translators: %s viewport width as css, ie: 100%
+      """
+    And the foo-plugin/foo-plugin.pot file should not contain:
+      """
+      msgid "Do not ${x} import me (%spx)"
       """
 
   Scenario: Extract translator comments from JavaScript map file
@@ -2133,6 +2416,58 @@ Feature: Generate a POT file of a WordPress project
     And the foo-plugin.pot file should contain:
       """
       msgid "Hello JS"
+      """
+
+  Scenario: Associates comments with the right source string
+    Given an empty foo-plugin directory
+    And a foo-plugin/foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       * Plugin URI:  https://example.com
+       * Description:
+       * Version:     0.1.0
+       * Author:
+       * Author URI:
+       * License:     GPL-2.0+
+       * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+       * Text Domain: foo-plugin
+       * Domain Path: /languages
+       */
+
+      """
+    And a foo-plugin/foo-plugin.js file:
+      """
+      printf( /* translators: %s: test */ __( 'Hi %s', 'foo-plugin' ), foo ); __( 'hello', 'foo-plugin' );
+      """
+
+    When I run `wp i18n make-pot foo-plugin foo-plugin.pot --domain=bar --ignore-domain`
+    Then STDOUT should be:
+      """
+      Plugin file detected.
+      Success: POT file successfully generated!
+      """
+    And STDERR should be empty
+    And the foo-plugin.pot file should contain:
+      """
+      #. translators: %s: test
+      #: foo-plugin.js:1
+      msgid "Hi %s"
+      msgstr ""
+      """
+    And the foo-plugin.pot file should contain:
+      """
+      #: foo-plugin.js:1
+      msgid "hello"
+      msgstr ""
+      """
+    And the foo-plugin.pot file should not contain:
+      """
+      #. translators: %s: test
+      #: foo-plugin.js:1
+      msgid "hello"
+      msgstr ""
       """
 
   Scenario: Prints helpful debug messages for plugin
@@ -2364,6 +2699,109 @@ Feature: Generate a POT file of a WordPress project
     And the foo-plugin.pot file should not contain:
       """
       msgid "Some other text"
+      """
+
+  @less-than-php-7.3
+  Scenario: Add references to files used in exception list
+    Given an empty directory
+    And a exception.pot file:
+      """
+      # Copyright (C) 2018 Foo Plugin
+      # This file is distributed under the same license as the Foo Plugin package.
+      msgid ""
+      msgstr ""
+      "Project-Id-Version: Foo Plugin\n"
+      "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/foo-plugin\n"
+      "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+      "Language-Team: LANGUAGE <LL@li.org>\n"
+      "MIME-Version: 1.0\n"
+      "Content-Type: text/plain; charset=UTF-8\n"
+      "Content-Transfer-Encoding: 8bit\n"
+      "POT-Creation-Date: 2018-05-02T22:06:24+00:00\n"
+      "PO-Revision-Date: 2018-05-02T22:06:24+00:00\n"
+      "X-Domain: foo-plugin\n"
+
+      #: bar-plugin.php:2
+      #: bar-baz-plugin.php:20
+      msgid "Foo Bar"
+      msgstr ""
+
+      #: bar-plugin.php:5
+      #: bar-bar.php:50
+      msgid "Bar Baz"
+      msgstr ""
+
+      #: bar-plugin.php:17
+      #: bar-baz-plugin.php:99
+      #: foobar/plugin.php:39
+      msgid "Some other text"
+      msgstr ""
+      """
+    And a foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       * Plugin URI:  https://example.com
+       * Description:
+       * Version:     0.1.0
+       * Author:
+       * Author URI:
+       * License:     GPL-2.0+
+       * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+       * Text Domain: foo-plugin
+       * Domain Path: /languages
+       */
+
+       __( 'Hello World', 'foo-plugin' );
+
+       __( 'Foo Bar', 'foo-plugin' );
+
+       __( 'Bar Baz', 'foo-plugin' );
+
+       __( 'Some text', 'foo-plugin' );
+
+       __( 'Some other text', 'foo-plugin' );
+      """
+
+    When I run `wp i18n make-pot . foo-plugin.pot --domain=foo-plugin --subtract=exception.pot --subtract-and-merge`
+    Then STDOUT should be:
+      """
+      Plugin file detected.
+      Success: POT file successfully generated!
+      """
+    And STDERR should be empty
+    And the foo-plugin.pot file should contain:
+      """
+      msgid "Hello World"
+      """
+    And the foo-plugin.pot file should contain:
+      """
+      msgid "Some text"
+      """
+    And the foo-plugin.pot file should not contain:
+      """
+      msgid "Foo Bar"
+      """
+    And the foo-plugin.pot file should not contain:
+      """
+      msgid "Bar Baz"
+      """
+    And the foo-plugin.pot file should not contain:
+      """
+      msgid "Some other text"
+      """
+    And the exception.pot file should contain:
+      """
+      #: foo-plugin.php:17
+      """
+    And the exception.pot file should contain:
+      """
+      #: foo-plugin.php:19
+      """
+    And the exception.pot file should contain:
+      """
+      #: foo-plugin.php:23
       """
 
   Scenario: Extract strings for a generic project
@@ -2715,6 +3153,119 @@ Feature: Generate a POT file of a WordPress project
       msgid "message"
       """
 
+  Scenario: Extract strings from all block.json files when domain is ignored
+    Given an empty foo-plugin directory
+    And a foo-plugin/foo-plugin.php file:
+      """
+      <?php
+      /**
+       * Plugin Name: Foo Plugin
+       */
+      """
+    And a foo-plugin/block_one/block.json file:
+      """
+      {
+        "name": "my-plugin/notice",
+        "title": "Notice",
+        "category": "common",
+        "parent": [ "core/group" ],
+        "icon": "star",
+        "description": "Shows warning, error or success notices  ...",
+        "keywords": [ "alert", "message" ],
+        "textdomain": "my-plugin",
+        "attributes": {
+          "message": {
+            "type": "string",
+            "source": "html",
+            "selector": ".message"
+          }
+        },
+        "styles": [
+          { "name": "default", "label": "Default", "isDefault": true },
+          { "name": "other", "label": "Other" }
+        ],
+        "editorScript": "build/editor.js",
+        "script": "build/main.js",
+        "editorStyle": "build/editor.css",
+        "style": "build/style.css"
+      }
+      """
+    And a foo-plugin/block_two/block.json file:
+      """
+      {
+        "name": "my-plugin/block_two",
+        "title": "Second Notice",
+        "category": "common",
+        "parent": [ "core/group" ],
+        "icon": "star",
+        "description": "Another way to show warning, error or success notices  ...",
+        "keywords": [ "alert", "message" ],
+        "attributes": {
+          "message": {
+            "type": "string",
+            "source": "html",
+            "selector": ".message"
+          }
+        },
+        "styles": [
+          { "name": "default", "label": "Default", "isDefault": true },
+          { "name": "other", "label": "Other" }
+        ],
+        "editorScript": "build/editor.js",
+        "script": "build/main.js",
+        "editorStyle": "build/editor.css",
+        "style": "build/style.css"
+      }
+      """
+
+    When I try `wp i18n make-pot foo-plugin --ignore-domain`
+    Then STDOUT should be:
+      """
+      Plugin file detected.
+      Success: POT file successfully generated!
+      """
+    And the foo-plugin/foo-plugin.pot file should exist
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Foo Plugin"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgctxt "block title"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Notice"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgctxt "block description"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Shows warning, error or success notices  ..."
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgctxt "block keyword"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "alert"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "message"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Second Notice"
+      """
+    And the foo-plugin/foo-plugin.pot file should contain:
+      """
+      msgid "Another way to show warning, error or success notices  ..."
+      """
+
   Scenario: Skips block.json file altogether
     Given an empty foo-plugin directory
     And a foo-plugin/foo-plugin.php file:
@@ -2770,4 +3321,125 @@ Feature: Generate a POT file of a WordPress project
     And the foo-plugin/foo-plugin.pot file should not contain:
       """
       msgid "Notice"
+      """
+
+
+  Scenario: Skips theme.json file if skip-theme-json flag provided
+    Given an empty foo-theme directory
+    And a foo-theme/theme.json file:
+      """
+      {
+        "version": "1",
+        "settings": {
+          "color": {
+            "palette": [
+              { "slug": "black", "color": "#000000", "name": "Black" }
+            ]
+          }
+        }
+      }
+      """
+
+    When I try `wp i18n make-pot foo-theme --skip-theme-json`
+    Then STDOUT should be:
+      """
+      Success: POT file successfully generated!
+      """
+    And the foo-theme/foo-theme.pot file should exist
+    But the foo-theme/foo-theme.pot file should not contain:
+      """
+      msgctxt "Color name"
+      msgid "Black"
+      """
+
+  Scenario: Extract strings from the top-level section of theme.json files
+    Given an empty foo-theme directory
+    And a foo-theme/theme.json file:
+      """
+      {
+        "version": "1",
+        "settings": {
+          "color": {
+            "duotone": [
+                { "slug": "dark-grayscale", "name": "Dark grayscale", "colors": [] }
+            ],
+            "gradients": [
+                { "slug": "purple-to-yellow", "name": "Purple to yellow" }
+            ],
+            "palette": [
+              { "slug": "black", "color": "#000000", "name": "Black" },
+              { "slug": "white", "color": "#000000", "name": "White" }
+            ]
+          },
+          "typography": {
+              "fontSizes": [
+                  { "name": "Small", "slug": "small", "size": "13px" }
+              ]
+          }
+        }
+      }
+      """
+
+    When I try `wp i18n make-pot foo-theme`
+    Then STDOUT should be:
+      """
+      Success: POT file successfully generated!
+      """
+    And the foo-theme/foo-theme.pot file should exist
+    And the foo-theme/foo-theme.pot file should contain:
+      """
+      msgctxt "Duotone name"
+      msgid "Dark grayscale"
+      """
+    And the foo-theme/foo-theme.pot file should contain:
+      """
+      msgctxt "Gradient name"
+      msgid "Purple to yellow"
+      """
+    And the foo-theme/foo-theme.pot file should contain:
+      """
+      msgctxt "Color name"
+      msgid "White"
+      """
+    And the foo-theme/foo-theme.pot file should contain:
+      """
+      msgctxt "Color name"
+      msgid "White"
+      """
+    And the foo-theme/foo-theme.pot file should contain:
+      """
+      msgctxt "Font size name"
+      msgid "Small"
+      """
+
+  Scenario: Extract strings from the blocks section of theme.json files
+    Given an empty foo-theme directory
+    And a foo-theme/theme.json file:
+      """
+      {
+        "version": "1",
+        "settings": {
+          "blocks": {
+            "core/paragraph": {
+              "color": {
+                "palette": [
+                  { "slug": "black", "color": "#000000", "name": "Black" }
+                ]
+              }
+            }
+          }
+        }
+      }
+      """
+
+    When I try `wp i18n make-pot foo-theme`
+    Then STDOUT should be:
+      """
+      Success: POT file successfully generated!
+      """
+    And the foo-theme/foo-theme.pot file should exist
+    And the foo-theme/foo-theme.pot file should contain:
+      """
+      msgctxt "Color name"
+      msgid "Black"
       """

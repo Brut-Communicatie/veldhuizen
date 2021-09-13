@@ -7,10 +7,15 @@
  * @package Veldhuizen
  */
 
+
+
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.2' );
 }
+
+require 'inc/brut-woocommerce/init.php';
 
 add_theme_support('woocommerce');
 
@@ -417,11 +422,25 @@ function veldhuizen_add_woocommerce_support() {
 }
 
 
-
+// ** WOOCOMMERCE ** \\
 // Add custom fields to the admin of WooCommerce (Artikelnummer etc.)
 require get_template_directory() . '/woocommerce/custom-fields.php';
 
-// Call all hooks
+// Empty cart button
+add_action( 'init', 'woocommerce_clear_cart_url' );
+function woocommerce_clear_cart_url() {
+  global $woocommerce;
+	
+	if ( isset( $_GET['empty-cart'] ) ) {
+		$woocommerce->cart->empty_cart(); 
+	}
+}
+// Enqueue javascript for opacity on wc-notification
+wp_enqueue_script( 'wc-notification-opacity', get_bloginfo( 'stylesheet_directory' ). '/js/notificationOpacity.js' , '' , false, true );
+
+$discount = new BrutCommunicatie\CustomerDiscount();
+// ** END WOOCOMMERCE ** \\
+
 
 // add_action('pre_get_posts','shop_filter_cat');
 add_action( 'after_setup_theme', 'veldhuizen_add_woocommerce_support' );
@@ -436,3 +455,6 @@ require get_template_directory() . '/inc/footer/footer-functions.php';
 // Remove all BR's and P in Contact Form 7 
 add_filter('wpcf7_autop_or_not', '__return_false');
 
+$notification = new CouponNotification;
+$notification = $notification->setCustomAccountNotification();
+echo $notification;
