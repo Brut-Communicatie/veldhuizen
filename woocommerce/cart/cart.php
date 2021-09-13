@@ -136,13 +136,14 @@ do_action( 'woocommerce_before_cart_contents' );
 				echo '<div class="cart__row--item">';
 
 				if ($user === __KLANTACCOUNT__) {
-					if ($_price != 0){
+					if ($_price != 0) {
 						global $woocommerce;
 						$coupon = new WC_Coupon(__COUPONACCOUNT__);
 						$_originalPrice = $_price;
-						$percentage = $coupon->amount; // GET DISCOUNT %
-						$discount = $percentage / 100 * $_price; // GET DISCOUNT AMOUNT
-						$_price = $_price - $discount; // ADD TO PRICE
+						$percentage = $coupon->amount; // Get discount %
+						$discount = $percentage / 100 * $_price; // Get discount amount
+						$_price = $_price - $discount; // Remove from price
+						
 						// Show original price
 						echo '<span class="WC__discount--item">€' . $_originalPrice . ',-</span>';
 					}

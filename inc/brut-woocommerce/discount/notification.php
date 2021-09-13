@@ -9,7 +9,7 @@ Class CouponNotification {
             global $woocommerce;
             $coupon = new WC_Coupon(__COUPONACCOUNT__);
             $html .= "<div class='WC__discountnotification'>";
-            $html .= 'Je bekijkt de winkel momenteel met een kortingsaccount, op alle producten is er een korting van ' . $coupon->amount .'% actief!';
+            $html .= 'Je bekijkt de winkel momenteel met een kortingsaccount, op alle producten is er een korting van <strong>' . $coupon->amount .'%</strong> actief!';
             $html .= "</div>";
             return $html;
         }
