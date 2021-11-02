@@ -34,17 +34,21 @@ final class BlockExtractor extends Extractor implements ExtractorInterface {
 
 		$domain = isset( $file_data['textdomain'] ) ? $file_data['textdomain'] : null;
 
-		// Allow missing domain, but skip if they don't match.
-		if ( null !== $domain && $domain !== $translations->getDomain() ) {
+		// Always allow missing domain or when --ignore-domain is used, but skip if domains don't match.
+		if ( null !== $translations->getDomain() && null !== $domain && $domain !== $translations->getDomain() ) {
 			return;
 		}
+
+		$add_reference = ! empty( $options['addReferences'] );
 
 		foreach ( $file_data as $key => $original ) {
 			switch ( $key ) {
 				case 'title':
 				case 'description':
 					$translation = $translations->insert( sprintf( 'block %s', $key ), $original );
-					$translation->addReference( $file );
+					if ( $add_reference ) {
+						$translation->addReference( $file );
+					}
 					break;
 				case 'keywords':
 					if ( ! is_array( $original ) ) {
@@ -53,7 +57,9 @@ final class BlockExtractor extends Extractor implements ExtractorInterface {
 
 					foreach ( $original as $msg ) {
 						$translation = $translations->insert( 'block keyword', $msg );
-						$translation->addReference( $file );
+						if ( $add_reference ) {
+							$translation->addReference( $file );
+						}
 					}
 
 					break;
@@ -64,7 +70,9 @@ final class BlockExtractor extends Extractor implements ExtractorInterface {
 
 					foreach ( $original as $msg ) {
 						$translation = $translations->insert( 'block style label', $msg['label'] );
-						$translation->addReference( $file );
+						if ( $add_reference ) {
+							$translation->addReference( $file );
+						}
 					}
 			}
 		}

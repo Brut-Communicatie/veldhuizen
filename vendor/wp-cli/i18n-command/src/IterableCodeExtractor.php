@@ -209,7 +209,7 @@ trait IterableCodeExtractor {
 
 		$files = new RecursiveIteratorIterator(
 			new RecursiveCallbackFilterIterator(
-				new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS | RecursiveDirectoryIterator::UNIX_PATHS ),
+				new RecursiveDirectoryIterator( $dir, RecursiveDirectoryIterator::SKIP_DOTS | RecursiveDirectoryIterator::UNIX_PATHS | RecursiveDirectoryIterator::FOLLOW_SYMLINKS ),
 				static function ( $file, $key, $iterator ) use ( $include, $exclude, $extensions ) {
 					/** @var RecursiveCallbackFilterIterator $iterator */
 					/** @var SplFileInfo $file */
@@ -232,7 +232,11 @@ trait IterableCodeExtractor {
 						return static::containsMatchingChildren( $file, $include );
 					}
 
-					return ( ( $inclusion_score >= $exclusion_score ) && $file->isFile() && in_array( $file->getExtension(), $extensions, true ) );
+					if ( ! $file->isFile() || ! in_array( $file->getExtension(), $extensions, true ) ) {
+						return false;
+					}
+
+					return $inclusion_score > $exclusion_score;
 				}
 			),
 			RecursiveIteratorIterator::CHILD_FIRST

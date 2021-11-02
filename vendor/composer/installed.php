@@ -1,221 +1,234 @@
-<?php return array(
-    'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'type' => 'wordpress-theme',
-        'install_path' => __DIR__ . '/../../',
-        'aliases' => array(),
-        'reference' => '71e002ad661768eff097b024220d8648803a8fdf',
-        'name' => 'automattic/underscores',
-        'dev' => true,
+<?php return array (
+  'root' => 
+  array (
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
+    'aliases' => 
+    array (
     ),
-    'versions' => array(
-        'automattic/underscores' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'type' => 'wordpress-theme',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'reference' => '71e002ad661768eff097b024220d8648803a8fdf',
-            'dev_requirement' => false,
-        ),
-        'dealerdirect/phpcodesniffer-composer-installer' => array(
-            'pretty_version' => 'v0.7.1',
-            'version' => '0.7.1.0',
-            'type' => 'composer-plugin',
-            'install_path' => __DIR__ . '/../dealerdirect/phpcodesniffer-composer-installer',
-            'aliases' => array(),
-            'reference' => 'fe390591e0241955f22eb9ba327d137e501c771c',
-            'dev_requirement' => true,
-        ),
-        'gettext/gettext' => array(
-            'pretty_version' => 'v4.8.3',
-            'version' => '4.8.3.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../gettext/gettext',
-            'aliases' => array(),
-            'reference' => '57ff4fb16647e78e80a5909fe3c190f1c3110321',
-            'dev_requirement' => true,
-        ),
-        'gettext/languages' => array(
-            'pretty_version' => '2.6.0',
-            'version' => '2.6.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../gettext/languages',
-            'aliases' => array(),
-            'reference' => '38ea0482f649e0802e475f0ed19fa993bcb7a618',
-            'dev_requirement' => true,
-        ),
-        'giacocorsiglia/wordpress-stubs' => array(
-            'dev_requirement' => true,
-            'replaced' => array(
-                0 => '*',
-            ),
-        ),
-        'grogy/php-parallel-lint' => array(
-            'dev_requirement' => true,
-            'replaced' => array(
-                0 => '*',
-            ),
-        ),
-        'jakub-onderka/php-parallel-lint' => array(
-            'dev_requirement' => true,
-            'replaced' => array(
-                0 => '*',
-            ),
-        ),
-        'mck89/peast' => array(
-            'pretty_version' => 'v1.12.0',
-            'version' => '1.12.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../mck89/peast',
-            'aliases' => array(),
-            'reference' => '833be7a294627a8c5b1c482cbf489f73bf9b8086',
-            'dev_requirement' => true,
-        ),
-        'mustache/mustache' => array(
-            'pretty_version' => 'v2.13.0',
-            'version' => '2.13.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../mustache/mustache',
-            'aliases' => array(),
-            'reference' => 'e95c5a008c23d3151d59ea72484d4f72049ab7f4',
-            'dev_requirement' => true,
-        ),
-        'php-parallel-lint/php-parallel-lint' => array(
-            'pretty_version' => 'v1.2.0',
-            'version' => '1.2.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../php-parallel-lint/php-parallel-lint',
-            'aliases' => array(),
-            'reference' => '474f18bc6cc6aca61ca40bfab55139de614e51ca',
-            'dev_requirement' => true,
-        ),
-        'php-stubs/woocommerce-stubs' => array(
-            'pretty_version' => 'v5.4.0',
-            'version' => '5.4.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../php-stubs/woocommerce-stubs',
-            'aliases' => array(),
-            'reference' => 'f0f6a806d92d8918d0dfccde5c7300ce182aec0d',
-            'dev_requirement' => true,
-        ),
-        'php-stubs/wordpress-stubs' => array(
-            'pretty_version' => 'v5.7.2',
-            'version' => '5.7.2.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../php-stubs/wordpress-stubs',
-            'aliases' => array(),
-            'reference' => 'beda02c58f1c4689d42c8dde6a84f7f0c9c93f42',
-            'dev_requirement' => true,
-        ),
-        'phpcompatibility/php-compatibility' => array(
-            'pretty_version' => '9.3.5',
-            'version' => '9.3.5.0',
-            'type' => 'phpcodesniffer-standard',
-            'install_path' => __DIR__ . '/../phpcompatibility/php-compatibility',
-            'aliases' => array(),
-            'reference' => '9fb324479acf6f39452e0655d2429cc0d3914243',
-            'dev_requirement' => true,
-        ),
-        'phpcompatibility/phpcompatibility-paragonie' => array(
-            'pretty_version' => '1.3.0',
-            'version' => '1.3.0.0',
-            'type' => 'phpcodesniffer-standard',
-            'install_path' => __DIR__ . '/../phpcompatibility/phpcompatibility-paragonie',
-            'aliases' => array(),
-            'reference' => 'b862bc32f7e860d0b164b199bd995e690b4b191c',
-            'dev_requirement' => true,
-        ),
-        'phpcompatibility/phpcompatibility-wp' => array(
-            'pretty_version' => '2.1.0',
-            'version' => '2.1.0.0',
-            'type' => 'phpcodesniffer-standard',
-            'install_path' => __DIR__ . '/../phpcompatibility/phpcompatibility-wp',
-            'aliases' => array(),
-            'reference' => '41bef18ba688af638b7310666db28e1ea9158b2f',
-            'dev_requirement' => true,
-        ),
-        'rmccue/requests' => array(
-            'pretty_version' => 'v1.7.0',
-            'version' => '1.7.0.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../rmccue/requests',
-            'aliases' => array(),
-            'reference' => '87932f52ffad70504d93f04f15690cf16a089546',
-            'dev_requirement' => true,
-        ),
-        'squizlabs/php_codesniffer' => array(
-            'pretty_version' => '3.5.8',
-            'version' => '3.5.8.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
-            'aliases' => array(),
-            'reference' => '9d583721a7157ee997f235f327de038e7ea6dac4',
-            'dev_requirement' => true,
-        ),
-        'symfony/finder' => array(
-            'pretty_version' => 'v4.4.19',
-            'version' => '4.4.19.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../symfony/finder',
-            'aliases' => array(),
-            'reference' => '25d79cfccfc12e84e7a63a248c3f0720fdd92db6',
-            'dev_requirement' => true,
-        ),
-        'wp-cli/i18n-command' => array(
-            'pretty_version' => 'v2.2.6',
-            'version' => '2.2.6.0',
-            'type' => 'wp-cli-package',
-            'install_path' => __DIR__ . '/../wp-cli/i18n-command',
-            'aliases' => array(),
-            'reference' => 'a66da3f09f6a728832381012848c3074bf1635c8',
-            'dev_requirement' => true,
-        ),
-        'wp-cli/mustangostang-spyc' => array(
-            'pretty_version' => '0.6.3',
-            'version' => '0.6.3.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../wp-cli/mustangostang-spyc',
-            'aliases' => array(),
-            'reference' => '6aa0b4da69ce9e9a2c8402dab8d43cf32c581cc7',
-            'dev_requirement' => true,
-        ),
-        'wp-cli/php-cli-tools' => array(
-            'pretty_version' => 'v0.11.11',
-            'version' => '0.11.11.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../wp-cli/php-cli-tools',
-            'aliases' => array(),
-            'reference' => 'fe9c7c44a9e1bf2196ec51dc38da0593dbf2993f',
-            'dev_requirement' => true,
-        ),
-        'wp-cli/wp-cli' => array(
-            'pretty_version' => 'v2.4.1',
-            'version' => '2.4.1.0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../wp-cli/wp-cli',
-            'aliases' => array(),
-            'reference' => 'ceb18598e79befa9b2a37a51efbb34910628988b',
-            'dev_requirement' => true,
-        ),
-        'wp-coding-standards/wpcs' => array(
-            'pretty_version' => '2.3.0',
-            'version' => '2.3.0.0',
-            'type' => 'phpcodesniffer-standard',
-            'install_path' => __DIR__ . '/../wp-coding-standards/wpcs',
-            'aliases' => array(),
-            'reference' => '7da1894633f168fe244afc6de00d141f27517b62',
-            'dev_requirement' => true,
-        ),
-        'wptrt/wpthemereview' => array(
-            'pretty_version' => '0.2.1',
-            'version' => '0.2.1.0',
-            'type' => 'phpcodesniffer-standard',
-            'install_path' => __DIR__ . '/../wptrt/wpthemereview',
-            'aliases' => array(),
-            'reference' => '462e59020dad9399ed2fe8e61f2a21b5e206e420',
-            'dev_requirement' => true,
-        ),
+    'reference' => '0b1707381f9e637f2746a15e0a474bae8334a783',
+    'name' => 'automattic/underscores',
+  ),
+  'versions' => 
+  array (
+    'automattic/underscores' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0b1707381f9e637f2746a15e0a474bae8334a783',
     ),
+    'dealerdirect/phpcodesniffer-composer-installer' => 
+    array (
+      'pretty_version' => 'v0.7.1',
+      'version' => '0.7.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'fe390591e0241955f22eb9ba327d137e501c771c',
+    ),
+    'gettext/gettext' => 
+    array (
+      'pretty_version' => 'v4.8.5',
+      'version' => '4.8.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ef2e312dff383fc0e4cd62dd39042e1157f137d4',
+    ),
+    'gettext/languages' => 
+    array (
+      'pretty_version' => '2.8.1',
+      'version' => '2.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4ad818b6341e177b7c508ec4c37e18932a7b788a',
+    ),
+    'giacocorsiglia/wordpress-stubs' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
+    ),
+    'grogy/php-parallel-lint' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
+    ),
+    'jakub-onderka/php-parallel-lint' => 
+    array (
+      'replaced' => 
+      array (
+        0 => '*',
+      ),
+    ),
+    'mck89/peast' => 
+    array (
+      'pretty_version' => 'v1.13.8',
+      'version' => '1.13.8.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4f0423441ec557f3935b056d10987f2e1c7a3e76',
+    ),
+    'mustache/mustache' => 
+    array (
+      'pretty_version' => 'v2.13.0',
+      'version' => '2.13.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e95c5a008c23d3151d59ea72484d4f72049ab7f4',
+    ),
+    'php-parallel-lint/php-parallel-lint' => 
+    array (
+      'pretty_version' => 'v1.3.1',
+      'version' => '1.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '761f3806e30239b5fcd90a0a45d41dc2138de192',
+    ),
+    'php-stubs/woocommerce-stubs' => 
+    array (
+      'pretty_version' => 'v5.6.0',
+      'version' => '5.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '310159b717404028f8703e8adf9a4e87a93edc56',
+    ),
+    'php-stubs/wordpress-stubs' => 
+    array (
+      'pretty_version' => 'v5.8.0',
+      'version' => '5.8.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '794e6eedfd5f2a334d581214c007fc398be588fe',
+    ),
+    'phpcompatibility/php-compatibility' => 
+    array (
+      'pretty_version' => '9.3.5',
+      'version' => '9.3.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9fb324479acf6f39452e0655d2429cc0d3914243',
+    ),
+    'phpcompatibility/phpcompatibility-paragonie' => 
+    array (
+      'pretty_version' => '1.3.1',
+      'version' => '1.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ddabec839cc003651f2ce695c938686d1086cf43',
+    ),
+    'phpcompatibility/phpcompatibility-wp' => 
+    array (
+      'pretty_version' => '2.1.2',
+      'version' => '2.1.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a792ab623069f0ce971b2417edef8d9632e32f75',
+    ),
+    'rmccue/requests' => 
+    array (
+      'pretty_version' => 'v1.8.1',
+      'version' => '1.8.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '82e6936366eac3af4d836c18b9d8c31028fe4cd5',
+    ),
+    'squizlabs/php_codesniffer' => 
+    array (
+      'pretty_version' => '3.6.0',
+      'version' => '3.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ffced0d2c8fa8e6cdc4d695a743271fab6c38625',
+    ),
+    'symfony/finder' => 
+    array (
+      'pretty_version' => 'v5.3.7',
+      'version' => '5.3.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a10000ada1e600d109a6c7632e9ac42e8bf2fb93',
+    ),
+    'symfony/polyfill-php80' => 
+    array (
+      'pretty_version' => 'v1.23.1',
+      'version' => '1.23.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1100343ed1a92e3a38f9ae122fc0eb21602547be',
+    ),
+    'wp-cli/i18n-command' => 
+    array (
+      'pretty_version' => 'v2.2.9',
+      'version' => '2.2.9.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '26e171c5708060b6d7cede9af934b946f5ec3a59',
+    ),
+    'wp-cli/mustangostang-spyc' => 
+    array (
+      'pretty_version' => '0.6.3',
+      'version' => '0.6.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6aa0b4da69ce9e9a2c8402dab8d43cf32c581cc7',
+    ),
+    'wp-cli/php-cli-tools' => 
+    array (
+      'pretty_version' => 'v0.11.13',
+      'version' => '0.11.13.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a2866855ac1abc53005c102e901553ad5772dc04',
+    ),
+    'wp-cli/wp-cli' => 
+    array (
+      'pretty_version' => 'v2.5.0',
+      'version' => '2.5.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0bcf0c54f4d35685211d435e25219cc7acbe6d48',
+    ),
+    'wp-coding-standards/wpcs' => 
+    array (
+      'pretty_version' => '2.3.0',
+      'version' => '2.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7da1894633f168fe244afc6de00d141f27517b62',
+    ),
+    'wptrt/wpthemereview' => 
+    array (
+      'pretty_version' => '0.2.1',
+      'version' => '0.2.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '462e59020dad9399ed2fe8e61f2a21b5e206e420',
+    ),
+  ),
 );
