@@ -9,6 +9,10 @@
  * @package Veldhuizen
  */
 
+$notification = new CouponNotification;
+$notification = $notification->setCustomAccountNotification();
+echo $notification;
+
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>

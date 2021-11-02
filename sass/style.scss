@@ -133,8 +133,12 @@ $menuBreakpoint : 1270px;
 				width: calc(100% - 2rem);
 			}
 
-			p{
-				a, a:active, a:link, a:visited{
+			p {
+
+				a,
+				a:active,
+				a:link,
+				a:visited {
 					color: $veldhuizen__oranje;
 					text-decoration: none;
 					font-weight: 600;
@@ -142,22 +146,24 @@ $menuBreakpoint : 1270px;
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
-					svg{
+
+					svg {
 						width: 10px;
 						margin-left: 5px;
 
 						transition: margin-left .25s ease;
 					}
-					&:hover{
+
+					&:hover {
 						text-decoration: underline;
 
-						svg{
+						svg {
 							margin-left: 10px;
 						}
 					}
 				}
 			}
-			
+
 		}
 	}
 }
@@ -179,6 +185,7 @@ $menuBreakpoint : 1270px;
 		position: absolute;
 		bottom: 0;
 	}
+
 	img {
 		object-fit: cover;
 		height: 200px;
@@ -194,10 +201,11 @@ $menuBreakpoint : 1270px;
 	&__info {
 		flex-grow: 1;
 		padding: 10px 15px;
+
 		@include Responsive($menuBreakpoint) {
 			z-index: 0;
 		}
-		
+
 	}
 }
 
@@ -206,13 +214,15 @@ $menuBreakpoint : 1270px;
 	h1 {
 		display: none;
 	}
+
 	h3 {
 		color: $veldhuizen__groen;
 		font-size: 3em;
 	}
+
 	p {
 		font-size: 1.5em;
-		margin:5px;
+		margin: 5px;
 	}
 
 	img {
@@ -220,6 +230,7 @@ $menuBreakpoint : 1270px;
 		height: 75vh;
 		object-fit: cover;
 	}
+
 	.veldhuizen__container {
 		grid-template-columns: repeat(auto-fill, minmax(calc(100% - 10px), 1fr));
 	}
@@ -229,11 +240,12 @@ $menuBreakpoint : 1270px;
 			width: 100%;
 			height: auto;
 		}
+
 		.veldhuizen__container {
-			
+
 
 			h3 {
-				
+
 				font-size: 2.5em;
 				text-align: center;
 			}
@@ -247,7 +259,7 @@ $menuBreakpoint : 1270px;
 	}
 
 	@include Responsive($mobileBreakpoint) {
-	
+
 		.veldhuizen__container {
 			h3 {
 				color: $veldhuizen__groen;
@@ -266,41 +278,46 @@ $menuBreakpoint : 1270px;
 
 
 // Snel wat styling voor vandaag - Leroy
-.veldhuizen{
-	&__filter{
+.veldhuizen {
+	&__filter {
 		width: 1000px;
 		margin: 0 auto;
 		@include Flex(flex-start, flex-start, nowrap, column);
 
-		@include Responsive(1000px){
+		@include Responsive(1000px) {
 			width: calc(100% - 2rem);
 		}
 
-		h3{
+		h3 {
 			margin: 10px 0 0;
 			color: $veldhuizen__groen;
 			text-transform: uppercase;
 			font-size: 1.2rem;
 		}
-		&--container{
+
+		&--container {
 			@include Flex(flex-start, flex-start, row);
 		}
-		&--item{
+
+		&--item {
 			color: $veldhuizen__oranje;
 			font-weight: 600;
-			&:not(:last-child){
+
+			&:not(:last-child) {
 				margin-right: 15px;
 			}
 
-			&:hover{
+			&:hover {
 				cursor: pointer;
 				text-decoration: underline;
 			}
-			&-selected{
+
+			&-selected {
 				text-decoration: underline;
 			}
 		}
-		&--hidden{
+
+		&--hidden {
 			animation: hideItem .3s ease forwards;
 			animation-fill-mode: forwards;
 		}
@@ -308,15 +325,16 @@ $menuBreakpoint : 1270px;
 }
 
 @keyframes hideItem {
-	0%{
+	0% {
 		opacity: 1;
 	}
 
-	99%{
+	99% {
 		transform: translateY(1rem);
 		opacity: 0;
 	}
-	100%{
+
+	100% {
 		opacity: 0;
 		transform: translateY(1rem);
 	}
@@ -325,27 +343,30 @@ $menuBreakpoint : 1270px;
 // Remove the unnecessary double title in the Verhuur overview pages
 // Let's add lorem ipsum to a prototype, so we show we want to add text to a page
 // But also have no idea what kind of text it is and what the purpose of it is 
+
+// Story of my life tbh
 .verhuur-lorem {
 	display: none;
 }
 
-.WC{
+.WC {
 	&__discountnotification {
-	position: fixed;
-	border-radius: 5px;
-	bottom: 10px;
-	left: 50%;
-	color: #fff;
-	transform: translateX(-50%);
-	text-align: center;
-	width: 95%;
-	background-color: $veldhuizen__groen;
-	border: 1px solid black;
-	padding: 10px;
-	z-index: 999;
+		position: fixed;
+		border-radius: 5px;
+		bottom: 10px;
+		left: 50%;
+		color: #fff;
+		transform: translateX(-50%);
+		text-align: center;
+		width: 95%;
+		background-color: $veldhuizen__groen;
+		border: 1px solid black;
+		padding: 10px;
+		z-index: 999;
 	}
+
 	&__discount--item {
-		text-decoration:line-through;
+		text-decoration: line-through;
 		opacity: 0.5;
 		margin-right: 10px;
 	}

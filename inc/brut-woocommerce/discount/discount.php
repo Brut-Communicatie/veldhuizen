@@ -1,7 +1,7 @@
 <?php
 namespace BrutCommunicatie;
 
-class CustomerDiscount{
+class CustomerDiscount {
 	private $coupon_code = __COUPONACCOUNT__;
 
 	public function __construct () {
