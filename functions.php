@@ -438,38 +438,7 @@ function woocommerce_clear_cart_url() {
 // Enqueue javascript for opacity on wc-notification
 wp_enqueue_script( 'wc-notification-opacity', get_bloginfo( 'stylesheet_directory' ). '/js/notificationOpacity.js' , '' , false, true );
 
-<<<<<<< HEAD
-// Discount account
-class CustomerDiscount {
-	private $coupon_code = 'klantenaccount';
-
-	public function __construct () {
-		add_action('woocommerce_before_cart', [$this, 'addDiscount']);
-		add_action('woocommerce_before_checkout_form', [$this, 'addDiscount']);
-	}
-
-	function addDiscount() {
-		if (is_admin() && !defined('DOING_AJAX')) {
-			return;
-		}
-		// id from user account made for testing
-		if (get_current_user_id() === 4) {
-			// add discount if not added already
-			if (!in_array($this->coupon_code, WC()->cart->get_applied_coupons())) {
-				WC()->cart->apply_coupon($this->coupon_code);
-			}
-		} else {
-			// remove discount if it was previously added
-			WC()->cart->remove_coupon($this->coupon_code);
-		}
-	}
-}
-
-new CustomerDiscount();
-
-=======
 $discount = new BrutCommunicatie\CustomerDiscount();
->>>>>>> master
 // ** END WOOCOMMERCE ** \\
 
 
