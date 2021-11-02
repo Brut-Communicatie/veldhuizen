@@ -362,124 +362,39 @@ ul.products li.product .button {
 }
 
 @media screen and (min-width: 768px) {
-	.col2-set .form-row-first {
+	.checkout .col2-set .form-row-first {
 		float: left;
 		margin-right: 3.8%;
 	}
-	.col2-set .form-row-last {
+	.checkout .col2-set .form-row-last {
 		float: right;
 		margin-right: 0;
 	}
-	.col2-set .form-row-first,
-	.col2-set .form-row-last {
+	.checkout .col2-set .form-row-first,
+	.checkout .col2-set .form-row-last {
 		width: 48.1%;
 	}
 }
 
-.checkout__layout {
+.checkout .checkout__layout {
 	width: 1000px;
 	margin: 0 auto;
 }
 
 @media screen and (max-width: 1001px) {
-	.checkout__layout {
+	.checkout .checkout__layout {
 		width: calc(100% - 2rem);
 	}
 }
 
-.checkout__layout p strong {
+.checkout .checkout__layout p strong {
 	color: #0b9a71;
 }
 
-.checkout__layout--inner {
+.checkout .checkout__layout--inner {
 	box-sizing: border-box;
 	padding: 2rem;
 	background-color: #c5c5c5;
-}
-
-.woocommerce-checkout-payment {
-	padding: 10px;
-	background-color: #fffae6;
-}
-
-.woocommerce-checkout-payment ul {
-	margin: 0;
-	padding: 0;
-}
-
-.woocommerce-checkout-payment ul li {
-	list-style: none;
-	background-color: #fff;
-	border: 1px solid #ffe479;
-	padding: 10px;
-	border-radius: 5px;
-}
-
-.woocommerce-checkout-payment ul li label {
-	display: flex;
-	align-items: flex-start;
-	justify-content: flex-start;
-	flex-direction: column;
-}
-
-.woocommerce-checkout-payment ul li label:hover {
-	cursor: pointer;
-}
-
-.woocommerce-checkout-payment ul li label img {
-	max-width: 200px;
-}
-
-.woocommerce-checkout-payment ul li:not(:last-child) {
-	margin-bottom: 5px;
-}
-
-.checkout__thanks--heading {
-	margin: 0;
-	font-size: 25px;
-}
-
-.checkout__thanks--succes {
-	background-color: #0b9a71;
-	color: #fff;
-	box-sizing: border-box;
-	padding: 10px;
-	margin: 1rem 0;
-}
-
-.checkout__thanks--list {
-	margin: 0;
-	padding: 0;
-}
-
-.checkout__thanks--list li {
-	list-style: none;
-}
-
-.checkout__order--overview {
-	display: flex;
-	flex-direction: column;
-	background-color: #fffae6;
-	box-sizing: border-box;
-	padding: 5px;
-}
-
-.checkout__order--row {
-	display: flex;
-	justify-content: space-between;
-}
-
-.checkout__order--item, .checkout__order--heading {
-	width: calc(100% / 2 - 10px);
-	padding: 10px;
-}
-
-.checkout__order--heading {
-	width: calc(100% / 2);
-	margin-bottom: 5px;
-	background-color: #0b9a71;
-	color: #fff;
-	font-weight: 600;
 }
 
 /**
@@ -1141,9 +1056,6 @@ p.no-comments {
 }
 
 .product-template-default .grouped_form .single_add_to_cart_button {
-	position: absolute;
-	top: 300px;
-	right: 0;
 	cursor: pointer;
 	background-color: #ff5400;
 	color: white;
@@ -1172,26 +1084,26 @@ p.no-comments {
 	display: none;
 }
 
-.single-product .veldhuizen__container.remklauw {
+.single-product .veldhuizen__container.simple {
 	grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
 	column-gap: 20px;
 }
 
-.single-product .veldhuizen__container.remklauw section {
+.single-product .veldhuizen__container.simple section {
 	justify-self: end;
 }
 
-.single-product .veldhuizen__container.remklauw section h3 {
+.single-product .veldhuizen__container.simple section h3 {
 	margin: 0;
 }
 
 @media screen and (max-width: calc(500px + 5px)) {
-	.single-product .veldhuizen__container.remklauw {
+	.single-product .veldhuizen__container.simple {
 		column-gap: 5px;
 	}
 }
 
-.single-product .veldhuizen__container.remklauw .related-products-flex {
+.single-product .veldhuizen__container.simple .related-products-flex {
 	justify-self: start;
 	display: flex;
 	flex-wrap: wrap;
@@ -1199,51 +1111,51 @@ p.no-comments {
 	justify-content: space-between;
 }
 
-.single-product .veldhuizen__container.remklauw .related-products-flex a {
+.single-product .veldhuizen__container.simple .related-products-flex a {
 	color: #a8a8a8;
 	text-decoration: none;
 	font-size: 0.8em;
 }
 
-.single-product .veldhuizen__container.remklauw .related-products-flex a:hover {
+.single-product .veldhuizen__container.simple .related-products-flex a:hover {
 	color: #0b9a71;
 }
 
-.single-product .veldhuizen__container.remklauw .related-products-flex a article {
+.single-product .veldhuizen__container.simple .related-products-flex a article {
 	margin: 0 auto;
 	border: 1px solid #dddddd;
 	border-radius: 3px;
 	padding: 10px;
 }
 
-.single-product .veldhuizen__container.remklauw .related-products-flex a article h5 {
+.single-product .veldhuizen__container.simple .related-products-flex a article h5 {
 	font-size: 1.2em;
 	font-weight: 400;
 	margin: 5px;
 }
 
-.single-product .veldhuizen__container.remklauw .related-products-flex a article p {
+.single-product .veldhuizen__container.simple .related-products-flex a article p {
 	margin: 5px;
 }
 
-.single-product .veldhuizen__container.remklauw .cart {
+.single-product .veldhuizen__container.simple .cart {
 	width: 100%;
 }
 
-.single-product .veldhuizen__container.remklauw .cart .quantity {
+.single-product .veldhuizen__container.simple .cart .quantity {
 	margin-top: 10px;
 	width: 75%;
 	transform: translateX(25%);
 }
 
 @media screen and (max-width: calc(500px + 5px)) {
-	.single-product .veldhuizen__container.remklauw .cart .quantity {
+	.single-product .veldhuizen__container.simple .cart .quantity {
 		width: auto;
 		transform: unset;
 	}
 }
 
-.single-product .veldhuizen__container.remklauw .cart button {
+.single-product .veldhuizen__container.simple .cart button {
 	width: 100%;
 	cursor: pointer;
 	background-color: #ff5400;
@@ -1256,15 +1168,19 @@ p.no-comments {
 	transition: background-color 0.3s ease-in-out;
 }
 
-.single-product .veldhuizen__container.remklauw .cart button:hover {
+.single-product .veldhuizen__container.simple .cart button:hover {
 	background-color: #555555;
 }
 
-.single-product .veldhuizen__container.remklauw .cart button .fas {
+.single-product .veldhuizen__container.simple .cart button .fas {
 	margin-right: 10px;
 }
 
 .single-product .woocommerce-notices-wrapper .woocommerce-message .wc-forward {
+	display: none;
+}
+
+.single-product .related {
 	display: none;
 }
 

@@ -33,17 +33,23 @@ if ( $product->is_in_stock() ) : ?>
     
     <?php 
     $post_title = ($product->name);
+    $post_slug = ($product->slug);
+    
+    if ($post_slug === 'remklauw-type') {
+
+    }
+
     echo '<div class="top__banner"><div class="top__content"><h1>' . $post_title . '</h1></div></div>';
     
     $size = 'woocommerce_single';
     $img = $product->get_image($size);
     $cat_ids_related_prods = $product->category_ids;
-    
-    echo '<div class="veldhuizen__container remklauw">';
+    $prod_image = ($product->image_id);
+    echo '<div class="veldhuizen__container simple">';
     echo '<section>';
     echo $img;
     ?>
-
+    
 
 	<form class="cart" action="<?php echo esc_url( apply_filters( 'woocommerce_add_to_cart_form_action', $product->get_permalink() ) ); ?>" method="post" enctype='multipart/form-data'>
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
@@ -69,6 +75,13 @@ if ( $product->is_in_stock() ) : ?>
 	</form>
     </section>
 
+    <?php 
+    if ($prod_image === '') {
+        echo '<h4>Dit product heeft geen afbeelding beschikbaar</h4>';
+    }
+    ?>
+
+    <?php if ($post_slug === 'remklauw-type'): ?>
     <section class="related-products-flex">
         <h3>Gerelateerde producten</h3>
         <?php
@@ -84,6 +97,7 @@ if ( $product->is_in_stock() ) : ?>
             }
         ?>
     </section>
+    <?php endif; ?>
     </div>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
