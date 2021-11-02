@@ -417,7 +417,13 @@ ul.products li.product .button {
 
 .woocommerce-checkout-payment ul li label {
 	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
 	flex-direction: column;
+}
+
+.woocommerce-checkout-payment ul li label:hover {
+	cursor: pointer;
 }
 
 .woocommerce-checkout-payment ul li label img {
@@ -426,6 +432,54 @@ ul.products li.product .button {
 
 .woocommerce-checkout-payment ul li:not(:last-child) {
 	margin-bottom: 5px;
+}
+
+.checkout__thanks--heading {
+	margin: 0;
+	font-size: 25px;
+}
+
+.checkout__thanks--succes {
+	background-color: #0b9a71;
+	color: #fff;
+	box-sizing: border-box;
+	padding: 10px;
+	margin: 1rem 0;
+}
+
+.checkout__thanks--list {
+	margin: 0;
+	padding: 0;
+}
+
+.checkout__thanks--list li {
+	list-style: none;
+}
+
+.checkout__order--overview {
+	display: flex;
+	flex-direction: column;
+	background-color: #fffae6;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+.checkout__order--row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.checkout__order--item, .checkout__order--heading {
+	width: calc(100% / 2 - 10px);
+	padding: 10px;
+}
+
+.checkout__order--heading {
+	width: calc(100% / 2);
+	margin-bottom: 5px;
+	background-color: #0b9a71;
+	color: #fff;
+	font-weight: 600;
 }
 
 /**

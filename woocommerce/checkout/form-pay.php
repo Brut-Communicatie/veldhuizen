@@ -68,7 +68,9 @@ $totals = $order->get_order_item_totals(); // phpcs:ignore WordPress.WP.GlobalVa
 	</table>
 
 	<div id="payment">
+       
 		<?php if ( $order->needs_payment() ) : ?>
+    
 			<ul class="wc_payment_methods payment_methods methods checkout__payment">
 				<?php
 				if ( ! empty( $available_gateways ) ) {

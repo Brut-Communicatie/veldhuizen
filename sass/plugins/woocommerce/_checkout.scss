@@ -199,28 +199,99 @@
 .woocommerce-checkout-payment {
 	padding: 10px;
 	background-color: #fffae6;
+
 	ul {
 		margin: 0;
 		padding: 0;
 
-		li{
+		li {
 			list-style: none;
 			background-color: #fff;
 			border: 1px solid #ffe479;
 			padding: 10px;
 			border-radius: 5px;
-			label{
+
+			label {
 				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+
 				flex-direction: column;
 
-				img{
+				&:hover {
+					cursor: pointer;
+				}
+
+				img {
 					max-width: 200px;
 				}
 			}
-	
-			&:not(:last-child){
+
+			&:not(:last-child) {
 				margin-bottom: 5px;
 			}
+		}
+	}
+}
+
+.checkout {
+	&__thanks {
+		&--heading {
+			margin: 0;
+			font-size: 25px;
+		}
+
+		&--succes {
+			background-color: $veldhuizen__groen;
+			color: #fff;
+			box-sizing: border-box;
+			padding: 10px;
+			margin: 1rem 0;
+		}
+
+		&--list {
+			margin: 0;
+			padding: 0;
+
+			li {
+				list-style: none;
+			}
+		}
+	}
+}
+
+// .woocommerce-order-details {
+// 	background-color: cyan;
+// 	// padding: 0.5rem;
+// }
+
+.checkout {
+	&__order {
+		&--overview {
+			display: flex;
+			flex-direction: column;
+			background-color: #fffae6;
+			box-sizing: border-box;
+			padding: 5px;
+		}
+
+		&--row {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&--item {
+			width: calc(100% / 2 - 10px);
+			padding: 10px;
+		}
+
+		&--heading {
+			@extend .checkout__order--item;
+			width: calc(100% / 2);
+			margin-bottom: 5px;
+			background-color: $veldhuizen__groen;
+			color: #fff;
+			font-weight: 600;
 		}
 	}
 }
