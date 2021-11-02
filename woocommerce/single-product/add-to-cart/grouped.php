@@ -73,7 +73,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 	echo '</div>';		// close veldhuizen__container
 
 } else  {
-	$assen_product = get_product(19784);
+	$assen_product = get_product(2076);
 	$assen_children = $assen_product->children;
 	
 	if (in_array($post_id, $assen_children) === true) {

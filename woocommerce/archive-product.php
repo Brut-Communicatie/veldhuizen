@@ -33,7 +33,7 @@ do_action( 'woocommerce_before_main_content' );
 <header class="woocommerce-products-header">
 <?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 <div class="top__banner"><div class="top__content"><h1> <?php woocommerce_page_title(); ?> </h1></div></div>
-<?php echo do_shortcode('[vueapp]'); ?>
+<!-- <?php echo do_shortcode('[vueapp]'); ?> -->
 <!-- <h1 class="woocommerce-products-header__title page-title"><?php // woocommerce_page_title(); ?></h1> -->
 <?php endif; ?>
 
