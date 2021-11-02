@@ -2,6 +2,10 @@
 
 Class CouponNotification {
     public function setCustomAccountNotification() {
+        if (is_admin() && !defined('DOING_AJAX')) {
+			return;
+		}
+        
         $user = wp_get_current_user(); // Returns string of current user
         $user = $user->display_name;
 		// if (get_current_user_id() === 4) { (Old scenario where we look for ID)

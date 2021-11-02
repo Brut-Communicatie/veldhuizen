@@ -1,4 +1,3 @@
-
 @media screen and (min-width: 768px) {
 
 	.col2-set {
@@ -39,10 +38,22 @@
 		box-sizing: border-box;
 		padding: 2rem;
 		background-color: #d7d7d7;
+
+		input[type="text"],
+		input[type="tel"],
+		input[type="email"],
+		select {
+			width: 100%;
+			padding: 10px;
+		}
 	}
 }
 
 .checkout {
+	&__payment {
+		margin: 0;
+	}
+
 	&__product {
 		display: flex;
 		justify-content: space-between;
@@ -58,6 +69,7 @@
 			width: calc(100% / 3 - 10px);
 			display: flex;
 			justify-content: flex-start;
+			align-items: center;
 			text-align: left;
 		}
 
@@ -69,6 +81,8 @@
 		&--price {
 			@extend .checkout__product--item;
 			width: 22%;
+			justify-content: flex-end;
+			align-items: center
 		}
 
 		&--top {
@@ -91,10 +105,30 @@
 		}
 
 		&--subtotal {
-			width: 22%;
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
 			align-self: flex-end;
 			padding: 5px 0;
 			box-sizing: border-box;
+
+			i {
+				margin-right: 5px;
+				font-style: normal;
+			}
+
+			p {
+				margin: 0;
+
+				strong {
+					color: black !important;
+				}
+			}
+
+			a {
+				display: none;
+			}
+
 		}
 
 		&--total {
@@ -156,7 +190,107 @@
 	&--inner {
 		box-sizing: border-box;
 		padding: 2rem;
-		background-color: rgb(197, 197, 197);	
+		background-color: rgb(197, 197, 197);
+	}
+}
+
+.woocommerce-checkout-payment {
+	padding: 10px;
+	background-color: #fffae6;
+
+	ul {
+		margin: 0;
+		padding: 0;
+
+		li {
+			list-style: none;
+			background-color: #fff;
+			border: 1px solid #ffe479;
+			padding: 10px;
+			border-radius: 5px;
+
+			label {
+				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+
+				flex-direction: column;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				img {
+					max-width: 200px;
+				}
+			}
+
+			&:not(:last-child) {
+				margin-bottom: 5px;
+			}
+		}
+	}
+}
+
+.checkout {
+	&__thanks {
+		&--heading {
+			margin: 0;
+			font-size: 25px;
+		}
+
+		&--succes {
+			background-color: $veldhuizen__groen;
+			color: #fff;
+			box-sizing: border-box;
+			padding: 10px;
+			margin: 1rem 0;
+		}
+
+		&--list {
+			margin: 0;
+			padding: 0;
+
+			li {
+				list-style: none;
+			}
+		}
+	}
+}
+
+// .woocommerce-order-details {
+// 	background-color: cyan;
+// 	// padding: 0.5rem;
+// }
+
+.checkout {
+	&__order {
+		&--overview {
+			display: flex;
+			flex-direction: column;
+			background-color: #fffae6;
+			box-sizing: border-box;
+			padding: 5px;
+		}
+
+		&--row {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&--item {
+			width: calc(100% / 2 - 10px);
+			padding: 10px;
+		}
+
+		&--heading {
+			@extend .checkout__order--item;
+			width: calc(100% / 2);
+			margin-bottom: 5px;
+			background-color: $veldhuizen__groen;
+			color: #fff;
+			font-weight: 600;
+		}
 	}
 }
 }

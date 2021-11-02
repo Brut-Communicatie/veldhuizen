@@ -263,6 +263,18 @@ ul.products li.product .button {
 	background-color: #d7d7d7;
 }
 
+.checkout__layout--inner input[type="text"],
+.checkout__layout--inner input[type="tel"],
+.checkout__layout--inner input[type="email"],
+.checkout__layout--inner select {
+	width: 100%;
+	padding: 10px;
+}
+
+.checkout__payment {
+	margin: 0;
+}
+
 .checkout__product, .checkout__product--top {
 	display: flex;
 	justify-content: space-between;
@@ -279,11 +291,14 @@ ul.products li.product .button {
 	width: calc(100% / 3 - 10px);
 	display: flex;
 	justify-content: flex-start;
+	align-items: center;
 	text-align: left;
 }
 
 .checkout__product--price {
 	width: 22%;
+	justify-content: flex-end;
+	align-items: center;
 }
 
 .checkout__product--top {
@@ -305,10 +320,29 @@ ul.products li.product .button {
 }
 
 .checkout__product--subtotal, .checkout__product--total {
-	width: 22%;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
 	align-self: flex-end;
 	padding: 5px 0;
 	box-sizing: border-box;
+}
+
+.checkout__product--subtotal i, .checkout__product--total i {
+	margin-right: 5px;
+	font-style: normal;
+}
+
+.checkout__product--subtotal p, .checkout__product--total p {
+	margin: 0;
+}
+
+.checkout__product--subtotal p strong, .checkout__product--total p strong {
+	color: black !important;
+}
+
+.checkout__product--subtotal a, .checkout__product--total a {
+	display: none;
 }
 
 .checkout__shipping {

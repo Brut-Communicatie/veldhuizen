@@ -58,15 +58,18 @@ defined( 'ABSPATH' ) || exit;
 	<div class="checkout__product--bottom">
 
 		<div class="checkout__product--subtotal">
-			<th><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?></th>
-			<td><?php wc_cart_totals_subtotal_html(); ?></td>
+			<p>
+				<i><?php esc_html_e( 'Subtotal', 'woocommerce' ); ?>:</i>
+				<?php wc_cart_totals_subtotal_html(); ?>
+			</p>
 		</div>
 
 		<?php foreach ( WC()->cart->get_coupons() as $code => $coupon ) : ?>
-			<tr class="cart-discount coupon-<?php echo esc_attr( sanitize_title( $code ) ); ?>">
-				<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
-				<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
-			</tr>
+			<div class="checkout__product--subtotal">
+				<p>
+					<i>Klantkorting:</i> <?php wc_cart_totals_coupon_html( $coupon ); ?>
+				</p>
+			</div>
 		<?php endforeach; ?>
 
 
@@ -97,8 +100,10 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
 
 		<div class="checkout__product--total">
-			<th><?php esc_html_e( 'Total', 'woocommerce' ); ?></th>
-			<td><?php wc_cart_totals_order_total_html(); ?></td>
+			<p>
+				<i><?php esc_html_e( 'Total', 'woocommerce' ); ?>:</i>
+				<?php wc_cart_totals_order_total_html(); ?>
+			</p>
 		</div>
 
 		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
