@@ -10,7 +10,6 @@
 
 
     .veldhuizen__container {
-        // width: 80%;
         grid-template-columns: repeat(auto-fill, minmax(calc(33% - 10px), 1fr));
         padding: 20px;
 
@@ -44,6 +43,7 @@
                 }
             }
         }
+        
 
         @include Responsive($tabletSmallBreakpoint) {
             grid-template-columns: repeat(auto-fill, minmax(calc(50% - 10px), 1fr));
@@ -68,13 +68,6 @@
                     font-size: 0.8em;
                 }
             }
-        }
-
-        .item-a {
-            grid-column-start: 2;
-            grid-column-end: five;
-            grid-row-start: row1-start;
-            grid-row-end: 3;
         }
 
         .block:hover {

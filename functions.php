@@ -7,10 +7,15 @@
  * @package Veldhuizen
  */
 
+
+
+
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
 	define( '_S_VERSION', '1.0.2' );
 }
+
+require 'inc/brut-woocommerce/init.php';
 
 add_theme_support('woocommerce');
 
@@ -433,6 +438,7 @@ function woocommerce_clear_cart_url() {
 // Enqueue javascript for opacity on wc-notification
 wp_enqueue_script( 'wc-notification-opacity', get_bloginfo( 'stylesheet_directory' ). '/js/notificationOpacity.js' , '' , false, true );
 
+<<<<<<< HEAD
 // Discount account
 class CustomerDiscount {
 	private $coupon_code = 'klantenaccount';
@@ -461,6 +467,9 @@ class CustomerDiscount {
 
 new CustomerDiscount();
 
+=======
+$discount = new BrutCommunicatie\CustomerDiscount();
+>>>>>>> master
 // ** END WOOCOMMERCE ** \\
 
 
@@ -476,4 +485,5 @@ require get_template_directory() . '/inc/footer/footer-functions.php';
 
 // Remove all BR's and P in Contact Form 7 
 add_filter('wpcf7_autop_or_not', '__return_false');
+
 

@@ -6,6 +6,7 @@ use Gettext\Extractors\Po;
 use Gettext\Merge;
 use Gettext\Translation;
 use Gettext\Translations;
+use Gettext\Utils\ParsedComment;
 use WP_CLI;
 use WP_CLI_Command;
 use WP_CLI\Utils;
@@ -29,9 +30,14 @@ class MakePotCommand extends WP_CLI_Command {
 	protected $merge = [];
 
 	/**
-	 * @var Translations
+	 * @var Translations[]
 	 */
-	protected $exceptions;
+	protected $exceptions = [];
+
+	/**
+	 * @var bool
+	 */
+	protected $subtract_and_merge;
 
 	/**
 	 * @var array
@@ -71,7 +77,17 @@ class MakePotCommand extends WP_CLI_Command {
 	/**
 	 * @var bool
 	 */
+	protected $skip_theme_json = false;
+
+	/**
+	 * @var bool
+	 */
 	protected $skip_audit = false;
+
+	/**
+	 * @var bool
+	 */
+	protected $location = true;
 
 	/**
 	 * @var array
@@ -174,10 +190,14 @@ class MakePotCommand extends WP_CLI_Command {
 	 * If left empty, defaults to the destination POT file. POT file headers will be ignored.
 	 *
 	 * [--subtract=<paths>]
-	 * : Comma-separated list of POT files whose contents should act as some sort of blacklist for string extraction.
-	 * Any string which is found on that blacklist will not be extracted.
+	 * : Comma-separated list of POT files whose contents should act as some sort of denylist for string extraction.
+	 * Any string which is found on that denylist will not be extracted.
 	 * This can be useful when you want to create multiple POT files from the same source directory with slightly
 	 * different content and no duplicate strings between them.
+	 *
+	 * [--subtract-and-merge]
+	 * : Whether source code references and comments from the generated POT file should be instead added to the POT file
+	 * used for subtraction. Warning: this modifies the files passed to `--subtract`!
 	 *
 	 * [--include=<paths>]
 	 * : Comma-separated list of files and paths that should be used for string extraction.
@@ -196,6 +216,11 @@ class MakePotCommand extends WP_CLI_Command {
 	 * [--headers=<headers>]
 	 * : Array in JSON format of custom headers which will be added to the POT file. Defaults to empty array.
 	 *
+	 * [--location]
+	 * : Whether to write `#: filename:line` lines.
+	 * Defaults to true, use `--no-location` to skip the removal.
+	 * Note that disabling this option makes it harder for technically skilled translators to understand each message’s context.
+	 *
 	 * [--skip-js]
 	 * : Skips JavaScript string extraction. Useful when this is done in another build step, e.g. through Babel.
 	 *
@@ -204,6 +229,9 @@ class MakePotCommand extends WP_CLI_Command {
 	 *
 	 * [--skip-block-json]
 	 * : Skips string extraction from block.json files.
+	 *
+	 * [--skip-theme-json]
+	 * : Skips string extraction from theme.json files.
 	 *
 	 * [--skip-audit]
 	 * : Skips string audit where it tries to find possible mistakes in translatable strings. Useful when running in an
@@ -284,10 +312,12 @@ class MakePotCommand extends WP_CLI_Command {
 		$this->skip_js         = Utils\get_flag_value( $assoc_args, 'skip-js', $this->skip_js );
 		$this->skip_php        = Utils\get_flag_value( $assoc_args, 'skip-php', $this->skip_php );
 		$this->skip_block_json = Utils\get_flag_value( $assoc_args, 'skip-block-json', $this->skip_block_json );
+		$this->skip_theme_json = Utils\get_flag_value( $assoc_args, 'skip-theme-json', $this->skip_theme_json );
 		$this->skip_audit      = Utils\get_flag_value( $assoc_args, 'skip-audit', $this->skip_audit );
 		$this->headers         = Utils\get_flag_value( $assoc_args, 'headers', $this->headers );
 		$this->file_comment    = Utils\get_flag_value( $assoc_args, 'file-comment' );
 		$this->package_name    = Utils\get_flag_value( $assoc_args, 'package-name' );
+		$this->location        = Utils\get_flag_value( $assoc_args, 'location', true );
 
 		$ignore_domain = Utils\get_flag_value( $assoc_args, 'ignore-domain', false );
 
@@ -372,31 +402,21 @@ class MakePotCommand extends WP_CLI_Command {
 			}
 		}
 
-		$this->exceptions = new Translations();
-
 		if ( isset( $assoc_args['subtract'] ) ) {
-			$exceptions = explode( ',', $assoc_args['subtract'] );
+			$this->subtract_and_merge = Utils\get_flag_value( $assoc_args, 'subtract-and-merge', false );
 
-			$exceptions = array_filter(
-				$exceptions,
-				function ( $exception ) {
-					if ( ! file_exists( $exception ) ) {
-						WP_CLI::warning( sprintf( 'Invalid file provided to --subtract: %s', $exception ) );
+			$files = explode( ',', $assoc_args['subtract'] );
 
-						return false;
-					}
-
-					$exception_translations = new Translations();
-
-					Po::fromFile( $exception, $exception_translations );
-					$this->exceptions->mergeWith( $exception_translations );
-
-					return true;
+			foreach ( $files as $file ) {
+				if ( ! file_exists( $file ) ) {
+					WP_CLI::warning( sprintf( 'Invalid file provided to --subtract: %s', $file ) );
+					continue;
 				}
-			);
 
-			if ( ! empty( $exceptions ) ) {
-				WP_CLI::debug( sprintf( 'Ignoring any string already existing in: %s', implode( ',', $exceptions ) ), 'make-pot' );
+				WP_CLI::debug( sprintf( 'Ignoring any string already existing in: %s', $file ), 'make-pot' );
+
+				$this->exceptions[ $file ] = new Translations();
+				Po::fromFile( $file, $this->exceptions[ $file ] );
 			}
 		}
 
@@ -584,6 +604,7 @@ class MakePotCommand extends WP_CLI_Command {
 					'include'            => $this->include,
 					'exclude'            => $this->exclude,
 					'extensions'         => [ 'php' ],
+					'addReferences'      => $this->location,
 				];
 				PhpCodeExtractor::fromDirectory( $this->source, $translations, $options );
 			}
@@ -593,9 +614,10 @@ class MakePotCommand extends WP_CLI_Command {
 					$this->source,
 					$translations,
 					[
-						'include'    => $this->include,
-						'exclude'    => $this->exclude,
-						'extensions' => [ 'js', 'jsx' ],
+						'include'       => $this->include,
+						'exclude'       => $this->exclude,
+						'extensions'    => [ 'js', 'jsx' ],
+						'addReferences' => $this->location,
 					]
 				);
 
@@ -603,9 +625,10 @@ class MakePotCommand extends WP_CLI_Command {
 					$this->source,
 					$translations,
 					[
-						'include'    => $this->include,
-						'exclude'    => $this->exclude,
-						'extensions' => [ 'map' ],
+						'include'       => $this->include,
+						'exclude'       => $this->exclude,
+						'extensions'    => [ 'map' ],
+						'addReferences' => $this->location,
 					]
 				);
 			}
@@ -620,6 +643,21 @@ class MakePotCommand extends WP_CLI_Command {
 						'include'           => $this->include,
 						'exclude'           => $this->exclude,
 						'extensions'        => [ 'json' ],
+						'addReferences'     => $this->location,
+					]
+				);
+			}
+
+			if ( ! $this->skip_theme_json ) {
+				ThemeJsonExtractor::fromDirectory(
+					$this->source,
+					$translations,
+					[
+						// Only look for theme.json files, nothing else.
+						'restrictFileNames' => [ 'theme.json' ],
+						'include'           => $this->include,
+						'exclude'           => $this->exclude,
+						'extensions'        => [ 'json' ],
 					]
 				);
 			}
@@ -627,9 +665,23 @@ class MakePotCommand extends WP_CLI_Command {
 			WP_CLI::error( $e->getMessage() );
 		}
 
-		foreach ( $this->exceptions as $translation ) {
-			if ( $translations->find( $translation ) ) {
-				unset( $translations[ $translation->getId() ] );
+		foreach ( $this->exceptions as $file => $exception_translations ) {
+			/** @var Translation $exception_translation */
+			foreach ( $exception_translations as $exception_translation ) {
+				if ( ! $translations->find( $exception_translation ) ) {
+					continue;
+				}
+
+				if ( $this->subtract_and_merge ) {
+					$translation = $translations[ $exception_translation->getId() ];
+					$exception_translation->mergeWith( $translation );
+				}
+
+				unset( $translations[ $exception_translation->getId() ] );
+			}
+
+			if ( $this->subtract_and_merge ) {
+				PotGenerator::toFile( $exception_translations, $file );
 			}
 		}
 
@@ -677,10 +729,10 @@ class MakePotCommand extends WP_CLI_Command {
 				$comments = array_filter(
 					$comments,
 					function ( $comment ) {
-						/** @var string $comment */
+						/** @var ParsedComment|string $comment */
 						/** @var string $file_header */
 						foreach ( $this->get_file_headers( $this->project_type ) as $file_header ) {
-							if ( 0 === strpos( $comment, $file_header ) ) {
+							if ( 0 === strpos( ( $comment instanceof ParsedComment ? $comment->getComment() : $comment ), $file_header ) ) {
 								return null;
 							}
 						}

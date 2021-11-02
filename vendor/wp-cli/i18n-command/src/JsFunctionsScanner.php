@@ -18,6 +18,15 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 	private $extract_comments = false;
 
 	/**
+	 * Holds a list of source code comments already added to a string.
+	 *
+	 * Prevents associating the same comment to multiple strings.
+	 *
+	 * @var Node\Comment[] $comments_cache
+	 */
+	private $comments_cache = [];
+
+	/**
 	 * Enable extracting comments that start with a tag (if $tag is empty all the comments will be extracted).
 	 *
 	 * @param mixed $tag
@@ -43,18 +52,12 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 			$translations = $translations[0];
 		}
 
-		$code = $this->code;
-		// See https://github.com/mck89/peast/issues/7
-		// Temporary workaround to fix dynamic imports. The τ is a greek letter.
-		// This will trick the parser into thinking that it is a normal method call.
-		$code = preg_replace( '/import(\\s*\\()/', 'imporτ$1', $code );
-
 		$peast_options = [
 			'sourceType' => Peast::SOURCE_TYPE_MODULE,
 			'comments'   => false !== $this->extract_comments,
 			'jsx'        => true,
 		];
-		$ast           = Peast::latest( $code, $peast_options )->parse();
+		$ast           = Peast::latest( $this->code, $peast_options )->parse();
 
 		$traverser = new Traverser();
 
@@ -68,8 +71,9 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 		 */
 		$traverser->addFunction(
 			function ( $node ) use ( &$translations, $options, &$all_comments ) {
-				$functions = $options['functions'];
-				$file      = $options['file'];
+				$functions     = $options['functions'];
+				$file          = $options['file'];
+				$add_reference = ! empty( $options['addReferences'] );
 
 				/** @var Node\Node $node */
 				foreach ( $node->getLeadingComments() as $comment ) {
@@ -109,13 +113,25 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 						$all_comments[] = $comment;
 					}
 
-					if ( 'Identifier' === $argument->getType() ) {
+					if (
+						'Identifier' === $argument->getType() ||
+						'Expression' === substr( $argument->getType(), -strlen( 'Expression' ) )
+					) {
 						$args[] = ''; // The value doesn't matter as it's unused.
 					}
 
 					if ( 'Literal' === $argument->getType() ) {
 						/** @var Node\Literal $argument */
 						$args[] = $argument->getValue();
+					}
+
+					if ( 'TemplateLiteral' === $argument->getType() && 0 === count( $argument->getExpressions() ) ) {
+						/** @var Node\TemplateLiteral $argument */
+						/** @var Node\TemplateElement[] $parts */
+
+						// Since there are no expressions within the TemplateLiteral, there is only one TemplateElement.
+						$parts  = $argument->getParts();
+						$args[] = $parts[0]->getValue();
 					}
 				}
 
@@ -146,8 +162,16 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 					return;
 				}
 
+				if ( isset( $options['line'] ) ) {
+					$line = $options['line'];
+				} else {
+					$line = $node->getLocation()->getStart()->getLine();
+				}
+
 				$translation = $translations->insert( $context, $original, $plural );
-				$translation->addReference( $file, $node->getLocation()->getStart()->getLine() );
+				if ( $add_reference ) {
+					$translation->addReference( $file, $line );
+				}
 
 				/** @var Node\Comment $comment */
 				foreach ( $all_comments as $comment ) {
@@ -156,17 +180,64 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 						continue;
 					}
 
+					if ( in_array( $comment, $this->comments_cache, true ) ) {
+						continue;
+					}
+
 					$parsed_comment = ParsedComment::create( $comment->getRawText(), $comment->getLocation()->getStart()->getLine() );
 					$prefixes       = array_filter( (array) $this->extract_comments );
 
 					if ( $parsed_comment->checkPrefixes( $prefixes ) ) {
 						$translation->addExtractedComment( $parsed_comment->getComment() );
+
+						$this->comments_cache[] = $comment;
 					}
 				}
 
 				if ( isset( $parsed_comment ) ) {
 					$all_comments = [];
 				}
+			}
+		);
+
+		/**
+		 * Traverse through JS code contained within eval() to find and extract gettext functions.
+		 */
+		$scanner = $this;
+		$traverser->addFunction(
+			function ( $node ) use ( &$translations, $options, $scanner ) {
+				/** @var Node\CallExpression $node */
+				if ( 'CallExpression' !== $node->getType() ) {
+					return;
+				}
+
+				$callee = $this->resolveExpressionCallee( $node );
+
+				if ( ! $callee || 'eval' !== $callee['name'] ) {
+					return;
+				}
+
+				$eval_contents = '';
+				/** @var Node\Node $argument */
+				foreach ( $node->getArguments() as $argument ) {
+					if ( 'Literal' === $argument->getType() ) {
+						/** @var Node\Literal $argument */
+						$eval_contents = $argument->getValue();
+						break;
+					}
+				}
+
+				if ( ! $eval_contents ) {
+					return;
+				}
+
+				// Override the line location to be that of the eval().
+				$options['line'] = $node->getLocation()->getStart()->getLine();
+
+				$class = get_class( $scanner );
+				$evals = new $class( $eval_contents );
+				$evals->enableCommentsExtraction( $options['extractComments'] );
+				$evals->saveGettextFunctions( $translations, $options );
 			}
 		);
 
@@ -244,6 +315,36 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 					'name'     => $name,
 					'comments' => $callee->getCallee()->getLeadingComments(),
 				];
+			}
+		}
+
+		// If the callee is an indirect function call as created by babel, resolve it.
+		// For example: `(0, u.__)( "translation" )`.
+		if (
+			'ParenthesizedExpression' === $callee->getType()
+			&& 'SequenceExpression' === $callee->getExpression()->getType()
+			&& 2 === count( $callee->getExpression()->getExpressions() )
+			&& 'Literal' === $callee->getExpression()->getExpressions()[0]->getType()
+			&& [] !== $node->getArguments()
+		) {
+			// Matches any general indirect function call: `(0, __)( "translation" )`.
+			if ( 'Identifier' === $callee->getExpression()->getExpressions()[1]->getType() ) {
+				return [
+					'name'     => $callee->getExpression()->getExpressions()[1]->getName(),
+					'comments' => $callee->getLeadingComments(),
+				];
+			}
+
+			// Matches indirect function calls used by babel for module imports: `(0, _i18n.__)( "translation" )`.
+			if ( 'MemberExpression' === $callee->getExpression()->getExpressions()[1]->getType() ) {
+				$property = $callee->getExpression()->getExpressions()[1]->getProperty();
+
+				if ( 'Identifier' === $property->getType() ) {
+					return [
+						'name'     => $property->getName(),
+						'comments' => $callee->getLeadingComments(),
+					];
+				}
 			}
 		}
 

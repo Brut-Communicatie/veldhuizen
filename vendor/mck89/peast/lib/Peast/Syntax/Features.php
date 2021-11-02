@@ -75,7 +75,7 @@ class Features
     public $optionalCatchBinding = false;
 
     /**
-     * Paragraph and line sepeartor in strings
+     * Paragraph and line separator in strings
      *
      * @var bool
      */
@@ -136,4 +136,39 @@ class Features
      * @var bool
      */
     public $numericLiteralSeparator = false;
+
+    /**
+     * Private methods and fields
+     *
+     * @var bool
+     */
+    public $privateMethodsAndFields = false;
+
+    /**
+     * Class fields
+     *
+     * @var bool
+     */
+    public $classFields = false;
+
+    /**
+     * "in" operator for private fields
+     *
+     * @var bool
+     */
+    public $classFieldsPrivateIn = false;
+
+    /**
+     * Top level await
+     *
+     * @var bool
+     */
+    public $topLevelAwait = false;
+
+    /**
+     * Class static block
+     *
+     * @var bool
+     */
+    public $classStaticBlock = false;
 }

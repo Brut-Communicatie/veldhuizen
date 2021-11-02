@@ -1,6 +1,39 @@
 Changelog
 ==========
 
+#### 1.13.8
+* Fixed identifiers bug introduced in the last release
+
+#### 1.13.7
+* Implemented parsing of top level await
+* Implemented parsing of `#field in obj` syntax
+* Implemented parsing of class static block
+* Aligned invalid octal numbers checks to the specification
+* __BC break__: identifier tokens' value now report their raw name, this means that unicode escape sequences are reported as they are written in the code, without converting them to their corresponding characters. Identifier nodes have a new property called `rawName` that contains their raw name, including unconverted unicode escape sequences, while the `name` property still contains the converted value as before. Renderer now prints `rawName` for identifiers to prevent automatic conversion of escaped keywords.
+
+#### 1.13.6
+* Fixed parsing of adjacent JSX expressions
+* Implemented parsing of JSX fragments inside elements
+
+#### 1.13.5
+* Fixed parsing of `get` and `set` as property names and class fields
+* Fixed parsing of dot after number with exponential notation
+
+#### 1.13.4
+* Fixed bug when parsing surrogate pairs in php 7.4+
+
+#### 1.13.3
+* Added support for surrogate pairs in strings and templates
+
+#### 1.13.2
+* Fixed bug when parsing spread operator inside objects returned by arrow functions
+
+#### 1.13.1
+* Major performance improvements to parsing and tokenization
+
+#### 1.13.0
+* Implemented ES2022 parser with class fields and private class methods
+
 #### 1.12.0
 * Added options array to Traverser constructor and shortcut method on nodes
 * Added Query class
@@ -48,7 +81,7 @@ Changelog
 
 #### 1.8.1
 * Fixed parsing of regular expressions by disabling scan errors inside them
-* Added LSM utility class to handle correctly punctutators and strings stop characters
+* Added LSM utility class to handle correctly punctuators and strings stop characters
 
 #### 1.8
 * Implemented parsing of JSX syntax

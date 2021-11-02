@@ -122,12 +122,33 @@ do_action( 'woocommerce_before_cart_contents' );
 				} else {
 					$itemQuantity = $values['quantity'];
 				}
-
+		
 				if ($itemQuantity > 1) {
 					$_price = intval($_price) * $itemQuantity;
 				}
 
+				// Check for discount code.
+		
+				$user = wp_get_current_user(); 
+				$user = $user->display_name; // Returns string of current user
+			
+				
 				echo '<div class="cart__row--item">';
+
+				if ($user === __KLANTACCOUNT__) {
+					if ($_price != 0) {
+						global $woocommerce;
+						$coupon = new WC_Coupon(__COUPONACCOUNT__);
+						$_originalPrice = $_price;
+						$percentage = $coupon->amount; // Get discount %
+						$discount = $percentage / 100 * $_price; // Get discount amount
+						$_price = $_price - $discount; // Remove from price
+						
+						// Show original price
+						echo '<span class="WC__discount--item">€' . $_originalPrice . ',-</span>';
+					}
+				}
+
 				echo '€' . $_price . ',-';
 				echo '</div>';
 			}
@@ -139,13 +160,10 @@ do_action( 'woocommerce_before_cart_contents' );
 	<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 	<div class="cart__navigation">
 		<a href="<?php echo esc_url( wc_get_checkout_url() ); ?>"class="cart__navigation--button">Ga verder met bestellen</a>
-		<a class="cart__navigation--button" href="<?php echo $woocommerce->cart->get_cart_url(); ?>?empty-cart"><?php _e( 'Empty Cart', 'woocommerce' ); ?></a>
+		<!-- <a class="cart__navigation--button" href="<?php echo $woocommerce->cart->get_cart_url(); ?>?empty-cart"><?php _e( 'Empty Cart', 'woocommerce' ); ?></a> -->
 		<button name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>" class="cart__navigation--button">Cart updaten</button>
 		<?php do_action( 'woocommerce_cart_actions' ); ?>
 	</div>
 	</form>
 </div>
 <?php do_action( 'woocommerce_after_cart' ); ?>
-
-
-
