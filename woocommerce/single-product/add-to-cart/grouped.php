@@ -97,6 +97,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 							<td class="cell-names">Fabrieks nr.</td>
 							<td class="cell-names">Iveco nr.</td>
 							<td class="cell-names">Per as</td>
+							<td class="cell-names">Prijs</td>
 						</tr>
 							
 						<?php
