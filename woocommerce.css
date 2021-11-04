@@ -1307,9 +1307,4 @@ p.no-comments {
 	background-color: #b60000;
 }
 
-.group_table tbody {
-	display: flex;
-	flex-direction: column-reverse;
-}
-
 /*# sourceMappingURL=woocommerce.css.map */
