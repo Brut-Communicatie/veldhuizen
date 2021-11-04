@@ -142,7 +142,8 @@ $menuBreakpoint : 1270px;
         }
 
         @include Responsive($tabletSmallBreakpoint) {
-             justify-content: center;
+            justify-content: center;
+
             p {
                 margin: 0 1rem;
             }
@@ -232,7 +233,7 @@ $menuBreakpoint : 1270px;
                     visibility: hidden;
                     opacity: 0;
                     transition: 0.2s 0.3s;
-                    
+
                     @include Responsive($menuBreakpoint) {
                         visibility: unset;
                         opacity: unset;
@@ -251,9 +252,10 @@ $menuBreakpoint : 1270px;
                         transition: background-color .25s ease;
                         position: relative;
                         box-sizing: border-box;
-                        
+
                         &.nav-shop {
                             width: calc(100% / 4);
+
                             @include Responsive($menuBreakpoint) {
                                 display: none;
                             }
@@ -261,6 +263,7 @@ $menuBreakpoint : 1270px;
 
                         &.nav-verhuur {
                             width: calc(100% / 6);
+
                             @include Responsive($menuBreakpoint) {
                                 width: 100%;
                             }
@@ -273,7 +276,7 @@ $menuBreakpoint : 1270px;
                         &:hover {
                             background-color: #fafafa;
                             cursor: pointer;
-                            
+
                             .header__right--subitems {
                                 display: flex;
                             }
@@ -309,13 +312,16 @@ $menuBreakpoint : 1270px;
             bottom: unset;
             top: 110px;
             transition: all .75s ease;
+
             li {
                 width: auto;
                 border-right: 0;
                 border-left: 0;
+
                 @include Responsive($menuBreakpoint) {
                     width: 100%;
                 }
+
                 a {
                     padding: 20px;
                     justify-content: initial;
@@ -324,11 +330,13 @@ $menuBreakpoint : 1270px;
 
                 &:hover {
                     background-color: $veldhuizen__oranje;
+
                     a {
                         color: white;
                     }
                 }
             }
+
             @include Responsive($menuBreakpoint) {
                 display: none;
             }
@@ -451,9 +459,11 @@ $menuBreakpoint : 1270px;
         animation: slideMenu .75s ease forwards;
         transition-delay: 0.5s;
     }
-    &__mobile{
+
+    &__mobile {
         display: none;
-        @include Responsive($menuBreakpoint){
+
+        @include Responsive($menuBreakpoint) {
             display: flex;
             border-bottom: 1px solid #dddddd;
             padding: 10px 0;
@@ -466,10 +476,34 @@ $menuBreakpoint : 1270px;
 }
 
 @keyframes slideMenu {
-    0%{
+    0% {
         transform: translateY(-100%);
     }
-    100%{
+
+    100% {
         transform: translateY(0);
+    }
+}
+
+
+.cart__total {
+    &--icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        width: 30px;
+        position: relative;
+
+    }
+
+    &--span {
+        padding: 2.5px 4px;
+        border-radius: 5px;
+        position: absolute;
+        line-height: 12px;
+        top: -5px;
+        right: -10px;
+        font-size: 12px;
     }
 }
