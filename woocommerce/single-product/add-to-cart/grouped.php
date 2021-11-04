@@ -112,7 +112,7 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 								'fabrieks_nr',
 								'iveco_nr',
 								'per_as',
-								
+								'price',
 							),
 							$product
 						);
@@ -177,6 +177,10 @@ if ($post_title === 'trekkerombouw' or $post_title === 'verlichting' or $post_ti
 									case 'per_as':
 										$value = get_post_meta($grouped_product_child->get_id(), '_peras', true );
 										break;
+									case 'price':
+										$value = $grouped_product_child->get_price_html() . wc_get_stock_html( $grouped_product_child );
+										break;
+										
 								
 								default:
 										$value = '';
