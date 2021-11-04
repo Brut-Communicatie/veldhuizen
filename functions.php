@@ -8,11 +8,9 @@
  */
 
 
-
-
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.4' );
+	define( '_S_VERSION', '1.0.5' );
 }
 
 require 'inc/brut-woocommerce/init.php';
@@ -354,7 +352,6 @@ function veldhuizen_home_vacatures() {
 	echo  '<h3>Vacatures</h3>';
 	echo '<p>Veldhuizen b.v. is fabrikant van aanhangwagens en opleggers voor BE-rijbewijs. Onze productrange bestaat verder uit oprij vrachtwagens en diverse Hovertrack varianten. Om aan de groeiende vraag uit de markt te voldoen, zijn wij op zoek naar:</p>';
 	$vacature_page = get_page_by_path('vacatures');
-	
 	$vacatures = get_children($vacature_page->ID);
 	echo '<ul>';
 	foreach($vacatures as $child) {
@@ -410,7 +407,7 @@ function veldhuizen_add_woocommerce_support() {
 		'thumbnail_image_width' => 150,
 		'single_image_width'    => 300,
 
-        'product_grid'          => array(
+        'product_grid'        => array(
             'default_rows'    => 4,
             'min_rows'        => 2,
             'max_rows'        => 8,
