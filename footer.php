@@ -73,21 +73,23 @@
 			<div class="footer__item">
 				<h4>Onderdelen</h4>
 				<ul>
-				<?php  
-					$args = array(
-						'post_type'      => 'product',
-						'posts_per_page' => 5,
-					);
+					<?php 
+						$onderdelen = wc_get_products(array(
+							'category' => array('onderdelen'),
+						));
 
-					$loop = new WP_Query( $args );
-
-					while ( $loop->have_posts() ) : $loop->the_post();
-						global $product;
-						echo '<li><a href="'.get_permalink().'">'.get_the_title().'</a></li>';
-					endwhile;
-
-					wp_reset_query();
-				?>
+						if (isset($onderdelen)) {
+							foreach ($onderdelen as $onderdeel) {
+								$prod_title = $onderdeel->name;
+								$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
+								$prod_link = $onderdeel->get_permalink();
+								echo '<li class="nav-shop">';
+								echo '<a href="' . $prod_link . '">';
+								echo $prod_title . '</a>';
+								echo '</li>';
+							}
+						}
+					?>
 				</ul>
 			</div>
 			<div class="footer__item">

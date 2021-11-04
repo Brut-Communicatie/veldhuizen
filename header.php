@@ -172,23 +172,22 @@ echo $notification;
 						<a href="<?php echo get_page_link( get_page_by_path( 'onderdelen' ) ); ?>">Onderdelen</a>
 						<ul>
 							<?php 
-							$onderdelen = wc_get_products(array(
-								'category' => array('onderdelen'),
-							));
+								$onderdelen = wc_get_products(array(
+									'category' => array('onderdelen'),
+								));
 
-							if (isset($onderdelen)) {
-								foreach ($onderdelen as $onderdeel) {
-									$prod_title = $onderdeel->name;
-									$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
-									$prod_link = $onderdeel->get_permalink();
-									echo '<li class="nav-shop">';
-									echo '<a href="' . $prod_link . '">';
-									echo '<div class="header__img" style="background-image:url(' . $prod_image . ')";></div>';
-									echo $prod_title . '</a>';
-									echo '</li>';
+								if (isset($onderdelen)) {
+									foreach ($onderdelen as $onderdeel) {
+										$prod_title = $onderdeel->name;
+										$prod_image = wp_get_attachment_url($onderdeel->get_image_id());
+										$prod_link = $onderdeel->get_permalink();
+										echo '<li class="nav-shop">';
+										echo '<a href="' . $prod_link . '">';
+										echo '<div class="header__img" style="background-image:url(' . $prod_image . ')";></div>';
+										echo $prod_title . '</a>';
+										echo '</li>';
+									}
 								}
-							}
-
 							?>
 						</ul>
 					</li>
@@ -207,7 +206,14 @@ echo $notification;
 						<a class="header__orange" href="<?php echo get_page_link( get_page_by_path( 'contact' ) ); ?>">Contact</a>
 					</li>
 					<li>
-						<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>"><?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> – <?php echo WC()->cart->get_cart_total(); ?> </a>
+						<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'View your shopping cart' ); ?>">
+							<div class="cart__total--icon">
+								<img src="<?php echo get_template_directory_uri();?>/content/icons/shopping-cart-solid.svg" width="20px" alt="Shopping cart icoon"/>
+								<span class="header__orange cart__total--span">
+									<?php echo WC()->cart->get_cart_contents_count() ?>
+								<span>
+							</div>
+						</a>
 					</li>
 				</ul>
 			</div>
@@ -222,7 +228,6 @@ echo $notification;
 				$category1 = ($categoryName[0]->category_nicename);
 				$category2 = ($categoryName[1]->category_nicename);
 				
-
 				if (is_front_page()){
 					echo '<p>U bevindt zich hier: ' . $postTitle .'</p>';
 				} else if ($postType === 'page') {
